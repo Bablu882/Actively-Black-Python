@@ -1,0 +1,24 @@
+from django.urls import path,include 
+from .views import *
+from django.conf import settings
+from django.conf.urls.static import static
+from django.conf.urls import url,include
+
+
+urlpatterns=[
+    path('',test1_view,name='test1'),
+    path('add-user',add_user,name='add-user'),
+    path('dashboard',dashboard,name='dashboard'),
+    path('forgot-password',forgot_password,name='forgot-password'),
+    path('listing',listing,name='listing'),
+    path('login',login,name='login'),
+    path('profile',profile,name='profile'),
+    path('register',register,name='register'),
+    path('logout',logout,name='logout'),
+    url(r'^avatar/',include('avatar.urls')),
+    path('verify-email/<slug:token>',verify_mail),
+
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
