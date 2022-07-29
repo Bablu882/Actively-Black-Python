@@ -5,7 +5,6 @@ from django.conf import settings
 from django.contrib.auth import authenticate, logout as auth_logout
 from django.contrib.auth import login as login_dj
 from .decorator import authenticate_user
-from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Profile
 import uuid
@@ -34,7 +33,7 @@ def profile(request):
 
 
 
-    
+#Registration of new user    
 def register(request):
     if request.method == "POST":
         context = {'has_error': False, 'data': request.POST}
@@ -89,7 +88,7 @@ def register(request):
 
 
 
-
+#login user from here 
 @authenticate_user
 def login(request):
 
@@ -124,7 +123,7 @@ def login(request):
 
     return render(request, 'management/login.html')
 
-
+#Logout user from here
 def logout(request):
 
     auth_logout(request=request)
@@ -135,7 +134,7 @@ def logout(request):
     return redirect('/login')    
 
 
-
+#Send mail after registration
 def send_mail_after(email,token):
     subject="verify email"
     message=f'click here http://127.0.0.1:8000/verify-email/{token}'
@@ -143,7 +142,7 @@ def send_mail_after(email,token):
     recipient_list=[email]
     send_mail(subject=subject,message=message,from_email=from_email,recipient_list=recipient_list)
 
-
+#verify mail after registration send link to user mail 
 def verify_mail(request,token):
     profile_id=Profile.objects.filter(token=token).first()
     print(profile_id)
@@ -151,3 +150,69 @@ def verify_mail(request,token):
     profile_id.save()
     messages.success(request,'Your account is verified now you can login')
     return redirect('login')
+
+##-----------------Forget password--------------------------------##
+
+def forget_password(request):
+    try:
+        if request.method=='POST':
+            user=request.POST.get('email')
+            if not User.objects.filter(email=user).exists():
+                messages.error(request,'Not user found with this email')
+                return redirect('forget-password')
+            else:    
+                user_obj=User.objects.get(email=user)
+                profile=Profile.objects.get(user=user_obj)
+                pro=profile.token
+                # token=str(uuid.uuid4())
+                # profile_obj=Profile.objects.get(user=user_obj)
+                # print(profile_obj)
+                # print('profile_obj.token')
+                # profile_obj.save()
+                send_forget_password_mail(user,pro)
+                messages.success(request,'please check your mail we have sent a link')
+                return redirect('forget-password')
+    except Exception as e:
+        print(e)
+    return render(request,'management/forget-password.html')
+
+#Change forgot password 
+def change_password(request,token):
+    context={}
+    try:
+        profile=Profile.objects.filter(token=token).first()
+        print(profile.user.id)
+        if request.method == 'POST':
+            newpass=request.POST.get('newpassword')
+            conformpass=request.POST.get('conform-newpassword')
+            user_id=request.POST.get('user_id')
+
+            if user_id is None:
+                messages.error(request,'No user is found')
+                return redirect(f"/change-password/{token}/")
+
+            if newpass != conformpass:
+                messages.error(request,'password is missmatched')    
+                return redirect(f"/change-password/{token}")
+
+            user_obj=User.objects.get(id=user_id)    
+            user_obj.set_password(newpass)
+            user_obj.save()
+            messages.success(request,'New password changed now login with new password')
+            return redirect('login')
+        context={'user_id':profile.user.id}  
+    except Exception as e:
+        print(e)
+    return render(request,'management/change-password.html',context)    
+
+
+#Send mail for forget password 
+def send_forget_password_mail(email,token):
+    subject="Change your password"
+    message=f'click here http://127.0.0.1:8000/change-password/{token}'
+    from_email=settings.EMAIL_HOST_USER
+    recipient_list=[email]
+    send_mail(subject=subject,message=message,from_email=from_email,recipient_list=recipient_list)
+
+
+##----------------------------------------------------------------------------------------##

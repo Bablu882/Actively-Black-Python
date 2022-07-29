@@ -17,6 +17,8 @@ urlpatterns=[
     path('logout',logout,name='logout'),
     url(r'^avatar/',include('avatar.urls')),
     path('verify-email/<slug:token>',verify_mail),
+    path('forget-password',forget_password,name='forget-password'),
+    path('change-password/<token>',change_password,name='change-password'),
 
 ]
 
