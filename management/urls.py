@@ -2,7 +2,7 @@ from django.urls import path,include
 from .views import *
 from django.conf import settings
 from django.conf.urls.static import static
-from django.conf.urls import url,include
+
 
 
 urlpatterns=[
@@ -15,10 +15,10 @@ urlpatterns=[
     path('profile',profile,name='profile'),
     path('register',register,name='register'),
     path('logout',logout,name='logout'),
-    url(r'^avatar/',include('avatar.urls')),
     path('verify-email/<slug:token>',verify_mail),
     path('forget-password',forget_password,name='forget-password'),
     path('change-password/<token>',change_password,name='change-password'),
+    path('profile2/',profile2,name='profile2'),
 
 ]
 

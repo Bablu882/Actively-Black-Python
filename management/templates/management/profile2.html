@@ -1,198 +1,194 @@
-{% extends 'management/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 400px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 50px;
+}
+.title {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+form div input {
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  outline: none;
+  border: 2px solid #c4c4c4;
+  padding: 0 30px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+form div {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+input:focus {
+  border: 2px solid #f2796e;
+}
+form div i {
+  position: absolute;
+  padding: 10px;
+}
+.failure-icon,
+.error {
+  color: red;
+}
+
+.success-icon {
+  color: green;
+}
+
+.error {
+  font-size: 14.5px;
+  margin-top: 5px;
+}
+.success-icon,
+.failure-icon {
+  right: 0;
+  opacity: 0;
+}
+button {
+  margin-top: 15px;
+  width: 100%;
+  height: 45px;
+  background-color: #f2796e;
+  border: 2px solid #f2796e;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.1s ease;
+}
+button:hover {
+  opacity: 0.8;
+}
 
 
-{% load static %}
-{% block content %}
-<main class="content">
+    </style>
+</head>
+<body>
+    
 
+<div class="container">
 
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
-        <div>
-            <button class="btn btn-secondary text-dark mr-2 dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                <span class="fas fa-plus mr-2"></span>New
-            </button>
-            <div class="dropdown-menu dashboard-dropdown dropdown-menu-left mt-2">
-                <a class="dropdown-item font-weight-bold" href="#"><span class="far fa-file-alt mr-2"></span>Document</a>
-                <a class="dropdown-item font-weight-bold" href="#"><span class="far fa-comment-dots mr-2"></span>Message</a>
-                <a class="dropdown-item font-weight-bold" href="#"><span class="fas fa-box-open mr-2"></span>Product</a>
-                <div role="separator" class="dropdown-divider"></div>
-                <a class="dropdown-item font-weight-bold" href="#"><span
-                        class="fas fa-rocket text-danger mr-2"></span>Subscription Plan</a>
-            </div>
-        </div>
-        <div>
-            <button type="button" class="btn btn-primary mr-2"><span class="fas fa-calendar-alt"></span></button>
-            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                <span class="fas fa-clipboard mr-2"></span>Reports
-                <span class="icon icon-small ml-1"><span class="fas fa-chevron-down"></span></span>
-            </button>
-            <div class="dropdown-menu dashboard-dropdown dropdown-menu-left mt-2">
-                <a class="dropdown-item font-weight-bold" href="#"><span class="fas fa-box-open mr-2"></span>Products</a>
-                <a class="dropdown-item font-weight-bold" href="#"><span class="fas fa-store mr-2"></span>Customers</a>
-                <a class="dropdown-item font-weight-bold" href="#"><span class="fas fa-cart-arrow-down mr-2"></span>Orders</a>
-                <a class="dropdown-item font-weight-bold" href="#"><span class="fas fa-chart-pie mr-2"></span>Console</a>
-                <div role="separator" class="dropdown-divider"></div>
-                <a class="dropdown-item font-weight-bold" href="#"><span
-                        class="fas fa-rocket text-success mr-2"></span>All Reports</a>
-            </div>
-        </div>
+	<form id="form">
+        <div class="title">Get Started</div>
+    
+    <div>
+        <label for="username">User Name</label>
+    <i class="fas fa-user"></i>
+    
+    <input
+        type="text"
+        name="username"
+        id="username"
+        placeholder="Joy Shaheb"
+     />
+    
+    <i class="fas fa-exclamation-circle failure-icon"></i>
+    <i class="far fa-check-circle success-icon"></i>
+    
+    <div class="error"></div>
     </div>
+    <div>
+        <label for="email">Email</label>
+    <i class="far fa-envelope"></i>
+    
+    <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="abc@gmail.com"
+     />
+    
+    <i class="fas fa-exclamation-circle failure-icon"></i>
+    <i class="far fa-check-circle success-icon"></i>
+    
+    <div class="error"></div>
+    </div>
+    <div>
+        <label for="password">Password</label>
+    <i class="fas fa-lock"></i>
+    
+    <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Password here"
+     />
+    
+    <i class="fas fa-exclamation-circle failure-icon"></i>
+    <i class="far fa-check-circle success-icon"></i>
+    
+    <div class="error"></div>
+    </div>
+    <button id="btn" type="submit">Submit</button>
 
-    <form action="" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="row">
-            <div class="col-12 col-xl-8">
-                <div class="card card-body bg-white border-light shadow-sm mb-4">
-                    <h2 class="h5 mb-4">Profile information</h2>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <div>
-                                <label for="first_name">First Name</label>
-                                <input name="first_name" class="form-control" id="first_name" type="text"
-                                       placeholder="Enter your first name" value="{{ profile.user.first_name }}"
-                                       required>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <div>
-                                <label for="last_name">Last Name</label>
-                                <input name="last_name" class="form-control" id="last_name" type="text"
-                                       placeholder="Also your last name" value="{{ profile.user.last_name }}"
-                                       required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row align-items-center">
-                        <div class="col-md-6 mb-3">
-                            <label for="birthday">Birthday</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><span class="far fa-calendar-alt"></span></span>
-                                <input name="birthday" data-datepicker="" class="form-control" id="birthday"
-                                       type="text" placeholder="dd/mm/yyyy" value="{{ profile.birthday|date:'m/d/Y'|default:'' }}" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="gender">Gender</label>
-                            <select name="gender" class="form-select mb-0" id="gender"
-                                    aria-label="Gender select example">
-                                <option selected>Gender</option>
-                                {% for key, value in profile.GENDER_CHOICES %}
-                                    <option value="{{ key }}"
-                                            {% if profile.gender == key %}selected{% endif %}>{{ value }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input name="email" class="form-control" id="email" type="email"
-                                       placeholder="name@company.com" value="{{ profile.user.email }}" readonly>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <div class="form-group">
-                                <label for="phone">Phone</label>
-                                <input name="phone" class="form-control" id="phone" type="number"
-                                       placeholder="+12-345 678 910" value="{{ profile.phone }}" required>
-                            </div>
-                        </div>
-                    </div>
-                    <h2 class="h5 my-4">Address</h2>
-                    <div class="row">
-                        <div class="col-sm-9 mb-3">
-                            <div class="form-group">
-                                <label for="address">Address</label>
-                                <input name="address" class="form-control" id="address" type="text"
-                                       placeholder="Enter your home address" value="{{ profile.address|default:'' }}" required>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 mb-3">
-                            <div class="form-group">
-                                <label for="number">Number</label>
-                                <input name="number" class="form-control" id="number" type="number"
-                                       placeholder="No." value="{{ profile.number|default:'' }}" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-4 mb-3">
-                            <div class="form-group">
-                                <label for="city">City</label>
-                                <input name="city" class="form-control" id="city" type="text" placeholder="City"
-                                       value="{{ profile.city|default:'' }}" required>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="zip">ZIP</label>
-                                <input name="zip" class="form-control" id="zip" type="tel" placeholder="ZIP"
-                                       value="{{ profile.zip|default:'' }}" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-3">
-                        <button type="submit" class="btn btn-primary">Save All</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-xl-4">
-                <div class="row">
-                    <div class="col-12 mb-4">
-                        <div class="card border-light text-center p-0">
-                            <div class="profile-cover rounded-top"
-                                 data-background="/static/assets/img/profile-cover.jpg"></div>
-                            <div class="card-body pb-5">
-                                <img src="{{ profile.get_avatar }}"
-                                     class="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4"
-                                     alt="Neil Portrait">
-     
-                                <h4 class="h3">{{ profile.user.username }}</h4>
-                                <h4 class="font-weight-normal">{{ profile.user.get_full_name }}</h4>
-                                <h5 class="font-weight-normal">
-                                    {{ request.user.email }}
-                                </h5>
-                                <p class="text-gray mb-4">{{ profile.address|default:'' }}</p>
-                                <a class="btn btn-sm btn-primary mr-2" href="#"><span
-                                        class="fas fa-user-plus mr-1"></span> Connect</a>
-                                <a class="btn btn-sm btn-secondary" href="#">Send Message</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="card card-body bg-white border-light shadow-sm mb-4">
-                            <h2 class="h5 mb-4">Select profile photo</h2>
-                            <div class="d-xl-flex align-items-center">
-                                <div class="file-field">
-                                    <div class="d-flex justify-content-xl-center ml-xl-3">
-                                        <div class="d-flex">
-                                            <span class="icon icon-md">
-                                                <span class="fas fa-paperclip mr-3"></span>
-                                            </span>
-                                            <input name="avatar" type="file">
-                                            <div class="d-md-block text-left">
-                                                <div class="font-weight-normal text-dark mb-1">Choose Image</div>
-                                                <div class="text-gray small">JPG, GIF or PNG. Max size of 800K</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </form>
+    
+</div>
+<script>
+    let id = (id) => document.getElementById(id);
 
+let classes = (classes) => document.getElementsByClassName(classes);
 
+let username = id("username"),
+  email = id("email"),
+  password = id("password"),
+  form = id("form"),
+  
+  errorMsg = classes("error"),
+  successIcon = classes("success-icon"),
+  failureIcon = classes("failure-icon");
 
-</main>
+  form.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
 
+let engine = (id, serial, message) => {
 
-{% endblock content %}
+if (id.value.trim() === "") {
+  errorMsg[serial].innerHTML = message;
+  id.style.border = "2px solid red";
+  
+  // icons
+  failureIcon[serial].style.opacity = "1";
+  successIcon[serial].style.opacity = "0";
+} 
 
+else {
+  errorMsg[serial].innerHTML = "";
+  id.style.border = "2px solid green";
+  
+  // icons
+  failureIcon[serial].style.opacity = "0";
+  successIcon[serial].style.opacity = "1";
+}
+}
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
+  engine(username, 0, "Username cannot be blank");
+  engine(email, 1, "Email cannot be blank");
+  engine(password, 2, "Password cannot be blank");
+});
+</script>
+
+</body>
+</html>

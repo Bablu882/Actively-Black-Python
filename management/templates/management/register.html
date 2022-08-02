@@ -9,7 +9,7 @@
                     <h2 class="text-center mb-4">Sign up</h2>
                     
 
-                <form class="mx-1 mx-md-4" method="POST">
+                <form class="mx-1 mx-md-4" method="POST" name="myform">
                     {% csrf_token %}
                     {% if messages %}
                         {% for message in messages %}
@@ -23,38 +23,33 @@
                     <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fa fa-user fa-lg mr-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                        <input type="text" name="username" class="form-control" placeholder="Your Name" />
-                        <!-- {{form.username}} -->
+                        <input type="text" name="username" required class="form-control" placeholder="Username" oninvalid="this.setCustomValidity('This field is required')" oninput="setCustomValidity('')"/>
                     </div>
                     </div>
                         
                     <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fa fa-envelope fa-lg mr-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                        <input type="email" name="email" class="form-control" placeholder="Your Email" />
-                        <!-- {{form.email}} -->
+                        <input type="email" name="email" class="form-control" placeholder="Your Email" oninvalid="this.setCustomValidity('Valid email required')"  oninput="setCustomValidity('')" required/>
                         
                     </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fa fa-lock fa-lg mr-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                        <input type="password" name="password" class="form-control" placeholder="Your Password"  />
-                        
-                        <!-- {{form.password1  }} -->
+                        <input type="password" name="password" class="form-control" placeholder="Your Password" required oninvalid="this.setCustomValidity('This field is required')"  oninput="setCustomValidity('')" />
                     </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fa fa-key fa-lg mr-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                        <input type="password" name="password2" class="form-control" placeholder="Confirm Password"  />
-                        <!-- {{form.password2}} -->
+                        <input type="password" name="password2" class="form-control" placeholder="Confirm Password" required oninvalid="this.setCustomValidity('This field is required')"  oninput="setCustomValidity('')" />
                         
                     </div>
                     </div>
                     <div class="form-check d-flex mb-5">
                     <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
-                    <label class="form-check-label" for="password">
+                    <label class="form-check-label" for="password" required="">
                         I agree all statements in <a href="#!">Terms of service</a>
                     </label>
                     </div>

@@ -15,19 +15,23 @@ from django.core.mail import send_mail
 
 def test1_view(request):
     return render(request,'management/test1.html')
-
+    
+@login_required(login_url='login')
 def add_user(request):
     return render(request,'management/add-user.html')
 
+@login_required(login_url='login')
 def dashboard(request):
     return render(request ,'management/dashboard.html')    
 
 def forgot_password(request):
     return render(request,'management/forget-password.html')    
 
+@login_required(login_url='login')
 def listing(request):
     return render(request,'management/listing.html')    
 
+@login_required(login_url='login')
 def profile(request):
     return render(request,'management/profile.html')
 
@@ -216,3 +220,6 @@ def send_forget_password_mail(email,token):
 
 
 ##----------------------------------------------------------------------------------------##
+
+def profile2(request):
+    return render(request,'management/profile2.html')

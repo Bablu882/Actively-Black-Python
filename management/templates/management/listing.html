@@ -17,10 +17,18 @@
                     </div>
                     <div class="navbar navbar-dark px-0">
                         <ul class="navbar-nav w-100">
+                            {% if user.is_authenticated %}
+                            <li class="nav-item active">
+                                <a href="{% url 'logout' %}" class="nav-link"><i class="fa fa-lock mr-2" aria-hidden="true"></i>
+                                    Logout</a>
+                            </li>
+                                 {% else %}
                             <li class="nav-item active">
                                 <a href="{% url 'login' %}" class="nav-link"><i class="fa fa-lock mr-2" aria-hidden="true"></i>
                                     Login</a>
+
                             </li>
+                            {% endif %}
                             <li class="nav-item">
                                 <a href="{% url 'dashboard' %}" class="nav-link"><i class="fa fa-dashboard mr-2" aria-hidden="true"></i>
                                     Dashboard</a>
