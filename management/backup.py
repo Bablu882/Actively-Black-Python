@@ -195,3 +195,4 @@
 
     
     # EmailThread(email).start()
+#oninvalid="this.setCustomValidity('Valid email required')"  oninput="setCustomValidity('')" required

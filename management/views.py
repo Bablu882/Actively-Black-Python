@@ -40,39 +40,37 @@ def profile(request):
 #Registration of new user    
 def register(request):
     if request.method == "POST":
-        context = {'has_error': False, 'data': request.POST}
+        context = {'has_error': False,'require':False,'email':False,'password':False, 'data': request.POST}
         email = request.POST.get('email')
         username = request.POST.get('username')
         password = request.POST.get('password')
         password2 = request.POST.get('password2')
 
         if len(password) < 6:
-            messages.add_message(request, messages.ERROR,
-                                 'Password should be at least 6 characters')
-            context['has_error'] = True
+            password_required="Password should be at least 6 characters"
+            context['password'] = password_required
 
         if password != password2:
             messages.add_message(request, messages.ERROR,
                                  'Password mismatch')
-            context['has_error'] = True
+            context['has_error'] = True    
 
         if not username:
-            messages.add_message(request, messages.ERROR,
-                                 'Username is required')
-            context['has_error'] = True
+            user_required="Username is required"
+            context['require'] = user_required
+
+        if not email:
+            email_required="Email is required"    
+            context['email']=email_required
 
         if User.objects.filter(username=username).exists():
-            messages.add_message(request, messages.ERROR,
-                                 'Username is taken, choose another one')
+            messages.add_message(request, messages.ERROR,'Username is taken, choose another one')
             context['has_error'] = True
-
             return render(request, 'management/register.html', context, status=409)
 
         if User.objects.filter(email=email).exists():
-            messages.add_message(request, messages.ERROR,
-                                 'Email is taken, choose another one')
+            messages.add_message(request,messages.SUCCESS,'Email is taken, choose another one')
             context['has_error'] = True
-
             return render(request, 'management/register.html', context, status=409)
 
         if context['has_error']:
@@ -97,14 +95,23 @@ def register(request):
 def login(request):
 
     if request.method == 'POST':
-        context = {'data': request.POST}
+        context = {'massage':False,'data': request.POST}
         username = request.POST['username']
         password = request.POST['password']
+        if not username and not password:
+                message="Username required"
+                message1="Password required"
+                context={'massage':message,'massage1':message1}
+                return render(request,'management/login.html',context)
 
         user = authenticate(request, username=username, password=password)
         try:
 
             pro=Profile.objects.get(user=user)
+            if not username:
+                message="please provide"
+                context={'massage':message}
+                return render(request,'management/login.html',context)
 
             if not pro.is_verified:
                 messages.add_message(request, messages.ERROR,
@@ -122,7 +129,7 @@ def login(request):
                 return render(request, 'management/login.html', context, status=401)
             return redirect('/dashboard')
         except Profile.DoesNotExist:
-            messages.add_message(request,messages.ERROR,'Please provide valid credientials')
+            messages.add_message(request,messages.ERROR,'Please provide valid credientials',context)
             return render(request,'management/login.html')
 
     return render(request, 'management/login.html')
@@ -161,6 +168,9 @@ def forget_password(request):
     try:
         if request.method=='POST':
             user=request.POST.get('email')
+            if not user:
+                message="Please provide your valid email"
+                return render(request,'management/forget-password.html',context={'message':message})
             if not User.objects.filter(email=user).exists():
                 messages.error(request,'Not user found with this email')
                 return redirect('forget-password')
@@ -168,11 +178,6 @@ def forget_password(request):
                 user_obj=User.objects.get(email=user)
                 profile=Profile.objects.get(user=user_obj)
                 pro=profile.token
-                # token=str(uuid.uuid4())
-                # profile_obj=Profile.objects.get(user=user_obj)
-                # print(profile_obj)
-                # print('profile_obj.token')
-                # profile_obj.save()
                 send_forget_password_mail(user,pro)
                 messages.success(request,'please check your mail we have sent a link')
                 return redirect('forget-password')
@@ -190,6 +195,10 @@ def change_password(request,token):
             newpass=request.POST.get('newpassword')
             conformpass=request.POST.get('conform-newpassword')
             user_id=request.POST.get('user_id')
+
+            if len(newpass) < 6:
+                messages.error(request,'password required atleast 6 charactor')
+                return redirect(f"/change-password/{token}")
 
             if user_id is None:
                 messages.error(request,'No user is found')

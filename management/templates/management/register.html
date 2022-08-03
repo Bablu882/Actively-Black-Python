@@ -15,36 +15,38 @@
                         {% for message in messages %}
                         <div class='alert alert-info'>
                             {{message}}
-
+                
                         </div>
                         {% endfor %}
                         {% endif %}
-
+                        <p>{{has}}</p>
                     <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fa fa-user fa-lg mr-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                        <input type="text" name="username" required class="form-control" placeholder="Username" oninvalid="this.setCustomValidity('This field is required')" oninput="setCustomValidity('')"/>
+                        <input type="text" name="username"class="form-control" placeholder="Username"/>
+                       <p class ="text-danger">{{require}}</p>
                     </div>
                     </div>
                         
                     <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fa fa-envelope fa-lg mr-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                        <input type="email" name="email" class="form-control" placeholder="Your Email" oninvalid="this.setCustomValidity('Valid email required')"  oninput="setCustomValidity('')" required/>
-                        
+                        <input type="email" name="email" class="form-control" placeholder="Your Email"/>
+                        <p class ="text-danger">{{email}}</p>
                     </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fa fa-lock fa-lg mr-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                        <input type="password" name="password" class="form-control" placeholder="Your Password" required oninvalid="this.setCustomValidity('This field is required')"  oninput="setCustomValidity('')" />
+                        <input type="password" name="password" class="form-control" placeholder="Your Password" />
+                        <p class ="text-danger">{{password}}</p>
                     </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fa fa-key fa-lg mr-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                        <input type="password" name="password2" class="form-control" placeholder="Confirm Password" required oninvalid="this.setCustomValidity('This field is required')"  oninput="setCustomValidity('')" />
-                        
+                        <input type="password" name="password2" class="form-control" placeholder="Confirm Password"/>
+                        <p class ="text-danger">{{password}}</p>
                     </div>
                     </div>
                     <div class="form-check d-flex mb-5">
