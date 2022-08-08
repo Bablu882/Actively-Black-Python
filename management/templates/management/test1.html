@@ -8,3 +8,78 @@
 </div>
 
 {% endblock %}
+
+
+
+
+{% extends 'management/base.html'%}
+{% block title %}Actively|register{% endblock %}       
+{% block content %}
+<div class="dashboard dark-theme">
+    <div class="main-content mw-100">
+        <section class="centered-content h-100">
+            <div class="row m-0 align-items-center h-100 justify-content-center">
+                <div class="col-lg-6 login card border-0 py-4 px-4">
+                    <h2 class="text-center mb-4">Sign up</h2>
+                    
+
+                <form class="mx-1 mx-md-4" method="POST" name="myform">
+                    {% csrf_token %}
+                    {% if messages %}
+                        {% for message in messages %}
+                        <div class='alert alert-info'>
+                            {{message}}
+                
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        <p>{{has}}</p>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fa fa-user fa-lg mr-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                        <input type="text" name="username"class="form-control" placeholder="Username"/>
+                       <p class ="text-danger">{{require}}</p>
+                    </div>
+                    </div>
+                        
+                    <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fa fa-envelope fa-lg mr-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                        <input type="email" name="email" class="form-control" placeholder="Your Email"/>
+                        <p class ="text-danger">{{email}}</p>
+                    </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fa fa-lock fa-lg mr-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                        <input type="password" name="password" class="form-control" placeholder="Your Password" />
+                        <p class ="text-danger">{{password}}</p>
+                    </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fa fa-key fa-lg mr-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                        <input type="password" name="password2" class="form-control" placeholder="Confirm Password"/>
+                        <p class ="text-danger">{{password}}</p>
+                    </div>
+                    </div>
+                    <div class="form-check d-flex mb-5">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
+                    <label class="form-check-label" for="password" required="">
+                        I agree all statements in <a href="#!">Terms of service</a>
+                    </label>
+                    </div>
+
+                    <div class="text-center mx-4 mb-3 mb-lg-4">
+                    <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                    <p class="mt-4">Already have an account? <a href="{% url 'login' %}">Please Login</a></p>
+                    </div>
+
+                </form>
+                </div>  
+            </div>
+        </section>
+    </div>
+</div>
+ 
+{% endblock %}        

@@ -196,3 +196,55 @@
     
     # EmailThread(email).start()
 #oninvalid="this.setCustomValidity('Valid email required')"  oninput="setCustomValidity('')" required
+
+
+#Registration of new user    
+def registerUser(request):
+    if request.method == "POST":
+        context = {'has_error': False,'require':False,'email':False,'password':False, 'data': request.POST}
+        email = request.POST.get('email')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        password2 = request.POST.get('password2')
+
+        if len(password) < 6:
+            password_required="Password should be at least 6 characters"
+            context['password'] = password_required
+
+        if password != password2:
+            messages.add_message(request, messages.ERROR,
+                                 'Password mismatch')
+            context['has_error'] = True    
+
+        if not username:
+            user_required="Username is required"
+            context['require'] = user_required
+
+        if not email:
+            email_required="Email is required"    
+            context['email']=email_required
+
+        if User.objects.filter(username=username).exists():
+            messages.add_message(request, messages.ERROR,'Username is taken, choose another one')
+            context['has_error'] = True
+            return render(request, 'management/register.html', context, status=409)
+
+        if User.objects.filter(email=email).exists():
+            messages.add_message(request,messages.SUCCESS,'Email is taken, choose another one')
+            context['has_error'] = True
+            return render(request, 'management/register.html', context, status=409)
+
+        if context['has_error']:
+            return render(request, 'management/register.html', context)
+
+        uid=uuid.uuid4()
+        user = User.objects.create(username=username, email=email)
+        profile_obj=Profile.objects.create(user=user,token=uid)
+        print(profile_obj)
+        user.set_password(password)
+        user.save()
+        send_mail_after(user.email,uid)
+        messages.add_message(request,messages.SUCCESS,'we have sent you a mail to verify your account')
+        return redirect('register')
+
+    return render(request, 'management/register.html')

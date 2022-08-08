@@ -11,7 +11,9 @@
 .dark-theme span{
     color: #fff;
 }
-
+.help-block{
+    color:red !important;
+  }
 .dark-theme label, .dark-theme input::placeholder{
     color: #aeaeae;
 }
