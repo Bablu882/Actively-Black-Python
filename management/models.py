@@ -10,3 +10,5 @@ class Profile(models.Model):
     token=models.CharField(max_length=50)
     is_verified=models.BooleanField(default=False)
     
+class Forget_Password(models.Model):
+    email=models.EmailField(max_length=50)
