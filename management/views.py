@@ -8,122 +8,102 @@ from .decorator import authenticate_user
 from django.contrib.auth.decorators import login_required
 from .models import Profile
 import uuid
-from django.conf import settings
 from django.contrib.auth.models import User
-from django.core.mail import send_mail
+from django.core.mail import send_mail,BadHeaderError
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode  
+from django.http import HttpResponse  
+from django.utils.encoding import force_bytes  
+from django.contrib.auth import get_user_model
+from django.utils.encoding import force_str
+from django.contrib.sites.shortcuts import get_current_site
+from django.template.loader import render_to_string
+from django.utils.encoding import force_bytes, force_str, DjangoUnicodeDecodeError
+from .utils import generate_token
+from django.core.mail import EmailMessage
+from .token import account_activation_token
+from .forms import ChangePasswordForm, ForgetPasswordform, RegisterForm,LoginForm
+from django.db.models import Q
+
+
+
 
 
 def test1_view(request):
     return render(request,'management/test1.html')
-
+    
+@login_required(login_url='login')
 def add_user(request):
     return render(request,'management/add-user.html')
 
+@login_required(login_url='login')
 def dashboard(request):
     return render(request ,'management/dashboard.html')    
 
 def forgot_password(request):
     return render(request,'management/forget-password.html')    
 
+@login_required(login_url='login')
 def listing(request):
     return render(request,'management/listing.html')    
 
+@login_required(login_url='login')
 def profile(request):
     return render(request,'management/profile.html')
 
 
 
-#Registration of new user    
+
 def register(request):
-    if request.method == "POST":
-        context = {'has_error': False, 'data': request.POST}
-        email = request.POST.get('email')
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        password2 = request.POST.get('password2')
-
-        if len(password) < 6:
-            messages.add_message(request, messages.ERROR,
-                                 'Password should be at least 6 characters')
-            context['has_error'] = True
-
-        if password != password2:
-            messages.add_message(request, messages.ERROR,
-                                 'Password mismatch')
-            context['has_error'] = True
-
-        if not username:
-            messages.add_message(request, messages.ERROR,
-                                 'Username is required')
-            context['has_error'] = True
-
-        if User.objects.filter(username=username).exists():
-            messages.add_message(request, messages.ERROR,
-                                 'Username is taken, choose another one')
-            context['has_error'] = True
-
-            return render(request, 'management/register.html', context, status=409)
-
-        if User.objects.filter(email=email).exists():
-            messages.add_message(request, messages.ERROR,
-                                 'Email is taken, choose another one')
-            context['has_error'] = True
-
-            return render(request, 'management/register.html', context, status=409)
-
-        if context['has_error']:
-            return render(request, 'management/register.html', context)
-
-        uid=uuid.uuid4()
-        user = User.objects.create(username=username, email=email)
-        profile_obj=Profile.objects.create(user=user,token=uid)
-        print(profile_obj)
-        user.set_password(password)
-        user.save()
-        send_mail_after(user.email,uid)
-        messages.add_message(request,messages.SUCCESS,'we have sent you a mail to verify your account')
-        return redirect('register')
-
-    return render(request, 'management/register.html')
-
-
-
-#login user from here 
-@authenticate_user
-def login(request):
-
+    form = RegisterForm()
     if request.method == 'POST':
-        context = {'data': request.POST}
-        username = request.POST['username']
-        password = request.POST['password']
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user=form.save(commit=False)
+            user.is_active=False
+            user.save()
+            current_site=get_current_site(request)
+            mail_subject='verify mail'
+            message = render_to_string('management/activate.html', {  
+                'user': user,  
+                'domain': current_site.domain,  
+                'uid':urlsafe_base64_encode(force_bytes(user.pk)),  
+                'token':account_activation_token.make_token(user),  
+            })
+            to_email = form.cleaned_data.get('email')  
+            email = EmailMessage(  
+                        mail_subject, message, to=[to_email]  
+            )  
+            email.send()
+            token=uuid.uuid4()
+            print(token)
+            profile=Profile.objects.create(user=user,token=token) 
+            print(profile)
+            messages.add_message(request,messages.SUCCESS,'we have sent you a mail to verify your account')
 
-        user = authenticate(request, username=username, password=password)
-        try:
+            return redirect('register')
 
-            pro=Profile.objects.get(user=user)
+    else:
+        form = RegisterForm()
+    return render(request, 'management/register.html', {'form':form}) 
 
-            if not pro.is_verified:
-                messages.add_message(request, messages.ERROR,
-                                    'Email is not verified, please check your email inbox')
-                return render(request, 'management/login.html', context, status=401)
 
-            if user is not None:
-                login_dj(request, user)
-                messages.add_message(request, messages.SUCCESS,
-                                f'Welcome {user.username}')
-            else:
+def activate(request, uidb64, token):  
+    User = get_user_model()  
+    try:  
+        uid = force_str(urlsafe_base64_decode(uidb64))  
+        user = User.objects.get(pk=uid)  
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):  
+        user = None  
+    if user is not None and account_activation_token.check_token(user, token):  
+        user.is_active = True  
+        user.save()  
+        return redirect('login')  
+    else:  
+        return HttpResponse('Activation link is invalid!')       
 
-                messages.add_message(request, messages.ERROR,
-                                    'Invalid credentials, try again')
-                return render(request, 'management/login.html', context, status=401)
-            return redirect('/dashboard')
-        except Profile.DoesNotExist:
-            messages.add_message(request,messages.ERROR,'Please provide valid credientials')
-            return render(request,'management/login.html')
 
-    return render(request, 'management/login.html')
+##--------------------------------LOGOUT---------------------------------------##
 
-#Logout user from here
 def logout(request):
 
     auth_logout(request=request)
@@ -134,76 +114,52 @@ def logout(request):
     return redirect('/login')    
 
 
-#Send mail after registration
-def send_mail_after(email,token):
-    subject="verify email"
-    message=f'click here http://127.0.0.1:8000/verify-email/{token}'
-    from_email=settings.EMAIL_HOST_USER
-    recipient_list=[email]
-    send_mail(subject=subject,message=message,from_email=from_email,recipient_list=recipient_list)
 
-#verify mail after registration send link to user mail 
-def verify_mail(request,token):
-    profile_id=Profile.objects.filter(token=token).first()
-    print(profile_id)
-    profile_id.is_verified=True
-    profile_id.save()
-    messages.success(request,'Your account is verified now you can login')
-    return redirect('login')
 
 ##-----------------Forget password--------------------------------##
 
 def forget_password(request):
+    form=ForgetPasswordform()
     try:
         if request.method=='POST':
-            user=request.POST.get('email')
-            if not User.objects.filter(email=user).exists():
-                messages.error(request,'Not user found with this email')
-                return redirect('forget-password')
-            else:    
-                user_obj=User.objects.get(email=user)
-                profile=Profile.objects.get(user=user_obj)
-                pro=profile.token
-                # token=str(uuid.uuid4())
-                # profile_obj=Profile.objects.get(user=user_obj)
-                # print(profile_obj)
-                # print('profile_obj.token')
-                # profile_obj.save()
-                send_forget_password_mail(user,pro)
-                messages.success(request,'please check your mail we have sent a link')
-                return redirect('forget-password')
+            form=ForgetPasswordform(request.POST)
+            if form.is_valid(): 
+                user=form.cleaned_data['email']
+                if not user:
+                    message="Please provide your valid email"
+                    return render(request,'management/forget-password.html',context={'message':message})
+                if not User.objects.filter(email=user).exists():
+                    messages.error(request,'Not user found with this email')
+                    return redirect('forget-password')
+                else:    
+                    user_obj=User.objects.get(email=user)
+                    profile=Profile.objects.get(user=user_obj)
+                    pro=profile.token
+                    print(pro)
+                    send_forget_password_mail(user,pro)
+                    messages.success(request,'please check your mail we have sent a link')
+                    return redirect('forget-password')
     except Exception as e:
         print(e)
-    return render(request,'management/forget-password.html')
+    return render(request,'management/forget-password.html',{'form':form})
 
-#Change forgot password 
+
 def change_password(request,token):
-    context={}
-    try:
-        profile=Profile.objects.filter(token=token).first()
-        print(profile.user.id)
-        if request.method == 'POST':
-            newpass=request.POST.get('newpassword')
-            conformpass=request.POST.get('conform-newpassword')
-            user_id=request.POST.get('user_id')
-
-            if user_id is None:
-                messages.error(request,'No user is found')
-                return redirect(f"/change-password/{token}/")
-
-            if newpass != conformpass:
-                messages.error(request,'password is missmatched')    
-                return redirect(f"/change-password/{token}")
-
-            user_obj=User.objects.get(id=user_id)    
+    form=ChangePasswordForm()
+    profile=Profile.objects.filter(token=token).first()
+    print(profile.user.id)
+    if request.method=='POST':
+        user_id=request.POST.get('user_id')
+        form=ChangePasswordForm(request.POST)
+        if form.is_valid():
+            newpass=form.cleaned_data['password']
+            #conformpass=form.cleaned_data['conform_password']
+            user_obj=User.objects.get(id=user_id)
             user_obj.set_password(newpass)
             user_obj.save()
             messages.success(request,'New password changed now login with new password')
             return redirect('login')
-        context={'user_id':profile.user.id}  
-    except Exception as e:
-        print(e)
-    return render(request,'management/change-password.html',context)    
+    return render(request,'management/change-password.html',{'form':form,'user_id':profile.user.id})
 
 
 #Send mail for forget password 
@@ -215,4 +171,26 @@ def send_forget_password_mail(email,token):
     send_mail(subject=subject,message=message,from_email=from_email,recipient_list=recipient_list)
 
 
-##----------------------------------------------------------------------------------------##
+##----------------------------------------LOGIN------------------------------------------------##
+
+def login(request):
+    form =LoginForm()
+    message = ''
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            user = authenticate(
+                username=form.cleaned_data['username'],
+                password=form.cleaned_data['password'],
+            )
+            if user and not user.is_active:
+                messages.error(request,'please verify email ')
+                return redirect('login')
+            if user is not None:
+                login_dj(request, user)
+                messages.success(request,f'Welcome {user.username}')
+                return redirect('dashboard')
+            else:
+                messages.error(request,'Provide valid credentials or check your mail')
+    return render(
+        request, 'management/login.html', context={'form': form, 'message': message}) 
