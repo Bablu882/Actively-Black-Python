@@ -21,7 +21,7 @@ from django.utils.encoding import force_bytes, force_str, DjangoUnicodeDecodeErr
 from .utils import generate_token
 from django.core.mail import EmailMessage
 from .token import account_activation_token
-from .forms import ChangePasswordForm, ForgetPasswordform, RegisterForm,LoginForm
+from .forms import ChangePasswordForm, ForgetPasswordform, RegisterForm,LoginForm, Userchangeform
 from django.db.models import Q
 
 
@@ -44,7 +44,8 @@ def forgot_password(request):
 
 @login_required(login_url='login')
 def listing(request):
-    return render(request,'management/listing.html')    
+    users=User.objects.all()
+    return render(request,'management/listing.html',{'user':users})
 
 @login_required(login_url='login')
 def profile(request):
@@ -194,3 +195,40 @@ def login(request):
                 messages.error(request,'Provide valid credentials or check your mail')
     return render(
         request, 'management/login.html', context={'form': form, 'message': message}) 
+
+###------------------------------------------------------------------------------------####
+
+def add_user_admin(request):
+    form=RegisterForm()
+    if request.method=='POST':
+        form=RegisterForm(request.POST)
+        if form.is_valid():
+            user=form.save()
+            token=uuid.uuid4()
+            Profile.objects.create(user=user,token=token)
+            form=RegisterForm()
+            messages.success(request,'Add user successfully')
+    else:
+        form=RegisterForm()        
+    return render(request,'management/admin-add-user.html',{'form':form})
+
+def delete_user(request,id):
+        user=User.objects.get(pk=id)
+        user.delete()
+        messages.success(request,'User deleted successfully !!')
+        return redirect('listing')
+
+
+def Changeuserform(request,id):
+    request.method=='POST'
+    gt=User.objects.get(pk=id)
+    form=Userchangeform(request.POST,instance=gt)
+    if form.is_valid():
+        form.save()
+        messages.success(request,'User updated successfully!!')
+
+    else:
+        gt=User.objects.get(pk=id)
+        form=Userchangeform(instance=gt)
+    return render(request,'management/change-user-form.html',{'form':form})    
+

@@ -19,6 +19,9 @@ urlpatterns=[
     path('forget-password',forget_password,name='forget-password'),
     path('change-password/<token>',change_password,name='change-password'),
     path('activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/',activate, name='activate'), 
+    path('admin-add-user',add_user_admin,name='admin-add-user'),
+    path('change-user/<int:id>/',Changeuserform,name='chane-user'),
+    path('delete-user/<int:id>/',delete_user,name='delete_user'),
     
 ]
 
