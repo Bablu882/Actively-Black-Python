@@ -1,8 +1,7 @@
 {% extends 'management/base.html' %}
 {% load static %}
-{% block title %}Actively|listing{% endblock %}
+{% block title %}Actively|login{% endblock %}
 {% block content %}
-
     <div class="dashboard dark-theme">
         <aside class="drawer">
             <div class="drawer-header header-common py-3 px-3 text-center">
@@ -17,18 +16,11 @@
                     </div>
                     <div class="navbar navbar-dark px-0">
                         <ul class="navbar-nav w-100">
-                            {% if user.is_authenticated %}
+        
                             <li class="nav-item active">
                                 <a href="{% url 'logout' %}" class="nav-link"><i class="fa fa-lock mr-2" aria-hidden="true"></i>
                                     Logout</a>
                             </li>
-                                 {% else %}
-                            <li class="nav-item active">
-                                <a href="{% url 'login' %}" class="nav-link"><i class="fa fa-lock mr-2" aria-hidden="true"></i>
-                                    Login</a>
-
-                            </li>
-                            {% endif %}
                             <li class="nav-item">
                                 <a href="{% url 'dashboard' %}" class="nav-link"><i class="fa fa-dashboard mr-2" aria-hidden="true"></i>
                                     Dashboard</a>
@@ -44,6 +36,14 @@
                             <li class="nav-item">
                                 <a href="{% url 'add-user' %}" class="nav-link"><i class="fa fa-edit mr-2" aria-hidden="true"></i>Add/Edit
                                     Form</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'admin:index' %}  " class="nav-link"><i class="fa fa-edit mr-2" aria-hidden="true"></i>Admin
+                                    </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'admin-add-user' %}" class="nav-link"><i class="fa fa-edit mr-2" aria-hidden="true"></i>Add-User
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -98,6 +98,14 @@
                     </div>
                 </nav>
             </header>
+            {% if messages %}
+            {% for message in messages %}
+            <div class='alert alert-success'>
+                {{message}}
+        
+            </div>
+            {% endfor %}
+            {% endif %}
             <section class="centered-content">
                 <div class="title mb-4">
                     <h1>User List</h1>
@@ -150,9 +158,9 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>Property Name</th>
-                                            <th>Corporate</th>
-                                            <th>Mobile ID</th>
+                                            <th>User ID</th>
+                                            <th>Username</th>
+                                            <th>Email</th>
                                             <th>Property Address</th>
                                             <th>Active</th>
                                             <th>Dyn</th>
@@ -161,6 +169,33 @@
                                     </thead>
                                     <tbody>
                                         <tr>
+                                            {% for item in user %}
+                                            <td>{{item.id}}</td>
+                                            <td>{{item.username}}</td>
+                                            <td>{{item.email}}</td>
+                                            <td>New Orleans, LA, USA</td>
+                                            <td>{{item.is_active}}</td>
+                                            <td>1</td>
+                                            <td>
+                                                <button class="icon-button" class="dropdown-toggle"
+                                                    id="tableActionDropdown" data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">
+                                                    <i class="fa fa-cog" aria-hidden="true"></i>
+                                                </button>
+                                                <form action="" method="post">
+                                                    {% csrf_token %}
+                                              
+                                                <ul class="dropdown-menu dropdown-list dropdown-menu-right"
+                                                    aria-labelledby="tableActionDropdown">
+                                                    <li><a href="/change-user/{{item.id}}" class="dropdown-item"><i class="fa fa-edit"></i> Edit</a></li>
+                                                    <li><a href="/delete-user/{{item.id}}" class="dropdown-item"><i class="fa fa-trash"></i> Delete</a></li>
+                                                </ul>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                         
+                                    {% endfor %}
+                                        <!-- <tr>
                                             <td>Depty</td>
                                             <td>Peter</td>
                                             <td>asasdfgJ@20</td>
@@ -308,6 +343,7 @@
                                             <td></td>
                                             <td>1</td>
                                             <td>
+                                                
                                                 <button class="icon-button" class="dropdown-toggle"
                                                     id="tableActionDropdown" data-toggle="dropdown" aria-haspopup="true"
                                                     aria-expanded="false">
@@ -339,27 +375,7 @@
                                                     <li><a href="#" class="dropdown-item"><i class="fa fa-trash"></i> Delete</a></li>
                                                 </ul>
                                             </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Depty</td>
-                                            <td>Peter</td>
-                                            <td>asasdfgJ@20</td>
-                                            <td>New Orleans, LA, USA</td>
-                                            <td></td>
-                                            <td>1</td>
-                                            <td>
-                                                <button class="icon-button" class="dropdown-toggle"
-                                                    id="tableActionDropdown" data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false">
-                                                    <i class="fa fa-cog" aria-hidden="true"></i>
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-list dropdown-menu-right"
-                                                    aria-labelledby="tableActionDropdown">
-                                                    <li><a href="#" class="dropdown-item"><i class="fa fa-edit"></i> Edit</a></li>
-                                                    <li><a href="#" class="dropdown-item"><i class="fa fa-trash"></i> Delete</a></li>
-                                                </ul>
-                                            </td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div>
@@ -426,4 +442,6 @@
             </aside>
         </div>
     </div>
+
+
 {% endblock %}

@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
 from django.core import validators
 from django.contrib.auth import authenticate
+from django.contrib.auth.forms import UserChangeForm
 
 ##------------------------------REGISTRATION FORM------------------------------##
 
@@ -17,7 +18,6 @@ class RegisterForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)        
         self.fields["username"].widget.attrs.update({
-            # 'required':'',
             'name':'username',
             'id':'username',
              'style':'height:40px',
@@ -29,7 +29,6 @@ class RegisterForm(UserCreationForm):
             'minlength':'6'
         })
         self.fields["email"].widget.attrs.update({
-            # 'required':'',
             'name':'email',
              'style':'height:40px',
             'size':'50px',
@@ -193,3 +192,107 @@ class ChangePasswordForm(forms.Form):
                 if password != conform_password:
                    raise forms.ValidationError('Password mismatch')
         return conform_password
+
+
+class Userchangeform(UserChangeForm):
+    # first_name=forms.CharField(max_length=50,error_messages={'required':'Enter username'})
+    # last_name=forms.CharField(max_length=50,error_messages={'required':'Enter last name'})
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)        
+        self.fields["username"].widget.attrs.update({
+            
+            'name':'username',
+            'id':'username',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'Username',
+            'maxlength':'50',
+            'minlength':'6',
+            'value':''
+        })
+        self.fields["email"].widget.attrs.update({
+            # 'required':'',
+            'name':'email',
+             'style':'height:40px',
+            'size':'50px',
+            'id':'email',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'Email',
+            'maxlength':'50',
+            'minlength':'6',
+        })
+        self.fields["first_name"].widget.attrs.update({
+            'name':'first_name',
+            'size':'50px',
+            'style':'height:40px',
+            'id':'first_name',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'first_name',
+            'maxlength':'50',
+            'minlength':'6'
+        })
+        self.fields["last_name"].widget.attrs.update({
+            'name':'last_name',
+            'id':'last_name',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'color':'red',
+            'class':'form-control',
+            'placeholder':'last_name',
+            'maxlength':'50',
+            'minlength':'6',
+        })
+        self.fields["user_permissions"].widget.attrs.update({
+            'name':'user_permissions',
+            'id':'user_permissions',
+            'style':'height:200px',
+            'size':'50px',
+            'type':'text',
+            'color':'red',
+            'class':'form-control',
+            'placeholder':'user_permissions',
+            'maxlength':'50',
+            'minlength':'6',
+        })
+        self.fields["date_joined"].widget.attrs.update({
+            'name':'date_joined',
+            'id':'date_joined',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'color':'red',
+            'class':'form-control',
+            'placeholder':'date_joined',
+            'maxlength':'50',
+            'minlength':'6',
+        })
+        self.fields["last_login"].widget.attrs.update({
+            'name':'last_login',
+            'id':'last_login',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'color':'red',
+            'class':'form-control',
+            'placeholder':'last_login',
+            'maxlength':'50',
+            'minlength':'6',
+        })
+    # def clean(self):
+    #     first_name=self.cleaned_data['first_name']    
+    #     last_name=self.cleaned_data['last_name']
+    #     if first_name and last_name:
+    #         if not first_name and not last_name:
+    #             raise forms.ValidationError('this field is required')
+
+
+
+    class Meta:
+        model=User
+        fields=['username','first_name','last_name','email','is_superuser','is_staff','is_active','last_login','date_joined','user_permissions']
