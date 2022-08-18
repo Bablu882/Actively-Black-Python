@@ -21,7 +21,7 @@ from django.utils.encoding import force_bytes, force_str, DjangoUnicodeDecodeErr
 from .utils import generate_token
 from django.core.mail import EmailMessage
 from .token import account_activation_token
-from .forms import ChangePasswordForm, ForgetPasswordform, RegisterForm,LoginForm, Userchangeform
+from .forms import ChangePasswordForm, ForgetPasswordform, RegisterForm,LoginForm, Userchangeform,ProfileForm
 from django.db.models import Q
 
 
@@ -52,7 +52,7 @@ def profile(request):
     return render(request,'management/profile.html')
 
 
-
+###------------------------------------Register User------------------------------------###
 
 def register(request):
     form = RegisterForm()
@@ -87,6 +87,7 @@ def register(request):
         form = RegisterForm()
     return render(request, 'management/register.html', {'form':form}) 
 
+###-------------------------------------Click For Activate----------------------------------###
 
 def activate(request, uidb64, token):  
     User = get_user_model()  
@@ -144,6 +145,7 @@ def forget_password(request):
         print(e)
     return render(request,'management/forget-password.html',{'form':form})
 
+###-----------------------------Redirect On Change Password Form---------------------------##
 
 def change_password(request,token):
     form=ChangePasswordForm()
@@ -154,7 +156,6 @@ def change_password(request,token):
         form=ChangePasswordForm(request.POST)
         if form.is_valid():
             newpass=form.cleaned_data['password']
-            #conformpass=form.cleaned_data['conform_password']
             user_obj=User.objects.get(id=user_id)
             user_obj.set_password(newpass)
             user_obj.save()
@@ -162,8 +163,8 @@ def change_password(request,token):
             return redirect('login')
     return render(request,'management/change-password.html',{'form':form,'user_id':profile.user.id})
 
+###------------------------------------Forget Password Mail---------------------------------###
 
-#Send mail for forget password 
 def send_forget_password_mail(email,token):
     subject="Change your password"
     message=f'click here http://127.0.0.1:8000/change-password/{token}'
@@ -196,7 +197,7 @@ def login(request):
     return render(
         request, 'management/login.html', context={'form': form, 'message': message}) 
 
-###------------------------------------------------------------------------------------####
+###------------------------------------Admin Add User------------------------------------------------####
 
 def add_user_admin(request):
     form=RegisterForm()
@@ -212,23 +213,58 @@ def add_user_admin(request):
         form=RegisterForm()        
     return render(request,'management/admin-add-user.html',{'form':form})
 
+###------------------------------------Admin Delete User------------------------------------###
+
 def delete_user(request,id):
         user=User.objects.get(pk=id)
         user.delete()
         messages.success(request,'User deleted successfully !!')
         return redirect('listing')
 
+###-----------------------------------Admin Edit User--------------------------------------###
 
-def Changeuserform(request,id):
+def edit_user(request,id):
     request.method=='POST'
     gt=User.objects.get(pk=id)
-    form=Userchangeform(request.POST,instance=gt)
-    if form.is_valid():
+    pro=Profile.objects.get(pk=id)
+    form=Userchangeform(request.POST,request.FILES,instance=gt)
+    form2=ProfileForm(request.POST,request.FILES,instance=pro)
+    if form.is_valid() and form2.is_valid():
         form.save()
+        form2.save()
         messages.success(request,'User updated successfully!!')
 
     else:
         gt=User.objects.get(pk=id)
+        pro=Profile.objects.get(pk=id)
         form=Userchangeform(instance=gt)
-    return render(request,'management/change-user-form.html',{'form':form})    
+        form2=ProfileForm(instance=pro)
+    return render(request,'management/change-user-form.html',{'form':form,'form2':form2})
 
+###---------------------------------------Edit User Profile---------------------------------###
+
+def edit_profile(request):
+    request.method=='POST'
+    gt=User.objects.get(id=request.user.id)
+    form=Userchangeform(request.POST,instance=gt)
+    form2=ProfileForm(request.POST,request.FILES,instance=request.user.profile)
+    if form.is_valid() and form2.is_valid():
+        form.save()
+        form2.save()
+        messages.success(request,'Profile updated successfully!!')
+        return redirect('profile')
+
+    else:
+        gt=User.objects.get(id=request.user.id)
+        form=Userchangeform(instance=gt)
+        form2=ProfileForm(instance=request.user.profile)
+    return render(request,'management/edit-profile.html',{'form':form,'form2':form2})    
+
+
+def view_user_profile(request,id):
+    gt=User.objects.get(pk=id)
+    pro=Profile.objects.get(pk=id)
+    form=Userchangeform(instance=gt)
+    form2=ProfileForm(instance=pro)
+    image=pro.avatar
+    return render(request,'management/view-profile.html',{'form':form,'form2':form2,'image':image})    

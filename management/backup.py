@@ -555,3 +555,197 @@ def login_page(request):
 #     except Exception as e:
 #         print(e)
 #     return render(request,'management/change-password.html',context)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 400px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 50px;
+}
+.title {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+form div input {
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  outline: none;
+  border: 2px solid #c4c4c4;
+  padding: 0 30px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+form div {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+input:focus {
+  border: 2px solid #f2796e;
+}
+form div i {
+  position: absolute;
+  padding: 10px;
+}
+.failure-icon,
+.error {
+  color: red;
+}
+
+.success-icon {
+  color: green;
+}
+
+.error {
+  font-size: 14.5px;
+  margin-top: 5px;
+}
+.success-icon,
+.failure-icon {
+  right: 0;
+  opacity: 0;
+}
+button {
+  margin-top: 15px;
+  width: 100%;
+  height: 45px;
+  background-color: #f2796e;
+  border: 2px solid #f2796e;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.1s ease;
+}
+button:hover {
+  opacity: 0.8;
+}
+
+
+    </style>
+</head>
+<body>
+    
+
+<div class="container">
+
+	<form id="form">
+        <div class="title">Get Started</div>
+    
+    <div>
+        <label for="username">User Name</label>
+    <i class="fas fa-user"></i>
+    
+    <input
+        type="text"
+        name="username"
+        id="username"
+        placeholder="Joy Shaheb"
+     />
+    
+    <i class="fas fa-exclamation-circle failure-icon"></i>
+    <i class="far fa-check-circle success-icon"></i>
+    
+    <div class="error"></div>
+    </div>
+    <div>
+        <label for="email">Email</label>
+    <i class="far fa-envelope"></i>
+    
+    <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="abc@gmail.com"
+     />
+    
+    <i class="fas fa-exclamation-circle failure-icon"></i>
+    <i class="far fa-check-circle success-icon"></i>
+    
+    <div class="error"></div>
+    </div>
+    <div>
+        <label for="password">Password</label>
+    <i class="fas fa-lock"></i>
+    
+    <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Password here"
+     />
+    
+    <i class="fas fa-exclamation-circle failure-icon"></i>
+    <i class="far fa-check-circle success-icon"></i>
+    
+    <div class="error"></div>
+    </div>
+    <button id="btn" type="submit">Submit</button>  
+
+    </form>
+    
+</div>
+<script>
+    let id = (id) => document.getElementById(id);
+
+let classes = (classes) => document.getElementsByClassName(classes);
+
+let username = id("username"),
+  email = id("email"),
+  password = id("password"),
+  form = id("form"),
+  
+  errorMsg = classes("error"),
+  successIcon = classes("success-icon"),
+  failureIcon = classes("failure-icon");
+
+  form.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
+
+let engine = (id, serial, message) => {
+
+if (id.value.trim() === "") {
+  errorMsg[serial].innerHTML = message;
+  id.style.border = "2px solid red";
+  
+  // icons
+  failureIcon[serial].style.opacity = "1";
+  successIcon[serial].style.opacity = "0";
+} 
+
+else {
+  errorMsg[serial].innerHTML = "";
+  id.style.border = "2px solid green";
+  
+  // icons
+  failureIcon[serial].style.opacity = "0";
+  successIcon[serial].style.opacity = "1";
+}
+}
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  engine(username, 0, "Username cannot be blank");
+  engine(email, 1, "Email cannot be blank");
+  engine(password, 2, "Password cannot be blank");
+});
+</script>
+
+</body>
+</html>

@@ -4,6 +4,11 @@
 {% block title %}Actively|add-user{% endblock %}
 {% block content %}
 {% load crispy_forms_tags %}
+<style>
+    .form-group .mb-4 .form2-text{
+       color: #ffffff;
+    }
+</style>
 
     <div class="dashboard dark-theme">
         <aside class="drawer">
@@ -49,12 +54,8 @@
                                     Form</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{% url 'admin-add-user' %}" class="nav-link"><i class="fa fa-user-plus mr-2" aria-hidden="true"></i>Add-User
+                                <a href="{% url 'admin-add-user' %}" class="nav-link"><i class="fa fa-edit mr-2" aria-hidden="true"></i>Add-User
                                 </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{% url 'admin:index' %}  " class="nav-link"><i class="fa fa-lock mr-2" aria-hidden="true"></i>Admin
-                                    </a>
                             </li>
                         </ul>
                     </div>
@@ -111,15 +112,9 @@
             </header>
             <section class="centered-content">
                 <div class="title mb-4">
-                    <h1>Add User</h1>
+                    <h1>Updqate User</h1>
                 </div>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb pl-0 bg-transparent">
-                        <li class="breadcrumb-item"><a href="#" class="text-primary">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Add User</li>
-                    </ol>
-                </nav>
-                {% if messages %}
+                        {% if messages %}
                         {% for message in messages %}
                         <div class='alert alert-success'>
                             {{message}}
@@ -127,66 +122,71 @@
                         </div>
                         {% endfor %}
                         {% endif %}
+                        
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb pl-0 bg-transparent">
+                        <li class="breadcrumb-item"><a href="#" class="text-primary">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Add User</li>
+                    </ol>
+                </nav>
                 <div class="card border-0">
                     <div class="p-3">
-                        <form class="mt-3" action="" method="post" novalidate>
+                        <form class="mt-3" action="" method="post" enctype="multipart/form-data" novalidate>
                             {% csrf_token %}
                             <div class="row">
                                 <div class="col-lg-6">
-                                    
+                                     
                                     <div class="form-group mb-4">
-                                        <label for="email" class="control-label">Username<span
+                                        <label class="control-label">Username<span
                                                 class="text-danger">*</span></label>
-                                        <!-- <input type="text" class="form-control" name="username" id="username"
-                                            placeholder="Lucy" required /> -->
                                             {{form.username|as_crispy_field}}
-                            
-                                        <!-- <p class="helperText text-danger">Please enter Username</p> -->
                                     </div>
-                                    
                                     <div class="form-group mb-4">
-                                        <label for="email" class="control-label">Email<span
-                                                class="text-danger">*</span></label>
-                                        <!-- <input type="email" class="form-control" name="email" id="email"
-                                            placeholder="me@you.com" required /> -->
+                                        <label class="control-label">Email<span
+                                                class="text-danger">*</span></label>                                       
                                             {{form.email|as_crispy_field}}
-
-                                        <!-- <p class="helperText text-danger">Please enter email address</p> -->
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label for="password" class="control-label">Password<span
-                                                class="text-danger">*</span></label>
-                                        <!-- <input type="password" class="form-control" name="password" id="password"
-                                            placeholder="Must be over 30% complexity" required /> -->
-                                            {{form.password1|as_crispy_field}}
-
-                                        <!-- <p class="helperText text-danger">Please enter password</p> -->
-                                        <p class="helperText mb-2 ">Password complexity: 0%</p>
-                                        <ul class="required-info list-unstyled">
-                                            <li><i class="fa fa-close text-danger mr-1"></i> Length of at least 8
-                                                characters</li>
-                                            <li><i class="fa fa-close text-danger mr-1"></i> Contains uppercase and
-                                                lowercase letters</li>
-                                            <li><i class="fa fa-close text-danger mr-1"></i> Contains number</li>
-                                            <li><i class="fa fa-close text-danger mr-1"></i> Contains special characters
-                                            </li>
-                                            <li><i class="fa fa-check text-success mr-1"></i> Doesn’t contain spaces
-                                            </li>
-                                            <li><i class="fa fa-check text-success mr-1"></i> Doesn’t contain common
-                                                password words</li>
-                                            <li><i class="fa fa-check text-success mr-1"></i> Passwords match</li>
-                                        </ul>
+                                        <label  class="control-label">First-Name<span
+                                                class="text-danger">*</span></label>                                       
+                                            {{form.first_name|as_crispy_field}}
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label for="password" class="control-label"><span
+                                        <label class="control-label">Last_name<span
                                                 class="text-danger">*</span></label>
-                                        <!-- <input type="password" class="form-control" name="password" id="password"
-                                            placeholder="Enter same as above password" required /> -->
-                                            {{form.password2|as_crispy_field}}
-
-                                        <!-- <p class="helperText text-danger">Please enter confirm password</p> -->
+                                            {{form.last_name|as_crispy_field}}
                                     </div>
-                                    
+                                    <div class="form-group mb-4">
+                                        <label class="control-label">Last-Login<span
+                                                class="text-danger">*</span></label>
+                                            {{form.last_login|as_crispy_field}}
+                                        <p class="helperText text-danger">Last login</p>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="control-label">Date-Joined<span
+                                                class="text-danger">*</span></label>
+                                            {{form.date_joined|as_crispy_field}}
+                                        <p class="helperText text-danger">Date joined</p>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <!-- <label class="control-label">permission<span
+                                                class="text-danger">*</span></label> -->
+                                         <p class="text-success">{{form2.avatar}}</p>
+                                        <p class="helperText text-danger">avatar</p>
+                                    </div>  
+                                    <div class="form-group mb-4">
+                                        <label class="control-label">permission<span
+                                                class="text-danger">*</span></label>
+                                            {{form.user_permissions|as_crispy_field}}
+                                        <p class="helperText text-danger">permission</p>
+                                    </div>  
+                                </div>
+                                <div class="col-lg-6">
+                                    <h1>Permissions</h1>
+                                    <!-- {{form.is_superuser|as_crispy_field}}
+                                    {{form.is_staff|as_crispy_field}} -->
+                                    {{form.is_active|as_crispy_field}}
+                                </div>
                                 <div class="col-lg-6">
                                     <button class="btn btn-primary" type="submit">Submit</button>
                                 </div>
@@ -225,10 +225,10 @@
             </aside>
         </div>
     </div>
-    <!-- <form action="" method="post" novalidate>
-        {% csrf_token %}
-        {{form.username|as_crispy_field}}
-        <input type="submit">
-    </form> -->
+
 
 {% endblock %}
+
+
+
+

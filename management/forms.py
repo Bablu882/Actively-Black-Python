@@ -1,4 +1,6 @@
 
+from dataclasses import field
+from pyexpat import model
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -296,3 +298,36 @@ class Userchangeform(UserChangeForm):
     class Meta:
         model=User
         fields=['username','first_name','last_name','email','is_superuser','is_staff','is_active','last_login','date_joined','user_permissions']
+
+
+
+
+from django.contrib.auth.models import Permission
+
+class Permissionform(forms.ModelForm):
+    class Meta:
+        model=Permission
+        fields='__all__'   
+
+from .models import Profile
+
+class ProfileForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)        
+        self.fields["avatar"].widget.attrs.update({
+            
+            'name':'avatar',
+            'id':'avatar',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'avatar',
+            'maxlength':'50',
+            'minlength':'6',
+            'value':''
+        })
+
+    class Meta:
+        model=Profile
+        fields=['avatar']
