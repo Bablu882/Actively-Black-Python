@@ -38,12 +38,12 @@
                                     Form</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{% url 'admin:index' %}  " class="nav-link"><i class="fa fa-edit mr-2" aria-hidden="true"></i>Admin
-                                    </a>
+                                <a href="{% url 'admin-add-user' %}" class="nav-link"><i class="fa fa-user-plus mr-2" aria-hidden="true"></i>Add-User
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{% url 'admin-add-user' %}" class="nav-link"><i class="fa fa-edit mr-2" aria-hidden="true"></i>Add-User
-                                </a>
+                                <a href="{% url 'admin:index' %}  " class="nav-link"><i class="fa fa-lock mr-2" aria-hidden="true"></i>Admin
+                                    </a>
                             </li>
                         </ul>
                     </div>
@@ -164,18 +164,21 @@
                                             <th>Property Address</th>
                                             <th>Active</th>
                                             <th>Dyn</th>
+                                            {% if request.user.is_superuser %}
                                             <th>Action</th>
+                                            {% endif %}
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             {% for item in user %}
                                             <td>{{item.id}}</td>
-                                            <td>{{item.username}}</td>
+                                            <td><a href="/view-profile/{{item.id}}" class="text-info">{{item.username}}</a></td>
                                             <td>{{item.email}}</td>
                                             <td>New Orleans, LA, USA</td>
                                             <td>{{item.is_active}}</td>
                                             <td>1</td>
+                                            {% if request.user.is_superuser %}
                                             <td>
                                                 <button class="icon-button" class="dropdown-toggle"
                                                     id="tableActionDropdown" data-toggle="dropdown" aria-haspopup="true"
@@ -184,7 +187,6 @@
                                                 </button>
                                                 <form action="" method="post">
                                                     {% csrf_token %}
-                                              
                                                 <ul class="dropdown-menu dropdown-list dropdown-menu-right"
                                                     aria-labelledby="tableActionDropdown">
                                                     <li><a href="/change-user/{{item.id}}" class="dropdown-item"><i class="fa fa-edit"></i> Edit</a></li>
@@ -192,6 +194,7 @@
                                                 </ul>
                                                 </form>
                                             </td>
+                                            {% endif %}
                                         </tr>
                                          
                                     {% endfor %}
