@@ -1,4 +1,5 @@
 
+from types import CodeType
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.conf import settings
@@ -21,7 +22,7 @@ from django.utils.encoding import force_bytes, force_str, DjangoUnicodeDecodeErr
 from .utils import generate_token
 from django.core.mail import EmailMessage
 from .token import account_activation_token
-from .forms import ChangePasswordForm, ForgetPasswordform, RegisterForm,LoginForm, Userchangeform,ProfileForm
+from .forms import ChangePasswordForm, ForgetPasswordform, Permission_user, RegisterForm,LoginForm, Userchangeform,ProfileForm
 from django.db.models import Q
 
 
@@ -239,7 +240,7 @@ def edit_user(request,id):
         pro=Profile.objects.get(pk=id)
         form=Userchangeform(instance=gt)
         form2=ProfileForm(instance=pro)
-    return render(request,'management/change-user-form.html',{'form':form,'form2':form2})
+    return render(request,'management/change-user-form.html',{'form':form,'form2':form2,'image':gt})
 
 ###---------------------------------------Edit User Profile---------------------------------###
 
@@ -268,3 +269,39 @@ def view_user_profile(request,id):
     form2=ProfileForm(instance=pro)
     image=pro.avatar
     return render(request,'management/view-profile.html',{'form':form,'form2':form2,'image':image})    
+
+###---------------------------------------------------------------------------------------###
+from django.contrib.auth.models import Permission
+from .forms import Permission_user
+
+# def permission(request,id):
+#     user=User.objects.get(id=id)
+#     per=Permission.objects.filter(user=user)
+#     form=Permission_user()
+    
+
+#     return render(request,'management/permission.html',{'form':form,'per':per})
+from django.contrib.contenttypes.models import ContentType
+
+def permission(request,id):
+    per=Permission.objects.all()
+    cont=ContentType.objects.all()
+    for items in cont:
+        print(items)
+    if request.method=='POST':
+        post=request.POST.getlist('permission')
+        type=request.POST.getlist('permis')
+        print(type)
+        pro=User.objects.get(id=id)
+        for item in post:
+            Permission.objects.create(user=pro,codename=item)
+            
+        #    perm=Permission.objects.create(user=pro,id=item.id)
+        #    print(perm)  
+    return render(request,'management/permission.html',{'perm':per,'cont':cont})
+
+
+
+# def permission(request):
+#     form=EditUserForm()
+#     return render(request,'management/permission.html',{'form':form})

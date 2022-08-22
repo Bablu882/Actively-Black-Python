@@ -44,7 +44,10 @@
                                 <a href="{% url 'profile' %}" class="nav-link"><i class="fa fa-user mr-2" aria-hidden="true"></i> User
                                     Profile</a>
                             </li>
+                            {% if request.user.is_superuser %}
                             <li class="nav-item">
+                                <hr style="height:2px;border-width:0;color:rgb(250, 248, 248);background-color:rgb(255, 250, 250)">
+
                                 <a href="{% url 'listing' %}" class="nav-link"><i class="fa fa-list mr-2"
                                         aria-hidden="true"></i>
                                     Listing</a>
@@ -57,6 +60,12 @@
                                 <a href="{% url 'admin-add-user' %}" class="nav-link"><i class="fa fa-edit mr-2" aria-hidden="true"></i>Add-User
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{% url 'admin:index' %}  " class="nav-link"><i class="fa fa-lock mr-2" aria-hidden="true"></i>Admin
+                                    </a>
+                            </li>
+
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
@@ -112,7 +121,7 @@
             </header>
             <section class="centered-content">
                 <div class="title mb-4">
-                    <h1>Updqate User</h1>
+                    <h1>Edit Profile</h1>
                 </div>
                         {% if messages %}
                         {% for message in messages %}
@@ -186,6 +195,26 @@
                                     <!-- {{form.is_superuser|as_crispy_field}}
                                     {{form.is_staff|as_crispy_field}} -->
                                     {{form.is_active|as_crispy_field}}
+
+                                    <div class="p-3">
+                                        <h5>Profile Details</h5>
+                                        <div class="card text-center border-0" style="width: 18rem;">
+                                            <div class="profile-img mx-auto mb-3 mt-3">
+                                                <img class="card-img-top rounded-circle" src="{{request.user.profile.avatar.url}}"
+                                                    alt="Card image cap">
+                                            </div>
+            
+                                            <p class="mb-0">
+                                                <strong>{{request.user}}</strong>
+                                            </p>
+                                            <p>{{request.user.email}}</p>
+                                            <div class="d-flex justify-content-center">
+                                                <a href="#" class="btn btn-primary">Follow</a>
+                                                <a href="#" class="btn btn-primary ml-2">Message</a>
+            
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <button class="btn btn-primary" type="submit">Submit</button>

@@ -17,3 +17,4 @@ class Profile(models.Model):
     
 class Forget_Password(models.Model):
     email=models.EmailField(max_length=50)
+

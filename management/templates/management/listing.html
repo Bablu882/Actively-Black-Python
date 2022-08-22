@@ -2,6 +2,18 @@
 {% load static %}
 {% block title %}Actively|login{% endblock %}
 {% block content %}
+<style>
+    .card-img, .card-img-bottom, .card-img-top {
+    -ms-flex-negative: 0;
+    flex-shrink: 10;
+    width: 100%;
+    max-width: 70px;
+    height: 60px;
+}
+.rounded-circle {
+    border-radius: 0%!important;
+}
+</style>
     <div class="dashboard dark-theme">
         <aside class="drawer">
             <div class="drawer-header header-common py-3 px-3 text-center">
@@ -30,6 +42,8 @@
                                     Profile</a>
                             </li>
                             <li class="nav-item">
+                                <hr style="height:2px;border-width:0;color:rgb(250, 248, 248);background-color:rgb(255, 250, 250)">
+
                                 <a href="{% url 'listing' %}" class="nav-link"><i class="fa fa-list mr-2" aria-hidden="true"></i>
                                     Listing</a>
                             </li>
@@ -157,11 +171,11 @@
                             <div class="table-repsponsive">
                                 <table class="table">
                                     <thead>
-                                        <tr>
+                                        <tr><th>Sr.No.</th>
                                             <th>User ID</th>
                                             <th>Username</th>
                                             <th>Email</th>
-                                            <th>Property Address</th>
+                                            <th>Avatars</th>
                                             <th>Active</th>
                                             <th>Dyn</th>
                                             {% if request.user.is_superuser %}
@@ -172,10 +186,12 @@
                                     <tbody>
                                         <tr>
                                             {% for item in user %}
+                                            <td>{{forloop.counter}}</td>
                                             <td>{{item.id}}</td>
                                             <td><a href="/view-profile/{{item.id}}" class="text-info">{{item.username}}</a></td>
                                             <td>{{item.email}}</td>
-                                            <td>New Orleans, LA, USA</td>
+                                            <td><img class="card-img-top rounded-circle" src="{{item.profile.avatar.url}}"
+                                                alt="Card image cap"></td>
                                             <td>{{item.is_active}}</td>
                                             <td>1</td>
                                             {% if request.user.is_superuser %}

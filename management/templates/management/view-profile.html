@@ -40,6 +40,8 @@
                                     Profile</a>
                             </li>
                             <li class="nav-item">
+                                <hr style="height:2px;border-width:0;color:rgb(250, 248, 248);background-color:rgb(255, 250, 250)">
+
                                 <a href="{% url 'listing' %}" class="nav-link"><i class="fa fa-list mr-2"
                                         aria-hidden="true"></i>
                                     Listing</a>
@@ -51,6 +53,10 @@
                             <li class="nav-item">
                                 <a href="{% url 'admin-add-user' %}" class="nav-link"><i class="fa fa-edit mr-2" aria-hidden="true"></i>Add-User
                                 </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'admin:index' %}  " class="nav-link"><i class="fa fa-lock mr-2" aria-hidden="true"></i>Admin
+                                    </a>
                             </li>
                         </ul>
                     </div>

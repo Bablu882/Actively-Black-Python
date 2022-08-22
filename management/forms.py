@@ -12,10 +12,10 @@ from django.contrib.auth.forms import UserChangeForm
 ##------------------------------REGISTRATION FORM------------------------------##
 
 class RegisterForm(UserCreationForm):
-    username=forms.CharField(error_messages={'required':'enter your username'})
-    email=forms.EmailField(error_messages={'required':'enter your email'})
-    password1 = forms.CharField(error_messages={'required':'enter your password'},widget=forms.PasswordInput)
-    password2 = forms.CharField(error_messages={'required':'enter your conform password'},widget=forms.PasswordInput)
+    username=forms.CharField(error_messages={'required':'Enter your username'})
+    email=forms.EmailField(error_messages={'required':'Enter your email'})
+    password1 = forms.CharField(error_messages={'required':'Enter your password'},widget=forms.PasswordInput)
+    password2 = forms.CharField(error_messages={'required':'Enter your confirm password'},widget=forms.PasswordInput)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)        
@@ -48,7 +48,7 @@ class RegisterForm(UserCreationForm):
             'id':'password1',
             'type':'text',
             'class':'form-control',
-            'placeholder':'password',
+            'placeholder':'Password',
             'maxlength':'50',
             'minlength':'6'
         })
@@ -60,7 +60,7 @@ class RegisterForm(UserCreationForm):
             'type':'text',
             'color':'red',
             'class':'form-control',
-            'placeholder':'Conform password',
+            'placeholder':'Confirm password',
             'maxlength':'50',
             'minlength':'6',
         })
@@ -76,7 +76,7 @@ class RegisterForm(UserCreationForm):
     def clean_username(self):
         username=self.cleaned_data['username']    
         if len(username) <=3:
-            raise forms.ValidationError('username is to short ')
+            raise forms.ValidationError('username is too short ')
         return username 
 
     def clean_email(self):
@@ -331,3 +331,49 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model=Profile
         fields=['avatar']
+
+from django.contrib.auth.models import PermissionsMixin,PermissionManager
+
+class Permission_user(forms.ModelForm):
+    class Meta:
+        model=Permission
+        fields='__all__'
+
+
+
+from django.contrib.auth import get_user_model
+from django.contrib.contenttypes.models import ContentType
+class EditUserForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(EditUserForm, self).__init__(*args, **kwargs)
+
+        def get_label(obj):
+            permission_name = str(obj).split('|')[2].strip()
+            model_name = permission_name.split(' ')[2].strip()
+            return '%s | %s' % (model_name.title(), permission_name)
+
+        User = get_user_model()
+        content_type = ContentType.objects.get_for_model(User)
+        self.fields['user_permissions'].queryset = Permission.objects.filter(content_type=content_type)
+        self.fields['user_permissions'].widget.attrs.update({'class': 'permission-select'})
+        self.fields['user_permissions'].help_text = None
+        self.fields['user_permissions'].label = "Label"
+        self.fields['user_permissions'].label_from_instance = get_label
+
+    def save(self, commit=True):
+        user_instance = super(EditUserForm, self).save(commit)
+        user_instance.save()
+        user_instance.user_permissions.set(self.cleaned_data.get('user_permissions'))
+        return user_instance
+
+    class Meta:
+        model = get_user_model()
+        fields = ['email', 'first_name', 'last_name', 'user_permissions']
+
+        widgets = {
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'style': 'width: 300px;'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-control', 'style': 'width: 300px;'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control', 'style': 'width: 300px;'}),
+            'user_permissions': forms.SelectMultiple(attrs={'style': 'width: 350px; height: 200px;'})
+        }
