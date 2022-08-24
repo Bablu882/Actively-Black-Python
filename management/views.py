@@ -1,4 +1,5 @@
 
+from types import CodeType
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.conf import settings
@@ -6,9 +7,8 @@ from django.contrib.auth import authenticate, logout as auth_logout
 from django.contrib.auth import login as login_dj
 from .decorator import authenticate_user
 from django.contrib.auth.decorators import login_required
-from .models import Profile
+from .models import Profile,User
 import uuid
-from django.contrib.auth.models import User
 from django.core.mail import send_mail,BadHeaderError
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode  
 from django.http import HttpResponse  
@@ -53,7 +53,7 @@ def profile(request):
 
 
 ###------------------------------------Register User------------------------------------###
-
+@authenticate_user
 def register(request):
     form = RegisterForm()
     if request.method == 'POST':
@@ -120,6 +120,7 @@ def logout(request):
 
 ##-----------------Forget password--------------------------------##
 
+@login_required(login_url='login')
 def forget_password(request):
     form=ForgetPasswordform()
     try:
@@ -199,6 +200,7 @@ def login(request):
 
 ###------------------------------------Admin Add User------------------------------------------------####
 
+@login_required(login_url='login')
 def add_user_admin(request):
     form=RegisterForm()
     if request.method=='POST':
@@ -215,6 +217,7 @@ def add_user_admin(request):
 
 ###------------------------------------Admin Delete User------------------------------------###
 
+@login_required(login_url='login')
 def delete_user(request,id):
         user=User.objects.get(pk=id)
         user.delete()
@@ -223,6 +226,7 @@ def delete_user(request,id):
 
 ###-----------------------------------Admin Edit User--------------------------------------###
 
+@login_required(login_url='login')
 def edit_user(request,id):
     request.method=='POST'
     gt=User.objects.get(pk=id)
@@ -239,10 +243,11 @@ def edit_user(request,id):
         pro=Profile.objects.get(pk=id)
         form=Userchangeform(instance=gt)
         form2=ProfileForm(instance=pro)
-    return render(request,'management/change-user-form.html',{'form':form,'form2':form2})
+    return render(request,'management/change-user-form.html',{'form':form,'form2':form2,'image':gt})
 
 ###---------------------------------------Edit User Profile---------------------------------###
 
+@login_required(login_url='login')
 def edit_profile(request):
     request.method=='POST'
     gt=User.objects.get(id=request.user.id)
@@ -259,8 +264,9 @@ def edit_profile(request):
         form=Userchangeform(instance=gt)
         form2=ProfileForm(instance=request.user.profile)
     return render(request,'management/edit-profile.html',{'form':form,'form2':form2})    
+    
 
-
+@login_required(login_url='login')
 def view_user_profile(request,id):
     gt=User.objects.get(pk=id)
     pro=Profile.objects.get(pk=id)
@@ -268,3 +274,5 @@ def view_user_profile(request,id):
     form2=ProfileForm(instance=pro)
     image=pro.avatar
     return render(request,'management/view-profile.html',{'form':form,'form2':form2,'image':image})    
+
+###---------------------------------------------------------------------------------------###

@@ -172,4 +172,4 @@ EMAIL_PAGE_DOMAIN='http://127.0.0.1:8000/profile/'
 # EMAIL_PORT = 587
 
 
-# AUTH_USER_MODEL = 'management.User' 
+AUTH_USER_MODEL = 'management.User' 

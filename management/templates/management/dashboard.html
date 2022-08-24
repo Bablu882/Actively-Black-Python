@@ -38,8 +38,10 @@
                             <li class="nav-item">
                                 <a href="{% url 'profile' %}" class="nav-link"><i class="fa fa-user mr-2" aria-hidden="true"></i> User
                                     Profile</a>
-                            </li>
-                            <li class="nav-item">
+                                </li>
+                                {% if request.user.is_superuser %}
+                                <li class="nav-item">
+                                <hr style="height:2px;border-width:0;color:rgb(250, 248, 248);background-color:rgb(255, 250, 250)">
                                 <a href="{% url 'listing' %}" class="nav-link"><i class="fa fa-list mr-2" aria-hidden="true"></i>
                                     Listing</a>
                             </li>
@@ -55,6 +57,7 @@
                                 <a href="{% url 'admin:index' %}  " class="nav-link"><i class="fa fa-lock mr-2" aria-hidden="true"></i>Admin
                                     </a>
                             </li>
+                            {% endif %}
                             <li class="nav-item">
                             </li>
                         </ul>

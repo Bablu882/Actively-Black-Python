@@ -1,21 +1,24 @@
 
-from dataclasses import field
-from pyexpat import model
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from .models import User
 from django.contrib.auth.password_validation import validate_password
 from django.core import validators
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserChangeForm
+from django.contrib import messages
+from .models import Profile
+
+
+
 
 ##------------------------------REGISTRATION FORM------------------------------##
 
 class RegisterForm(UserCreationForm):
-    username=forms.CharField(error_messages={'required':'enter your username'})
-    email=forms.EmailField(error_messages={'required':'enter your email'})
-    password1 = forms.CharField(error_messages={'required':'enter your password'},widget=forms.PasswordInput)
-    password2 = forms.CharField(error_messages={'required':'enter your conform password'},widget=forms.PasswordInput)
+    username=forms.CharField(error_messages={'required':'Enter your username'})
+    email=forms.EmailField(error_messages={'required':'Enter your email'})
+    password1 = forms.CharField(error_messages={'required':'Enter your password'},widget=forms.PasswordInput)
+    password2 = forms.CharField(error_messages={'required':'Enter your confirm password'},widget=forms.PasswordInput)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)        
@@ -48,7 +51,7 @@ class RegisterForm(UserCreationForm):
             'id':'password1',
             'type':'text',
             'class':'form-control',
-            'placeholder':'password',
+            'placeholder':'Password',
             'maxlength':'50',
             'minlength':'6'
         })
@@ -60,7 +63,7 @@ class RegisterForm(UserCreationForm):
             'type':'text',
             'color':'red',
             'class':'form-control',
-            'placeholder':'Conform password',
+            'placeholder':'Confirm password',
             'maxlength':'50',
             'minlength':'6',
         })
@@ -76,7 +79,7 @@ class RegisterForm(UserCreationForm):
     def clean_username(self):
         username=self.cleaned_data['username']    
         if len(username) <=3:
-            raise forms.ValidationError('username is to short ')
+            raise forms.ValidationError('username is too short ')
         return username 
 
     def clean_email(self):
@@ -287,29 +290,17 @@ class Userchangeform(UserChangeForm):
             'minlength':'6',
         })
     # def clean(self):
-    #     first_name=self.cleaned_data['first_name']    
-    #     last_name=self.cleaned_data['last_name']
-    #     if first_name and last_name:
-    #         if not first_name and not last_name:
-    #             raise forms.ValidationError('this field is required')
+    #     email=self.cleaned_data['email']    
+        
+    #     if User.objects.filter(email=email).exists():
+    #         raise forms.ValidationError('Email already exist !')
+    #         # messages.success(request,'email already exist')
 
 
 
     class Meta:
         model=User
         fields=['username','first_name','last_name','email','is_superuser','is_staff','is_active','last_login','date_joined','user_permissions']
-
-
-
-
-from django.contrib.auth.models import Permission
-
-class Permissionform(forms.ModelForm):
-    class Meta:
-        model=Permission
-        fields='__all__'   
-
-from .models import Profile
 
 class ProfileForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -331,3 +322,66 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model=Profile
         fields=['avatar']
+###---------------------------------------------------------------------------------------####        
+# class PermissionsModelMultipleChoiceField(forms.ModelChoiceField):
+#     def label_from_instance(self, obj):
+#         return "%s" % obj.name
+
+
+
+# from django.contrib.auth.models import PermissionsMixin,PermissionManager
+# from django.contrib.auth import get_user_model
+# from django.contrib.contenttypes.models import ContentType
+# from django.contrib.auth.models import Permission,PermissionManager
+# from django.db.models import Q
+
+
+# # class Permission_user(forms.ModelForm):
+# #     permissions = PermissionsModelMultipleChoiceField(Permission.objects.none(), widget=forms.CheckboxSelectMultiple)
+# #     def __init__( self, *args, **kwargs ):
+# #         super( Permission_user, self ).__init__( *args, **kwargs )
+# #         ctypes = ContentType.objects.filter(
+# #             Q(app_label='management') |
+# #             Q(app_label='auth')
+# #         )
+# #         self.fields['permissions'].queryset = Permission.objects.filter(content_type__in=ctypes)
+
+# #     class Meta:
+# #         model = User
+# #         fields=['permissions']
+
+
+#     # class Meta:
+#     #     model=User
+#     #     fields=['permissions']
+
+
+
+# # class Permission_user(forms.ModelForm):
+# #     change_user = forms.ChoiceField(
+# #         widget=forms.RadioSelect,
+# #         choices=[(True, 'Yes'), (False, 'no')],
+# #         required=True  # It's required ?
+# #     )
+
+# #     class Meta:
+# #         model = Profile
+# #         fields = ('change_user',)
+
+# from django.contrib.admin.widgets import FilteredSelectMultiple
+
+
+# class Permission_user(forms.ModelForm):
+#     class Meta:
+#         model = User
+#         fields = '__all__'
+#         widgets = {
+#             'permissions': FilteredSelectMultiple("Permission", False, attrs={'rows':'2'}),
+#         }
+
+from django.contrib.auth.models import Permission
+
+class Permissionform(forms.ModelForm):
+    class Meta:
+        model=Permission
+        fields='__all__'   
