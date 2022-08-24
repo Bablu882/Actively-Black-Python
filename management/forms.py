@@ -1,15 +1,14 @@
 
-from dataclasses import field
-from pyexpat import model
-from urllib import request
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from .models import User
 from django.contrib.auth.password_validation import validate_password
 from django.core import validators
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib import messages
+from .models import Profile
+
 
 
 
@@ -303,18 +302,6 @@ class Userchangeform(UserChangeForm):
         model=User
         fields=['username','first_name','last_name','email','is_superuser','is_staff','is_active','last_login','date_joined','user_permissions']
 
-
-
-
-from django.contrib.auth.models import Permission
-
-class Permissionform(forms.ModelForm):
-    class Meta:
-        model=Permission
-        fields='__all__'   
-
-from .models import Profile
-
 class ProfileForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)        
@@ -336,58 +323,65 @@ class ProfileForm(forms.ModelForm):
         model=Profile
         fields=['avatar']
 ###---------------------------------------------------------------------------------------####        
-class PermissionsModelMultipleChoiceField(forms.ModelChoiceField):
-    def label_from_instance(self, obj):
-        return "%s" % obj.name
+# class PermissionsModelMultipleChoiceField(forms.ModelChoiceField):
+#     def label_from_instance(self, obj):
+#         return "%s" % obj.name
 
 
 
-from django.contrib.auth.models import PermissionsMixin,PermissionManager
-from django.contrib.auth import get_user_model
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.auth.models import Permission,PermissionManager
-from django.db.models import Q
+# from django.contrib.auth.models import PermissionsMixin,PermissionManager
+# from django.contrib.auth import get_user_model
+# from django.contrib.contenttypes.models import ContentType
+# from django.contrib.auth.models import Permission,PermissionManager
+# from django.db.models import Q
+
+
+# # class Permission_user(forms.ModelForm):
+# #     permissions = PermissionsModelMultipleChoiceField(Permission.objects.none(), widget=forms.CheckboxSelectMultiple)
+# #     def __init__( self, *args, **kwargs ):
+# #         super( Permission_user, self ).__init__( *args, **kwargs )
+# #         ctypes = ContentType.objects.filter(
+# #             Q(app_label='management') |
+# #             Q(app_label='auth')
+# #         )
+# #         self.fields['permissions'].queryset = Permission.objects.filter(content_type__in=ctypes)
+
+# #     class Meta:
+# #         model = User
+# #         fields=['permissions']
+
+
+#     # class Meta:
+#     #     model=User
+#     #     fields=['permissions']
+
+
+
+# # class Permission_user(forms.ModelForm):
+# #     change_user = forms.ChoiceField(
+# #         widget=forms.RadioSelect,
+# #         choices=[(True, 'Yes'), (False, 'no')],
+# #         required=True  # It's required ?
+# #     )
+
+# #     class Meta:
+# #         model = Profile
+# #         fields = ('change_user',)
+
+# from django.contrib.admin.widgets import FilteredSelectMultiple
 
 
 # class Permission_user(forms.ModelForm):
-#     permissions = PermissionsModelMultipleChoiceField(Permission.objects.none(), widget=forms.CheckboxSelectMultiple)
-#     def __init__( self, *args, **kwargs ):
-#         super( Permission_user, self ).__init__( *args, **kwargs )
-#         ctypes = ContentType.objects.filter(
-#             Q(app_label='management') |
-#             Q(app_label='auth')
-#         )
-#         self.fields['permissions'].queryset = Permission.objects.filter(content_type__in=ctypes)
-
 #     class Meta:
 #         model = User
-#         fields=['permissions']
+#         fields = '__all__'
+#         widgets = {
+#             'permissions': FilteredSelectMultiple("Permission", False, attrs={'rows':'2'}),
+#         }
 
+from django.contrib.auth.models import Permission
 
-    # class Meta:
-    #     model=User
-    #     fields=['permissions']
-
-
-
-# class Permission_user(forms.ModelForm):
-#     change_user = forms.ChoiceField(
-#         widget=forms.RadioSelect,
-#         choices=[(True, 'Yes'), (False, 'no')],
-#         required=True  # It's required ?
-#     )
-
-#     class Meta:
-#         model = Profile
-#         fields = ('change_user',)
-
-from django.contrib.admin.widgets import FilteredSelectMultiple
-
-
-class Permission_user(forms.ModelForm):
+class Permissionform(forms.ModelForm):
     class Meta:
-        model = User
-        fields = '__all__'
-        widgets = {
-            'permissions': FilteredSelectMultiple("Permission", False, attrs={'rows':'2'}),
-        }
+        model=Permission
+        fields='__all__'   

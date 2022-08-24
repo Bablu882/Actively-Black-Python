@@ -7,9 +7,8 @@ from django.contrib.auth import authenticate, logout as auth_logout
 from django.contrib.auth import login as login_dj
 from .decorator import authenticate_user
 from django.contrib.auth.decorators import login_required
-from .models import Profile
+from .models import Profile,User
 import uuid
-from django.contrib.auth.models import User
 from django.core.mail import send_mail,BadHeaderError
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode  
 from django.http import HttpResponse  
@@ -22,7 +21,7 @@ from django.utils.encoding import force_bytes, force_str, DjangoUnicodeDecodeErr
 from .utils import generate_token
 from django.core.mail import EmailMessage
 from .token import account_activation_token
-from .forms import ChangePasswordForm, ForgetPasswordform, Permission_user, RegisterForm,LoginForm, Userchangeform,ProfileForm
+from .forms import ChangePasswordForm, ForgetPasswordform, RegisterForm,LoginForm, Userchangeform,ProfileForm
 from django.db.models import Q
 
 
@@ -54,7 +53,7 @@ def profile(request):
 
 
 ###------------------------------------Register User------------------------------------###
-
+@authenticate_user
 def register(request):
     form = RegisterForm()
     if request.method == 'POST':
@@ -121,6 +120,7 @@ def logout(request):
 
 ##-----------------Forget password--------------------------------##
 
+@login_required(login_url='login')
 def forget_password(request):
     form=ForgetPasswordform()
     try:
@@ -200,6 +200,7 @@ def login(request):
 
 ###------------------------------------Admin Add User------------------------------------------------####
 
+@login_required(login_url='login')
 def add_user_admin(request):
     form=RegisterForm()
     if request.method=='POST':
@@ -216,6 +217,7 @@ def add_user_admin(request):
 
 ###------------------------------------Admin Delete User------------------------------------###
 
+@login_required(login_url='login')
 def delete_user(request,id):
         user=User.objects.get(pk=id)
         user.delete()
@@ -224,6 +226,7 @@ def delete_user(request,id):
 
 ###-----------------------------------Admin Edit User--------------------------------------###
 
+@login_required(login_url='login')
 def edit_user(request,id):
     request.method=='POST'
     gt=User.objects.get(pk=id)
@@ -244,6 +247,7 @@ def edit_user(request,id):
 
 ###---------------------------------------Edit User Profile---------------------------------###
 
+@login_required(login_url='login')
 def edit_profile(request):
     request.method=='POST'
     gt=User.objects.get(id=request.user.id)
@@ -260,8 +264,9 @@ def edit_profile(request):
         form=Userchangeform(instance=gt)
         form2=ProfileForm(instance=request.user.profile)
     return render(request,'management/edit-profile.html',{'form':form,'form2':form2})    
+    
 
-
+@login_required(login_url='login')
 def view_user_profile(request,id):
     gt=User.objects.get(pk=id)
     pro=Profile.objects.get(pk=id)
@@ -271,59 +276,3 @@ def view_user_profile(request,id):
     return render(request,'management/view-profile.html',{'form':form,'form2':form2,'image':image})    
 
 ###---------------------------------------------------------------------------------------###
-from .forms import Permission_user
-
-# def permission(request,id):
-#     user=User.objects.get(id=id)
-#     per=Permission.objects.filter(user=user)
-#     form=Permission_user()
-    
-
-#     return render(request,'management/permission.html',{'form':form,'per':per})
-from django.contrib.contenttypes.models import ContentType
-
-# def permission(request,id):
-#     per=Permission.objects.all()
-#     cont=ContentType.objects.all()
-#     for items in cont:
-#         print(items)
-#     if request.method=='POST':
-#         post=request.POST.getlist('permission')
-#         type=request.POST.getlist('permis')
-#         print(type)
-#         pro=User.objects.get(id=id)
-#         for item in post:
-#             Permission.objects.create(user=pro,codename=item)
-            
-#         #    perm=Permission.objects.create(user=pro,id=item.id)
-#         #    print(perm)  
-#     return render(request,'management/permission.html',{'perm':per,'cont':cont})
-
-from django.contrib.auth.models import Permission
-from functools import reduce
-from operator import or_
-
-def permission(request,id):
-    user=User.objects.get(pk=id)
-    per=Permission.objects.get(pk=id)
-    perm=user.get_all_permissions()
-    if len(perm) > 0:
-        perm_comps = [perm_string.split('.', 1) for perm_string in perm]
-        q_query = reduce(
-            or_,
-            [Q(content_type__app_label=app_label) & Q(codename=codename) for app_label, codename in perm_comps]
-        )
-        permis=Permission.objects.filter(q_query)
-        for red in permis:
-            print(red)
-        
-    
-        form=Permission_user(data={'permissions':red})
-    if request.method=='POST':
-        form=Permission_user(request.POST,instance=red)
-        if form.is_valid():
-            form.save()
-            messages.success(request,'success')
-
-
-    return render(request,'management/permission.html',{'form':form})

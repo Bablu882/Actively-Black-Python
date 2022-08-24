@@ -26,7 +26,6 @@ urlpatterns=[
     # path('form/<int:id>/',profileform,name='form'),
     path('edit-profile',edit_profile,name='edit-profile'),
     path('view-profile/<int:id>/',view_user_profile,name='view-profile'),
-    path('permission/<int:id>/',permission,name='permission')
     
 ]
 
