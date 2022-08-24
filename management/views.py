@@ -271,7 +271,6 @@ def view_user_profile(request,id):
     return render(request,'management/view-profile.html',{'form':form,'form2':form2,'image':image})    
 
 ###---------------------------------------------------------------------------------------###
-from django.contrib.auth.models import Permission
 from .forms import Permission_user
 
 # def permission(request,id):
@@ -283,25 +282,48 @@ from .forms import Permission_user
 #     return render(request,'management/permission.html',{'form':form,'per':per})
 from django.contrib.contenttypes.models import ContentType
 
-def permission(request,id):
-    per=Permission.objects.all()
-    cont=ContentType.objects.all()
-    for items in cont:
-        print(items)
-    if request.method=='POST':
-        post=request.POST.getlist('permission')
-        type=request.POST.getlist('permis')
-        print(type)
-        pro=User.objects.get(id=id)
-        for item in post:
-            Permission.objects.create(user=pro,codename=item)
+# def permission(request,id):
+#     per=Permission.objects.all()
+#     cont=ContentType.objects.all()
+#     for items in cont:
+#         print(items)
+#     if request.method=='POST':
+#         post=request.POST.getlist('permission')
+#         type=request.POST.getlist('permis')
+#         print(type)
+#         pro=User.objects.get(id=id)
+#         for item in post:
+#             Permission.objects.create(user=pro,codename=item)
             
-        #    perm=Permission.objects.create(user=pro,id=item.id)
-        #    print(perm)  
-    return render(request,'management/permission.html',{'perm':per,'cont':cont})
+#         #    perm=Permission.objects.create(user=pro,id=item.id)
+#         #    print(perm)  
+#     return render(request,'management/permission.html',{'perm':per,'cont':cont})
+
+from django.contrib.auth.models import Permission
+from functools import reduce
+from operator import or_
+
+def permission(request,id):
+    user=User.objects.get(pk=id)
+    per=Permission.objects.get(pk=id)
+    perm=user.get_all_permissions()
+    if len(perm) > 0:
+        perm_comps = [perm_string.split('.', 1) for perm_string in perm]
+        q_query = reduce(
+            or_,
+            [Q(content_type__app_label=app_label) & Q(codename=codename) for app_label, codename in perm_comps]
+        )
+        permis=Permission.objects.filter(q_query)
+        for red in permis:
+            print(red)
+        
+    
+        form=Permission_user(data={'permissions':red})
+    if request.method=='POST':
+        form=Permission_user(request.POST,instance=red)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'success')
 
 
-
-# def permission(request):
-#     form=EditUserForm()
-#     return render(request,'management/permission.html',{'form':form})
+    return render(request,'management/permission.html',{'form':form})

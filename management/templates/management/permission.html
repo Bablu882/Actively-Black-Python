@@ -1,3 +1,5 @@
+{% load crispy_forms_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,23 +9,32 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="post">
-        {% csrf_token %}
-        <!-- {{form}} -->
-            {% for item in perm %}
-            <div>
-            <input type="checkbox" id="{{item.id}}" name="permission" value="{{item.codename}}">
-            <label for="coding">{{item.name}}</label>
-              </div>
-              {% endfor %}
+  <p>
+    {% if messages %}
+    {% for message in messages %}
+    <div class='alert alert-success'>
+        {{message}}
+  
+    </div>
+    {% endfor %}
+    {% endif %}
+  </p>
+  
+  
+  {% if messages %}
+  {% for message in messages %}
+      {{ message }}
+  {% endfor %}
+  <br><br>
+{% endif %}
 
-              {% for item in cont %}
-            <div>
-            <input type="checkbox" id="{{item.id}}" name="permis" value="{{item.model}}">
-            <label for="coding">{{item.model}}</label>
-              </div>
-              {% endfor %}
-              <input type="submit">
+<div>User: {{ user.username }}</div>
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type='submit'>Submit</button>
+</form>
+        <input type="submit">
     </form>
 </body>
 </html>

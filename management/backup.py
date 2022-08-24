@@ -555,197 +555,147 @@ def login_page(request):
 #     except Exception as e:
 #         print(e)
 #     return render(request,'management/change-password.html',context)
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 400px;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 50px;
-}
-.title {
-  font-size: 25px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-label {
-  display: block;
-  margin-bottom: 5px;
-}
-form div input {
-  width: 100%;
-  height: 40px;
-  border-radius: 8px;
-  outline: none;
-  border: 2px solid #c4c4c4;
-  padding: 0 30px;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-}
-form div {
-  position: relative;
-  margin-bottom: 15px;
-}
+class UserForm(forms.ModelForm):
 
-input:focus {
-  border: 2px solid #f2796e;
-}
-form div i {
-  position: absolute;
-  padding: 10px;
-}
-.failure-icon,
-.error {
-  color: red;
-}
+    def __init__(self, *args, **kwargs):
+        super(UserForm, self).__init__(*args, **kwargs)
 
-.success-icon {
-  color: green;
-}
+        def get_label(obj):
+            permission_name = str(obj).split('|')[2].strip()
+            model_name = permission_name.split(' ')[2].strip()
+            return '%s | %s' % (model_name.title(), permission_name)
 
-.error {
-  font-size: 14.5px;
-  margin-top: 5px;
-}
-.success-icon,
-.failure-icon {
-  right: 0;
-  opacity: 0;
-}
-button {
-  margin-top: 15px;
-  width: 100%;
-  height: 45px;
-  background-color: #f2796e;
-  border: 2px solid #f2796e;
-  border-radius: 8px;
-  color: #fff;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  transition: all 0.1s ease;
-}
-button:hover {
-  opacity: 0.8;
-}
+        User = get_user_model()
+        content_type = ContentType.objects.get_for_model(User)
+        self.fields['user_permissions'].queryset = Permission.objects.filter(content_type=content_type)
+        self.fields['user_permissions'].widget.attrs.update({'class': 'permission-select'})
+        self.fields['user_permissions'].help_text = None
+        self.fields['user_permissions'].label = "Label"
+        self.fields['user_permissions'].label_from_instance = get_label
+
+    def save(self, commit=True):
+        user_instance = super(UserForm, self).save(commit)
+        user_instance.save()
+        user_instance.user_permissions.set(self.cleaned_data.get('user_permissions'))
+        return user_instance
+
+    class Meta:
+        model = get_user_model()
+        fields = ['email', 'first_name', 'last_name', 'user_permissions']
+
+        widgets = {
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'style': 'width: 300px;'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-control', 'style': 'width: 300px;'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control', 'style': 'width: 300px;'}),
+            'user_permissions': forms.SelectMultiple(attrs={'style': 'width: 350px; height: 200px;'})
+        }
 
 
-    </style>
-</head>
-<body>
+ ###-----------------------------------------------------------------------------------###
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
+from django.db import models
+from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
+
+from .managers import CustomUserManager
+from django.contrib.auth.validators import UnicodeUsernameValidator
+
+
+class User(AbstractBaseUser, PermissionsMixin):
+    username_validator = UnicodeUsernameValidator()
+
+    username = models.CharField(
+        _('username'),
+        max_length=150,
+        unique=True,
+        help_text=_('Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.'),
+        validators=[username_validator],
+        error_messages={
+            'unique': _("A user with that username already exists."),
+        },
+    )
+    first_name = models.CharField(_('first name'), max_length=150, blank=True)
+    last_name = models.CharField(_('last name'), max_length=150, blank=True)
+    email = models.EmailField(_('email address'), blank=True)
+    is_staff = models.BooleanField(
+        _('staff status'),
+        default=False,
+        help_text=_('Designates whether the user can log into this admin site.'),
+    )
+    is_active = models.BooleanField(
+        _('active'),
+        default=True,
+        help_text=_(
+            'Designates whether this user should be treated as active. '
+            'Unselect this instead of deleting accounts.'
+        ),
+    )
+    date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
+
+    objects = CustomUserManager()
+
+    EMAIL_FIELD = 'email'
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
+
+class Profile(models.Model):
+    user=models.OneToOneField(User,on_delete=models.CASCADE)        
+    token=models.CharField(max_length=50)
+    is_verified=models.BooleanField(default=False)
     
+class Forget_Password(models.Model):
+    email=models.EmailField(max_length=50)
+       
 
-<div class="container">
 
-	<form id="form">
-        <div class="title">Get Started</div>
-    
-    <div>
-        <label for="username">User Name</label>
-    <i class="fas fa-user"></i>
-    
-    <input
-        type="text"
-        name="username"
-        id="username"
-        placeholder="Joy Shaheb"
-     />
-    
-    <i class="fas fa-exclamation-circle failure-icon"></i>
-    <i class="far fa-check-circle success-icon"></i>
-    
-    <div class="error"></div>
-    </div>
-    <div>
-        <label for="email">Email</label>
-    <i class="far fa-envelope"></i>
-    
-    <input
-        type="email"
-        name="email"
-        id="email"
-        placeholder="abc@gmail.com"
-     />
-    
-    <i class="fas fa-exclamation-circle failure-icon"></i>
-    <i class="far fa-check-circle success-icon"></i>
-    
-    <div class="error"></div>
-    </div>
-    <div>
-        <label for="password">Password</label>
-    <i class="fas fa-lock"></i>
-    
-    <input
-        type="password"
-        name="password"
-        id="password"
-        placeholder="Password here"
-     />
-    
-    <i class="fas fa-exclamation-circle failure-icon"></i>
-    <i class="far fa-check-circle success-icon"></i>
-    
-    <div class="error"></div>
-    </div>
-    <button id="btn" type="submit">Submit</button>  
 
-    </form>
-    
-</div>
-<script>
-    let id = (id) => document.getElementById(id);
+from django.contrib.auth.base_user import BaseUserManager
+from django.utils.translation import gettext_lazy as _
 
-let classes = (classes) => document.getElementsByClassName(classes);
+class CustomUserManager(BaseUserManager):
 
-let username = id("username"),
-  email = id("email"),
-  password = id("password"),
-  form = id("form"),
-  
-  errorMsg = classes("error"),
-  successIcon = classes("success-icon"),
-  failureIcon = classes("failure-icon");
+    def _create_user(self, email, password, **extra_fields):
+        """
+        Create and save a User with the given email and password.
+        """
+        if not email:
+            raise ValueError("The given email must be set")
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
 
-  form.addEventListener("submit", (e) => {
-  e.preventDefault();
-});
+    def create_user(self, email, password=None, **extra_fields):
+        extra_fields.setdefault("is_superuser", False)
+        return self._create_user(email, password, **extra_fields)
 
-let engine = (id, serial, message) => {
+    def create_superuser(self, email, password, **extra_fields):
+        extra_fields.setdefault("is_staff", True)
+        extra_fields.setdefault("is_superuser", True)
 
-if (id.value.trim() === "") {
-  errorMsg[serial].innerHTML = message;
-  id.style.border = "2px solid red";
-  
-  // icons
-  failureIcon[serial].style.opacity = "1";
-  successIcon[serial].style.opacity = "0";
-} 
+        if extra_fields.get("is_staff") is not True:
+            raise ValueError(
+                "Superuser must have is_staff=True."
+            )
+        if extra_fields.get("is_superuser") is not True:
+            raise ValueError(
+                "Superuser must have is_superuser=True."
+            )
 
-else {
-  errorMsg[serial].innerHTML = "";
-  id.style.border = "2px solid green";
-  
-  // icons
-  failureIcon[serial].style.opacity = "0";
-  successIcon[serial].style.opacity = "1";
-}
-}
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+        return self._create_user(email, password, **extra_fields)
 
-  engine(username, 0, "Username cannot be blank");
-  engine(email, 1, "Email cannot be blank");
-  engine(password, 2, "Password cannot be blank");
-});
-</script>
 
-</body>
-</html>
+
+from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+
+from .models import User,Profile,Forget_Password
+from .forms import CustomUserChangeForm,RegisterForm
+class CustomUserAdmin(UserAdmin):
+    model = User
+    list_display = ['email', 'username', 'first_name', 'last_name', 'is_staff']
+
+admin.site.register(User, CustomUserAdmin)
+admin.site.register(Profile)
+admin.site.register(Forget_Password)

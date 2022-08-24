@@ -1,6 +1,7 @@
 
 from dataclasses import field
 from pyexpat import model
+from urllib import request
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -8,6 +9,9 @@ from django.contrib.auth.password_validation import validate_password
 from django.core import validators
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserChangeForm
+from django.contrib import messages
+
+
 
 ##------------------------------REGISTRATION FORM------------------------------##
 
@@ -287,11 +291,11 @@ class Userchangeform(UserChangeForm):
             'minlength':'6',
         })
     # def clean(self):
-    #     first_name=self.cleaned_data['first_name']    
-    #     last_name=self.cleaned_data['last_name']
-    #     if first_name and last_name:
-    #         if not first_name and not last_name:
-    #             raise forms.ValidationError('this field is required')
+    #     email=self.cleaned_data['email']    
+        
+    #     if User.objects.filter(email=email).exists():
+    #         raise forms.ValidationError('Email already exist !')
+    #         # messages.success(request,'email already exist')
 
 
 
@@ -331,49 +335,59 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model=Profile
         fields=['avatar']
+###---------------------------------------------------------------------------------------####        
+class PermissionsModelMultipleChoiceField(forms.ModelChoiceField):
+    def label_from_instance(self, obj):
+        return "%s" % obj.name
+
+
 
 from django.contrib.auth.models import PermissionsMixin,PermissionManager
+from django.contrib.auth import get_user_model
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.auth.models import Permission,PermissionManager
+from django.db.models import Q
+
+
+# class Permission_user(forms.ModelForm):
+#     permissions = PermissionsModelMultipleChoiceField(Permission.objects.none(), widget=forms.CheckboxSelectMultiple)
+#     def __init__( self, *args, **kwargs ):
+#         super( Permission_user, self ).__init__( *args, **kwargs )
+#         ctypes = ContentType.objects.filter(
+#             Q(app_label='management') |
+#             Q(app_label='auth')
+#         )
+#         self.fields['permissions'].queryset = Permission.objects.filter(content_type__in=ctypes)
+
+#     class Meta:
+#         model = User
+#         fields=['permissions']
+
+
+    # class Meta:
+    #     model=User
+    #     fields=['permissions']
+
+
+
+# class Permission_user(forms.ModelForm):
+#     change_user = forms.ChoiceField(
+#         widget=forms.RadioSelect,
+#         choices=[(True, 'Yes'), (False, 'no')],
+#         required=True  # It's required ?
+#     )
+
+#     class Meta:
+#         model = Profile
+#         fields = ('change_user',)
+
+from django.contrib.admin.widgets import FilteredSelectMultiple
+
 
 class Permission_user(forms.ModelForm):
     class Meta:
-        model=Permission
-        fields='__all__'
-
-
-
-from django.contrib.auth import get_user_model
-from django.contrib.contenttypes.models import ContentType
-class EditUserForm(forms.ModelForm):
-
-    def __init__(self, *args, **kwargs):
-        super(EditUserForm, self).__init__(*args, **kwargs)
-
-        def get_label(obj):
-            permission_name = str(obj).split('|')[2].strip()
-            model_name = permission_name.split(' ')[2].strip()
-            return '%s | %s' % (model_name.title(), permission_name)
-
-        User = get_user_model()
-        content_type = ContentType.objects.get_for_model(User)
-        self.fields['user_permissions'].queryset = Permission.objects.filter(content_type=content_type)
-        self.fields['user_permissions'].widget.attrs.update({'class': 'permission-select'})
-        self.fields['user_permissions'].help_text = None
-        self.fields['user_permissions'].label = "Label"
-        self.fields['user_permissions'].label_from_instance = get_label
-
-    def save(self, commit=True):
-        user_instance = super(EditUserForm, self).save(commit)
-        user_instance.save()
-        user_instance.user_permissions.set(self.cleaned_data.get('user_permissions'))
-        return user_instance
-
-    class Meta:
-        model = get_user_model()
-        fields = ['email', 'first_name', 'last_name', 'user_permissions']
-
+        model = User
+        fields = '__all__'
         widgets = {
-            'email': forms.EmailInput(attrs={'class': 'form-control', 'style': 'width: 300px;'}),
-            'first_name': forms.TextInput(attrs={'class': 'form-control', 'style': 'width: 300px;'}),
-            'last_name': forms.TextInput(attrs={'class': 'form-control', 'style': 'width: 300px;'}),
-            'user_permissions': forms.SelectMultiple(attrs={'style': 'width: 350px; height: 200px;'})
+            'permissions': FilteredSelectMultiple("Permission", False, attrs={'rows':'2'}),
         }
