@@ -49,7 +49,7 @@ class Profile(models.Model):
     desc=models.TextField(max_length=500)        
     token=models.CharField(max_length=50)
     is_verified=models.BooleanField(default=False)
-    avatar=models.ImageField(null=True,blank=True,default='default.png',upload_to='avatars')
+    avatar=models.ImageField(null=True,blank=True,default='avatars/default.png',upload_to='avatars')
     
 class Forget_Password(models.Model):
     email=models.EmailField(max_length=50)

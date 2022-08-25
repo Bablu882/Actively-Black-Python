@@ -2,10 +2,20 @@
 {% block title %}{% endblock %}
 {% block content %}
 {% load crispy_forms_tags %}
+
 <style>
-    
-</style>
-<style>
+     .buttonload{
+  background-color: #04AA6D; /* Green background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px /* Set a font size */
+}
+   
+
+#buttonload{
+    display: none;
+}
     .errorlist{
         
         list-style-type: none;
@@ -29,10 +39,10 @@
     #div_id_username .control-label.requiredField{
         display: none;
     }
+   
+
      
 </style>
-
-
     <div class="dashboard dark-theme">
         <div class="main-content mw-100">
             <section class="centered-content h-100">
@@ -110,7 +120,10 @@
                         </div>
     
                         <div class="text-center mx-4 mb-3 mb-lg-4">
-                        <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                        <button type="submit" id="submitSignUp" class="btn btn-primary btn-lg">Register</button>
+                        <button class="buttonload" id="buttonload" disabled>
+                            <i class="fa fa-spinner fa-spin"></i>Loading
+                        </button>
                         <p class="mt-4">Already have an account? <a href="{% url 'login' %}">Please Login</a></p>
                         </div>
     
@@ -120,5 +133,7 @@
             </section>
         </div>
     </div>
+
+    
 
 {% endblock %}    
