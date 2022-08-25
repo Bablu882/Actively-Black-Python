@@ -150,3 +150,11 @@ $(document).ready(function () {
 
 
 
+
+$(document).ready(function() {
+  $('#submitSignUp').click(function () {
+    $(this).css('display', 'none')
+    $('#buttonload').css('display', 'inline-block')
+  })
+})
+

@@ -53,6 +53,7 @@ def profile(request):
 
 
 ###------------------------------------Register User------------------------------------###
+
 @authenticate_user
 def register(request):
     form = RegisterForm()
@@ -120,7 +121,6 @@ def logout(request):
 
 ##-----------------Forget password--------------------------------##
 
-@login_required(login_url='login')
 def forget_password(request):
     form=ForgetPasswordform()
     try:
@@ -264,7 +264,7 @@ def edit_profile(request):
         form=Userchangeform(instance=gt)
         form2=ProfileForm(instance=request.user.profile)
     return render(request,'management/edit-profile.html',{'form':form,'form2':form2})    
-    
+
 
 @login_required(login_url='login')
 def view_user_profile(request,id):
