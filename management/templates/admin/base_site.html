@@ -1,12 +1,29 @@
 {% extends "admin/base.html" %}
 
-{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+{% comment %} {% load i18n  eatn_tags static %} {% endcomment %}
+
+{% load i18n %}
+
+{% load static %}
+
+ 
+
+{% block title %}{{ title }} | {% trans "ACTIVELY-BLACK-PYTHON  | ADMIN " %}{% endblock %}
+
+{% block extrastyle %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/admin_color.css' %}"/>
+
+{% endblock %}
+
+ 
 
 {% block branding %}
-<h1 id="site-name"><a href="{% url 'admin:index' %}">Actively Black Administration</a></h1>
-{% if user.is_anonymous %}
-  {% include "admin/color_theme_toggle.html" %}
-{% endif %}
+
+    <h1 id="site-name">{% trans "ACTIVELY-BLACK-PYTHON | ADMIN" %}</h1>
+
 {% endblock %}
+
+ 
 
 {% block nav-global %}{% endblock %}
