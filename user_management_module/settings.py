@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-0v#a82dva#+o=o0%kr6-bz=h5*#z-uo030se8gb77@si#08_g9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -92,23 +92,23 @@ TESTING = len(sys.argv) > 1 and sys.argv[1] == 'test'
 # 'PORT': '',
 # }
 # }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE'  : 'django.db.backends.mysql', # <-- UPDATED line 
-        'NAME'    : 'webnyxa',                 # <-- UPDATED line 
-        'USER'    : 'root',                     # <-- UPDATED line
-        'PASSWORD': 'webnyxamysqldb',              # <-- UPDATED line
-        'HOST'    : 'localhost',                # <-- UPDATED line
-        'PORT'    : '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE'  : 'django.db.backends.mysql', # <-- UPDATED line 
+#         'NAME'    : 'webnyxa',                 # <-- UPDATED line 
+#         'USER'    : 'root',                     # <-- UPDATED line
+#         'PASSWORD': 'webnyxamysqldb',              # <-- UPDATED line
+#         'HOST'    : 'localhost',                # <-- UPDATED line
+#         'PORT'    : '3306',
+#     }
+# }
 
 
 

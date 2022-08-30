@@ -318,7 +318,7 @@
     line-height: 1;
     padding: 4px 8px;
     margin: 0;
-    color: #f1e8e8;
+    color: #f1e8e8 !important;
 }
 
 #changelist .actions .button:focus, #changelist .actions .button:hover {
