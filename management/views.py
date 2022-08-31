@@ -58,32 +58,32 @@ def profile(request):
 def register(request):
     form = RegisterForm()
     if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            user=form.save(commit=False)
-            user.is_active=False
-            user.save()
-            current_site=get_current_site(request)
-            mail_subject='verify mail'
-            message = render_to_string('management/activate.html', {  
-                'user': user,  
-                'domain': current_site.domain,  
-                'uid':urlsafe_base64_encode(force_bytes(user.pk)),  
-                'token':account_activation_token.make_token(user),  
-            })
-            to_email = form.cleaned_data.get('email')  
-            email = EmailMessage(  
-                        mail_subject, message, to=[to_email]  
-            )  
-            email.send()
-            token=uuid.uuid4()
-            print(token)
-            profile=Profile.objects.create(user=user,token=token) 
-            print(profile)
-            messages.add_message(request,messages.SUCCESS,'we have sent you a mail to verify your account')
-
+        try: 
+            form = RegisterForm(request.POST)
+            if form.is_valid():
+                user=form.save(commit=False)
+                user.is_active=False
+                user.save()
+                current_site=get_current_site(request)
+                mail_subject='verify mail'
+                message = render_to_string('management/activate.html', {  
+                    'user': user,  
+                    'domain': current_site.domain,  
+                    'uid':urlsafe_base64_encode(force_bytes(user.pk)),  
+                    'token':account_activation_token.make_token(user),  
+                })
+                to_email = form.cleaned_data.get('email')  
+                email = EmailMessage(  
+                            mail_subject, message, to=[to_email]  
+                )  
+                email.send()
+                token=uuid.uuid4()
+                print(token)
+                Profile.objects.create(user=user,token=token) 
+                messages.add_message(request,messages.SUCCESS,'we have sent you a mail to verify your account')
+        except Exception as e:
+            logging.error(e)
             return redirect('register')
-
     else:
         form = RegisterForm()
     return render(request, 'management/register.html', {'form':form}) 
@@ -99,21 +99,17 @@ def activate(request, uidb64, token):
         user = None  
     if user is not None and account_activation_token.check_token(user, token):  
         user.is_active = True  
-        user.save()  
+        user.save() 
         return redirect('login')  
-    else:  
+    else: 
         return HttpResponse('Activation link is invalid!')       
 
 
 ##--------------------------------LOGOUT---------------------------------------##
 
 def logout(request):
-
     auth_logout(request=request)
-
-    messages.add_message(request, messages.SUCCESS,
-                         'Successfully logged out')
-
+    messages.add_message(request, messages.SUCCESS,'Successfully logged out')
     return redirect('/login')    
 
 
@@ -127,23 +123,16 @@ def forget_password(request):
         if request.method=='POST':
             form=ForgetPasswordform(request.POST)
             if form.is_valid(): 
-                user=form.cleaned_data['email']
-                if not user:
-                    message="Please provide your valid email"
-                    return render(request,'management/forget-password.html',context={'message':message})
-                if not User.objects.filter(email=user).exists():
-                    messages.error(request,'Not user found with this email')
-                    return redirect('forget-password')
-                else:    
-                    user_obj=User.objects.get(email=user)
-                    profile=Profile.objects.get(user=user_obj)
-                    pro=profile.token
-                    print(pro)
-                    send_forget_password_mail(user,pro)
-                    messages.success(request,'please check your mail we have sent a link')
-                    return redirect('forget-password')
+                user=form.cleaned_data['email']   
+                user_obj=User.objects.get(email=user)
+                profile=Profile.objects.get(user=user_obj)
+                pro=profile.token
+                print(pro)
+                send_forget_password_mail(user,pro)
+                messages.success(request,'please check your mail we have sent a link')
+                return redirect('forget-password')
     except Exception as e:
-        print(e)
+        logging.error(e)
     return render(request,'management/forget-password.html',{'form':form})
 
 ###-----------------------------Redirect On Change Password Form---------------------------##
@@ -161,6 +150,7 @@ def change_password(request,token):
             user_obj.set_password(newpass)
             user_obj.save()
             messages.success(request,'New password changed now login with new password')
+            logging.info('SUCCESS: User password has been changed')
             return redirect('login')
     return render(request,'management/change-password.html',{'form':form,'user_id':profile.user.id})
 
@@ -276,3 +266,17 @@ def view_user_profile(request,id):
     return render(request,'management/view-profile.html',{'form':form,'form2':form2,'image':image})    
 
 ###---------------------------------------------------------------------------------------###
+import logging
+def logging_error(request):
+    logging.error('this is error')
+    logging.info('this is info ')
+    logging.warning('this is warning')
+    logging.debug('this is debug')
+    logging.critical('this is critical')
+    return render(request,'management/logging.html')
+
+
+    try:
+        raise Exception("this is error")
+    except Exception as e:
+        logging.error(e)    

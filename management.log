@@ -1,0 +1,50 @@
+this is error
+this is warning
+this is critical
+Watching for file changes with StatReloader
+this is error
+this is info 
+this is warning
+this is debug
+this is critical
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+this is error
+this is info 
+this is warning
+this is debug
+this is critical
+SUCCESS:User profile is created
+Success:Email sent And user created
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+ERROR: Link is invilid
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+ERROR: Link is expired
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+SUCCESS: User logged out
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/actively_black_python/management/forms.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/actively_black_python/management/forms.py changed, reloading.
+Watching for file changes with StatReloader
+Error: User not found with this emil in forget password
+SUCCESS: Forget passaword mail sent
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+SUCCESS: User password has been changed
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/actively_black_python/management/forms.py changed, reloading.
+Watching for file changes with StatReloader
