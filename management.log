@@ -48,3 +48,152 @@ Watching for file changes with StatReloader
 Watching for file changes with StatReloader
 /home/bablu/actively_black_python/management/forms.py changed, reloading.
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+SUCCESS: User password has been changed
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /login
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/actively_black_python/management/views.py", line 189, in login
+    return render(request, 'management/login.html', context={'form': form, 'message': message})
+NameError: name 'message' is not defined
+Not Found: /favicon.ico
+Internal Server Error: /login
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/actively_black_python/management/views.py", line 189, in login
+    return render(request, 'management/login.html', context={'form': form, 'message': message})
+NameError: name 'message' is not defined
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+Importing BlpImagePlugin
+Importing BmpImagePlugin
+Importing BufrStubImagePlugin
+Importing CurImagePlugin
+Importing DcxImagePlugin
+Importing DdsImagePlugin
+Importing EpsImagePlugin
+Importing FitsStubImagePlugin
+Importing FliImagePlugin
+Importing FpxImagePlugin
+Importing FtexImagePlugin
+Importing GbrImagePlugin
+Importing GifImagePlugin
+Importing GribStubImagePlugin
+Importing Hdf5StubImagePlugin
+Importing IcnsImagePlugin
+Importing IcoImagePlugin
+Importing ImImagePlugin
+Importing ImtImagePlugin
+Importing IptcImagePlugin
+Importing JpegImagePlugin
+Importing Jpeg2KImagePlugin
+Importing McIdasImagePlugin
+Importing MicImagePlugin
+Importing MpegImagePlugin
+Importing MpoImagePlugin
+Importing MspImagePlugin
+Importing PalmImagePlugin
+Importing PcdImagePlugin
+Importing PcxImagePlugin
+Importing PdfImagePlugin
+Importing PixarImagePlugin
+Importing PngImagePlugin
+Importing PpmImagePlugin
+Importing PsdImagePlugin
+Importing SgiImagePlugin
+Importing SpiderImagePlugin
+Importing SunImagePlugin
+Importing TgaImagePlugin
+Importing TiffImagePlugin
+Importing WebPImagePlugin
+Importing WmfImagePlugin
+Importing XbmImagePlugin
+Importing XpmImagePlugin
+Importing XVThumbImagePlugin
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Importing BlpImagePlugin
+Importing BmpImagePlugin
+Importing BufrStubImagePlugin
+Importing CurImagePlugin
+Importing DcxImagePlugin
+Importing DdsImagePlugin
+Importing EpsImagePlugin
+Importing FitsStubImagePlugin
+Importing FliImagePlugin
+Importing FpxImagePlugin
+Importing FtexImagePlugin
+Importing GbrImagePlugin
+Importing GifImagePlugin
+Importing GribStubImagePlugin
+Importing Hdf5StubImagePlugin
+Importing IcnsImagePlugin
+Importing IcoImagePlugin
+Importing ImImagePlugin
+Importing ImtImagePlugin
+Importing IptcImagePlugin
+Importing JpegImagePlugin
+Importing Jpeg2KImagePlugin
+Importing McIdasImagePlugin
+Importing MicImagePlugin
+Importing MpegImagePlugin
+Importing MpoImagePlugin
+Importing MspImagePlugin
+Importing PalmImagePlugin
+Importing PcdImagePlugin
+Importing PcxImagePlugin
+Importing PdfImagePlugin
+Importing PixarImagePlugin
+Importing PngImagePlugin
+Importing PpmImagePlugin
+Importing PsdImagePlugin
+Importing SgiImagePlugin
+Importing SpiderImagePlugin
+Importing SunImagePlugin
+Importing TgaImagePlugin
+Importing TiffImagePlugin
+Importing WebPImagePlugin
+Importing WmfImagePlugin
+Importing XbmImagePlugin
+Importing XpmImagePlugin
+Importing XVThumbImagePlugin
+Watching for file changes with StatReloader
+/home/bablu/actively_black_python/user_management_module/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/actively_black_python/user_management_module/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/actively_black_python/user_management_module/settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
