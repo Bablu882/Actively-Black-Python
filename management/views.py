@@ -1,5 +1,4 @@
 
-from types import CodeType
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.conf import settings
@@ -23,6 +22,7 @@ from django.core.mail import EmailMessage
 from .token import account_activation_token
 from .forms import ChangePasswordForm, ForgetPasswordform, RegisterForm,LoginForm, Userchangeform,ProfileForm
 from django.db.models import Q
+import logging
 
 
 
@@ -58,32 +58,32 @@ def profile(request):
 def register(request):
     form = RegisterForm()
     if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            user=form.save(commit=False)
-            user.is_active=False
-            user.save()
-            current_site=get_current_site(request)
-            mail_subject='verify mail'
-            message = render_to_string('management/activate.html', {  
-                'user': user,  
-                'domain': current_site.domain,  
-                'uid':urlsafe_base64_encode(force_bytes(user.pk)),  
-                'token':account_activation_token.make_token(user),  
-            })
-            to_email = form.cleaned_data.get('email')  
-            email = EmailMessage(  
-                        mail_subject, message, to=[to_email]  
-            )  
-            email.send()
-            token=uuid.uuid4()
-            print(token)
-            profile=Profile.objects.create(user=user,token=token) 
-            print(profile)
-            messages.add_message(request,messages.SUCCESS,'we have sent you a mail to verify your account')
-
+        try: 
+            form = RegisterForm(request.POST)
+            if form.is_valid():
+                user=form.save(commit=False)
+                user.is_active=False
+                user.save()
+                current_site=get_current_site(request)
+                mail_subject='verify mail'
+                message = render_to_string('management/activate.html', {  
+                    'user': user,  
+                    'domain': current_site.domain,  
+                    'uid':urlsafe_base64_encode(force_bytes(user.pk)),  
+                    'token':account_activation_token.make_token(user),  
+                })
+                to_email = form.cleaned_data.get('email')  
+                email = EmailMessage(  
+                            mail_subject, message, to=[to_email]  
+                )  
+                email.send()
+                token=uuid.uuid4()
+                print(token)
+                Profile.objects.create(user=user,token=token) 
+                messages.add_message(request,messages.SUCCESS,'we have sent you a mail to verify your account')
+        except Exception as e:
+            logging.error(e)
             return redirect('register')
-
     else:
         form = RegisterForm()
     return render(request, 'management/register.html', {'form':form}) 
@@ -99,21 +99,17 @@ def activate(request, uidb64, token):
         user = None  
     if user is not None and account_activation_token.check_token(user, token):  
         user.is_active = True  
-        user.save()  
+        user.save() 
         return redirect('login')  
-    else:  
+    else: 
         return HttpResponse('Activation link is invalid!')       
 
 
 ##--------------------------------LOGOUT---------------------------------------##
 
 def logout(request):
-
     auth_logout(request=request)
-
-    messages.add_message(request, messages.SUCCESS,
-                         'Successfully logged out')
-
+    messages.add_message(request, messages.SUCCESS,'Successfully logged out')
     return redirect('/login')    
 
 
@@ -127,23 +123,16 @@ def forget_password(request):
         if request.method=='POST':
             form=ForgetPasswordform(request.POST)
             if form.is_valid(): 
-                user=form.cleaned_data['email']
-                if not user:
-                    message="Please provide your valid email"
-                    return render(request,'management/forget-password.html',context={'message':message})
-                if not User.objects.filter(email=user).exists():
-                    messages.error(request,'Not user found with this email')
-                    return redirect('forget-password')
-                else:    
-                    user_obj=User.objects.get(email=user)
-                    profile=Profile.objects.get(user=user_obj)
-                    pro=profile.token
-                    print(pro)
-                    send_forget_password_mail(user,pro)
-                    messages.success(request,'please check your mail we have sent a link')
-                    return redirect('forget-password')
+                user=form.cleaned_data['email']   
+                user_obj=User.objects.get(email=user)
+                profile=Profile.objects.get(user=user_obj)
+                pro=profile.token
+                print(pro)
+                send_forget_password_mail(user,pro)
+                messages.success(request,'please check your mail we have sent a link')
+                return redirect('forget-password')
     except Exception as e:
-        print(e)
+        logging.error(e)
     return render(request,'management/forget-password.html',{'form':form})
 
 ###-----------------------------Redirect On Change Password Form---------------------------##
@@ -152,16 +141,20 @@ def change_password(request,token):
     form=ChangePasswordForm()
     profile=Profile.objects.filter(token=token).first()
     print(profile.user.id)
-    if request.method=='POST':
-        user_id=request.POST.get('user_id')
-        form=ChangePasswordForm(request.POST)
-        if form.is_valid():
-            newpass=form.cleaned_data['password']
-            user_obj=User.objects.get(id=user_id)
-            user_obj.set_password(newpass)
-            user_obj.save()
-            messages.success(request,'New password changed now login with new password')
+    try:        
+        if request.method=='POST':
+            user_id=request.POST.get('user_id')
+            form=ChangePasswordForm(request.POST)
+            if form.is_valid():
+                newpass=form.cleaned_data['password']
+                user_obj=User.objects.get(id=user_id)
+                user_obj.set_password(newpass)
+                user_obj.save()
+                messages.success(request,'New password changed now login with new password')
+                logging.info('SUCCESS: User password has been changed')
             return redirect('login')
+    except Exception as e:
+        logging.error(e)
     return render(request,'management/change-password.html',{'form':form,'user_id':profile.user.id})
 
 ###------------------------------------Forget Password Mail---------------------------------###
@@ -178,41 +171,41 @@ def send_forget_password_mail(email,token):
 
 def login(request):
     form =LoginForm()
-    message = ''
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            user = authenticate(
-                username=form.cleaned_data['username'],
-                password=form.cleaned_data['password'],
-            )
-            if user and not user.is_active:
-                messages.error(request,'please verify email ')
-                return redirect('login')
-            if user is not None:
-                login_dj(request, user)
-                messages.success(request,f'Welcome {user.username}')
-                return redirect('dashboard')
-            else:
-                messages.error(request,'Provide valid credentials or check your mail')
-    return render(
-        request, 'management/login.html', context={'form': form, 'message': message}) 
+    try:       
+        if request.method == 'POST':
+            form = LoginForm(request.POST)
+            if form.is_valid():
+                user = authenticate(
+                    username=form.cleaned_data['username'],
+                    password=form.cleaned_data['password'],)
+                if user is not None:
+                    login_dj(request, user)
+                    messages.success(request,f'Welcome {user.username}')
+                    return redirect('dashboard')
+                else:
+                    messages.error(request,'Provide valid credentials or check your mail')
+    except Exception as e:
+        logging.error(e)
+    return render(request, 'management/login.html', context={'form': form,}) 
 
 ###------------------------------------Admin Add User------------------------------------------------####
 
 @login_required(login_url='login')
 def add_user_admin(request):
     form=RegisterForm()
-    if request.method=='POST':
-        form=RegisterForm(request.POST)
-        if form.is_valid():
-            user=form.save()
-            token=uuid.uuid4()
-            Profile.objects.create(user=user,token=token)
-            form=RegisterForm()
-            messages.success(request,'Add user successfully')
-    else:
-        form=RegisterForm()        
+    try:    
+        if request.method=='POST':
+            form=RegisterForm(request.POST)
+            if form.is_valid():
+                user=form.save()
+                token=uuid.uuid4()
+                Profile.objects.create(user=user,token=token)
+                form=RegisterForm()
+                messages.success(request,'Add user successfully')
+        else:
+            form=RegisterForm()        
+    except Exception as e:
+        logging.error(e)
     return render(request,'management/admin-add-user.html',{'form':form})
 
 ###------------------------------------Admin Delete User------------------------------------###
@@ -228,41 +221,45 @@ def delete_user(request,id):
 
 @login_required(login_url='login')
 def edit_user(request,id):
-    request.method=='POST'
-    gt=User.objects.get(pk=id)
-    pro=Profile.objects.get(pk=id)
-    form=Userchangeform(request.POST,request.FILES,instance=gt)
-    form2=ProfileForm(request.POST,request.FILES,instance=pro)
-    if form.is_valid() and form2.is_valid():
-        form.save()
-        form2.save()
-        messages.success(request,'User updated successfully!!')
-
-    else:
+    try:    
+        request.method=='POST'
         gt=User.objects.get(pk=id)
         pro=Profile.objects.get(pk=id)
-        form=Userchangeform(instance=gt)
-        form2=ProfileForm(instance=pro)
+        form=Userchangeform(request.POST,request.FILES,instance=gt)
+        form2=ProfileForm(request.POST,request.FILES,instance=pro)
+        if form.is_valid() and form2.is_valid():
+            form.save()
+            form2.save()
+            messages.success(request,'User updated successfully!!')
+        else:
+            gt=User.objects.get(pk=id)
+            pro=Profile.objects.get(pk=id)
+            form=Userchangeform(instance=gt)
+            form2=ProfileForm(instance=pro)
+    except Exception as e:
+        logging.error(e)
     return render(request,'management/change-user-form.html',{'form':form,'form2':form2,'image':gt})
 
 ###---------------------------------------Edit User Profile---------------------------------###
 
 @login_required(login_url='login')
 def edit_profile(request):
-    request.method=='POST'
-    gt=User.objects.get(id=request.user.id)
-    form=Userchangeform(request.POST,instance=gt)
-    form2=ProfileForm(request.POST,request.FILES,instance=request.user.profile)
-    if form.is_valid() and form2.is_valid():
-        form.save()
-        form2.save()
-        messages.success(request,'Profile updated successfully!!')
-        return redirect('profile')
-
-    else:
+    try: 
+        request.method=='POST'
         gt=User.objects.get(id=request.user.id)
-        form=Userchangeform(instance=gt)
-        form2=ProfileForm(instance=request.user.profile)
+        form=Userchangeform(request.POST,instance=gt)
+        form2=ProfileForm(request.POST,request.FILES,instance=request.user.profile)
+        if form.is_valid() and form2.is_valid():
+            form.save()
+            form2.save()
+            messages.success(request,'Profile updated successfully!!')
+            return redirect('profile')
+        else:
+            gt=User.objects.get(id=request.user.id)
+            form=Userchangeform(instance=gt)
+            form2=ProfileForm(instance=request.user.profile)
+    except Exception as e:
+        logging.error(e)
     return render(request,'management/edit-profile.html',{'form':form,'form2':form2})    
 
 
@@ -276,3 +273,16 @@ def view_user_profile(request,id):
     return render(request,'management/view-profile.html',{'form':form,'form2':form2,'image':image})    
 
 ###---------------------------------------------------------------------------------------###
+def logging_error(request):
+    logging.error('this is error')
+    logging.info('this is info ')
+    logging.warning('this is warning')
+    logging.debug('this is debug')
+    logging.critical('this is critical')
+    return render(request,'management/logging.html')
+
+
+    try:
+        raise Exception("this is error")
+    except Exception as e:
+        logging.error(e)    

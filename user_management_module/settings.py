@@ -188,3 +188,25 @@ EMAIL_PAGE_DOMAIN='http://127.0.0.1:8000/profile/'
 
 
 AUTH_USER_MODEL = 'management.User' 
+
+LOGGING = {
+    'version': 1,
+
+    'disable_existing_loggers': False,
+
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename':BASE_DIR /'management.log',
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['file'], 
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+

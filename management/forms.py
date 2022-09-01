@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib import messages
 from .models import Profile
+import logging
 
 
 
@@ -80,6 +81,7 @@ class RegisterForm(UserCreationForm):
         username=self.cleaned_data['username']    
         if len(username) <=3:
             raise forms.ValidationError('username is too short ')
+            
         return username 
 
     def clean_email(self):
@@ -323,65 +325,3 @@ class ProfileForm(forms.ModelForm):
         model=Profile
         fields=['avatar']
 ###---------------------------------------------------------------------------------------####        
-# class PermissionsModelMultipleChoiceField(forms.ModelChoiceField):
-#     def label_from_instance(self, obj):
-#         return "%s" % obj.name
-
-
-
-# from django.contrib.auth.models import PermissionsMixin,PermissionManager
-# from django.contrib.auth import get_user_model
-# from django.contrib.contenttypes.models import ContentType
-# from django.contrib.auth.models import Permission,PermissionManager
-# from django.db.models import Q
-
-
-# # class Permission_user(forms.ModelForm):
-# #     permissions = PermissionsModelMultipleChoiceField(Permission.objects.none(), widget=forms.CheckboxSelectMultiple)
-# #     def __init__( self, *args, **kwargs ):
-# #         super( Permission_user, self ).__init__( *args, **kwargs )
-# #         ctypes = ContentType.objects.filter(
-# #             Q(app_label='management') |
-# #             Q(app_label='auth')
-# #         )
-# #         self.fields['permissions'].queryset = Permission.objects.filter(content_type__in=ctypes)
-
-# #     class Meta:
-# #         model = User
-# #         fields=['permissions']
-
-
-#     # class Meta:
-#     #     model=User
-#     #     fields=['permissions']
-
-
-
-# # class Permission_user(forms.ModelForm):
-# #     change_user = forms.ChoiceField(
-# #         widget=forms.RadioSelect,
-# #         choices=[(True, 'Yes'), (False, 'no')],
-# #         required=True  # It's required ?
-# #     )
-
-# #     class Meta:
-# #         model = Profile
-# #         fields = ('change_user',)
-
-# from django.contrib.admin.widgets import FilteredSelectMultiple
-
-
-# class Permission_user(forms.ModelForm):
-#     class Meta:
-#         model = User
-#         fields = '__all__'
-#         widgets = {
-#             'permissions': FilteredSelectMultiple("Permission", False, attrs={'rows':'2'}),
-#         }
-
-from django.contrib.auth.models import Permission
-
-class Permissionform(forms.ModelForm):
-    class Meta:
-        model=Permission
-        fields='__all__'   

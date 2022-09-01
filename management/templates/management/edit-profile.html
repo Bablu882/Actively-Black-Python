@@ -193,6 +193,7 @@
                                 <div class="col-lg-6">
                                     <h1>Permissions</h1>
                                     {{form.is_active|as_crispy_field}}
+                                    
                                     {% if request.user.is_superuser %}
                                     {{form.is_superuser|as_crispy_field}}
                                     {{form.is_staff|as_crispy_field}}
