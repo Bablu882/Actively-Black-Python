@@ -197,3 +197,285 @@ Watching for file changes with StatReloader
 /home/bablu/actively_black_python/user_management_module/settings.py changed, reloading.
 Watching for file changes with StatReloader
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Importing BlpImagePlugin
+Importing BmpImagePlugin
+Importing BufrStubImagePlugin
+Importing CurImagePlugin
+Importing DcxImagePlugin
+Importing DdsImagePlugin
+Importing EpsImagePlugin
+Importing FitsStubImagePlugin
+Importing FliImagePlugin
+Importing FpxImagePlugin
+Importing FtexImagePlugin
+Importing GbrImagePlugin
+Importing GifImagePlugin
+Importing GribStubImagePlugin
+Importing Hdf5StubImagePlugin
+Importing IcnsImagePlugin
+Importing IcoImagePlugin
+Importing ImImagePlugin
+Importing ImtImagePlugin
+Importing IptcImagePlugin
+Importing JpegImagePlugin
+Importing Jpeg2KImagePlugin
+Importing McIdasImagePlugin
+Importing MicImagePlugin
+Importing MpegImagePlugin
+Importing MpoImagePlugin
+Importing MspImagePlugin
+Importing PalmImagePlugin
+Importing PcdImagePlugin
+Importing PcxImagePlugin
+Importing PdfImagePlugin
+Importing PixarImagePlugin
+Importing PngImagePlugin
+Importing PpmImagePlugin
+Importing PsdImagePlugin
+Importing SgiImagePlugin
+Importing SpiderImagePlugin
+Importing SunImagePlugin
+Importing TgaImagePlugin
+Importing TiffImagePlugin
+Importing WebPImagePlugin
+Importing WmfImagePlugin
+Importing XbmImagePlugin
+Importing XpmImagePlugin
+Importing XVThumbImagePlugin
+SUCCESS: User password has been changed
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/user_management_module/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/user_management_module/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/user_management_module/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Bad Request: /api/register
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /api/account-activate/(?PMjc[0-9A-Za-z_\-]+)/(?Pbbmyrj-20de576de7e7f914396224943a38084a[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/current/actively_black_python/api/views.py", line 72, in account_activate
+    return redirect('activate-success')
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 48, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 145, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/resolvers.py", line 802, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'activate-success' not found. 'activate-success' is not a valid view function or pattern name.
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+Bad Request: /api/login
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Bad Request: /api/logout
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /api/logout
+Not Acceptable: /api/logout
+Not Acceptable: /api/logout
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /api/register
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 84, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/bablu/Desktop/current/actively_black_python/api/views.py", line 30, in post
+    user=serializer.save()
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/bablu/Desktop/current/actively_black_python/api/serializers.py", line 57, in create
+    emails.send()
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/mail/backends/smtp.py", line 124, in send_messages
+    new_conn_created = self.open()
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/mail/backends/smtp.py", line 80, in open
+    self.connection = self.connection_class(
+  File "/usr/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/lib/python3.8/socket.py", line 787, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+  File "/usr/lib/python3.8/socket.py", line 918, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+Watching for file changes with StatReloader
+Internal Server Error: /api/register
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 84, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/bablu/Desktop/current/actively_black_python/api/views.py", line 30, in post
+    user=serializer.save()
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/bablu/Desktop/current/actively_black_python/api/serializers.py", line 55, in create
+    emails.send()
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/mail/backends/smtp.py", line 124, in send_messages
+    new_conn_created = self.open()
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/mail/backends/smtp.py", line 91, in open
+    self.connection.login(self.username, self.password)
+  File "/usr/lib/python3.8/smtplib.py", line 743, in login
+    raise last_exception
+  File "/usr/lib/python3.8/smtplib.py", line 732, in login
+    (code, resp) = self.auth(
+  File "/usr/lib/python3.8/smtplib.py", line 655, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. Learn more at\n5.7.8  https://support.google.com/mail/?p=BadCredentials u17-20020a170903125100b001780e4e6b65sm5776653plh.114 - gsmtp')
+Internal Server Error: /api/register
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 84, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/bablu/Desktop/current/actively_black_python/api/views.py", line 30, in post
+    user=serializer.save()
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/bablu/Desktop/current/actively_black_python/api/serializers.py", line 55, in create
+    emails.send()
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/mail/backends/smtp.py", line 124, in send_messages
+    new_conn_created = self.open()
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/mail/backends/smtp.py", line 91, in open
+    self.connection.login(self.username, self.password)
+  File "/usr/lib/python3.8/smtplib.py", line 743, in login
+    raise last_exception
+  File "/usr/lib/python3.8/smtplib.py", line 732, in login
+    (code, resp) = self.auth(
+  File "/usr/lib/python3.8/smtplib.py", line 655, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. Learn more at\n5.7.8  https://support.google.com/mail/?p=BadCredentials 136-20020a62168e000000b0053dd1bba6a0sm5549304pfw.145 - gsmtp')
+/home/bablu/Desktop/current/actively_black_python/user_management_module/settings.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /api/logout
+Unauthorized: /api/logout
+Unauthorized: /api/logout
+Watching for file changes with StatReloader
+Unauthorized: /api/logout
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /api/logout
+Method Not Allowed: /api/login
+Method Not Allowed: /api/login
+Watching for file changes with StatReloader
+Method Not Allowed: /api/login
+Method Not Allowed: /api/login
+Method Not Allowed: /api/login
+Method Not Allowed: /api/login
+/home/bablu/Desktop/current/actively_black_python/user_management_module/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Method Not Allowed: /api/login
+Method Not Allowed: /api/login
+Method Not Allowed: /api/login
+Method Not Allowed: /api/login
+/home/bablu/Desktop/current/actively_black_python/user_management_module/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /api/login
+Not Found: /api/login
+/home/bablu/Desktop/current/actively_black_python/user_management_module/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /api/login
+/home/bablu/Desktop/current/actively_black_python/user_management_module/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /api/login
+Watching for file changes with StatReloader
+SUCCESS: User password has been changed
+/home/bablu/Desktop/current/actively_black_python/user_management_module/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
