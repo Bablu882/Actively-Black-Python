@@ -83,7 +83,7 @@ def register(request):
                 messages.add_message(request,messages.SUCCESS,'we have sent you a mail to verify your account')
         except Exception as e:
             logging.error(e)
-            return redirect('register')
+            return redirect('/register')
     else:
         form = RegisterForm()
     return render(request, 'management/register.html', {'form':form}) 
@@ -100,7 +100,7 @@ def activate(request, uidb64, token):
     if user is not None and account_activation_token.check_token(user, token):  
         user.is_active = True  
         user.save() 
-        return redirect('login')  
+        return redirect('/login')  
     else: 
         return HttpResponse('Activation link is invalid!')       
 
@@ -123,41 +123,62 @@ def forget_password(request):
         if request.method=='POST':
             form=ForgetPasswordform(request.POST)
             if form.is_valid(): 
-                user=form.cleaned_data['email']   
-                user_obj=User.objects.get(email=user)
-                profile=Profile.objects.get(user=user_obj)
-                pro=profile.token
-                print(pro)
-                send_forget_password_mail(user,pro)
+                email=form.cleaned_data['email']   
+                user=User.objects.get(email=email)
+                user.is_active=False
+                user.save()
+                current_site=get_current_site(request)
+                mail_subject="password reset request"
+                message = render_to_string('api/activate.html', {  
+                            'user': user,  
+                            'domain': current_site.domain,  
+                            'uid':urlsafe_base64_encode(force_bytes(user.pk)),  
+                            'token':account_activation_token.make_token(user),  
+                        })
+                to_email = email  
+                email = EmailMessage(  
+                            mail_subject, message, to=[to_email]  
+                )  
+                email.send()
                 messages.success(request,'please check your mail we have sent a link')
-                return redirect('forget-password')
+                return redirect('/forget-password')
     except Exception as e:
         logging.error(e)
     return render(request,'management/forget-password.html',{'form':form})
 
 ###-----------------------------Redirect On Change Password Form---------------------------##
 
-def change_password(request,token):
-    form=ChangePasswordForm()
-    profile=Profile.objects.filter(token=token).first()
-    print(profile.user.id)
-    try:        
-        if request.method=='POST':
-            user_id=request.POST.get('user_id')
-            form=ChangePasswordForm(request.POST)
+
+
+def change_password(request, uidb64, token):
+    User = get_user_model()
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):  
+        User = None
+    print(user)
+    if user is not None and account_activation_token.check_token(user, token):
+        if request.method == 'POST':
+            form = ChangePasswordForm(request.POST)
             if form.is_valid():
                 newpass=form.cleaned_data['password']
-                user_obj=User.objects.get(id=user_id)
-                user_obj.set_password(newpass)
-                user_obj.save()
-                messages.success(request,'New password changed now login with new password')
-                logging.info('SUCCESS: User password has been changed')
-            return redirect('login')
-    except Exception as e:
-        logging.error(e)
-    return render(request,'management/change-password.html',{'form':form,'user_id':profile.user.id})
+                userobj=User.objects.get(pk=uid)
+                userobj.set_password(newpass)
+                userobj.is_active=True
+                userobj.save()
+                messages.success(request, "Your password has been set. Now you can login")
+                return redirect('/login')
+        else:
+            form=ChangePasswordForm() 
+    else:
+        return HttpResponse('invilid link')               
+    return render(request,'management/change-password.html',{'form':form})        
+                
 
 ###------------------------------------Forget Password Mail---------------------------------###
+
+
 
 def send_forget_password_mail(email,token):
     subject="Change your password"
@@ -181,7 +202,7 @@ def login(request):
                 if user is not None:
                     login_dj(request, user)
                     messages.success(request,f'Welcome {user.username}')
-                    return redirect('dashboard')
+                    return redirect('/dashboard')
                 else:
                     messages.error(request,'Provide valid credentials or check your mail')
     except Exception as e:
@@ -215,7 +236,7 @@ def delete_user(request,id):
         user=User.objects.get(pk=id)
         user.delete()
         messages.success(request,'User deleted successfully !!')
-        return redirect('listing')
+        return redirect('/listing')
 
 ###-----------------------------------Admin Edit User--------------------------------------###
 
@@ -253,7 +274,7 @@ def edit_profile(request):
             form.save()
             form2.save()
             messages.success(request,'Profile updated successfully!!')
-            return redirect('profile')
+            return redirect('/profile')
         else:
             gt=User.objects.get(id=request.user.id)
             form=Userchangeform(instance=gt)
@@ -270,7 +291,7 @@ def view_user_profile(request,id):
     form=Userchangeform(instance=gt)
     form2=ProfileForm(instance=pro)
     image=pro.avatar
-    return render(request,'management/view-profile.html',{'form':form,'form2':form2,'image':image})    
+    return render(request,'management/view-profile.html',{'form':form,'form2':form2,'image':image,'user':gt})    
 
 ###---------------------------------------------------------------------------------------###
 def logging_error(request):

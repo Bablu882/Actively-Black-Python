@@ -9,7 +9,8 @@ from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_bytes
 from management.token import account_activation_token
-
+from rest_framework.response import Response
+from rest_framework import status
 
 class RegisterSerializer(serializers.ModelSerializer):
     username=serializers.CharField(required=True,validators=[UniqueValidator(queryset=User.objects.all())])
@@ -42,7 +43,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         current_site=get_current_site(self.context['request'])
         print(current_site)
         mail_subject='verify mail'
-        message = render_to_string('api/activate.html', {  
+        message = render_to_string('management/activate.html', {  
             'user': get,  
             'domain': current_site,  
             'uid':urlsafe_base64_encode(force_bytes(user.pk)),  
@@ -60,4 +61,15 @@ class LoginSerializer(serializers.ModelSerializer):
     class Meta:
         model=User
         fields=['username','password']
+
+class ForgetPasseordSerializer(serializers.ModelSerializer):
+    email=serializers.EmailField(required=True)
+    class Meta:
+        model=User
+        fields=['email']
+    def validate(self, attrs):
+        if User.objects.filter(attrs['email']).exists():
+            return attrs
+        else:
+            return Response({'error':'Email doesnot exists'},status=status.HTTP_400_BAD_REQUEST)    
 
