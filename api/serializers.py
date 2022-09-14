@@ -73,3 +73,11 @@ class ForgetPasseordSerializer(serializers.ModelSerializer):
         else:
             return Response({'error':'Email doesnot exists'},status=status.HTTP_400_BAD_REQUEST)    
 
+
+from .models import Student
+
+
+class StudentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Student
+        fields=['id','name','city','state']
