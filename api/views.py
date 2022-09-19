@@ -1,3 +1,4 @@
+from importlib.metadata import files
 from .serializers import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -13,7 +14,7 @@ from rest_framework.permissions import IsAuthenticated,AllowAny
 from django.contrib.auth import logout
 from django.conf import settings
 from django.core.mail import send_mail
-from management.views import send_forget_password_mail
+from management.views import profile, send_forget_password_mail
 from management.token import account_activation_token
 
 # Create your views here.
@@ -230,6 +231,7 @@ class UserMixinList(ListModelMixin,CreateModelMixin,GenericAPIView):
     queryset=User.objects.all()
     serializer_class=UserSerializer
     permission_classes=[IsAuthenticated]
+    authentication_classes=[BasicAuthentication]
     def get(self,request,*args,**kwargs):
         return self.list(request,*args,**kwargs)
 
@@ -241,6 +243,7 @@ class UserMixinDetail(RetrieveModelMixin,DestroyModelMixin,UpdateModelMixin,Gene
     queryset=User.objects.all()
     serializer_class=UserSerializer
     permission_classes=[IsAuthenticated]
+    authentication_classes=[BasicAuthentication]
 
     def get(self,request,*args,**kwargs):
         return self.retrieve(request,*args,**kwargs)
@@ -250,3 +253,20 @@ class UserMixinDetail(RetrieveModelMixin,DestroyModelMixin,UpdateModelMixin,Gene
 
     def delete(self,request,*args,**kwargs):
         return self.destroy(request,*args,**kwargs)    
+
+class ProfileView(APIView):
+    def get(self,request,pk,format=None):
+        user=User.objects.get(pk=pk)
+        profile=Profile.objects.get(user=user)
+        serializer=ProfileSerializer(profile)
+        return Response(serializer.data)
+
+    def put(self,request,pk,format=None):
+        user=User.objects.get(pk=pk)
+        profile=Profile.objects.get(user=user)
+        serializer=ProfileSerializer(profile,data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data,status=status.HTTP_200_OK)
+        return Response(serializer.errors)    
+

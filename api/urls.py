@@ -21,11 +21,13 @@ urlpatterns = [
     path('api/userview/<int:pk>/',UserViewDetail.as_view(),name='userview'),
     path('api/usermixins',UserMixinList.as_view(),name='usermixins'),
     path('api/usermixin/<int:pk>/',UserMixinDetail.as_view(),name='usermixin'),
+    path('api/profile/<int:pk>',ProfileView.as_view(),name='profile'),
 
 
     
- 
-    
+]
+urlpatterns+=[
+    path('api-auth',include('rest_framework.urls'),name='apiauth')
 ]
 
 
