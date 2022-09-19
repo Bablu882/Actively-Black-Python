@@ -9,7 +9,7 @@ from django.utils.encoding import force_str
 from django.utils.http import urlsafe_base64_decode
 from django.shortcuts import redirect,render
 from django.http import HttpResponse
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated,AllowAny
 from django.contrib.auth import logout
 from django.conf import settings
 from django.core.mail import send_mail
@@ -60,6 +60,7 @@ class LogoutUser(APIView):
 
 
 class ForgetPassword(APIView):
+    permission_classes=[AllowAny]
     def post(self,request,format=None):
         data=request.data
         email=data['email']
@@ -171,3 +172,81 @@ class StudentGenericList(ListCreateAPIView):
 class StudentGenericDetails(RetrieveUpdateDestroyAPIView):
     queryset=Student.objects.all()
     serializer_class=StudentSerializer
+
+###--------------------------------------------------------------------------------------###
+class UserGenericList(ListCreateAPIView):
+    permission_classes=[IsAuthenticated]
+    queryset=User.objects.all()
+    serializer_class=UserSerializer
+
+class UserGenericDetails(RetrieveUpdateDestroyAPIView):
+    permission_classes=[IsAuthenticated]
+    queryset=User.objects.all()    
+    serializer_class=UserSerializer
+###------------------------------------------------------------------------------------####
+class UserViewList(APIView):
+    permission_classes=[IsAuthenticated]
+    def get(self,request,format=None):
+        queryset=User.objects.all()           
+        serializer=UserSerializer(queryset,context={"request":request},many=True)
+        return Response(serializer.data)
+        
+    def post(self,request,foramt=None):
+        serializer=UserSerializer(data=request.data)    
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data,{'message':'user created !'})
+        return Response(serializer.errors)    
+
+class UserViewDetail(APIView):
+    permission_classes=[IsAuthenticated]
+    def get_user_objects(self,pk):
+        try:
+            User.objects.get(pk=pk)    
+        except User.DoesNotExist:
+            raise Http404
+
+    def get(self,request,pk,format=None):
+        user=self.get_user_objects(pk)            
+        serializer=UserSerializer(user)
+        return Response(serializer.data)
+
+    def put(self,request,pk,format=None):
+        user=self.get_user_objects(pk)    
+        serializer=UserSerializer(user,data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)  
+          
+    def delete(self,request,pk,format=None):
+        user=self.get_user_objects(pk)
+        user.delete()
+        return Response({"message":"user deleted successfully"})
+
+###----------------------------------------------------------------------------------------###
+
+class UserMixinList(ListModelMixin,CreateModelMixin,GenericAPIView):
+    queryset=User.objects.all()
+    serializer_class=UserSerializer
+    permission_classes=[IsAuthenticated]
+    def get(self,request,*args,**kwargs):
+        return self.list(request,*args,**kwargs)
+
+    def post(self,request,*args,**kwargs):
+        return self.create(request,*args,**kwargs)   
+    
+
+class UserMixinDetail(RetrieveModelMixin,DestroyModelMixin,UpdateModelMixin,GenericAPIView):
+    queryset=User.objects.all()
+    serializer_class=UserSerializer
+    permission_classes=[IsAuthenticated]
+
+    def get(self,request,*args,**kwargs):
+        return self.retrieve(request,*args,**kwargs)
+
+    def put(self,request,*args,**kwargs):
+        return self.update(request,*args,**kwargs)    
+
+    def delete(self,request,*args,**kwargs):
+        return self.destroy(request,*args,**kwargs)    

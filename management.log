@@ -3288,3 +3288,230 @@ Watching for file changes with StatReloader
 Watching for file changes with StatReloader
 /home/bablu/Desktop/current/actively_black_python/api/models.py changed, reloading.
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/management/apps.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/user_management_module/settings.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /api/user
+/home/bablu/Desktop/current/actively_black_python/api/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/user_management_module/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/management/apps.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/management/apps.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/management/signals.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/management/signals.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /view-profile/46/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/bablu/Desktop/current/actively_black_python/management/views.py", line 290, in view_user_profile
+    pro=Profile.objects.get(pk=id)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/db/models/query.py", line 496, in get
+    raise self.model.DoesNotExist(
+management.models.Profile.DoesNotExist: Profile matching query does not exist.
+/home/bablu/Desktop/current/actively_black_python/user_management_module/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/management/views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /view-profile/48/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/bablu/Desktop/current/actively_black_python/management/views.py", line 290, in view_user_profile
+    pro=Profile.objects.get(pk=id)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/db/models/query.py", line 496, in get
+    raise self.model.DoesNotExist(
+management.models.Profile.DoesNotExist: Profile matching query does not exist.
+/home/bablu/Desktop/current/actively_black_python/management/apps.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/user_management_module/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/management/signals.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/management/apps.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/management/signals.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/management/signals.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /api/user
+Not Found: /api/user
+Not Found: /api/user/1/
+Not Found: /api/user/2/
+Not Found: /api/user/3/
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /api/user/4/
+Unauthorized: /api/users
+Unauthorized: /api/user/4/
+Method Not Allowed: /api/login
+Not Found: /api/login
+Not Found: /api/login
+Not Found: /api/login
+Unauthorized: /api/user/4/
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /api/user
+Internal Server Error: /api/userviews
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 84, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+TypeError: get() missing 1 required positional argument: 'pk'
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /api/userviews
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 84, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+TypeError: get() missing 1 required positional argument: 'pk'
+Internal Server Error: /api/userviews
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 84, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+TypeError: get() missing 1 required positional argument: 'pk'
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /api/userviews
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 84, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/bablu/Desktop/current/actively_black_python/api/views.py", line 192, in get
+    serializer=UserSerializer(queryset,content={"request":request},many=True)
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/serializers.py", line 122, in __new__
+    return cls.many_init(*args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/serializers.py", line 149, in many_init
+    child_serializer = cls(*args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/rest_framework/serializers.py", line 116, in __init__
+    super().__init__(**kwargs)
+TypeError: __init__() got an unexpected keyword argument 'content'
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /api/user
+Not Found: /api/usermixin
+Unauthorized: /api/users
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /api/users
+Unauthorized: /api/userviews
+Unauthorized: /api/userview/4/
+Unauthorized: /api/usermixins
+Unauthorized: /api/usermixin/4/
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /api/usermixin/4/
+Unauthorized: /api/usermixin/4/
+Unauthorized: /api/usermixin/4/
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader

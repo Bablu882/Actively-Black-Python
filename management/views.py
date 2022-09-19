@@ -219,8 +219,8 @@ def add_user_admin(request):
             form=RegisterForm(request.POST)
             if form.is_valid():
                 user=form.save()
-                token=uuid.uuid4()
-                Profile.objects.create(user=user,token=token)
+                # token=uuid.uuid4()
+                # Profile.objects.create(user=user,token=token)
                 form=RegisterForm()
                 messages.success(request,'Add user successfully')
         else:

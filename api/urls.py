@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import *
@@ -14,9 +14,19 @@ urlpatterns = [
     path('api/mixin',StudentMixinList.as_view(),name='mixin'),
     path('api/mixin/<int:pk>/',StudentMixinDetail.as_view(),name='mixins'),
     path('api/generics',StudentGenericList.as_view(),name='generic'),
-    path('api/generics/<int:pk>/',StudentGenericDetails.as_view(),name='generics')
+    path('api/generics/<int:pk>/',StudentGenericDetails.as_view(),name='generics'),
+    path('api/users',UserGenericList.as_view(),name='users'),
+    path('api/user/<int:pk>/',UserGenericDetails.as_view(),name='user'),
+    path('api/userviews',UserViewList.as_view(),name='userviews'),
+    path('api/userview/<int:pk>/',UserViewDetail.as_view(),name='userview'),
+    path('api/usermixins',UserMixinList.as_view(),name='usermixins'),
+    path('api/usermixin/<int:pk>/',UserMixinDetail.as_view(),name='usermixin'),
+
+
     
  
     
 ]
+
+
 

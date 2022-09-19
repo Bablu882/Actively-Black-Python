@@ -1,3 +1,4 @@
+from importlib.metadata import files
 from rest_framework import serializers
 from management.models import User,Profile
 import uuid
@@ -81,3 +82,9 @@ class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model=Student
         fields=['id','name','city','state']
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=User
+        fields='__all__'        
