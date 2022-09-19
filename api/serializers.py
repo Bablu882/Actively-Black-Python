@@ -1,3 +1,4 @@
+
 from rest_framework import serializers
 from management.models import User,Profile
 import uuid
@@ -11,6 +12,7 @@ from django.utils.encoding import force_bytes
 from management.token import account_activation_token
 from rest_framework.response import Response
 from rest_framework import status
+from drf_extra_fields.fields import Base64FileField
 
 class RegisterSerializer(serializers.ModelSerializer):
     username=serializers.CharField(required=True,validators=[UniqueValidator(queryset=User.objects.all())])
@@ -73,3 +75,23 @@ class ForgetPasseordSerializer(serializers.ModelSerializer):
         else:
             return Response({'error':'Email doesnot exists'},status=status.HTTP_400_BAD_REQUEST)    
 
+
+from .models import Student
+
+
+class StudentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Student
+        fields=['id','name','city','state']
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=User
+        fields='__all__'        
+
+class ProfileSerializer(serializers.ModelSerializer):
+    avatar=serializers.ImageField()
+    class Meta:
+        model=Profile
+        fields=['avatar']

@@ -1,3 +1,4 @@
+from importlib.metadata import files
 from .serializers import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -9,11 +10,11 @@ from django.utils.encoding import force_str
 from django.utils.http import urlsafe_base64_decode
 from django.shortcuts import redirect,render
 from django.http import HttpResponse
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated,AllowAny
 from django.contrib.auth import logout
 from django.conf import settings
 from django.core.mail import send_mail
-from management.views import send_forget_password_mail
+from management.views import profile, send_forget_password_mail
 from management.token import account_activation_token
 
 # Create your views here.
@@ -60,6 +61,7 @@ class LogoutUser(APIView):
 
 
 class ForgetPassword(APIView):
+    permission_classes=[AllowAny]
     def post(self,request,format=None):
         data=request.data
         email=data['email']
@@ -81,104 +83,190 @@ class ForgetPassword(APIView):
         email.send()
         return Response({'message':'Forget password email has been sent please check your inbox'})
         
+    
+
+###----------------------------using class based views------------------------------------------------------------###
+
+from rest_framework import viewsets
+from rest_framework.permissions import IsAdminUser,IsAuthenticated,IsAuthenticatedOrReadOnly,AllowAny
+from rest_framework.authentication import BasicAuthentication,SessionAuthentication
+from django.http import Http404
 
 
-
-# def register(request):
-#     form = RegisterForm()
-#     if request.method == 'POST':
-#         try: 
-#             form = RegisterForm(request.POST)
-#             if form.is_valid():
-#                 user=form.save(commit=False)
-#                 user.is_active=False
-#                 user.save()
-#                 current_site=get_current_site(request)
-#                 mail_subject='verify mail'
-#                 message = render_to_string('management/activate.html', {  
-#                     'user': user,  
-#                     'domain': current_site.domain,  
-#                     'uid':urlsafe_base64_encode(force_bytes(user.pk)),  
-#                     'token':account_activation_token.make_token(user),  
-#                 })
-#                 to_email = form.cleaned_data.get('email')  
-#                 email = EmailMessage(  
-#                             mail_subject, message, to=[to_email]  
-#                 )  
-#                 email.send()
-#                 token=uuid.uuid4()
-#                 print(token)
-#                 Profile.objects.create(user=user,token=token) 
-#                 messages.add_message(request,messages.SUCCESS,'we have sent you a mail to verify your account')
-#         except Exception as e:
-#             logging.error(e)
-#             return redirect('/register')
-#     else:
-#         form = RegisterForm()
-#     return render(request, 'management/register.html', {'form':form}) 
+class StudentView(APIView):
+    def get(self,request,format=None):
+        queryset=Student.objects.all()
+        serializer=StudentSerializer(queryset,context={'request': request}, many=True)
+        return Response (serializer.data)
+    def post(self,request,format=None):
+        serializer=StudentSerializer(data=request.data)    
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors)
 
 
+class StudentViewSet(APIView):
+    def get_object(self,pk):
+        try:
+            return Student.objects.get(pk=pk)
+        except Student.DoesNotExist:
+            raise Http404
 
-# def send_forget_password_mail(email,token):
-#     subject="Change your password"
-#     message=f'click here http://127.0.0.1:8000/change-password/{token}'
-#     from_email=settings.EMAIL_HOST_USER
-#     recipient_list=[email]
-#     send_mail(subject=subject,message=message,from_email=from_email,recipient_list=recipient_list)
+    def get(self,request,pk,format=None):
+        objects=self.get_object(pk)
+        serializer=StudentSerializer(objects)
+        return Response(serializer.data)
+
+    def put(self,request,pk,foramt=None):
+        objects=self.get_object(pk)    
+        serializer=StudentSerializer(objects,data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+
+        else:
+            return Response(serializer.errors,status=status.HTTP_404_NOT_FOUND) 
+
+    def delete(self,request,pk,format=None):
+        objects=self.get_object(pk)        
+        objects.delete()
+        return Response({"mess":"Student deleted successfully !"},status=status.HTTP_200_OK)
+
+##-----------------------------------using mixins class based views-----------------------------------------------------###                     
+
+from rest_framework.mixins import ListModelMixin,CreateModelMixin
+from rest_framework.generics import GenericAPIView
+from rest_framework.mixins import RetrieveModelMixin,DestroyModelMixin,UpdateModelMixin
+class StudentMixinList(ListModelMixin,CreateModelMixin,GenericAPIView):
+    queryset=Student.objects.all()
+    serializer_class=StudentSerializer
+    def get(self,request,*args,**kwargs):
+        return self.list(request,*args,**kwargs)
+
+    def post(self,request,*args,**kwargs):
+        return self.create(request,*args,**kwargs)    
+
+class StudentMixinDetail(RetrieveModelMixin,UpdateModelMixin,DestroyModelMixin,GenericAPIView):
+    queryset=Student.objects.all()
+    serializer_class=StudentSerializer
+
+    def get(self,request,*args,**kwargs):
+        return self.retrieve(request,*args,**kwargs)
+
+    def put(self,request,*args,**kwargs):
+        return self.update(request,*args,**kwargs)    
+
+    def delete(self,request,*args,**kwargs):
+        return self.destroy(request,*args,**kwargs)    
 
 
+###---------------------------using generic class based vivews-------------------------------###
 
+from rest_framework.generics import RetrieveUpdateDestroyAPIView,ListCreateAPIView
 
+class StudentGenericList(ListCreateAPIView):
+    queryset=Student.objects.all()
+    serializer_class=StudentSerializer
 
-# class Account_activate(APIView):
-#     def post(self,request,uidb64,token,format=None):
-#         User = get_user_model()
-#         uid = force_str(urlsafe_base64_decode(uidb64))
-#         user = User.objects.get(pk=uid) 
-#         if user is not None and account_activation_token.check_token(user, token): 
-#             user.is_active=True
-#             user.save()
-#             return Response({'message':'account activation successful now you can login'})
-#         else:
-#             return Response({'error':'invalid link !'}) 
+class StudentGenericDetails(RetrieveUpdateDestroyAPIView):
+    queryset=Student.objects.all()
+    serializer_class=StudentSerializer
 
+###--------------------------------------------------------------------------------------###
+class UserGenericList(ListCreateAPIView):
+    permission_classes=[IsAuthenticated]
+    queryset=User.objects.all()
+    serializer_class=UserSerializer
 
-# def account_activate(request, uidb64, token):  
-#     User = get_user_model()  
-#     try:  
-#         uid = force_str(urlsafe_base64_decode(uidb64))  
-#         user = User.objects.get(pk=uid)  
-#     except(TypeError, ValueError, OverflowError, User.DoesNotExist):  
-#         user = None  
-#     if user is not None and account_activation_token.check_token(user, token):  
-#         user.is_active = True  
-#         user.save() 
-#         return render(request,'api/activate-success.html')  
-#     else: 
-#         return HttpResponse('Activation link is invalid!')                  
-
-
-
-# def send_forget_password_mail(email,token):
-#     subject="Change your password"
-#     message=f'click here http://127.0.0.1:8000/change-new-password/{token}'
-#     from_email=settings.EMAIL_HOST_USER
-#     recipient_list=[email]
-#     send_mail(subject=subject,message=message,from_email=from_email,recipient_list=recipient_list)
-
-# class ForgetPassword(APIView):
-#     def post(self,request,format=None):
-#         data=request.data
-#         email=data['email']
-#         user=User.objects.get(email=email)
-#         profile=Profile.objects.get(user=user)
-#         token=profile.token
-#         if User.objects.filter(email=email).exists():
-#             send_forget_password_mail(email,token)
-#             return Response({'message':'Forget password email has been sent please check your inbox'})
+class UserGenericDetails(RetrieveUpdateDestroyAPIView):
+    permission_classes=[IsAuthenticated]
+    queryset=User.objects.all()    
+    serializer_class=UserSerializer
+###------------------------------------------------------------------------------------####
+class UserViewList(APIView):
+    permission_classes=[IsAuthenticated]
+    def get(self,request,format=None):
+        queryset=User.objects.all()           
+        serializer=UserSerializer(queryset,context={"request":request},many=True)
+        return Response(serializer.data)
         
-#         return Response({'error':'Email Doesnot exists'},status=status.HTTP_400_BAD_REQUEST)    
+    def post(self,request,foramt=None):
+        serializer=UserSerializer(data=request.data)    
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data,{'message':'user created !'})
+        return Response(serializer.errors)    
 
+class UserViewDetail(APIView):
+    permission_classes=[IsAuthenticated]
+    def get_user_objects(self,pk):
+        try:
+            User.objects.get(pk=pk)    
+        except User.DoesNotExist:
+            raise Http404
 
+    def get(self,request,pk,format=None):
+        user=self.get_user_objects(pk)            
+        serializer=UserSerializer(user)
+        return Response(serializer.data)
 
+    def put(self,request,pk,format=None):
+        user=self.get_user_objects(pk)    
+        serializer=UserSerializer(user,data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)  
+          
+    def delete(self,request,pk,format=None):
+        user=self.get_user_objects(pk)
+        user.delete()
+        return Response({"message":"user deleted successfully"})
+
+###----------------------------------------------------------------------------------------###
+
+class UserMixinList(ListModelMixin,CreateModelMixin,GenericAPIView):
+    queryset=User.objects.all()
+    serializer_class=UserSerializer
+    permission_classes=[IsAuthenticated]
+    authentication_classes=[BasicAuthentication]
+    def get(self,request,*args,**kwargs):
+        return self.list(request,*args,**kwargs)
+
+    def post(self,request,*args,**kwargs):
+        return self.create(request,*args,**kwargs)   
+    
+
+class UserMixinDetail(RetrieveModelMixin,DestroyModelMixin,UpdateModelMixin,GenericAPIView):
+    queryset=User.objects.all()
+    serializer_class=UserSerializer
+    permission_classes=[IsAuthenticated]
+    authentication_classes=[BasicAuthentication]
+
+    def get(self,request,*args,**kwargs):
+        return self.retrieve(request,*args,**kwargs)
+
+    def put(self,request,*args,**kwargs):
+        return self.update(request,*args,**kwargs)    
+
+    def delete(self,request,*args,**kwargs):
+        return self.destroy(request,*args,**kwargs)    
+
+class ProfileView(APIView):
+    def get(self,request,pk,format=None):
+        user=User.objects.get(pk=pk)
+        profile=Profile.objects.get(user=user)
+        serializer=ProfileSerializer(profile)
+        return Response(serializer.data)
+
+    def put(self,request,pk,format=None):
+        user=User.objects.get(pk=pk)
+        profile=Profile.objects.get(user=user)
+        serializer=ProfileSerializer(profile,data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data,status=status.HTTP_200_OK)
+        return Response(serializer.errors)    
 
