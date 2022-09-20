@@ -1,4 +1,4 @@
-from importlib.metadata import files
+from email.policy import default
 from .serializers import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -231,7 +231,7 @@ class UserMixinList(ListModelMixin,CreateModelMixin,GenericAPIView):
     queryset=User.objects.all()
     serializer_class=UserSerializer
     permission_classes=[IsAuthenticated]
-    authentication_classes=[BasicAuthentication]
+    
     def get(self,request,*args,**kwargs):
         return self.list(request,*args,**kwargs)
 
@@ -243,7 +243,6 @@ class UserMixinDetail(RetrieveModelMixin,DestroyModelMixin,UpdateModelMixin,Gene
     queryset=User.objects.all()
     serializer_class=UserSerializer
     permission_classes=[IsAuthenticated]
-    authentication_classes=[BasicAuthentication]
 
     def get(self,request,*args,**kwargs):
         return self.retrieve(request,*args,**kwargs)
@@ -256,8 +255,14 @@ class UserMixinDetail(RetrieveModelMixin,DestroyModelMixin,UpdateModelMixin,Gene
 
 class ProfileView(APIView):
     def get(self,request,pk,format=None):
-        user=User.objects.get(pk=pk)
-        profile=Profile.objects.get(user=user)
+        try:
+            user=User.objects.get(pk=pk)
+        except User.DoesNotExist:
+            user=None
+        try:    
+            profile=Profile.objects.get(user=user)
+        except Profile.DoesNotExist:
+            profile=None    
         serializer=ProfileSerializer(profile)
         return Response(serializer.data)
 
@@ -269,4 +274,22 @@ class ProfileView(APIView):
             serializer.save()
             return Response(serializer.data,status=status.HTTP_200_OK)
         return Response(serializer.errors)    
+####-----------------------------cookies-------------------------------------------------------------#####
+from datetime import datetime,timedelta
 
+def setcookies(request):
+    response= render (request,'api/set_cookie.html')
+    response.set_signed_cookie('name','webnyxa',secure=True,salt='nm',expires=datetime.utcnow()+timedelta(days=2))
+    return response
+
+def getcookies(request):
+    name=request.get_signed_cookie('name',default='guest',salt='nmm')
+    return render(request,'api/get_cookie.html',{'name':name})
+
+def deletecookies(request):
+    response=render(request,'api/delete_cookie.html')
+    response.delete_cookie('name')
+    return response
+
+
+    

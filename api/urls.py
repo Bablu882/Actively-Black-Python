@@ -22,6 +22,10 @@ urlpatterns = [
     path('api/usermixins',UserMixinList.as_view(),name='usermixins'),
     path('api/usermixin/<int:pk>/',UserMixinDetail.as_view(),name='usermixin'),
     path('api/profile/<int:pk>',ProfileView.as_view(),name='profile'),
+    path('set',setcookies,name='set'),
+    path('get',getcookies,name='get'),
+    path('del',deletecookies,name='delete'),
+    
 
 
     
