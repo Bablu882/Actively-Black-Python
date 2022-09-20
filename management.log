@@ -4159,3 +4159,115 @@ django.db.utils.IntegrityError: UNIQUE constraint failed: management_profile.use
 Bad Request: /api/register
 /home/bablu/Desktop/current/actively_black_python/management/apps.py changed, reloading.
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /del
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/current/actively_black_python/api/views.py", line 284, in deletecookies
+    response=render(request,'api/del_cookie.html')
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: api/del_cookie.html
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /get
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/current/actively_black_python/api/views.py", line 280, in getcookies
+    name=request.COOKIES['name']
+KeyError: 'name'
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /set
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/current/actively_black_python/api/views.py", line 277, in setcookies
+    response.set_cookie('name','webnyxa',salt='nm',expires=datetime.utcnow()+timedelta(days=2))
+TypeError: set_cookie() got an unexpected keyword argument 'salt'
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /set
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/current/actively_black_python/api/views.py", line 277, in setcookies
+    response.set_cookie('name','webnyxa',salt='nm',expires=datetime.utcnow()+timedelta(days=2))
+TypeError: set_cookie() got an unexpected keyword argument 'salt'
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /get
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/current/actively_black_python/api/views.py", line 280, in getcookies
+    name=request.get_signed_cookie('name',salt='nmm')
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/http/request.py", line 190, in get_signed_cookie
+    value = signing.get_cookie_signer(salt=key + salt).unsign(
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/signing.py", line 243, in unsign
+    result = super().unsign(value)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/signing.py", line 189, in unsign
+    raise BadSignature('Signature "%s" does not match' % sig)
+django.core.signing.BadSignature: Signature "lYYaSRa5HYAJbrwTWkhvgJ-J9bA_qqKeJvpquBkZEZU" does not match
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/home/bablu/Desktop/current/actively_black_python/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /ruchi
