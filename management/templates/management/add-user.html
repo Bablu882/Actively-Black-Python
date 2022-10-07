@@ -67,7 +67,7 @@
         </aside>
 
         <div class="main-content">
-            <header class="main-header header-common py-3 px-3">
+            <header class="main-header header-common py-3 px-3" style="background-color:#233044;">
                 <nav class="navbar navbar-expand-lg py-0">
 
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -77,13 +77,14 @@
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <form class="search-bar form-inline my-lg-0">
-                            <button class="btn btn-outline-light rounded-0 border-0" type="submit">
+                        <p style="color: white;">Welcome : {{request.user}}</p>
+                        <!-- <form class="search-bar form-inline my-lg-0"> -->
+                            <!-- <button class="btn btn-outline-light rounded-0 border-0" type="submit">
                                 <i class="fa fa-search"></i>
-                            </button>
-                            <input class="form-control rounded-0 bg-transparent border-0 " type="search"
-                                placeholder="Search" aria-label="Search">
-                        </form>
+                            </button> -->
+                            <!-- <input class="form-control rounded-0 bg-transparent border-0 " type="search"
+                                placeholder="Search" aria-label="Search"> -->
+                        <!-- </form> -->
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item active">
                                 <a class="nav-link" href="#">
@@ -101,9 +102,13 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{% url 'logout' %}">
                                     <i class="fa fa-power-off"></i>
                                 </a>
+                            </li>
+                            <li class="nav-item">
+                                <img class="card-img-top nav-profile" src="{{request.user.profile.avatar.url}}"
+                                alt="Card image cap">
                             </li>
                         </ul>
                     </div>

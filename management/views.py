@@ -241,11 +241,11 @@ def delete_user(request,id):
 ###-----------------------------------Admin Edit User--------------------------------------###
 
 @login_required(login_url='login')
-def edit_user(request,id):
+def edit_user(request,slug):
     try:    
         request.method=='POST'
-        gt=User.objects.get(pk=id)
-        pro=Profile.objects.get(pk=id)
+        gt=User.objects.get(username=slug)
+        pro=Profile.objects.get(slug=slug)
         form=Userchangeform(request.POST,request.FILES,instance=gt)
         form2=ProfileForm(request.POST,request.FILES,instance=pro)
         if form.is_valid() and form2.is_valid():
@@ -253,8 +253,8 @@ def edit_user(request,id):
             form2.save()
             messages.success(request,'User updated successfully!!')
         else:
-            gt=User.objects.get(pk=id)
-            pro=Profile.objects.get(pk=id)
+            gt=User.objects.get(username=slug)
+            pro=Profile.objects.get(slug=slug)
             form=Userchangeform(instance=gt)
             form2=ProfileForm(instance=pro)
     except Exception as e:
@@ -285,9 +285,9 @@ def edit_profile(request):
 
 
 @login_required(login_url='login')
-def view_user_profile(request,id):
-    gt=User.objects.get(pk=id)
-    pro=Profile.objects.get(pk=id)
+def view_user_profile(request,slug):
+    gt=User.objects.get(username=slug)
+    pro=Profile.objects.get(slug=slug)
     form=Userchangeform(instance=gt)
     form2=ProfileForm(instance=pro)
     image=pro.avatar

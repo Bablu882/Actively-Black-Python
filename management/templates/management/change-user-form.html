@@ -69,7 +69,7 @@
         </aside>
 
         <div class="main-content">
-            <header class="main-header header-common py-3 px-3">
+            <header class="main-header header-common py-3 px-3" style="background-color:#233044;">
                 <nav class="navbar navbar-expand-lg py-0">
 
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -79,13 +79,14 @@
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <form class="search-bar form-inline my-lg-0">
-                            <button class="btn btn-outline-light rounded-0 border-0" type="submit">
+                        <p style="color: white;">Welcome : {{request.user}}</p>
+                        <!-- <form class="search-bar form-inline my-lg-0"> -->
+                            <!-- <button class="btn btn-outline-light rounded-0 border-0" type="submit">
                                 <i class="fa fa-search"></i>
-                            </button>
-                            <input class="form-control rounded-0 bg-transparent border-0 " type="search"
-                                placeholder="Search" aria-label="Search">
-                        </form>
+                            </button> -->
+                            <!-- <input class="form-control rounded-0 bg-transparent border-0 " type="search"
+                                placeholder="Search" aria-label="Search"> -->
+                        <!-- </form> -->
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item active">
                                 <a class="nav-link" href="#">
@@ -103,9 +104,13 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{% url 'logout' %}">
                                     <i class="fa fa-power-off"></i>
                                 </a>
+                            </li>
+                            <li class="nav-item">
+                                <img class="card-img-top nav-profile" src="{{request.user.profile.avatar.url}}"
+                                alt="Card image cap">
                             </li>
                         </ul>
                     </div>
@@ -139,24 +144,78 @@
                                      
                                     <div class="form-group mb-4">
                                         <label class="control-label">Username<span
-                                                class="text-danger">*</span></label>
+                                                class="text-danger"></span></label>
                                             {{form.username}}
                                     </div>
                                     <div class="form-group mb-4">
                                         <label class="control-label">Email<span
-                                                class="text-danger">*</span></label>                                       
+                                                class="text-danger"></span></label>                                       
                                             {{form.email|as_crispy_field}}
-        
                                     </div>
                                     <div class="form-group mb-4">
                                         <label  class="control-label">First-Name<span
-                                                class="text-danger">*</span></label>                                       
+                                                class="text-danger"></span></label>                                       
                                             {{form.first_name|as_crispy_field}}
                                     </div>
                                     <div class="form-group mb-4">
                                         <label class="control-label">Last_name<span
-                                                class="text-danger">*</span></label>
+                                                class="text-danger"></span></label>
                                             {{form.last_name|as_crispy_field}}
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="control-label">Address<span
+                                                class="text-danger"></span></label>
+                                            {{form2.address|as_crispy_field}}
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="control-label">City<span
+                                                class="text-danger"></span></label>
+                                            {{form2.city|as_crispy_field}}
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="control-label">Work-at<span
+                                                class="text-danger"></span></label>
+                                            {{form2.work_at|as_crispy_field}}
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="control-label">Post-code<span
+                                                class="text-danger"></span></label>
+                                            {{form2.post_code|as_crispy_field}}
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="control-label">Country<span
+                                                class="text-danger"></span></label>
+                                            {{form2.country|as_crispy_field}}
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="control-label">State<span
+                                                class="text-danger"></span></label>
+                                            {{form2.state|as_crispy_field}}
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="control-label">Mobile-no<span
+                                                class="text-danger"></span></label>
+                                            {{form2.mobile_no|as_crispy_field}}
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="control-label">Bio<span
+                                                class="text-danger"></span></label>
+                                            {{form2.desc}}
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="control-label">Facebook-url<span
+                                                class="text-danger"></span></label>
+                                            {{form2.facebook|as_crispy_field}}
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="control-label">Twitter-url<span
+                                                class="text-danger"></span></label>
+                                            {{form2.teitter|as_crispy_field}}
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="control-label">Instagram-url<span
+                                                class="text-danger"></span></label>
+                                            {{form2.instagram|as_crispy_field}}
                                     </div>
                                     <div class="form-group mb-4">
                                         <label class="control-label">Last-Login<span
@@ -197,10 +256,12 @@
                                                     alt="Card image cap">
                                             </div>
             
-                                            <p class="mb-0">
-                                                <strong>{{image.username}}</strong>
-                                            </p>
-                                            <p>{{image.email}}</p>
+                                            <div class="form-group mb-4">
+                                                <!-- <label class="control-label">permission<span
+                                                        class="text-danger">*</span></label> -->
+                                                 <p class="text-success">{{form2.avatar}}</p>
+                                                <p class="helperText text-danger">avatar</p>
+                                            </div>
                                             <div class="d-flex justify-content-center">
                                                 <a href="#" class="btn btn-primary">Follow</a>
                                                 <a href="#" class="btn btn-primary ml-2">Message</a>

@@ -320,8 +320,177 @@ class ProfileForm(forms.ModelForm):
             'minlength':'6',
             'value':''
         })
+        self.fields["desc"].widget.attrs.update({
+            
+            'name':'bio',
+            'id':'bio',
+            'style':'height:200px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'Description',
+            'minlength':'6',
+            'value':''
+        })
+        self.fields["address"].widget.attrs.update({
+            
+            'name':'address',
+            'id':'address',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'Address',
+            'maxlength':'50',
+            'minlength':'6',
+            'value':''
+        })
+        self.fields["work_at"].widget.attrs.update({
+            
+            'name':'work_at',
+            'id':'work_at',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'Work_at',
+            'maxlength':'50',
+            'minlength':'6',
+            'value':''
+        })
+        self.fields["city"].widget.attrs.update({
+            
+            'name':'city',
+            'id':'city',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'Delhi',
+            'maxlength':'50',
+            'minlength':'6',
+            'value':''
+        })
+        self.fields["post_code"].widget.attrs.update({
+            
+            'name':'post_code',
+            'id':'post_code',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'203302',
+            'maxlength':'50',
+            'minlength':'6',
+            'value':''
+        })
+        self.fields["mobile_no"].widget.attrs.update({
+            
+            'name':'mobile_no',
+            'id':'mobile_no',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'8424656525',
+            'maxlength':'50',
+            'minlength':'6',
+            'value':''
+        })
+        self.fields["country"].widget.attrs.update({
+            
+            'name':'country',
+            'id':'country',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'India',
+            'maxlength':'50',
+            'minlength':'6',
+            'value':''
+        })
+        self.fields["state"].widget.attrs.update({
+            
+            'name':'state',
+            'id':'state',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'Punjab',
+            'maxlength':'50',
+            'minlength':'6',
+            'value':''
+        })
+        self.fields["facebook"].widget.attrs.update({
+            
+            'name':'facebook',
+            'id':'facebook',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'Place your facebook url',
+            'maxlength':'50',
+            'minlength':'6',
+            'value':''
+        })
+        self.fields["teitter"].widget.attrs.update({
+            
+            'name':'twitter',
+            'id':'twitter',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'Place your twitter url',
+            'maxlength':'50',
+            'minlength':'6',
+            'value':''
+        })
+        self.fields["instagram"].widget.attrs.update({
+            
+            'name':'instagram',
+            'id':'instagram',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'Place your instagram url',
+            'maxlength':'50',
+            'minlength':'6',
+            'value':''
+        })
+        # self.fields["avatar"].widget.attrs.update({
+            
+        #     'name':'avatar',
+        #     'id':'avatar',
+        #     'style':'height:40px',
+        #     'size':'50px',
+        #     'type':'text',
+        #     'class':'form-control',
+        #     'placeholder':'avatar',
+        #     'maxlength':'50',
+        #     'minlength':'6',
+        #     'value':''
+        # })
+        # self.fields["avatar"].widget.attrs.update({
+            
+        #     'name':'avatar',
+        #     'id':'avatar',
+        #     'style':'height:40px',
+        #     'size':'50px',
+        #     'type':'text',
+        #     'class':'form-control',
+        #     'placeholder':'avatar',
+        #     'maxlength':'50',
+        #     'minlength':'6',
+        #     'value':''
+        # })
+
 
     class Meta:
         model=Profile
-        fields=['avatar']
+        fields=['avatar','desc','address','work_at','city','post_code','mobile_no','country','state','facebook','teitter','instagram']
 ###---------------------------------------------------------------------------------------####        
