@@ -25,14 +25,19 @@ from .forms import Skill_form
 from django.db.models import Q
 import logging
 from .models import Skill
+from django.contrib.auth.decorators import user_passes_test
 
+
+def check_admin(user):
+    return user.is_superuser
 
 
 
 
 def test1_view(request):
     return render(request,'management/test1.html')
-    
+
+@user_passes_test(check_admin)    
 @login_required(login_url='login')
 def add_user(request):
     return render(request,'management/add-user.html')
@@ -42,8 +47,9 @@ def dashboard(request):
     return render(request ,'management/dashboard.html')    
 
 def forgot_password(request):
-    return render(request,'management/forget-password.html')    
-
+    return render(request,'management/forget-password.html') 
+       
+@user_passes_test(check_admin)
 @login_required(login_url='login')
 def listing(request):
     users=User.objects.all()
@@ -216,7 +222,7 @@ def login(request):
     return render(request, 'management/login.html', context={'form': form,}) 
 
 ###------------------------------------Admin Add User------------------------------------------------####
-
+@user_passes_test(check_admin)
 @login_required(login_url='login')
 def add_user_admin(request):
     form=RegisterForm()
@@ -235,15 +241,17 @@ def add_user_admin(request):
 
 ###------------------------------------Admin Delete User------------------------------------###
 
+@user_passes_test(check_admin)
 @login_required(login_url='login')
-def delete_user(request,id):
-        user=User.objects.get(pk=id)
+def delete_user(request,slug):
+        user=User.objects.get(username=slug)
         user.delete()
         messages.success(request,'User deleted successfully !!')
         return redirect('/listing')
 
 ###-----------------------------------Admin Edit User--------------------------------------###
 
+@user_passes_test(check_admin)
 @login_required(login_url='login')
 def edit_user(request,slug):
     try:    
@@ -293,7 +301,7 @@ def edit_profile(request):
         logging.error(e)
     return render(request,'management/edit-profile.html',{'form':form,'form2':form2,'form3':form3})    
 
-
+@user_passes_test(check_admin)
 @login_required(login_url='login')
 def view_user_profile(request,slug):
     print(slug)
@@ -340,3 +348,4 @@ def logging_error(request):
 #             form.save()
 #     form=Skill_form(instance=request.user.skill)
 #     return render(request,'management/form.html',{'form':form})
+
