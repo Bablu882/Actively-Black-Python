@@ -27,6 +27,8 @@ urlpatterns=[
     path('edit-profile',edit_profile,name='edit-profile'),
     path('view-profile/<slug:slug>/',view_user_profile,name='view-profile'),
     path('logging',logging_error,name='logging'),
+    # path('skill',skill,name='skill'),
+    # path('userskill',user_skill,name='userskill'),
     
 ]
 

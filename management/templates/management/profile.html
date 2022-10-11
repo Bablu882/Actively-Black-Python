@@ -87,7 +87,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <p style="color: white;">Welcome : {{request.user}}</p>
+                    <p style="color: white;">Welcome : {{request.user.first_name}}</p>
                     <!-- <form class="search-bar form-inline my-lg-0"> -->
                         <!-- <button class="btn btn-outline-light rounded-0 border-0" type="submit">
                             <i class="fa fa-search"></i>
@@ -172,14 +172,17 @@
                         <div class="p-3">
                             <h5>Skills</h5>
                             <div class="mt-3">
-                                <span class="badge badge-primary px-3 py-2 mb-1">HTML</span>
-                                <span class="badge badge-secondary px-3 py-2 mb-1">CSS</span>
-                                <span class="badge badge-secondary px-3 py-2 mb-1">Jquery</span>
-                                <span class="badge badge-secondary px-3 py-2 mb-1">Javascript</span>
-                                <span class="badge badge-secondary px-3 py-2 mb-1">Bootstrap</span>
-                                <span class="badge badge-secondary px-3 py-2 mb-1">React</span>
-                                <span class="badge badge-secondary px-3 py-2 mb-1">Java</span>
-                                <span class="badge badge-secondary px-3 py-2 mb-1">CSS3</span>
+                                {% for name in names %}
+                                <span class="badge badge-primary px-3 py-2 mb-1">{{name}}</span>
+                                {% endfor %}
+                                
+                                <!-- <span class="badge badge-secondary px-3 py-2 mb-1">{{request.user.profile.css}}</span>
+                                <span class="badge badge-secondary px-3 py-2 mb-1">{{request.user.profile.jquery}}</span>
+                                <span class="badge badge-secondary px-3 py-2 mb-1">{{request.user.profile.javascripts}}</span>
+                                <span class="badge badge-secondary px-3 py-2 mb-1">{{request.user.profile.bootstrap}}</span>
+                                <span class="badge badge-secondary px-3 py-2 mb-1">{{request.user.profile.react}}</span>
+                                <span class="badge badge-secondary px-3 py-2 mb-1">{{request.user.profile.java}}</span>
+                                <span class="badge badge-secondary px-3 py-2 mb-1">{{request.user.profile.python}}</span> -->
                             </div>
                         </div>
                     </div>
@@ -187,6 +190,14 @@
                         <div class="p-3">
                             <h5>About</h5>
                             <ul class="list-unstyled">
+                                <li>
+                                    <span>First name :</span>
+                                    <a href="#" class="text-primary">{{request.user.first_name}}</a>
+                                </li>
+                                <li>
+                                    <span>Last name :</span>
+                                    <a href="#" class="text-primary">{{request.user.last_name}}</a>
+                                </li><br>
                                 <li>
                                     <i class="fa fa-home mr-1 icon-contact"></i>
                                     <span>Lives in :</span>

@@ -1,8 +1,11 @@
+from django.db.models.signals import pre_save,post_save
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.utils.text import slugify
+from django_countries.fields import CountryField
+from traitlets import default
 
 from .managers import CustomUserManager
 import uuid
@@ -58,7 +61,7 @@ class Profile(models.Model):
     city=models.CharField(max_length=100,blank=True,null=True)
     post_code=models.CharField(max_length=50,blank=True,null=True)
     mobile_no=models.CharField(max_length=13,blank=True,null=True)
-    country=models.CharField(max_length=50,blank=True,null=True)
+    country=CountryField()
     state=models.CharField(max_length=50,blank=True,null=True)
     customer='customer'
     vender='vender'
@@ -79,6 +82,14 @@ class Profile(models.Model):
     facebook=models.URLField(blank=True,null=True)
     teitter=models.URLField(blank=True,null=True)
     instagram=models.URLField(blank=True,null=True)
+    # css=models.BooleanField(default=False)
+    # html=models.BooleanField(default=False)
+    # jquery=models.BooleanField(default=False)
+    # javascripts=models.BooleanField(default=False)
+    # bootstrap=models.BooleanField(default=False)
+    # react=models.BooleanField(default=False)
+    # java=models.BooleanField(default=False)
+    # python=models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return self.user.username
@@ -94,15 +105,40 @@ class Profile(models.Model):
     def save(self,*args,**kwargs):
         self.slug=slugify(self.user.username)
         super().save(*args,**kwargs)
-        # if not self.slug or self.slug is None or self.slug=="":
-        #     self.slug=slugify(self.user.username,allow_unicode=True) 
-        #     qs_exists=Profile.objects.filter(slug=self.slug).exists()   
-        #     if qs_exists:
-        #         self.slug=
 
+    def create_profile(sender, **kwargs):
+        if kwargs['created']:
+            user_profile = Profile.objects.create(
+              user=kwargs['instance'], )
+
+
+    post_save.connect(create_profile, sender=User)     
 
 
     
 class Forget_Password(models.Model):
     email=models.EmailField(max_length=50)
+
+
+
+class Skill(models.Model):
+    user=models.OneToOneField(User,on_delete=models.CASCADE)
+    css=models.BooleanField(default=False)
+    html=models.BooleanField(default=False)
+    jquery=models.BooleanField(default=False)
+    javascripts=models.BooleanField(default=False)
+    bootstrap=models.BooleanField(default=False)
+    react=models.BooleanField(default=False)
+    java=models.BooleanField(default=False)
+    python=models.BooleanField(default=False)
+
+
+    def create_skill(sender, **kwargs):
+        if kwargs['created']:
+            user_skill = Skill.objects.create(
+              user=kwargs['instance'], )
+
+
+    post_save.connect(create_skill, sender=User)    
+
 

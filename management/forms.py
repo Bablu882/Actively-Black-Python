@@ -1,7 +1,8 @@
 
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import User
+from traitlets import default
+from .models import Skill, User
 from django.contrib.auth.password_validation import validate_password
 from django.core import validators
 from django.contrib.auth import authenticate
@@ -302,16 +303,17 @@ class Userchangeform(UserChangeForm):
 
     class Meta:
         model=User
-        fields=['username','first_name','last_name','email','is_superuser','is_staff','is_active','last_login','date_joined','user_permissions']
+        fields=['username','first_name','last_name','email','is_superuser','is_staff','last_login','date_joined','user_permissions']
 
 class ProfileForm(forms.ModelForm):
+   
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)        
         self.fields["avatar"].widget.attrs.update({
             
             'name':'avatar',
             'id':'avatar',
-            'style':'height:40px',
+            'style':'height:40px',                                                                                  
             'size':'50px',
             'type':'text',
             'class':'form-control',
@@ -402,7 +404,7 @@ class ProfileForm(forms.ModelForm):
             'name':'country',
             'id':'country',
             'style':'height:40px',
-            'size':'50px',
+            # 'size':'50px',
             'type':'text',
             'class':'form-control',
             'placeholder':'India',
@@ -462,35 +464,28 @@ class ProfileForm(forms.ModelForm):
             'minlength':'6',
             'value':''
         })
-        # self.fields["avatar"].widget.attrs.update({
+        self.fields["status"].widget.attrs.update({
             
-        #     'name':'avatar',
-        #     'id':'avatar',
-        #     'style':'height:40px',
-        #     'size':'50px',
-        #     'type':'text',
-        #     'class':'form-control',
-        #     'placeholder':'avatar',
-        #     'maxlength':'50',
-        #     'minlength':'6',
-        #     'value':''
-        # })
-        # self.fields["avatar"].widget.attrs.update({
-            
-        #     'name':'avatar',
-        #     'id':'avatar',
-        #     'style':'height:40px',
-        #     'size':'50px',
-        #     'type':'text',
-        #     'class':'form-control',
-        #     'placeholder':'avatar',
-        #     'maxlength':'50',
-        #     'minlength':'6',
-        #     'value':''
-        # })
+            'name':'status',
+            'id':'status',
+            'style':'height:40px',
+            # 'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'',
+            'maxlength':'50',
+            'minlength':'6',
+            'value':''
+        })
+        
 
 
     class Meta:
         model=Profile
-        fields=['avatar','desc','address','work_at','city','post_code','mobile_no','country','state','facebook','teitter','instagram']
+        fields=['avatar','desc','address','work_at','city','post_code','mobile_no','country','state','facebook','teitter','instagram','status']
 ###---------------------------------------------------------------------------------------####        
+
+class Skill_form(forms.ModelForm):
+    class Meta:
+        model=Skill
+        fields=['css','html','javascripts','jquery','bootstrap','react','java','python']

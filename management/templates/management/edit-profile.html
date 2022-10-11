@@ -87,7 +87,7 @@
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <p style="color: white;">Welcome : {{request.user}}</p>
+                        <p style="color: white;">Welcome : {{request.user.first_name}}</p>
                         <!-- <form class="search-bar form-inline my-lg-0"> -->
                             <!-- <button class="btn btn-outline-light rounded-0 border-0" type="submit">
                                 <i class="fa fa-search"></i>
@@ -205,6 +205,7 @@
                                                 class="text-danger"></span></label>
                                             {{form2.mobile_no|as_crispy_field}}
                                     </div>
+                                    
                                     <div class="form-group mb-4">
                                         <label class="control-label">Bio<span
                                                 class="text-danger"></span></label>
@@ -252,7 +253,6 @@
                                 </div>
                                 <div class="col-lg-6">
                                     
-                                    {{form.is_active|as_crispy_field}}
                                     {% if request.user.is_superuser %}
                                     <h1>Permissions</h1>
                                     {{form.is_superuser|as_crispy_field}}
@@ -279,6 +279,22 @@
                                                 <a href="#" class="btn btn-primary ml-2">Message</a>
             
                                             </div>
+                                            
+                                        </div><br><br><br>
+                                        <div class="form-group mb-4">
+                                            <h1>Skills</h1>
+                                            <!-- <label class="control-label"><span
+                                                    class="text-danger"></span></label> -->
+                                                    <!-- {{form3.as_p}} -->
+                                                {{form3.html|as_crispy_field}}
+                                                {{form3.css|as_crispy_field}}
+                                                {{form3.javascripts|as_crispy_field}}
+                                                {{form3.java|as_crispy_field}}
+                                                {{form3.jquery|as_crispy_field}}
+                                                {{form3.python|as_crispy_field}}
+                                                {{form3.bootstrap|as_crispy_field}}
+                                                {{form3.react|as_crispy_field}}
+    
                                         </div>
                                     </div>
                                 </div>
