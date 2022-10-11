@@ -21,14 +21,11 @@ urlpatterns=[
     path('activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/',activate, name='activate'), 
     path('admin-add-user',add_user_admin,name='admin-add-user'),
     path('change-user/<slug:slug>/',edit_user,name='chane-user'),
-    path('delete-user/<int:id>/',delete_user,name='delete_user'),
-    # path('per',permission,name='per'),
-    # path('form/<int:id>/',profileform,name='form'),
+    path('delete-user/<slug:slug>/',delete_user,name='delete_user'),
     path('edit-profile',edit_profile,name='edit-profile'),
     path('view-profile/<slug:slug>/',view_user_profile,name='view-profile'),
     path('logging',logging_error,name='logging'),
-    # path('skill',skill,name='skill'),
-    # path('userskill',user_skill,name='userskill'),
+    
     
 ]
 
