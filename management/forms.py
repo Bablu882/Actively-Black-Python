@@ -1,7 +1,8 @@
 
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import User
+from traitlets import default
+from .models import Skill, User
 from django.contrib.auth.password_validation import validate_password
 from django.core import validators
 from django.contrib.auth import authenticate
@@ -302,16 +303,17 @@ class Userchangeform(UserChangeForm):
 
     class Meta:
         model=User
-        fields=['username','first_name','last_name','email','is_superuser','is_staff','is_active','last_login','date_joined','user_permissions']
+        fields=['username','first_name','last_name','email','is_superuser','is_staff','last_login','date_joined','user_permissions']
 
 class ProfileForm(forms.ModelForm):
+   
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)        
         self.fields["avatar"].widget.attrs.update({
             
             'name':'avatar',
             'id':'avatar',
-            'style':'height:40px',
+            'style':'height:40px',                                                                                  
             'size':'50px',
             'type':'text',
             'class':'form-control',
@@ -320,8 +322,170 @@ class ProfileForm(forms.ModelForm):
             'minlength':'6',
             'value':''
         })
+        self.fields["desc"].widget.attrs.update({
+            
+            'name':'bio',
+            'id':'bio',
+            'style':'height:200px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'Description',
+            'minlength':'6',
+            'value':''
+        })
+        self.fields["address"].widget.attrs.update({
+            
+            'name':'address',
+            'id':'address',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'Address',
+            'maxlength':'50',
+            'minlength':'6',
+            'value':''
+        })
+        self.fields["work_at"].widget.attrs.update({
+            
+            'name':'work_at',
+            'id':'work_at',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'Work_at',
+            'maxlength':'50',
+            'minlength':'6',
+            'value':''
+        })
+        self.fields["city"].widget.attrs.update({
+            
+            'name':'city',
+            'id':'city',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'Delhi',
+            'maxlength':'50',
+            'minlength':'6',
+            'value':''
+        })
+        self.fields["post_code"].widget.attrs.update({
+            
+            'name':'post_code',
+            'id':'post_code',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'203302',
+            'maxlength':'50',
+            'minlength':'6',
+            'value':''
+        })
+        self.fields["mobile_no"].widget.attrs.update({
+            
+            'name':'mobile_no',
+            'id':'mobile_no',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'8424656525',
+            'maxlength':'50',
+            'minlength':'6',
+            'value':''
+        })
+        self.fields["country"].widget.attrs.update({
+            
+            'name':'country',
+            'id':'country',
+            'style':'height:40px',
+            # 'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'India',
+            'maxlength':'50',
+            'minlength':'6',
+            'value':''
+        })
+        self.fields["state"].widget.attrs.update({
+            
+            'name':'state',
+            'id':'state',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'Punjab',
+            'maxlength':'50',
+            'minlength':'6',
+            'value':''
+        })
+        self.fields["facebook"].widget.attrs.update({
+            
+            'name':'facebook',
+            'id':'facebook',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'Place your facebook url',
+            'maxlength':'50',
+            'minlength':'6',
+            'value':''
+        })
+        self.fields["teitter"].widget.attrs.update({
+            
+            'name':'twitter',
+            'id':'twitter',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'Place your twitter url',
+            'maxlength':'50',
+            'minlength':'6',
+            'value':''
+        })
+        self.fields["instagram"].widget.attrs.update({
+            
+            'name':'instagram',
+            'id':'instagram',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'Place your instagram url',
+            'maxlength':'50',
+            'minlength':'6',
+            'value':''
+        })
+        self.fields["status"].widget.attrs.update({
+            
+            'name':'status',
+            'id':'status',
+            'style':'height:40px',
+            # 'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'',
+            'maxlength':'50',
+            'minlength':'6',
+            'value':''
+        })
+        
+
 
     class Meta:
         model=Profile
-        fields=['avatar']
+        fields=['avatar','desc','address','work_at','city','post_code','mobile_no','country','state','facebook','teitter','instagram','status']
 ###---------------------------------------------------------------------------------------####        
+
+class Skill_form(forms.ModelForm):
+    class Meta:
+        model=Skill
+        fields=['css','html','javascripts','jquery','bootstrap','react','java','python']

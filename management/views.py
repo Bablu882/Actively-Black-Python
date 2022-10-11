@@ -21,8 +21,10 @@ from .utils import generate_token
 from django.core.mail import EmailMessage
 from .token import account_activation_token
 from .forms import ChangePasswordForm, ForgetPasswordform, RegisterForm,LoginForm, Userchangeform,ProfileForm
+from .forms import Skill_form
 from django.db.models import Q
 import logging
+from .models import Skill
 
 
 
@@ -49,7 +51,13 @@ def listing(request):
 
 @login_required(login_url='login')
 def profile(request):
-    return render(request,'management/profile.html')
+    list=[]
+    skills=Skill.objects.get(user=request.user)
+    printd=vars(skills)
+    for key in printd:
+        if printd[key]==True and key != 'user_id':
+            list.append(key)
+    return render(request,'management/profile.html',{'names':list})
 
 
 ###------------------------------------Register User------------------------------------###
@@ -77,9 +85,6 @@ def register(request):
                             mail_subject, message, to=[to_email]  
                 )  
                 email.send()
-                token=uuid.uuid4()
-                print(token)
-                Profile.objects.create(user=user,token=token) 
                 messages.add_message(request,messages.SUCCESS,'we have sent you a mail to verify your account')
         except Exception as e:
             logging.error(e)
@@ -99,7 +104,8 @@ def activate(request, uidb64, token):
         user = None  
     if user is not None and account_activation_token.check_token(user, token):  
         user.is_active = True  
-        user.save() 
+        user.save()
+        messages.success(request,'Your email is verified now you can login') 
         return redirect('/login')  
     else: 
         return HttpResponse('Activation link is invalid!')       
@@ -218,9 +224,7 @@ def add_user_admin(request):
         if request.method=='POST':
             form=RegisterForm(request.POST)
             if form.is_valid():
-                user=form.save()
-                token=uuid.uuid4()
-                Profile.objects.create(user=user,token=token)
+                form.save()
                 form=RegisterForm()
                 messages.success(request,'Add user successfully')
         else:
@@ -241,25 +245,28 @@ def delete_user(request,id):
 ###-----------------------------------Admin Edit User--------------------------------------###
 
 @login_required(login_url='login')
-def edit_user(request,id):
+def edit_user(request,slug):
     try:    
         request.method=='POST'
-        gt=User.objects.get(pk=id)
-        pro=Profile.objects.get(pk=id)
+        gt=User.objects.get(username=slug)
+        pro=Profile.objects.get(slug=slug)
         form=Userchangeform(request.POST,request.FILES,instance=gt)
         form2=ProfileForm(request.POST,request.FILES,instance=pro)
-        if form.is_valid() and form2.is_valid():
+        form3=Skill_form(request.POST,instance=gt.skill)
+        if form.is_valid() and form2.is_valid() and form3.is_valid():
             form.save()
             form2.save()
+            form3.save()
             messages.success(request,'User updated successfully!!')
         else:
-            gt=User.objects.get(pk=id)
-            pro=Profile.objects.get(pk=id)
+            gt=User.objects.get(username=slug)
+            pro=Profile.objects.get(slug=slug)
             form=Userchangeform(instance=gt)
             form2=ProfileForm(instance=pro)
+            form3=Skill_form(instance=gt.skill)
     except Exception as e:
         logging.error(e)
-    return render(request,'management/change-user-form.html',{'form':form,'form2':form2,'image':gt})
+    return render(request,'management/change-user-form.html',{'form':form,'form2':form2,'form3':form3,'image':gt})
 
 ###---------------------------------------Edit User Profile---------------------------------###
 
@@ -270,28 +277,37 @@ def edit_profile(request):
         gt=User.objects.get(id=request.user.id)
         form=Userchangeform(request.POST,instance=gt)
         form2=ProfileForm(request.POST,request.FILES,instance=request.user.profile)
-        if form.is_valid() and form2.is_valid():
+        form3=Skill_form(request.POST,instance=request.user.skill)
+        if form.is_valid() and form2.is_valid() and form3.is_valid():
             form.save()
             form2.save()
+            form3.save()
             messages.success(request,'Profile updated successfully!!')
             return redirect('/profile')
         else:
             gt=User.objects.get(id=request.user.id)
             form=Userchangeform(instance=gt)
             form2=ProfileForm(instance=request.user.profile)
+            form3=Skill_form(instance=request.user.skill)
     except Exception as e:
         logging.error(e)
-    return render(request,'management/edit-profile.html',{'form':form,'form2':form2})    
+    return render(request,'management/edit-profile.html',{'form':form,'form2':form2,'form3':form3})    
 
 
 @login_required(login_url='login')
-def view_user_profile(request,id):
-    gt=User.objects.get(pk=id)
-    pro=Profile.objects.get(pk=id)
-    form=Userchangeform(instance=gt)
-    form2=ProfileForm(instance=pro)
-    image=pro.avatar
-    return render(request,'management/view-profile.html',{'form':form,'form2':form2,'image':image,'user':gt})    
+def view_user_profile(request,slug):
+    print(slug)
+    list=[]
+    get=User.objects.get(username=slug)
+    profiles=Profile.objects.get(slug=slug)
+    skills=Skill.objects.get(user=get)
+    image=profiles.avatar
+    printd=vars(skills)
+    for key in printd:
+        if printd[key]==True and key != 'user_id':
+            list.append(key)
+    
+    return render(request,'management/view-profile.html',{'image':image,'user':get,'profiles':profiles,'skills':list})    
 
 ###---------------------------------------------------------------------------------------###
 def logging_error(request):
@@ -303,7 +319,24 @@ def logging_error(request):
     return render(request,'management/logging.html')
 
 
-    try:
-        raise Exception("this is error")
-    except Exception as e:
-        logging.error(e)    
+    
+
+# from .models import Skill
+
+# def skill(request):
+#     list=[]
+#     skills=Skill.objects.get(user=request.user)
+#     printd=vars(skills)
+#     for key in printd:
+#         if printd[key]==True and key != 'user_id':
+#             list.append(key)
+#     return render(request,'management/profile.html',{'names':list})
+    
+
+# def user_skill(request):
+#     if request.method=='POST':
+#         form=Skill_form(request.POST,instance=request.user.skill)
+#         if form.is_valid():
+#             form.save()
+#     form=Skill_form(instance=request.user.skill)
+#     return render(request,'management/form.html',{'form':form})
