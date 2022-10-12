@@ -7,8 +7,9 @@
         <aside class="drawer">
             <div class="drawer-header header-common py-3 px-3 text-center">
                 <a href="#">
-                    <img src="{% static 'management/images/logo.png' %}" alt="Actively Black" />
-                </a>
+                    {% for name in site %}
+                    <img src="{{name.site_logo.url}}" alt="Actively Black" />
+                    {% endfor %}                </a>
             </div>
             <div class="drawer-main">
                 <div class="drawer-content py-3">
@@ -61,7 +62,11 @@
                 </div>
                 <div class="drawer-footer mt-auto px-3">
                     <p class="mb-0"><a href="#" class="">Actively Black</a></p>
-                    <p class="mb-0" class="">619-892-6561</p>
+                    {% for name in site %}
+                    <p class="mb-0" class="">{{name.site_contect_no1}}</p>
+                    <p class="mb-0" class="">{{name.site_contect_no2}}</p>
+
+                    {% endfor %}                
                 </div>
             </div>
         </aside>
@@ -288,7 +293,9 @@
                 </div>
             </section>
             <footer class="footer py-3 px-3">
-                <p class="mb-0"><a href="#">activelyblack.com</a></p>
+                {% for name in site %}
+                <p class="mb-0"><a href="{{name.site_url}}">activelyblack.com</a></p>
+                {% endfor %}            
             </footer>
             <button class="color-picker-btn btn btn-primary">
                 <i class="fa fa-paint-brush" aria-hidden="true"></i>

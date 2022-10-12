@@ -1,6 +1,7 @@
 
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from requests import request
 from traitlets import default
 from .models import Skill, User
 from django.contrib.auth.password_validation import validate_password
@@ -292,18 +293,13 @@ class Userchangeform(UserChangeForm):
             'maxlength':'50',
             'minlength':'6',
         })
-    # def clean(self):
-    #     email=self.cleaned_data['email']    
-        
-    #     if User.objects.filter(email=email).exists():
-    #         raise forms.ValidationError('Email already exist !')
-    #         # messages.success(request,'email already exist')
-
-
-
     class Meta:
         model=User
         fields=['username','first_name','last_name','email','is_superuser','is_staff','last_login','date_joined','user_permissions']
+        help_texts = {
+                'username': None,
+            }    
+    
 
 class ProfileForm(forms.ModelForm):
    
