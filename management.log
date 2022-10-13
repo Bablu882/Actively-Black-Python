@@ -1,3 +1,62 @@
 Watching for file changes with StatReloader
 Using selector: EpollSelector
 Using selector: EpollSelector
+Watching for file changes with StatReloader
+Using selector: EpollSelector
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/management/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/management/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /change-user-form
+Not Found: /favicon.ico
+Not Found: /change-user-form
+Not Found: /change-user-form
+/home/bablu/Desktop/python2/actively_black_python/management/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /change-user-form/slug
+/home/bablu/Desktop/python2/actively_black_python/management/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+User matching query does not exist.
+Internal Server Error: /change-user/slug/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/management/views.py", line 281, in edit_user
+    return render(request,'management/change-user-form.html',{'form':form,'form2':form2,'form3':form3,'image':gt})
+UnboundLocalError: local variable 'form' referenced before assignment
+/home/bablu/Desktop/python2/actively_black_python/management/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+|as_crispy_field got passed an invalid or inexistent field
+|as_crispy_field got passed an invalid or inexistent field
+|as_crispy_field got passed an invalid or inexistent field
+|as_crispy_field got passed an invalid or inexistent field
+/home/bablu/Desktop/python2/actively_black_python/management/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+|as_crispy_field got passed an invalid or inexistent field
+|as_crispy_field got passed an invalid or inexistent field
+/home/bablu/Desktop/python2/actively_black_python/management/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+|as_crispy_field got passed an invalid or inexistent field
+/home/bablu/Desktop/python2/actively_black_python/management/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Using selector: EpollSelector
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Using selector: EpollSelector
+Using selector: EpollSelector
