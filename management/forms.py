@@ -2,7 +2,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from requests import request
-from traitlets import default
 from .models import Skill, User
 from django.contrib.auth.password_validation import validate_password
 from django.core import validators

@@ -5,7 +5,6 @@ from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.utils.text import slugify
 from django_countries.fields import CountryField
-from traitlets import default
 
 from .managers import CustomUserManager
 import uuid
