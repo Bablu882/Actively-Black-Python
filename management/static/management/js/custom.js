@@ -1,4 +1,9 @@
 $(document).ready(function () {
+  $('.toggle-button').on('click', function(){
+    $('.drawer').toggle();
+    $('.main-content').toggleClass('main-section')
+  })
+  
   //Counter
   $(".counter").each(function () {
     $(this)

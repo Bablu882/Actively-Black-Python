@@ -280,7 +280,15 @@ td .dropdown-menu .fa{
   font-size: 16px /* Set a font size */
 }
 
-
+.main-section{
+  max-width: 100%;
+  flex: 0 0 100%;
+}
+.toggle-button:focus{
+  outline: 0 !important;
+  border:0 !important;
+  
+}
 #buttonload{
     display: none;
 }

@@ -262,6 +262,10 @@ def edit_user(request,slug):
         form2=ProfileForm(request.POST,request.FILES,instance=pro)
         form3=Skill_form(request.POST,instance=gt.skill)
         if form.is_valid() and form2.is_valid() and form3.is_valid():
+            email=form.cleaned_data['email']
+            if User.objects.exclude(id=gt.id).filter(email=email).exists():
+                messages.error(request,'Email has already taken choose another one !')
+                return render(request,'management/change-user-form.html')
             form.save()
             form2.save()
             form3.save()
@@ -287,6 +291,10 @@ def edit_profile(request):
         form2=ProfileForm(request.POST,request.FILES,instance=request.user.profile)
         form3=Skill_form(request.POST,instance=request.user.skill)
         if form.is_valid() and form2.is_valid() and form3.is_valid():
+            email=form.cleaned_data['email']
+            if User.objects.exclude(id=gt.id).filter(email=email).exists():
+                messages.error(request,'Email has already taken choose another one !')
+                return redirect('/edit-profile')
             form.save()
             form2.save()
             form3.save()
