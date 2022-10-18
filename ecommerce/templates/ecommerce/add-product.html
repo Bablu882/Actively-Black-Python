@@ -1,9 +1,15 @@
-
 {% extends 'management/base.html' %}
 {% load static %}
-{% block title %}Actively|add-user{% endblock %}
+{% block title%}
+Actively||view-order
+{% endblock %}
 {% block content %}
 {% load crispy_forms_tags %}
+<style>
+    .form-group .mb-4 .form2-text{
+       color: #ffffff;
+    }
+</style>
 
     <div class="dashboard dark-theme">
         <aside class="drawer">
@@ -40,6 +46,7 @@
                                 <a href="{% url 'profile' %}" class="nav-link"><i class="fa fa-user mr-2" aria-hidden="true"></i> User
                                     Profile</a>
                             </li>
+                            {% if request.user.is_superuser %}
                             <li class="nav-item">
                                 <hr style="height:2px;border-width:0;color:rgb(250, 248, 248);background-color:rgb(255, 250, 250)">
 
@@ -59,6 +66,8 @@
                                 <a href="{% url 'admin:index' %}  " class="nav-link"><i class="fa fa-lock mr-2" aria-hidden="true"></i>Admin
                                     </a>
                             </li>
+
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
@@ -68,7 +77,7 @@
                     <p class="mb-0" class="">{{name.site_contect_no1}}</p>
                     <p class="mb-0" class="">{{name.site_contect_no2}}</p>
 
-                    {% endfor %}                
+                    {% endfor %}               
                 </div>
             </div>
         </aside>
@@ -124,33 +133,21 @@
             </header>
             <section class="centered-content">
                 <div class="title mb-4">
-                    <h1>Update User</h1>
+                    <h1>Add Product</h1>
                 </div>
-                <!-- {% if messages %}
+                        {% if messages %}
                         {% for message in messages %}
-                        <div class='alert alert-success'>
+                        <div class='alert alert-danger'>
                             {{message}}
                     
                         </div>
                         {% endfor %}
-                        {% endif %} -->
-                        {% for message in messages %}
-                        {% if 'error' in message.tags %}
-                        <div class="alert alert-danger">
-                            {{message}}
-                        </div>
-                        {% else %}
-                        <div class="alert alert-success">
-                            {{message}}
-
-                        </div>
                         {% endif %}
-                        {% endfor %}
                         
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb pl-0 bg-transparent">
                         <li class="breadcrumb-item"><a href="#" class="text-primary">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Add User</li>
+                        <li class="breadcrumb-item active" aria-current="page">Add Product</li>
                     </ol>
                 </nav>
                 <div class="card border-0">
@@ -161,154 +158,104 @@
                                 <div class="col-lg-6">
                                      
                                     <div class="form-group mb-4">
-                                        <label class="control-label">Username<span
+                                        <label class="control-label"><span
                                                 class="text-danger"></span></label>
-                                            {{form.username}}
+                                            {{form.product_name|as_crispy_field}}
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label class="control-label">Email<span
+                                        <label class="control-label">Product Desc<span
                                                 class="text-danger"></span></label>                                       
-                                            {{form.email|as_crispy_field}}
+                                            {{form.product_description|as_crispy_field}}
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label  class="control-label">First-Name<span
+                                        <label  class="control-label">Catagory<span
                                                 class="text-danger"></span></label>                                       
-                                            {{form.first_name|as_crispy_field}}
+                                            {{form.product_catagory|as_crispy_field}}
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label class="control-label">Last_name<span
+                                        <label class="control-label">Image<span
                                                 class="text-danger"></span></label>
-                                            {{form.last_name|as_crispy_field}}
+                                            {{form.product_image|as_crispy_field}}
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label class="control-label">Address<span
+                                        <label class="control-label">Price<span
                                                 class="text-danger"></span></label>
-                                            {{form2.address|as_crispy_field}}
+                                            {{form.product_price|as_crispy_field}}
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label class="control-label">City<span
+                                        <label class="control-label">Discount<span
                                                 class="text-danger"></span></label>
-                                            {{form2.city|as_crispy_field}}
+                                            {{form.product_discount}}
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label class="control-label">Work-at<span
+                                        <label class="control-label">Width<span
                                                 class="text-danger"></span></label>
-                                            {{form2.work_at|as_crispy_field}}
+                                            {{form.product_width|as_crispy_field}}
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label class="control-label">Post-code<span
+                                        <label class="control-label">Height<span
                                                 class="text-danger"></span></label>
-                                            {{form2.post_code|as_crispy_field}}
+                                            {{form.product_height|as_crispy_field}}
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label class="control-label">Country<span
+                                        <label class="control-label">Weight<span
                                                 class="text-danger"></span></label>
-                                            {{form2.country|as_crispy_field}}
+                                            {{form.product_weight}}
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label class="control-label">State<span
+                                        <label class="control-label">Pieces<span
                                                 class="text-danger"></span></label>
-                                            {{form2.state|as_crispy_field}}
+                                            {{form.product_pieces|as_crispy_field}}
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label class="control-label">Mobile-no<span
+                                        <label class="control-label">Available<span
                                                 class="text-danger"></span></label>
-                                            {{form2.mobile_no|as_crispy_field}}
+                                            {{form.product_available|as_crispy_field}}
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label class="control-label">Bio<span
+                                        <label class="control-label"><span
                                                 class="text-danger"></span></label>
-                                            {{form2.desc}}
+                                            {{form.product_is_sale|as_crispy_field}}
                                     </div>
+                                    
                                     <div class="form-group mb-4">
-                                        <label class="control-label">Facebook-url<span
+                                        <label class="control-label"><span
                                                 class="text-danger"></span></label>
-                                            {{form2.facebook|as_crispy_field}}
+                                            {{form.product_is_active|as_crispy_field}}
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label class="control-label">Twitter-url<span
+                                        <label class="control-label"><span
                                                 class="text-danger"></span></label>
-                                            {{form2.teitter|as_crispy_field}}
+                                            {{form.product_is_deleted|as_crispy_field}}
                                     </div>
-
                                     <div class="form-group mb-4">
-                                        <label class="control-label">Instagram-url<span
+                                        <label class="control-label">Slug<span
                                                 class="text-danger"></span></label>
-                                            {{form2.instagram|as_crispy_field}}
+                                            {{form.product_slug|as_crispy_field}}
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label class="control-label">Last-Login<span
-                                                class="text-danger">*</span></label>
-                                            {{form.last_login|as_crispy_field}}
-                                        <p class="helperText text-danger">Last login</p>
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label class="control-label">Date-Joined<span
-                                                class="text-danger">*</span></label>
-                                            {{form.date_joined|as_crispy_field}}
-                                        <p class="helperText text-danger">Date joined</p>
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label class="control-label">Status<span
+                                        <label class="control-label">Additional image1<span
                                                 class="text-danger"></span></label>
-                                            {{form2.status}}
+                                            {{form.additional_image1|as_crispy_field}}
                                     </div>
                                     <div class="form-group mb-4">
-                                        <!-- <label class="control-label">permission<span
-                                                class="text-danger">*</span></label> -->
-                                         <p class="text-success">{{form2.avatar}}</p>
-                                        <p class="helperText text-danger">avatar</p>
-                                    </div>  
+                                        <label class="control-label">Additional image2<span
+                                                class="text-danger"></span></label>
+                                            {{form.additional_image2|as_crispy_field}}
+                                    </div>
                                     <div class="form-group mb-4">
-                                        <label class="control-label">permission<span
-                                                class="text-danger">*</span></label>
-                                            {{form.user_permissions|as_crispy_field}}
-                                        <p class="helperText text-danger">permission</p>
-                                    </div>  
+                                        <label class="control-label">Additional image3<span
+                                                class="text-danger"></span></label>
+                                            {{form.additional_image3|as_crispy_field}}
+                                    </div>
+                                    
                                 </div>
                                 <div class="col-lg-6">
-                                    <h1>Permissions</h1>
-                                    {{form.is_superuser|as_crispy_field}}
-                                    {{form.is_staff|as_crispy_field}}
+                                    
 
                                     <div class="p-3">
-                                        <h5>Profile Avatar</h5>
-                                        <div class="card text-center border-0" style="width: 18rem;">   
-                                            <div class="profile-img mx-auto mb-3 mt-3">
-                                                <img class="card-img-top rounded-circle" src="{{image.profile.avatar.url}}"
-                                                    alt="Card image cap">
-                                            </div>
-            
-                                            <div class="form-group mb-4">
-                                                <!-- <label class="control-label">permission<span
-                                                        class="text-danger">*</span></label> -->
-                                                 <p class="text-success">{{form2.avatar}}</p>
-                                                <p class="helperText text-danger">avatar</p>
-                                            </div>
-                                            <div class="d-flex justify-content-center">
-                                                <a href="#" class="btn btn-primary">Follow</a>
-                                                <a href="#" class="btn btn-primary ml-2">Message</a>
-            
-                                            </div>
-                                        </div><br><br><br>
-                                        <div class="form-group mb-4">
-                                            <h1>Skills</h1>
-                                            <!-- <label class="control-label"><span
-                                                    class="text-danger"></span></label> -->
-                                                    <!-- {{form3.as_p}} -->
-                                                {{form3.html|as_crispy_field}}
-                                                {{form3.css|as_crispy_field}}
-                                                {{form3.javascripts|as_crispy_field}}
-                                                {{form3.java|as_crispy_field}}
-                                                {{form3.jquery|as_crispy_field}}
-                                                {{form3.python|as_crispy_field}}
-                                                {{form3.bootstrap|as_crispy_field}}
-                                                {{form3.react|as_crispy_field}}
-    
-                                        </div>
-                                    </div>
                                 </div>
-                                 
+                                </div>
                                 <div class="col-lg-6">
                                     <button class="btn btn-primary" type="submit">Submit</button>
                                 </div>
@@ -352,9 +299,3 @@
 
 
 {% endblock %}
-
-
-
-
-
-
