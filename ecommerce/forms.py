@@ -1,11 +1,24 @@
 from management.models import Profile
 from django import forms
-from .models import Add_Product
+from .models import Product
+
+
 class  Product_forms(forms.ModelForm):
     # product_vender=forms.InlineForeignKeyField(profile=request.user)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)        
+        self.fields["product_vendor"].widget.attrs.update({
+            'name':'product_vendor',
+            'id':'product_vendor',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'product_vendor',
+            'maxlength':'50',
+            'minlength':'6'
+        })
         self.fields["product_name"].widget.attrs.update({
             'name':'product_name',
             'id':'product_name',
@@ -17,6 +30,7 @@ class  Product_forms(forms.ModelForm):
             'maxlength':'50',
             'minlength':'6'
         })
+        
         self.fields["product_description"].widget.attrs.update({
             'name':'product_description',
             'id':'product_description',
@@ -28,185 +42,230 @@ class  Product_forms(forms.ModelForm):
             'maxlength':'50',
             'minlength':'6'
         })
-        
         self.fields["product_image"].widget.attrs.update({
             'name':'product_image',
             'id':'product_image',
             'style':'height:40px',
-            'size':'50px',
+            # 'size':'50px',
             'type':'text',
             'class':'form-control',
             'placeholder':'product_image',
             'maxlength':'50',
             'minlength':'6'
         })
-        self.fields["product_catagory"].widget.attrs.update({
-            'name':'product_catagory',
-            'id':'product_catagory',
+        self.fields["product_minicategor"].widget.attrs.update({
+            'name':'product_minicategor',
+            'id':'product_minicategor',
             'style':'height:40px',
             # 'size':'50px',
             'type':'text',
             'class':'form-control',
-            'placeholder':'product_catagory',
+            'placeholder':'product_minicategor',
             'maxlength':'50',
             'minlength':'6'
         })
-        self.fields["product_price"].widget.attrs.update({
-            'name':'product_price',
-            'id':'product_price',
+        self.fields["product_subcategory"].widget.attrs.update({
+            'name':'product_subcategory',
+            'id':'product_subcategory',
+            'style':'height:40px',
+            # 'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'product_subcategory',
+            'maxlength':'50',
+            'minlength':'6'
+        })
+        self.fields["product_maincategory"].widget.attrs.update({
+            'name':'product_maincategory',
+            'id':'product_maincategory',
+            'style':'height:40px',
+            # 'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'product_maincategory',
+            'maxlength':'50',
+            'minlength':'6'
+        })
+        self.fields["product_supercategory"].widget.attrs.update({
+            'name':'product_supercategory',
+            'id':'product_supercategory',
+            'style':'height:40px',
+            # 'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'product_supercategory',
+            'maxlength':'50',
+            'minlength':'6'
+        })
+        self.fields["content"].widget.attrs.update({
+            'name':'content',
+            'id':'content',
+            'style':'height:80px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'content',
+            'maxlength':'50',
+            'minlength':'6'
+        })
+        self.fields["PRDPrice"].widget.attrs.update({
+            'name':'PRDPrice',
+            'id':'PRDPrice',
             'style':'height:40px',
             'size':'50px',
             'type':'text',
             'class':'form-control',
-            'placeholder':'product_price',
+            'placeholder':'PRDPrice',
             'maxlength':'50',
             'minlength':'6'
         })
-        self.fields["product_discount"].widget.attrs.update({
-            'name':'product_discount',
-            'id':'product_discount',
+        self.fields["PRDDiscountPrice"].widget.attrs.update({
+            'name':'PRDDiscountPrice',
+            'id':'PRDDiscountPrice',
             'style':'height:40px',
             'size':'50px',
             'type':'text',
             'class':'form-control',
-            'placeholder':'product_discount',
+            'placeholder':'PRDDiscountPrice',
             'maxlength':'50',
             'minlength':'6'
         })
-        self.fields["additional_image1"].widget.attrs.update({
-            'name':'additional_image1',
-            'id':'product_description',
+        self.fields["additional_image_1"].widget.attrs.update({
+            'name':'additional_image_1',
+            'id':'additional_image_1',
             'style':'height:40px',
             'size':'50px',
             'type':'text',
             'class':'form-control',
-            'placeholder':'additional_image1',
+            'placeholder':'additional_image_1',
             'maxlength':'50',
             'minlength':'6'
         })
-        self.fields["additional_image2"].widget.attrs.update({
-            'name':'additional_image2',
-            'id':'additional_image2',
+        self.fields["additional_image_2"].widget.attrs.update({
+            'name':'additional_image_2',
+            'id':'additional_image_2',
             'style':'height:40px',
             'size':'50px',
             'type':'text',
             'class':'form-control',
-            'placeholder':'additional_image2',
+            'placeholder':'additional_image_2',
             'maxlength':'50',
             'minlength':'6'
         })
-        self.fields["additional_image3"].widget.attrs.update({
-            'name':'additional_image3',
-            'id':'additional_image3',
+        self.fields["additional_image_3"].widget.attrs.update({
+            'name':'additional_image_3',
+            'id':'additional_image_3',
             'style':'height:40px',
             'size':'50px',
             'type':'text',
             'class':'form-control',
-            'placeholder':'additional_image3',
+            'placeholder':'additional_image_3',
             'maxlength':'50',
             'minlength':'6'
         })
-        self.fields["product_height"].widget.attrs.update({
-            'name':'product_height',
-            'id':'product_height',
+        self.fields["additional_image_4"].widget.attrs.update({
+            'name':'additional_image_4',
+            'id':'additional_image_4',
             'style':'height:40px',
             'size':'50px',
             'type':'text',
             'class':'form-control',
-            'placeholder':'product_height',
+            'placeholder':'additional_image_4',
             'maxlength':'50',
             'minlength':'6'
         })
-        self.fields["product_width"].widget.attrs.update({
-            'name':'product_width',
-            'id':'product_width',
+        self.fields["width"].widget.attrs.update({
+            'name':'width',
+            'id':'width',
             'style':'height:40px',
             'size':'50px',
             'type':'text',
             'class':'form-control',
-            'placeholder':'product_width',
+            'placeholder':'width',
             'maxlength':'50',
             'minlength':'6'
         })
-        self.fields["product_pieces"].widget.attrs.update({
-            'name':'product_pieces',
-            'id':'product_pieces',
+        self.fields["height"].widget.attrs.update({
+            'name':'height',
+            'id':'height',
             'style':'height:40px',
             'size':'50px',
             'type':'text',
             'class':'form-control',
-            'placeholder':'product_pieces',
+            'placeholder':'height',
             'maxlength':'50',
             'minlength':'6'
         })
-        self.fields["product_available"].widget.attrs.update({
-            'name':'product_available',
-            'id':'product_available',
+        self.fields["PRDWeight"].widget.attrs.update({
+            'name':'PRDWeight',
+            'id':'PRDWeight',
             'style':'height:40px',
             'size':'50px',
             'type':'text',
             'class':'form-control',
-            'placeholder':'product_available',
+            'placeholder':'PRDWeight',
             'maxlength':'50',
             'minlength':'6'
         })
-        # self.fields["product_is_sale"].widget.attrs.update({
-        #     'name':'product_is_sale',
-        #     'id':'product_is_sale',
-        #     'style':'height:40px',
-        #     'size':'50px',
-        #     'type':'text',
-        #     'class':'form-control',
-        #     'placeholder':'product_is_sale',
-        #     'maxlength':'50',
-        #     'minlength':'6'
-        # })
-        # self.fields["product_is_active"].widget.attrs.update({
-        #     'name':'product_is_active',
-        #     'id':'product_is_active',
-        #     'style':'height:40px',
-        #     'size':'50px',
-        #     'type':'text',
-        #     'class':'form-control',
-        #     'placeholder':'product_is_active',
-        #     'maxlength':'50',
-        #     'minlength':'6'
-        # })
-        # self.fields["product_is_deleted"].widget.attrs.update({
-        #     'name':'product_is_deleted',
-        #     'id':'product_is_deleted',
-        #     'style':'height:40px',
-        #     'size':'50px',
-        #     'type':'text',
-        #     'class':'form-control',
-        #     'placeholder':'product_is_deleted',
-        #     'maxlength':'50',
-        #     'minlength':'6'
-        # })
-        self.fields["product_slug"].widget.attrs.update({
-            'name':'product_slug',
-            'id':'product_slug',
+        self.fields["pieces"].widget.attrs.update({
+            'name':'pieces',
+            'id':'pieces',
             'style':'height:40px',
             'size':'50px',
             'type':'text',
             'class':'form-control',
-            'placeholder':'product_slug',
+            'placeholder':'pieces',
             'maxlength':'50',
             'minlength':'6'
         })
-        self.fields["product_weight"].widget.attrs.update({
-            'name':'product_weight',
-            'id':'product_weight',
+        self.fields["available"].widget.attrs.update({
+            'name':'available',
+            'id':'available',
             'style':'height:40px',
             'size':'50px',
             'type':'text',
             'class':'form-control',
-            'placeholder':'product_weight',
+            'placeholder':'available',
+            'maxlength':'50',
+            'minlength':'6'
+        })
+        self.fields["promotional"].widget.attrs.update({
+            'name':'promotional',
+            'id':'promotional',
+            'style':'height:40px',
+            # 'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'promotional',
+            'maxlength':'50',
+            'minlength':'6'
+        })
+        self.fields["PRDISactive"].widget.attrs.update({
+            'name':'PRDISactive',
+            'id':'PRDISactive',
+            'style':'height:40px',
+            # 'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'PRDISactive',
+            'maxlength':'50',
+            'minlength':'6'
+        })
+        self.fields["PRDSKU"].widget.attrs.update({
+            'name':'PRDSKU',
+            'id':'PRDSKU',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'PRDSKU',
             'maxlength':'50',
             'minlength':'6'
         })
     class Meta:
-        model=Add_Product
-        fields=['product_name','product_description','product_image','product_catagory','product_price','product_discount','additional_image1',
-        'additional_image2','additional_image3','product_width','product_height','product_weight','product_pieces',
-        'product_available','product_is_sale','product_is_active','product_is_deleted','product_slug','product_vender']
+        model=Product
+        fields=['product_vendor','product_name','product_description','product_image',
+        'product_minicategor','product_subcategory','product_maincategory','product_supercategory',
+        'content','PRDPrice','PRDDiscountPrice','additional_image_1','additional_image_2',
+        'additional_image_3','additional_image_4','width','height','PRDWeight','pieces','available',
+        'promotional','PRDISactive','PRDSKU']

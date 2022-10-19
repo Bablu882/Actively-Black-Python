@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'sites',
     'ecommerce',
+    'ckeditor',
+    'ckeditor_uploader',
 
 
     
@@ -226,6 +228,8 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
@@ -248,4 +252,18 @@ SIMPLE_JWT = {
     'JTI_CLAIM': 'jti',
 
     
+}
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink'],
+            ['RemoveFormat', 'Source'],
+            ['Form', 'Checkbox', 'Radio', 'TextField','Image', 'Textarea', 'Select', 'Button','HiddenField']
+
+        ]
+    }
 }

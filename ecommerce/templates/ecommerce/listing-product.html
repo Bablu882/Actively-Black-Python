@@ -204,11 +204,11 @@ Actively||view-order
                                             <td>{{product.id}}</td>
                                             <!-- <td><a href="/view-profile/{{item.profile.slug}}" class="text-info">{{item.username}}</a></td> -->
                                             <td>{{product.product_name}}</td>
-                                            <td>{{product.product_price}}</td>
+                                            <td>{{product.PRDPrice}}</td>
                                             <td><img class="card-img-top rounded-circle" src="{{product.product_image.url}}"
                                                 alt="Card image cap"></td>
-                                            <td>{{product.product_is_active}}</td>
-                                            <td>{{product.product_pieces}}</td>
+                                            <td>{{product.PRDISactive}}</td>
+                                            <td>{{product.pieces}}</td>
                                             <!-- {% if request.user.is_superuser %} -->
                                             <td>
                                                 <button class="icon-button" class="dropdown-toggle"
@@ -264,36 +264,6 @@ Actively||view-order
                         </button>
                         <span class="d-block mt-1">Light</span>
                     </div>
-                    <!-- <div class="col-6 text-center">
-                        <button class="box rounded default-picker w-100">
-                            <span class="color-box"></span>
-                        </button>
-                        <span class="d-block mt-1">Default</span>
-                    </div>
-                    <div class="col-6 text-center">
-                        <button class="box rounded primary-picker w-100">
-                            <span class="color-box"></span>
-                        </button>
-                        <span class="d-block mt-1">Blue</span>
-                    </div>
-                    <div class="col-6 text-center">
-                        <button class="box rounded warning-picker w-100">
-                            <span class="color-box"></span>
-                        </button>
-                        <span class="d-block mt-1">Blue</span>
-                    </div>
-                    <div class="col-6 text-center">
-                        <button class="box rounded success-picker w-100">
-                            <span class="color-box"></span>
-                        </button>
-                        <span class="d-block mt-1">Green</span>
-                    </div>
-                    <div class="col-6 text-center">
-                        <button class="box rounded indigo-picker w-100">
-                            <span class="color-box"></span>
-                        </button>
-                        <span class="d-block mt-1">Indigo</span>
-                    </div> -->
                 </div>
             </aside>
         </div>

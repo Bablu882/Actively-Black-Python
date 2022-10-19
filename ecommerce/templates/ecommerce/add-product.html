@@ -137,7 +137,7 @@ Actively||view-order
                 </div>
                         {% if messages %}
                         {% for message in messages %}
-                        <div class='alert alert-danger'>
+                        <div class='alert alert-success'>
                             {{message}}
                     
                         </div>
@@ -157,97 +157,123 @@ Actively||view-order
                             <div class="row">
                                 <div class="col-lg-6">
                                      
-                                    <div class="form-group mb-4">
+                                    <!-- <div class="form-group mb-4">
                                         <label class="control-label"><span
                                                 class="text-danger"></span></label>
+                                            {{form.product_vendor|as_crispy_field}}
+                                    </div> -->
+                                    <div class="form-group mb-4">
+                                        <label class="control-label"><span
+                                                class="text-danger"></span></label>                                       
                                             {{form.product_name|as_crispy_field}}
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label class="control-label">Product Desc<span
+                                        <label  class="control-label"><span
                                                 class="text-danger"></span></label>                                       
                                             {{form.product_description|as_crispy_field}}
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label  class="control-label">Catagory<span
-                                                class="text-danger"></span></label>                                       
-                                            {{form.product_catagory|as_crispy_field}}
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label class="control-label">Image<span
+                                        <label class="control-label"><span
                                                 class="text-danger"></span></label>
                                             {{form.product_image|as_crispy_field}}
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label class="control-label">Price<span
+                                        <label class="control-label"><span
                                                 class="text-danger"></span></label>
-                                            {{form.product_price|as_crispy_field}}
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label class="control-label">Discount<span
-                                                class="text-danger"></span></label>
-                                            {{form.product_discount}}
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label class="control-label">Width<span
-                                                class="text-danger"></span></label>
-                                            {{form.product_width|as_crispy_field}}
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label class="control-label">Height<span
-                                                class="text-danger"></span></label>
-                                            {{form.product_height|as_crispy_field}}
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label class="control-label">Weight<span
-                                                class="text-danger"></span></label>
-                                            {{form.product_weight}}
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label class="control-label">Pieces<span
-                                                class="text-danger"></span></label>
-                                            {{form.product_pieces|as_crispy_field}}
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label class="control-label">Available<span
-                                                class="text-danger"></span></label>
-                                            {{form.product_available|as_crispy_field}}
+                                            {{form.product_minicategor|as_crispy_field}}
                                     </div>
                                     <div class="form-group mb-4">
                                         <label class="control-label"><span
                                                 class="text-danger"></span></label>
-                                            {{form.product_is_sale|as_crispy_field}}
+                                            {{form.product_subcategory|as_crispy_field}}
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="control-label"><span
+                                                class="text-danger"></span></label>
+                                            {{form.product_maincategory|as_crispy_field}}
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="control-label"><span
+                                                class="text-danger"></span></label>
+                                            {{form.product_supercategory|as_crispy_field}}
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="control-label"><span
+                                                class="text-danger"></span></label>
+                                            {{form.content}}
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="control-label"><span
+                                                class="text-danger"></span></label>
+                                            {{form.PRDPrice|as_crispy_field}}
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="control-label"><span
+                                                class="text-danger"></span></label>
+                                            {{form.PRDDiscountPrice|as_crispy_field}}
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="control-label"><span
+                                                class="text-danger"></span></label>
+                                            {{form.additional_image_1|as_crispy_field}}
                                     </div>
                                     
                                     <div class="form-group mb-4">
                                         <label class="control-label"><span
                                                 class="text-danger"></span></label>
-                                            {{form.product_is_active|as_crispy_field}}
+                                            {{form.additional_image_2|as_crispy_field}}
                                     </div>
                                     <div class="form-group mb-4">
                                         <label class="control-label"><span
                                                 class="text-danger"></span></label>
-                                            {{form.product_is_deleted|as_crispy_field}}
+                                            {{form.additional_image_3|as_crispy_field}}
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label class="control-label">Slug<span
+                                        <label class="control-label"><span
                                                 class="text-danger"></span></label>
-                                            {{form.product_slug|as_crispy_field}}
+                                            {{form.additional_image_4|as_crispy_field}}
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label class="control-label">Additional image1<span
+                                        <label class="control-label"><span
                                                 class="text-danger"></span></label>
-                                            {{form.additional_image1|as_crispy_field}}
+                                            {{form.width|as_crispy_field}}
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label class="control-label">Additional image2<span
+                                        <label class="control-label"><span
                                                 class="text-danger"></span></label>
-                                            {{form.additional_image2|as_crispy_field}}
+                                            {{form.height|as_crispy_field}}
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label class="control-label">Additional image3<span
+                                        <label class="control-label">Weight<span
                                                 class="text-danger"></span></label>
-                                            {{form.additional_image3|as_crispy_field}}
+                                            {{form.PRDWeight}}
                                     </div>
+                                    <div class="form-group mb-4">
+                                        <label class="control-label"><span
+                                                class="text-danger"></span></label>
+                                            {{form.pieces|as_crispy_field}}
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="control-label"><span
+                                                class="text-danger"></span></label>
+                                            {{form.available|as_crispy_field}}
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="control-label"><span
+                                                class="text-danger"></span></label>
+                                            {{form.promotional|as_crispy_field}}
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="control-label"><span
+                                                class="text-danger"></span></label>
+                                            {{form.PRDISactive|as_crispy_field}}
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="control-label"><span
+                                                class="text-danger"></span></label>
+                                            {{form.PRDSKU|as_crispy_field}}
+                                    </div>
+                                    
                                     
                                 </div>
                                 <div class="col-lg-6">
@@ -296,6 +322,7 @@ Actively||view-order
             </aside>
         </div>
     </div>
+<script>src="//cdn.ckeditor.com/4.18.0/basic/ckeditor.js"</script>
 
 
 {% endblock %}
