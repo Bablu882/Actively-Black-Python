@@ -139,6 +139,15 @@
                                 <img class="card-img-top nav-profile" src="{{request.user.profile.avatar.url}}"
                                 alt="Card image cap">
                             </li>
+                            <a class="mini-cart-icon ml-2" href="">
+                                <img alt="Nest" style="filter: invert(1);" src="{% static 'management/images/cart-icon.svg' %}" />
+                                <!-- {% if cart_count%} -->
+                                <span class="pro-count blue"></span>
+                                <!-- {%else%} -->
+                                <span class="pro-count blue">0</span>
+                                <!-- {%endif%} -->
+                            </a>
+                            <!-- <a href=""><span class="lable">Cart</span></a> -->
                         </ul>
                     </div>
                 </nav>

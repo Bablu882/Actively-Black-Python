@@ -1,13 +1,11 @@
-from distutils.command.upload import upload
-from enum import unique
-import profile
-from tabnanny import verbose
 from django.db import models
 from traitlets import default
 from management.models import User
 from management.models import Profile
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import slugify
+from django.core.validators import FileExtensionValidator, MinValueValidator, MaxValueValidator
+
 
 
 class Product_catagory(models.Model):
@@ -52,4 +50,24 @@ class Add_Product(models.Model):
         self.product_slug=slugify(self.product_name)
         super().save(*args,**kwargs)    
 
+
+
+
+
+
+class Product_rating(models.Model):
+    related_product=models.ForeignKey(Add_Product,on_delete=models.CASCADE,
+    blank=True,null=True,verbose_name=_("Add_product"))
+    vendor=models.ForeignKey(Profile,on_delete=models.CASCADE,blank=True,null=True,
+    related_name='vender',verbose_name=_("Supplier"),)
+    rate=models.PositiveIntegerField(validators=[MinValueValidator(1),MaxValueValidator(5)],blank=True,null=True)
+    clint_name=models.ForeignKey(Profile,on_delete=models.CASCADE,blank=True,null=True,related_name='Customer',
+    verbose_name=_("Clint"))
+    clint_comment=models.CharField(max_length=500,blank=True,null=True,verbose_name=_("Comment"))
+    active=models.BooleanField(default=True)
+    rating_date=models.DateTimeField(auto_now_add=True,null=True,blank=True)
+    rating_update=models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return self.related_product
 

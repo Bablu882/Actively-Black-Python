@@ -1,6 +1,8 @@
+from management.models import Profile
 from django import forms
 from .models import Add_Product
 class  Product_forms(forms.ModelForm):
+    # product_vender=forms.InlineForeignKeyField(profile=request.user)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)        
