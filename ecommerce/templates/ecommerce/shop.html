@@ -10,6 +10,15 @@
     .profile-imgs{
         border-radius: 0%;
     }
+    .thumbnail-img-box{
+        height: 200px;
+        overflow: hidden;
+    }
+    .thumbnail-img-box img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
 </style>
 
 <div class="dashboard dark-theme">
@@ -129,6 +138,14 @@
                             <img class="card-img-top nav-profile" src="{{request.user.profile.avatar.url}}"
                             alt="Card image cap">
                         </li>
+                        <a class="mini-cart-icon ml-2" href="">
+                            <img alt="Nest" style="filter: invert(1);" src="{% static 'management/images/cart-icon.svg' %}" />
+                            <!-- {% if cart_count%} -->
+                            <span class="pro-count blue"></span>
+                            <!-- {%else%} -->
+                            <span class="pro-count blue">0</span>
+                            <!-- {%endif%} -->
+                        </a>
                     </ul>
                 </div>
             </nav>
@@ -160,19 +177,19 @@
                         <div class="p-3">
                             <h5>{{product.product_name}}</h5>
                             <div class="card text-center border-0" style="width: 18rem;">
-                                <div class="profile-imgs mx-auto mb-3 mt-3">
+                                <div class="profile-imgs mx-auto mb-3 mt-3 thumbnail-img-box">
                                     <img class="card-img-top rounde-circle" src="{{product.product_image.url}}"
                                         alt="Card image cap">
                                 </div>
 
                                 <p class="mb-3 ">
-                                    <strong> By:{{product.product_vender}}</strong>
+                                    <strong> By:{{product.product_vendor}}</strong>
                                 </p>
                                 <!-- <p>{{user.email}}</p> -->
                                 <div class="d-flex justify-content-center">
-                                    <button type="button" class="btn btn-info ">USD:{{product.product_price}}</button>
+                                    <button type="button" class="btn btn-info ">USD:{{product.PRDPrice}}</button>
 
-                                    <button type="button" class="btn btn-primary ml-2 ">View</button>
+                                    <button type="button" class="btn btn-primary ml-2 "><a href="product-details/{{product.PRDSlug}}">View</a></button>
 
                                     <!-- <a href="#" class="btn btn-primary">Follow</a>
                                     <a href="#" class="btn btn-primary ml-2">Message</a> -->

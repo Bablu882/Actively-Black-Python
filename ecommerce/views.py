@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render,get_object_or_404
 from management.models import User,Profile
 # from .models import Add_Product,Product_catagory
 from .forms import *
@@ -6,7 +6,8 @@ from django.contrib import messages
 from .models import SubCategory,MainCategory,MiniCategory,SuperCategory
 from django.views.generic import View
 from django.http import JsonResponse
-from .models import Product
+from .models import Product,ProductRating
+from django.db.models import Sum
 # Create your views here
 
 def listing_product(request):
@@ -28,9 +29,9 @@ def add_product(request):
     return render(request,'ecommerce/add-product.html',{'form':form})
 
 
-# def shop(request):
-#     products=Add_Product.objects.all()
-#     return render(request,'ecommerce/shop.html',{'products':products})    
+def home(request):
+    products=Product.objects.all()
+    return render(request,'ecommerce/shop.html',{'products':products})    
 
 def shop(request):
 
@@ -140,3 +141,78 @@ class CategoryJsonListView(View):
 
             max_size = True if upper >= products_size else False
             return JsonResponse({"data": products, "max": max_size, "products_size": products_size, }, safe=False)
+
+
+def product_details(request, slug):
+    # if not request.session.has_key('currency'):
+    #     request.session['currency'] = settings.DEFAULT_CURRENCY
+
+    product_detail = get_object_or_404(Product, PRDSlug=slug, PRDISactive=True)
+    # product_image = ProductImage.objects.all().filter(PRDIProduct=product_detail)
+    related_products_minicategor = product_detail.product_minicategor
+    related_products = Product.objects.all().filter(
+        product_minicategor=related_products_minicategor, PRDISactive=True)
+    supplier_Products = Product.objects.all().filter(product_vendor=product_detail.product_vendor,
+                                                     product_minicategor=related_products_minicategor, PRDISactive=True)
+
+    # related = ProductAlternative.objects.all().filter(PALNProduct=product_detail)
+    # related_products = product_detail.alternative_products.all()
+
+    product_feedback = ProductRating.objects.all().filter(
+        PRDIProduct=product_detail, active=True)
+    feedback_sum = ProductRating.objects.all().filter(
+        PRDIProduct=product_detail, active=True).aggregate(Sum('rate'))
+    feedbak_number = product_feedback.count()
+    
+    try:
+
+        average_rating = int(feedback_sum["rate__sum"]) / feedbak_number
+
+        start_1_sum =  ProductRating.objects.all().filter(
+            PRDIProduct=product_detail, active=True , rate = 1).count()
+
+        start_2_sum =  ProductRating.objects.all().filter(
+            PRDIProduct=product_detail, active=True , rate = 2).count()
+
+        start_3_sum =  ProductRating.objects.all().filter(
+            PRDIProduct=product_detail, active=True , rate = 3).count()
+
+        start_4_sum =  ProductRating.objects.all().filter(
+            PRDIProduct=product_detail, active=True , rate = 4).count()
+            
+        start_5_sum =  ProductRating.objects.all().filter(
+            PRDIProduct=product_detail, active=True , rate = 5).count()
+        
+        
+
+        start_1 = (start_1_sum/ feedbak_number) * 100
+        start_2 = (start_2_sum / feedbak_number) * 100
+        start_3 = (start_3_sum / feedbak_number) * 100
+        start_4 = (start_4_sum / feedbak_number) * 100
+        start_5 = (start_5_sum / feedbak_number) * 100
+
+    except:
+        average_rating = 0
+        start_1 = 0
+        start_2 = 0
+        start_3 = 0
+        start_4 = 0
+        start_5 = 0
+
+    context = {
+        'product_detail': product_detail,
+        # 'product_image': product_image,
+        'related_products': related_products,
+        'supplier_Products': supplier_Products,
+        # 'related_products': related_products,
+        'product_feedback': product_feedback,
+        'average_rating': average_rating,
+        'feedbak_number': feedbak_number,
+        "start_1":start_1,
+        "start_2":start_2,
+        "start_3":start_3,
+        "start_4":start_4,
+        "start_5":start_5,
+
+    }
+    return render(request, 'ecommerce/shop-product-details.html', context)

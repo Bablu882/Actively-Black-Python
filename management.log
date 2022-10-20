@@ -3463,3 +3463,504 @@ Watching for file changes with StatReloader
 Using selector: EpollSelector
 Watching for file changes with StatReloader
 Using selector: EpollSelector
+Watching for file changes with StatReloader
+Importing BlpImagePlugin
+Importing BmpImagePlugin
+Importing BufrStubImagePlugin
+Importing CurImagePlugin
+Importing DcxImagePlugin
+Importing DdsImagePlugin
+Importing EpsImagePlugin
+Importing FitsStubImagePlugin
+Importing FliImagePlugin
+Importing FpxImagePlugin
+Importing FtexImagePlugin
+Importing GbrImagePlugin
+Importing GifImagePlugin
+Importing GribStubImagePlugin
+Importing Hdf5StubImagePlugin
+Importing IcnsImagePlugin
+Importing IcoImagePlugin
+Importing ImImagePlugin
+Importing ImtImagePlugin
+Importing IptcImagePlugin
+Importing JpegImagePlugin
+Importing Jpeg2KImagePlugin
+Importing McIdasImagePlugin
+Importing MicImagePlugin
+Importing MpegImagePlugin
+Importing MpoImagePlugin
+Importing MspImagePlugin
+Importing PalmImagePlugin
+Importing PcdImagePlugin
+Importing PcxImagePlugin
+Importing PdfImagePlugin
+Importing PixarImagePlugin
+Importing PngImagePlugin
+Importing PpmImagePlugin
+Importing PsdImagePlugin
+Importing SgiImagePlugin
+Importing SpiderImagePlugin
+Importing SunImagePlugin
+Importing TgaImagePlugin
+Importing TiffImagePlugin
+Importing WebPImagePlugin
+Importing WmfImagePlugin
+Importing XbmImagePlugin
+Importing XpmImagePlugin
+Importing XVThumbImagePlugin
+Internal Server Error: /add-product
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 22, in add_product
+    product.product_vendor=request.user.profile
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/utils/functional.py", line 241, in inner
+    return func(self._wrapped, *args)
+AttributeError: 'AnonymousUser' object has no attribute 'profile'
+Watching for file changes with StatReloader
+Not Found: /register/
+Not Found: /favicon.ico
+Not Found: /register/
+Not Found: /register/
+Not Found: /register/
+Not Found: /register/
+/home/bablu/Desktop/python2/actively_black_python/management/urls.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/management/urls.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /register/
+Not Found: /register/
+Not Found: /register/
+Not Found: /register/
+Not Found: /register/
+Not Found: /register/
+Not Found: /register/
+Not Found: /register/
+Not Found: /register/
+Not Found: /register/
+Not Found: /register/
+Not Found: /register/
+Not Found: /favicon.ico
+Not Found: /register/
+Not Found: /register/
+/home/bablu/Desktop/python2/actively_black_python/management/urls.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/management/urls.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/management/urls.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /login/
+Not Found: /login/
+Not Found: /login/
+Not Found: /login/
+/home/bablu/Desktop/python2/actively_black_python/management/urls.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /login/
+Not Found: /login/
+Not Found: /login/
+Not Found: /login/
+Not Found: /login/
+Not Found: /login/
+Not Found: /login/
+Not Found: /login/
+Not Found: /login/
+Using selector: EpollSelector
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /login/
+/home/bablu/Desktop/python2/actively_black_python/management/urls.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/management/urls.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /login/
+Not Found: /login/
+Not Found: /login/
+/home/bablu/Desktop/python2/actively_black_python/management/urls.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /register/
+Not Found: /register/
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/urls.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/urls.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Internal Server Error: /product-details/jeans
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 163, in product_details
+    PRDIProduct=product_detail, active=True).aggregate(Sum('rate'))
+NameError: name 'Sum' is not defined
+Internal Server Error: /product-details/hp-laptop
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 163, in product_details
+    PRDIProduct=product_detail, active=True).aggregate(Sum('rate'))
+NameError: name 'Sum' is not defined
+Internal Server Error: /product-details/hp-laptop
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 163, in product_details
+    PRDIProduct=product_detail, active=True).aggregate(Sum('rate'))
+NameError: name 'Sum' is not defined
+Internal Server Error: /product-details/lappy
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 163, in product_details
+    PRDIProduct=product_detail, active=True).aggregate(Sum('rate'))
+NameError: name 'Sum' is not defined
+Internal Server Error: /product-details/hp-laptop
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 163, in product_details
+    PRDIProduct=product_detail, active=True).aggregate(Sum('rate'))
+NameError: name 'Sum' is not defined
+Internal Server Error: /product-details/dellindigo
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 163, in product_details
+    PRDIProduct=product_detail, active=True).aggregate(Sum('rate'))
+NameError: name 'Sum' is not defined
+Internal Server Error: /product-details/lappy
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 163, in product_details
+    PRDIProduct=product_detail, active=True).aggregate(Sum('rate'))
+NameError: name 'Sum' is not defined
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Internal Server Error: /product-details/lappy
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 218, in product_details
+    return render(request, 'ecommerce/shop-products-details.html', context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: ecommerce/shop-products-details.html
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /product-details/thumbnail03.jpg
+Not Found: /product-details/thumbnail01.jpg
+Not Found: /product-details/thumbnail02.jpg
+Not Found: /product-details/thumbnail03.jpg
+Not Found: /product-details/thumbnail01.jpg
+Not Found: /product-details/thumbnail02.jpg
+Not Found: /product-details/thumbnail02.jpg
+Not Found: /product-details/thumbnail03.jpg
+Not Found: /product-details/thumbnail01.jpg
+Not Found: /product-details/thumbnail01.jpg
+Not Found: /product-details/thumbnail03.jpg
+Not Found: /product-details/thumbnail02.jpg
+Not Found: /product-details/thumbnail01.jpg
+Not Found: /product-details/thumbnail02.jpg
+Not Found: /product-details/thumbnail03.jpg
+Not Found: /product-details/thumbnail01.jpg
+Not Found: /product-details/thumbnail03.jpg
+Not Found: /product-details/thumbnail02.jpg
+Not Found: /product-details/thumbnail01.jpg
+Not Found: /product-details/thumbnail02.jpg
+Not Found: /product-details/thumbnail03.jpg
+Not Found: /product-details/thumbnail02.jpg
+Not Found: /product-details/thumbnail03.jpg
+Not Found: /product-details/thumbnail01.jpg
+Not Found: /product-details/thumbnail01.jpg
+Not Found: /product-details/thumbnail03.jpg
+Not Found: /product-details/thumbnail02.jpg
+Not Found: /product-details/thumbnail02.jpg
+Not Found: /product-details/thumbnail03.jpg
+Not Found: /product-details/thumbnail01.jpg
+Not Found: /product-details/thumbnail02.jpg
+Not Found: /product-details/thumbnail03.jpg
+Not Found: /product-details/slide4.jpg
+Not Found: /product-details/slide2.jpg
+Not Found: /product-details/slide1.jpg
+Not Found: /product-details/slide3.jpg
+Not Found: /product-details/slide4.jpg
+Not Found: /product-details/slide1.jpg
+Not Found: /product-details/slide2.jpg
+Not Found: /product-details/slide3.jpg
+Not Found: /product-details/slide1.jpg
+Not Found: /product-details/slide3.jpg
+Not Found: /product-details/slide2.jpg
+Not Found: /product-details/slide4.jpg
+Not Found: /product-details/slide2.jpg
+Not Found: /product-details/slide1.jpg
+Not Found: /product-details/slide3.jpg
+Not Found: /product-details/slide4.jpg
+Not Found: /product-details/slide1.jpg
+Not Found: /product-details/slide4.jpg
+Not Found: /product-details/slide2.jpg
+Not Found: /product-details/slide3.jpg
+Not Found: /product-details/slide1.jpg
+Not Found: /product-details/slide2.jpg
+Not Found: /product-details/slide4.jpg
+Not Found: /product-details/slide3.jpg
+Not Found: /product-details/slide1.jpg
+Not Found: /product-details/slide4.jpg
+Not Found: /product-details/slide2.jpg
+Not Found: /product-details/slide3.jpg
+Not Found: /product-details/slide1.jpg
+Not Found: /product-details/slide2.jpg
+Not Found: /product-details/slide3.jpg
+Not Found: /product-details/slide4.jpg
+Not Found: /product-details/slide1.jpg
+Not Found: /product-details/slide2.jpg
+Not Found: /product-details/slide3.jpg
+Not Found: /product-details/slide4.jpg
+Not Found: /product-details/slide1.jpg
+Not Found: /product-details/slide2.jpg
+Not Found: /product-details/slide4.jpg
+Not Found: /product-details/slide3.jpg
+Not Found: /product-details/slide1.jpg
+Not Found: /product-details/slide4.jpg
+Not Found: /product-details/slide3.jpg
+Not Found: /product-details/slide2.jpg
+Not Found: /product-details/slide1.jpg
+Not Found: /product-details/slide3.jpg
+Not Found: /product-details/slide4.jpg
+Not Found: /product-details/slide2.jpg
+Not Found: /product-details/slide1.jpg
+Not Found: /product-details/slide3.jpg
+Not Found: /product-details/slide2.jpg
+Not Found: /product-details/slide4.jpg
+Not Found: /product-details/slide3.jpg
+Not Found: /product-details/slide2.jpg
+Not Found: /product-details/slide1.jpg
+Not Found: /product-details/slide4.jpg
+Not Found: /product-details/product_detail.additional_image_4.url
+Not Found: /product-details/slide1.jpg
+Not Found: /product-details/slide4.jpg
+Not Found: /product-details/slide2.jpg
+Not Found: /product-details/slide3.jpg
+Not Found: /product-details/slide1.jpg
+Not Found: /product-details/slide2.jpg
+Not Found: /product-details/product_detail.additional_image_4.url
+Not Found: /product-details/slide4.jpg
+Not Found: /product-details/slide3.jpg
+Not Found: /product-details/product_detail.additional_image_4.url
+Not Found: /product-details/slide1.jpg
+Not Found: /product-details/slide4.jpg
+Not Found: /product-details/slide2.jpg
+Not Found: /product-details/slide3.jpg
+Not Found: /product-details/product_detail.additional_image_4.url
+Not Found: /product-details/slide2.jpg
+Not Found: /product-details/slide4.jpg
+Not Found: /product-details/slide3.jpg
+Not Found: /product-details/slide1.jpg
+Not Found: /product-details/slide4.jpg
+Not Found: /product-details/product_detail.additional_image_4.url
+Not Found: /product-details/slide2.jpg
+Not Found: /product-details/slide1.jpg
+Not Found: /product-details/slide3.jpg
+Not Found: /product-details/slide2.jpg
+Not Found: /product-details/slide3.jpg
+Not Found: /product-details/slide1.jpg
+Not Found: /product-details/slide4.jpg
+Internal Server Error: /product-details/dellindigo
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'ImageFieldFile' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 218, in product_details
+    return render(request, 'ecommerce/shop-product-details.html', context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 988, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 671, in resolve
+    obj = self.var.resolve(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 796, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/db/models/fields/files.py", line 61, in url
+    self._require_file()
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/db/models/fields/files.py", line 38, in _require_file
+    raise ValueError("The '%s' attribute has no file associated with it." % self.field.name)
+ValueError: The 'additional_image_2' attribute has no file associated with it.
+Not Found: /favicon.ico
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Internal Server Error: /product-details/denim
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 470, in parse
+    compile_func = self.tags[command]
+KeyError: 'endif'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 218, in product_details
+    return render(request, 'ecommerce/shop-product-details.html', context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/engine.py", line 143, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loaders/base.py", line 29, in get_template
+    return Template(
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 155, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 193, in compile_nodelist
+    return parser.parse()
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 270, in do_extends
+    nodelist = parser.parse()
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 213, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 472, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 522, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 320: 'endif', expected 'endblock'. Did you forget to register or load this tag?
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+Not Found: /product-details/bootstrap.min.css.map
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/models.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /product-details/products/imgs/lap1.jpeg
+Not Found: /product-details/products/imgs/lap1.jpeg
+Not Found: /product-details/products/imgs/lap1.jpeg
+Not Found: /product-details/products/imgs/lap1.jpeg
+Watching for file changes with StatReloader
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Using selector: EpollSelector
+Using selector: EpollSelector
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/products/imgs/lap2.jpeg
+Using selector: EpollSelector
+Using selector: EpollSelector

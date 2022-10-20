@@ -13,5 +13,6 @@ urlpatterns=[
          name='shop-ajax'),
     path('listing-product',listing_product,name='listing-product'),
     path('add-product',add_product,name='add-product'),
-    # path('shop',shop,name='shop'),
+    path('home',home,name='home'),
+    path('product-details/<slug:slug>',product_details,name='product-details')
 ]
