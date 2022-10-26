@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'ecommerce',
     'ckeditor',
     'ckeditor_uploader',
+    'currencies',
+
 
 
     
@@ -82,6 +84,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'sites.context_processors.get_sites',
+                'ecommerce.context_processors.orders_cart_obj',
+                'currencies.context_processors.currencies',
+
 
             ],
         },
@@ -267,3 +272,10 @@ CKEDITOR_CONFIGS = {
         ]
     }
 }
+
+
+STRIPE_SECRET_KEY = ""
+STRIPE_PUBLIC_KEY = ""
+
+DEFAULT_CURRENCY ='INR'
+

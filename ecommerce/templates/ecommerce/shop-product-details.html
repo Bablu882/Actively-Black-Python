@@ -17,7 +17,7 @@
         /*Same as width of the large image*/
         position: relative;
         /*Instead of height we will use padding*/
-        padding-top: 250px;
+        padding-top: 280px;
         padding-bottom: 50px;
         /*That helps bring the labels down*/
 
@@ -84,6 +84,78 @@ On click the images will be displayed at normal size to complete the effect
     li.menu-item {
         margin-bottom: 30px;
     }
+    .cart-button{
+        padding: 15px;
+        
+    }
+
+    .rate>input {
+       display: none;
+    }
+
+    .rate>label {
+        color: #e5b408;
+        cursor: pointer;
+        font-size: 0;
+        line-height: 0;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    
+    .rate > label::before{
+        color: inherit;
+        content: "★";
+        display: inline-block;
+        font-size: 20px;
+        line-height: 1;
+        text-align: center;
+        width: 20px;
+        transition: color 0.35s ease 0s;
+    }
+    .rate>input:checked~label {
+      color: #ccc;
+    }
+    .rate>input:checked+label {
+        color: #ffc700;
+    }
+    #table-name td{
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: center;
+        /* background-color: aqua; */
+        color: white;
+        font-size: large;
+        padding-right: 6px;
+        border: 1px solid white;
+    }
+
+    .detail-qty {
+  max-width: 80px;
+  padding: 9px 20px;
+  position: relative;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.detail-qty > a {
+  font-size: 16px;
+  position: absolute;
+  right: 8px;
+  color: #3BB77E;
+}
+
+.detail-qty > a:hover {
+  color: #29A56C;
+}
+
+.detail-qty > a.qty-up {
+  top: 0;
+}
+
+.detail-qty > a.qty-down {
+  bottom: -4px;
+}
+
 </style>
 
 
@@ -228,7 +300,7 @@ On click the images will be displayed at normal size to complete the effect
         {% endif %}
         <section class="centered-content">
             <div class="title mb-4">
-                <h1>Profile</h1>
+                <h1>Product details</h1>
             </div>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb pl-0 bg-transparent">
@@ -244,33 +316,43 @@ On click the images will be displayed at normal size to complete the effect
                     <div class="slider">
                         <input type="radio" name="slide_switch" id="id1" />
                         <label for="id1">
+                            {% if product_detail.product_image %}
                             <img src="{{product_detail.product_image.url}}" width="100" />
                         </label>
                         <img src="{{product_detail.product_image.url}}" />
+                        {% endif %}
 
                         <input type="radio" name="slide_switch" id="id2" checked="checked" />
                         <label for="id2">
+                            {% if product_detail.additional_image_1%}
                             <img src="{{product_detail.additional_image_1.url}}" width="100" />
                         </label>
                         <img src="{{product_detail.additional_image_1.url}}" />
+                        {% endif %}
 
                         <input type="radio" name="slide_switch" id="id3" />
                         <label for="id3">
+                            {% if product_detail.additional_image_2%}
                             <img src="{{product_detail.additional_image_2.url}}" width="100" />
                         </label>
                         <img src="{{product_detail.additional_image_2.url}}" />
+                        {% endif %}
 
                         <input type="radio" name="slide_switch" id="id4" />
                         <label for="id4">
+                            {% if product_detail.additional_image_3 %}
                             <img src="{{product_detail.additional_image_3.url}}" width="100" />
                         </label>
                         <img src="{{product_detail.additional_image_3.url}}" />
+                        {% endif %}
 
                         <input type="radio" name="slide_switch" id="id5" />
                         <label for="id5">
+                            {% if product_detail.additional_image_4%}
                             <img src="{{product_detail.additional_image_4.url}}" width="100" />
                         </label>
                         <img src="{{product_detail.additional_image_4.url}}" />
+                        {% endif %}
 
 
                     </div>
@@ -294,10 +376,29 @@ On click the images will be displayed at normal size to complete the effect
                                     <h5>USD:  {{product_detail.PRDPrice}}</h5>
                                 </li>
                                 <li>
-                                    <!-- <div class="col-lg-6"> -->
-                                        <button class="btn btn-primary" type="submit">Add to cart</button>
-                                    <!-- </div>                                 -->
+                                    <p>{{product_detail.content}}</p>
                                 </li>
+                                <li>
+                                    
+                                    <div class="detail-extralink mb-50">
+                                        
+                                        <form action="{% url 'add-to-cart' %}" method = "POST"> 
+                                        <div class="product-extra-link2">
+                                            {% csrf_token %}
+                                            <input type="number" name="qyt" min="1" id="qty-input" class="bg-transparent text-white border-light w-50 form-control outline-0"/>
+                                            <!-- <input type="hidden"  name="qyt" type="text" > -->
+                                            <input type="hidden" value="{{product_detail.id}}" name="product_id">
+                                            <input type="hidden" value="{{product_detail.PRDPrice}}" name="product_Price"><br>
+                                            <button type="submit" class="btn btn-primary button-add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                        
+                                            {% comment %} <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
+                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a> {% endcomment %}
+                                        </div>
+                                    </form>
+                                    </div>
+
+                                </li>
+                                
                             </ul>
                         </div>
                     </div>
@@ -310,15 +411,15 @@ On click the images will be displayed at normal size to complete the effect
 
                     <div class="card border-0 mb-3">
                         <div class="p-3">
-                            <h5>Vendor</h5>
+                            <h5>Vendor info...</h5>
                             <ul class="list-unstyled">
-                                <li class="menu-item">
+                                <li class="d-inline-block menu-item">
                                     <img src="{{product_detail.product_vendor.avatar.url}}" width="64" height="50"
                                         alt="{{product_detail.product_vendor.user.first_name}}" />
                                 </li>
-                                <li class="menu-item">
-                                    <h6>{{product_detail.product_vendor.user.first_name}}
-                                        {{product_detail.product_vendor.user.last_name}}</h6>
+                                <li class="d-inline-block menu-item">
+                                    <h6><b>{{product_detail.product_vendor.user.first_name}}
+                                        {{product_detail.product_vendor.user.last_name}}</b></h6>
                                 </li>
                                 <!-- <li class="menu-item">
                                     <h6><b>Address:</b>   {{product_detail.product_vendor.address}}</h6>
@@ -333,44 +434,151 @@ On click the images will be displayed at normal size to complete the effect
                                         {{product_detail.product_vendor.country}}</span></li>
                                 <li class="menu-item"><img src="{% static 'management/images/icon/icon-contect.svg'%}"
                                         alt="" /><strong>Contact
-                                        Seller:</strong><span>{{product_detail.product_vendor.mobile_no}}</span></li>
+                                        Seller:(+91)-</strong><span>{{product_detail.product_vendor.mobile_no}}</span></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="card border-0 mb-3">
-                        <div class="p-3">
-                            <h5>Vendor</h5>
-                            <ul class="list-unstyled">
-                                <li class="menu-item">
-                                    <img src="{{product_detail.product_vendor.avatar.url}}" width="64" height="50"
-                                        alt="{{product_detail.product_vendor.user.first_name}}" />
-                                </li>
-                                <li class="menu-item">
-                                    <h6>{{product_detail.product_vendor.user.first_name}}
-                                        {{product_detail.product_vendor.user.last_name}}</h6>
-                                </li>
-                                <!-- <li class="menu-item">
-                                    <h6><b>Address:</b>   {{product_detail.product_vendor.address}}</h6>
-                                </li>
-                                <li class="menu-item">
-                                    <h6><b>Contect:</b>   {{product_detail.product_vendor.mobile_no}}</h6>
-                                </li> -->
-                                <li class="menu-item"><img src="{% static 'management/images/icon/icon-location.svg'%}"
-                                        alt="" /><strong>Address: </strong>
-                                    <span>{{product_detail.product_vendor.address}}
-                                        {{product_detail.product_vendor.city}},{{product_detail.product_vendor.post_code}}
-                                        {{product_detail.product_vendor.country}}</span></li>
-                                <li class="menu-item"><img src="{% static 'management/images/icon/icon-contect.svg'%}"
-                                        alt="" /><strong>Contact
-                                        Seller:</strong><span>{{product_detail.product_vendor.mobile_no}}</span></li>
-                            </ul>
-                        </div>
-                    </div>
+                    
 
                 </div>
             </div>
 
             </form>
+
+        <div class="row">
+            <div class="col-md-6">
+            <div class="card border-0 mb-3">
+                <h1>Product Description</h1>
+                <p>
+                    Lorem Ipsum is simply dummy text of the 
+                    printing and typesetting industry. Lorem Ipsum has been
+                     the industry's standard dummy text ever since the 1500s, 
+                     when an unknown printer took a galley of type and scrambled
+                      it to make a type specimen book. It has survived not only five
+                       centuries, but also the leap into electronic typesetting, 
+                       remaining essentially unchanged. It was popularised in the 1960s with the
+                        release of Letraset sheets containing Lorem Ipsum passages, and more recently with 
+                    desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                </p>
+            </div>
+            <div class="card border-0 mb-3 text-center p-3">     
+                <div class="comment-form">
+                    <h4 class="mb-15">Add a review</h4>
+                    <div class="product-rate d-inline-block mb-30"></div>
+                    <div id="message-rate">
+                    </div>
+                    <div class="form-group">
+                        <label>Quality</label> 
+                        <div class="rate">
+                            <input type="radio" id="first" name="star" value="1"><label for="first" title="text">1 star</label>
+                            <input type="radio" id="second" name="star" value="2"> <label for="second" title="text">2 star</label> 
+                            <input type="radio" id="third" name="star" value="3"> <label for="third" title="text">3 star</label> 
+                            <input type="radio" id="fourth" name="star" value="4"> <label for="fourth" title="text">4 star</label>
+                            <input type="radio" id="fifth" name="star" value="5" checked="checked"><label for="fifth" title="text">5 star</label>
+                      </div>
+                     </div>
+                    <div class="row">
+                        <div class="col-lg-8 col-md-12">
+                            <form class="form-contact comment_form form-rating" method="post"  id="{{product_detail.id}}">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <textarea class="form-control w-100" name="client_message" id="client-message" cols="40" rows="8" placeholder="Write Comment" required></textarea>
+                                        </div>
+                                    </div>
+                                 
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="button button-contactForm btn btn-primary">Submit Review</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-0 mb-3 text-center p-3">     
+                <div class="comment-form">
+                    <h4 class="mb-15">Related products</h4>
+                    <div class="product-rate d-inline-block mb-30"></div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            {%for related_product in related_products%}
+                            <!-- <div class="product-img product-img-zoom"> -->
+                                <a href="{% url 'product-details' related_product.PRDSlug %}" tabindex="0" class="media mb-3 align-items-center border p-2"> 
+                                    {%if product_detail.product_image%}
+                                    <img class="d-inline-block" src="{{related_product.product_image.url}}" height="100" width="130" alt="" />
+                                    <div class="media-body ml-3">
+                                        <h4 class="text-left">{{related_product.product_name}}</h4>
+                                    </div>
+                                    <!-- <img class="hover-img" src="{{related_product.product_image.url}}" alt="" /> -->
+                                    {%else%}
+                                    <img class="default-img" src="{% static 'assets/imgs/shop/product-16-3.jpg'%}" alt="" />
+                                    <img class="hover-img" src="{% static 'assets/imgs/shop/product-16-3.jpg'%}" alt="" />
+                                        
+                                    {%endif%}
+                                    {% endfor %}
+                                </a>
+                            <!-- </div>                            -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+              
+        </div>
+        <div class="col-md-6">
+            <div class="card border-0 mb-3">
+                <h1>Additional info</h1>
+                <table id="table-name">
+                    <tr>
+                        <td>Product price</td>
+                        <td>{{product_detail.PRDPrice}}</td>
+                    </tr>
+                    <tr>
+                        <td>Product available</td>
+                        <td>{{product_detail.available}}</td>
+                    </tr>
+                    <tr>
+                        <td>Product height</td>
+                        <td>{{product_detail.height}}</td>
+                    </tr>
+                    <tr>
+                        <td>Product width</td>
+                        <td>{{product_detail.width}}</td>
+                    </tr>
+                    <tr>
+                        <td>Product weight</td>
+                        <td>{{product_detail.PRDWeight}}</td>
+                    </tr>
+                    <tr>
+                        <td>Product super category</td>
+                        <td>{{product_detail.product_supercategory}}</td>
+                    </tr>
+                    <tr>
+                        <td>Product main category</td>
+                        <td>{{product_detail.product_maincategory}}</td>
+                    </tr>
+                    <tr>
+                        <td>Product sub category</td>
+                        <td>{{product_detail.product_subcategory}}</td>
+                    </tr>
+                    <tr>
+                        <td>Product mini category</td>
+                        <td>{{product_detail.product_minicategor}}</td>
+                    </tr>
+                    <tr>
+                        <td>Product SKU</td>
+                        <td>{{product_detail.PRDSKU}}</td>
+                    </tr>
+
+                </table>
+                
+            </div>
+            
+        </div>        
+    </div>
+            
 
         </section>
 
@@ -406,6 +614,128 @@ On click the images will be displayed at normal size to complete the effect
     </div>
 </div>
 <script src="http://thecodeplayer.com/uploads/js/prefixfree.js" type="text/javascript"></script>
+
+<script>
+    window.onload = function() { 
+      console.log("workeed")
+      const form = document.querySelector(".form-rating");
+      const divRating = document.querySelector(".rating");
+      const csrf = document.getElementsByName('csrfmiddlewaretoken');
+      const one = document.getElementById("first");
+      const two = document.getElementById("second");
+      const three = document.getElementById("third");
+      const four = document.getElementById("fourth");
+      const five = document.getElementById("fifth");
+      const message = document.getElementById("message");
+      //const cartHover = document.querySelector(".cart-hover");
+      var productRate;
+      const arr = [one, two, three , four , five]
+      const messageRate = document.getElementById("message-rate");
+  
+  
+      const clientMessage = document.getElementById("client-message");
+      
+      const handleSelect = (selection)=>{
+        switch(selection){
+          case 'first':{
+            console.log("first")
+            // handleStartSelect(0);
+            return
+          }
+          case 'second':{
+            console.log("second")
+            // handleStartSelect(1);
+            return
+          }
+          case 'third':{
+            console.log("third")
+            // handleStartSelect(2);
+            return
+          }
+          case 'fourth':{
+            console.log("fourth")
+            // handleStartSelect(3);
+            return
+          }
+          case 'fifth':{
+            console.log("fifth")
+            // handleStartSelect(4);
+            return
+          }
+        }
+      } 
+  
+      //arr.forEach(item=> item.addEventListener("mouseover",(event)=>{
+        
+        //handleSelect(event.target.id);
+      //}))
+  
+      arr.forEach(item=> item.addEventListener("click",(event)=>{
+  
+          productRate= event.target.value
+          console.log("target:", productRate )
+          handleSelect(event.target.id);
+      }))
+  
+      
+      form.addEventListener('submit', e =>{
+        console.log(csrf[0].value, e.target.id, productRate, clientMessage.value);
+        e.preventDefault();
+        if (productRate){
+        $.ajax({
+                type: "POST",            
+                url : "{% url 'product_rating' %}",
+                data: {
+                'csrfmiddlewaretoken': csrf[0].value ,
+                'product_id':e.target.id,
+                'product_rate' : productRate,
+                'client_message': clientMessage.value,
+                    },
+                success : function(response){
+                        console.log('response',response);
+                        messageRate.classList.remove("not-visible")
+                        messageRate.innerHTML=` <div    class="alert align-middle alert-success"><span class="align-middle"> Your review has been successfully added </span> </div>`
+                        setTimeout(()=>{
+                          messageRate.classList.add("not-visible")
+                        
+                          clientMessage.value=""
+  
+                        },5000) 
+                    },
+                error : function(error){
+                  messageRate.classList.remove("not-visible")
+                  messageRate.innerHTML=` <div    class="alert align-middle alert-warning"><span class="align-middle"> Ops ... some thing went wrong !</span> </div>`
+  
+                        setTimeout(()=>{
+                            messageRate.classList.add("not-visible")
+                        },2000) 
+                    },
+        
+  
+        })
+        //if end
+      }else{
+        console.log("must select stars")
+        messageRate.classList.remove("not-visible")
+                  messageRate.innerHTML=` <div    class="alert align-middle alert-danger"><span class="align-middle"> You Must Select Stars !</span> </div>`
+  
+                        setTimeout(()=>{
+                            messageRate.classList.add("not-visible")
+                        },2000) 
+      }
+  
+    }) 
+  
+  
+  
+    }
+
+
+  </script>  
+
+  
+
+
 
 
 {% endblock %}

@@ -2,6 +2,8 @@
 {% load static %}
 {% block title %}Actively|dashboard{% endblock %}
 {% block content %}
+{% load currency %}
+{% currency_context %}
 
 <!-- <style>
     .nav-profile{
@@ -139,14 +141,31 @@
                                 <img class="card-img-top nav-profile" src="{{request.user.profile.avatar.url}}"
                                 alt="Card image cap">
                             </li>
-                            <a class="mini-cart-icon ml-2" href="">
+                            <li class="align-self-center">
+                            <a class="mini-cart-icon ml-2" href="{% url 'cart' %}">
                                 <img alt="Nest" style="filter: invert(1);" src="{% static 'management/images/cart-icon.svg' %}" />
-                                <!-- {% if cart_count%} -->
-                                <span class="pro-count blue"></span>
-                                <!-- {%else%} -->
-                                <span class="pro-count blue">0</span>
-                                <!-- {%endif%} -->
+                                {% if cart_count%}
+								<span class="pro-count white">{{cart_count}}</span>
+								{%else%}
+								<span class="pro-count white">0</span>
+								{%endif%}
                             </a>
+                            </li>
+                            <li class="align-self-center ml-3">
+                                <form action="{% url 'set-currency' %}" method="post" style="margin-right: 10px;">
+                                    {% csrf_token %}
+                                    
+                                    <select name="currency"  onchange="submit()" class="border-0 bg-transparent text-white">
+                                        {% for curr in CURRENCIES %}
+                                        <option value="{{ curr.code }}" {% if curr.code == request.session.currency %}selected="selected"{% endif %}>
+                                            {{ curr.symbol }} 
+                                            {{ curr.name }} 
+                                          </option>
+                                        {% endfor %} 
+                                    </select>
+                                
+                                </form>
+                            </li>
                             <!-- <a href=""><span class="lable">Cart</span></a> -->
                         </ul>
                     </div>

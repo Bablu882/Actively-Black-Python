@@ -209,7 +209,6 @@ Actively||view-order
                                                 alt="Card image cap"></td>
                                             <td>{{product.PRDISactive}}</td>
                                             <td>{{product.pieces}}</td>
-                                            <!-- {% if request.user.is_superuser %} -->
                                             <td>
                                                 <button class="icon-button" class="dropdown-toggle"
                                                     id="tableActionDropdown" data-toggle="dropdown" aria-haspopup="true"
@@ -220,12 +219,11 @@ Actively||view-order
                                                     {% csrf_token %}
                                                 <ul class="dropdown-menu dropdown-list dropdown-menu-right"
                                                     aria-labelledby="tableActionDropdown">
-                                                    <!-- <li><a href="/change-user/{{item.profile.slug}}" class="dropdown-item"><i class="fa fa-edit"></i> Edit</a></li> -->
-                                                    <!-- <li><a href="/delete-user/{{item.profile.slug}}" class="dropdown-item"><i class="fa fa-trash"></i> Delete</a></li> -->
+                                                    <li><a href="/edit-product/{{product.PRDSlug}}" class="dropdown-item"><i class="fa fa-edit"></i> Edit</a></li>
+                                                     <li><a href="/delete-product/{{product.PRDSlug}}" class="dropdown-item"><i class="fa fa-trash"></i> Delete</a></li>
                                                 </ul>
                                                 </form>
                                             </td>
-                                            <!-- {% endif %} -->
                                         </tr>
                                          
                                     {% endfor %}

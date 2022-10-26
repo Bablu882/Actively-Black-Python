@@ -23,3 +23,9 @@ def create_shortcode(instance):
     if qs_exists:
         return create_shortcode(instance)
     return new_slug
+
+
+##------------------------------------
+def code_generator1(size=5, chars=string.ascii_lowercase + string.digits):
+
+    return ''.join(random.choice(chars) for _ in range(size))

@@ -24,6 +24,8 @@ urlpatterns = [
     path('',include('management.urls')),
     path('',include('api.urls')),
     path('',include('ecommerce.urls')),
+    path('currencies/', include('currencies.urls')),
+
 
 
 

@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import SuperCategory, MainCategory, SubCategory, MiniCategory
-
+from .models import SuperCategory, MainCategory, SubCategory, MiniCategory,Product,ProductRating,Order,OrderDetails,Coupon,Payment,OrderSupplier,OrderDetailsSupplier
 
 # class Inline_MainCategoryAdmin(admin.StackedInline):
 #     model = MainCategory
@@ -74,4 +73,15 @@ from .models import SuperCategory, MainCategory, SubCategory, MiniCategory
 admin.site.register(SuperCategory,)
 admin.site.register(MainCategory,)
 admin.site.register(SubCategory,)
-admin.site.register(MiniCategory)
+admin.site.register(MiniCategory,)
+admin.site.register(Product,)
+admin.site.register(ProductRating,)
+admin.site.register(Order,)
+admin.site.register(OrderDetails,)
+admin.site.register(Coupon,)
+admin.site.register(Payment,)
+admin.site.register(OrderSupplier,)
+admin.site.register(OrderDetailsSupplier,)
+
+
+
