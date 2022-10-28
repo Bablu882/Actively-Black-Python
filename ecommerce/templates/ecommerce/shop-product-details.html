@@ -385,7 +385,7 @@ On click the images will be displayed at normal size to complete the effect
                                         <form action="{% url 'add-to-cart' %}" method = "POST"> 
                                         <div class="product-extra-link2">
                                             {% csrf_token %}
-                                            <input type="number" name="qyt" min="1" id="qty-input" class="bg-transparent text-white border-light w-50 form-control outline-0"/>
+                                            <input type="number" name="qyt" value="1" id="qty-input" class="bg-transparent text-white border-light w-50 form-control outline-0"/>
                                             <!-- <input type="hidden"  name="qyt" type="text" > -->
                                             <input type="hidden" value="{{product_detail.id}}" name="product_id">
                                             <input type="hidden" value="{{product_detail.PRDPrice}}" name="product_Price"><br>
@@ -505,22 +505,20 @@ On click the images will be displayed at normal size to complete the effect
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
                             {%for related_product in related_products%}
-                            <!-- <div class="product-img product-img-zoom"> -->
                                 <a href="{% url 'product-details' related_product.PRDSlug %}" tabindex="0" class="media mb-3 align-items-center border p-2"> 
                                     {%if product_detail.product_image%}
                                     <img class="d-inline-block" src="{{related_product.product_image.url}}" height="100" width="130" alt="" />
                                     <div class="media-body ml-3">
                                         <h4 class="text-left">{{related_product.product_name}}</h4>
+                                        <h4 class="text-left">{{request.session.currency}}: {{related_product.PRDPrice}}</h4>
                                     </div>
-                                    <!-- <img class="hover-img" src="{{related_product.product_image.url}}" alt="" /> -->
                                     {%else%}
-                                    <img class="default-img" src="{% static 'assets/imgs/shop/product-16-3.jpg'%}" alt="" />
-                                    <img class="hover-img" src="{% static 'assets/imgs/shop/product-16-3.jpg'%}" alt="" />
+                                    <img class="default-img" src="{% static 'management/images/product-16-3.jpg'%}" alt="" />
+                                    <img class="hover-img" src="{% static 'management/images/product-16-3.jpg'%}" alt="" />
                                         
                                     {%endif%}
                                     {% endfor %}
                                 </a>
-                            <!-- </div>                            -->
                         </div>
                     </div>
                 </div>

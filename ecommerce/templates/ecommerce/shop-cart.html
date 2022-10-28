@@ -154,7 +154,7 @@
                 <div class="col-md-8">
                     {% for item in order_details %}
                 <div class="media border mb-3 align-items-center">
-                    <img src="{{item.product.product_image.url}}" class="h-100" width="130" alt="">
+                    <a href="{% url 'product-details' item.product.PRDSlug %}"><img src="{{item.product.product_image.url}}" class="h-100" width="130" alt=""></a>
                     <div class="media-body ml-3">
                         <h5><b> Product Name:</b>  {{item.product.product_name}}</h5>
                         <h5><b>Quantity:</b>  {{item.quantity}}</h5>
@@ -162,9 +162,9 @@
                         <h5><b>Weight:</b>  {{item.weight}}</h5>
                         <h5><b>Subtotal:</b>  {{request.session.currency}} {% widthratio item.price|currency:request.session.currency  1 item.quantity%} </h5>
                     </div>
-                    <button type="button" class="btn btn-danger mr-3 align-self-start mt-3">
+                    <a class="mr-3 align-self-start mt-3" href="{% url "remove-product" productdeatails_id=item.id %}"><button type="button" class="btn btn-danger mr-3 align-self-start mt-3">
                         <i class="fa fa-trash fa-2x"></i>
-                    </button> 
+                    </button></a>
                 </div>
                 {% endfor %}
             </div>

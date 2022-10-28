@@ -86,36 +86,36 @@ $(document).ready(function () {
     $(this).addClass("selected");
   });
   // Bar graph
-  // var ctx = $("#chart-line");
-  // var myLineChart = new Chart(ctx, {
-  //   type: "bar",
-  //   data: {
-  //     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-  //     datasets: [
-  //       {
-  //         data: [0, 10, 20, 14, 30, 50, 18, 60, 3, 10, 7, 12],
-  //         label: "Sales",
-  //         borderColor: "rgb(44, 85, 149)",
-  //         fill: true,
-  //         backgroundColor: "rgb(44, 85, 149)",
-  //       },
-  //       {
-  //         data: [12, 7, 10, 2, 10, 12, 14, 4, 20, 50, 40, 30],
-  //         label: "Revenue",
-  //         borderColor: "rgb(238 238 238)",
-  //         fill: false,
-  //         backgroundColor: "rgb(238 238 238)",
-  //       },
-  //     ],
-  //   },
-  //   options: {
-  //     title: {
-  //       display: false,
-  //       //text: "Sales / Revenue",
-  //     },
-  //   },
-  // });
- // pie
+  var ctx = $("#chart-line");
+  var myLineChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      datasets: [
+        {
+          data: [0, 10, 20, 14, 30, 50, 18, 60, 3, 10, 7, 12],
+          label: "Sales",
+          borderColor: "rgb(44, 85, 149)",
+          fill: true,
+          backgroundColor: "rgb(44, 85, 149)",
+        },
+        {
+          data: [12, 7, 10, 2, 10, 12, 14, 4, 20, 50, 40, 30],
+          label: "Revenue",
+          borderColor: "rgb(238 238 238)",
+          fill: false,
+          backgroundColor: "rgb(238 238 238)",
+        },
+      ],
+    },
+    options: {
+      title: {
+        display: false,
+        //text: "Sales / Revenue",
+      },
+    },
+  });
+ pie
   const mdx = document.getElementById('myChart').getContext('2d');
   const myChart = new Chart(mdx, {
       type: 'doughnut',
@@ -356,7 +356,7 @@ var productDetails = function () {
 
 
 
-
+    
 $(document).ready(function() {
   $('#submitSignUp').click(function () {
     $(this).css('display', 'none')
@@ -365,3 +365,297 @@ $(document).ready(function() {
 })
 
 // ----------------------------------------------------------------------------------
+
+
+// window.onload =  function () {
+
+//   //console.log("jffffff")
+//   const superCategory = document.getElementById("super_category");
+//   const mainCategory = document.getElementById("main_category");
+//   const subCategory = document.getElementById("sub_category");
+//   const miniCategory = document.getElementById("mini_category");
+
+//   const handleGetSuperCategories = () => {
+//       $.ajax({
+//           type: "GET",
+
+//           url: "/supplier-categories-ajax/",
+
+//           success: function (response) {
+//               const dataSuperCategory = response.super_category
+//               //console.log(dataSuperCategory)
+
+//               superCategory.innerHTML = ""
+//               dataSuperCategory.map(super_category => {
+//                   //console.log(subspecialization)
+//                   superCategory.innerHTML += `<option  value="${super_category.id}">${super_category.name}</option>`
+//               })
+
+
+//           },
+//           error: function (error) {
+//               console.log(error)
+//           },
+
+//       })
+//   }
+
+//   const handleGetMainCategories = (value) => {
+//       $.ajax({
+//           type: "GET",
+
+//           url: "/supplier-categories-ajax/",
+//           data: {
+//               "super_category_ajax": value,
+//           },
+//           success: function (response) {
+//               const dataMainCategory = response.main_category
+//               mainCategory.innerHTML = ""
+//               dataMainCategory.map(main_category => {
+
+//                   mainCategory.innerHTML += `<option  value="${main_category.id}">${main_category.name}</option>`
+//               })
+
+
+//           },
+//           error: function (error) {
+//               console.log(error)
+//           },
+
+//       })
+//   }
+
+//   const handleGetSubCategories = (value) => {
+//       $.ajax({
+//           type: "GET",
+
+//           url: "/supplier-categories-ajax/",
+//           data: {
+//               "main_category_ajax": value,
+//           },
+//           success: function (response) {
+//               const dataSubCategory = response.sub_category
+//               //console.log(dataSubCategory)
+//               subCategory.innerHTML = ""
+//               dataSubCategory.map(sub_category => {
+
+//                   subCategory.innerHTML += `<option  value="${sub_category.id}">${sub_category.name}</option>`
+//               })
+
+
+//           },
+//           error: function (error) {
+//               console.log(error)
+//           },
+
+//       })
+//   }
+
+//   const handleGetMiniCategories = (value) => {
+//       $.ajax({
+//           type: "GET",
+
+//           url: "/supplier-categories-ajax/",
+//           data: {
+//               "sub_category_ajax": value,
+//           },
+//           success: function (response) {
+//               const dataMiniCategory = response.mini_category
+//               //console.log(dataMiniCategory)
+//               miniCategory.innerHTML = ""
+//               dataMiniCategory.map(mini_category => {
+
+//                   miniCategory.innerHTML += `<option  value="${mini_category.id}">${mini_category.name}</option>`
+//               })
+
+
+//           },
+//           error: function (error) {
+//               console.log(error)
+//           },
+
+//       })
+//   }
+
+
+//   setTimeout(() => {
+//       handleGetMainCategories(superCategory.value);
+//   }, 400)
+  
+//   setTimeout(() => {
+//       let mainSelected = document.getElementById("main_category");
+//       handleGetSubCategories(mainSelected.value);
+//   }, 1000)
+  
+//   setTimeout(() => {
+//       let subSleceted = document.getElementById("sub_category");
+//       handleGetMiniCategories(subSleceted.value);
+//   }, 1900)
+
+
+//   $('.super_category').on('change', function () {
+
+//       const superCategoryValue = $(this).val();
+//       handleGetMainCategories(superCategoryValue);
+//       setTimeout(() => {
+//           let mainSelected = document.getElementById("main_category");
+//           handleGetSubCategories(mainSelected.value);
+//       }, 1000)
+//       setTimeout(() => {
+//           let subSleceted = document.getElementById("sub_category");
+//           handleGetMiniCategories(subSleceted.value);
+//       }, 1900)
+
+//   })
+
+//   $('.main_category').on('change', function () {
+//       const mainCategoryValue = $(this).val();
+//       handleGetSubCategories(mainCategoryValue);
+
+//       setTimeout(() => {
+//           let subSleceted = document.getElementById("sub_category");
+//           handleGetMiniCategories(subSleceted.value);
+//       }, 1000)
+
+//   })
+
+//   $('.sub_category').on('change', function () {
+//       const subCategoryValue = $(this).val();
+//       setTimeout(() => {
+//           handleGetMiniCategories(subCategoryValue);
+//       }, 1000)
+
+//   })
+// }
+
+// // -------------------------------------------------------
+
+// window.onload = function () {
+//   const productList = document.getElementById("products-list");
+
+//   const loadBtn = document.getElementById("load-btn");
+//   const spinnerBox = document.getElementById("spinner-box");
+//   const emptyBox = document.getElementById("empty-box");
+//   const loadsBox = document.getElementById("loading-box");
+//   const productNum = document.getElementById("product-num")
+//   const mySelect = document.getElementById("mySelect");
+//   const selectStatus = document.getElementById("select-status");
+//   //console.log(productNum);
+
+
+
+//   let visible = 5;
+//   const handleGetData = (sorted, sortedStatus) => {
+//       $.ajax({
+//           type: "GET",
+//           url: `/supplier-products-list-ajax/`,
+//           data: {
+//               "num_products": visible,
+//               "order_by": mySelect.value,
+//               'order_by_status': selectStatus.value,
+//           },
+//           success: function (response) {
+//               const data = response.data;
+//               console.log(data);
+//               const maxSize = response.max
+//               emptyBox.classList.add("not-visible")
+//               spinnerBox.classList.remove("not-visible")
+//               loadsBox.classList.add("not-visible")
+//               if (sorted) {
+//                   productList.innerHTML = ""
+//               }
+//               setTimeout(() => {
+//                   spinnerBox.classList.add("not-visible")
+//                   loadsBox.classList.remove("not-visible")
+
+//                   if (response.products_size > 0) {
+//                       productNum.innerHTML = `<p>We found <strong class="text-brand">${response.products_size}</strong> items for you!</p>`
+//                   }
+//                   else {
+//                       productNum.innerHTML = ` <p>Show 0 Of 0 Product</p>`
+//                   }
+
+//                   data.map(product => {
+//                       let discount = ""
+//                       if (product.PRDDiscountPrice > 0) {
+//                           discount = `$${product.PRDDiscountPrice}`
+//                       }
+//                       if (product.PRDISactive) {
+//                           productStatus = 'Active'
+//                           alertStatus = 'alert-success'
+//                       } else {
+//                           productStatus = 'Inactive'
+//                           alertStatus = 'alert-danger'
+//                       }
+//                       let text = product.product_name
+//                       let textSlice = text.slice(0, 39);
+//                       let d = new Date(product.date);
+
+//                       productList.innerHTML += `<article class="itemlist mb-3 border-bottom pb-3">
+//                       <div class="row align-items-center">
+                         
+//                           <div class="col-lg-4 col-sm-4 col-8 flex-grow-1 col-name">
+//                               <a class="itemside d-flex align-items-center" href="/product-details/${product.PRDSlug}">
+//                                   <div class="left mr-3">
+//                                       <img src="/media/${product.product_image}" width="100" height="100"   style="width:100px;height:100px;"  class="img-sm img-thumbnail" alt="${product.product_name}" />
+//                                   </div>
+//                                   <div class="info">
+//                                       <h6 class="mb-0">${textSlice}</h6>
+//                                   </div>
+//                               </a>
+//                           </div>
+//                           <div class="col-lg-2 col-sm-2 col-4 col-price"><span>$${product.PRDPrice}</span></div>
+//                           <div class="col-lg-2 col-sm-2 col-4 col-status">
+//                               <span class="badge rounded-pill ${alertStatus}" style="white-space:nowrap">${productStatus}</span>
+//                           </div>
+//                           <div class="col-lg-1 col-sm-2 col-4 col-date">
+//                               <span>${d.toDateString()}</span>
+//                           </div>
+//                           <div class="col-lg-2 col-sm-2 col-4 col-action text-end">
+//                               <a href="/supplier-edit-product/${product.id}/" class="btn btn-primary font-sm rounded btn-brand"> <i class="material-icons md-edit"></i> Edit </a>
+//                               <a href="/supplier-products/remove-product/${product.id}/" class="btn btn-danger font-sm btn-danger rounded"> <i class="material-icons md-delete_forever"></i> Delete </a>
+//                           </div>
+//                       </div>
+//                       <!-- row .// -->
+//                   </article>`
+
+//                   })
+//                   if (maxSize) {
+
+//                       loadsBox.classList.add("not-visible")
+//                       emptyBox.classList.remove("not-visible")
+//                       emptyBox.innerHTML = `<strong class="current-price text-brand">No More Products !</strong>`
+//                   }
+
+//               }, 500)
+
+
+//           },
+//           error: function (error) { }
+//       })
+
+//   }
+//   handleGetData();
+//   loadBtn.addEventListener("click", () => {
+
+//       visible += 5;
+
+//       handleGetData(false);
+
+//   })
+//   $('.mySelect').on('change', function () {
+
+//       visible = 5;
+//       handleGetData(true);
+//   })
+
+//   $('.select-status').on('change', function () {
+
+//       visible = 5;
+//       handleGetData(true);
+//   })
+
+
+
+
+// }

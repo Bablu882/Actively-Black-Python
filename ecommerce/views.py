@@ -1,5 +1,5 @@
+from curses.textpad import rectangle
 from django.shortcuts import redirect, render,get_object_or_404
-from traitlets import Instance
 from management.models import User,Profile
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
@@ -893,13 +893,13 @@ def remove_item(request, productdeatails_id):
                         id=cart_id, is_finished=False)
                     old_orde.delete()
                     messages.warning(request, ' Product has been deleted ')
-                    return redirect('orders:cart')
+                    return redirect('/cart')
                 except:
                     order_view = False
                 if "coupon_id" in request.session.keys():
                     del request.session["coupon_id"]
                 messages.warning(request, ' Order has been deleted ')
-                return redirect('orders:cart')
+                return redirect('/cart')
             else:
 
                 all_orders = Order.objects.all().filter(id=cart_id, is_finished=False)
@@ -928,7 +928,7 @@ def remove_item(request, productdeatails_id):
 
                             messages.warning(
                                 request, ' Order has been deleted ')
-                            return redirect('orders:cart')
+                            return redirect('/cart')
 
                         else:
                             item_id.delete()
@@ -2953,3 +2953,490 @@ def set_currency(request):
         print(request.POST["currency"])
 
     return HttpResponseRedirect(lasturl)
+
+
+def product_add(request):
+    return render(request,'ecommerce/product-edit.html')
+###----------------------------------------------------------------------------------------------
+from PIL import Image
+from .models import ProductImage
+
+
+def supplier_add_product(request):
+    if not request.user.is_authenticated and request.user.is_anonymous:
+        return redirect('/login')
+
+    if request.method == 'POST':
+        product_name = request.POST['product_name']
+        introduction = request.POST['introduction']
+        price = request.POST['price']
+        discount = request.POST['discount']
+        content = request.POST['content']
+        super_category_value = request.POST['super_category_value']
+        main_category_value = request.POST['main_category_value']
+        sub_category_value = request.POST['sub_category_value']
+        mini_category_value = request.POST['mini_category_value']
+        # checkbox = request.POST['checkbox']
+        # if checkbox:
+        #     print("checkbox: ", checkbox)
+        available = request.POST['available']
+        pieces = request.POST['pieces']
+        promotional = request.POST['promotional']
+        product_status = int(request.POST['product_status'])
+        width = request.POST['width']
+        if not width:
+            width = None
+        product_SKU = request.POST['SKU']
+        if not product_SKU:
+            product_SKU = None
+        height = request.POST['height']
+        if not height:
+            height = None
+        weight = request.POST['weight']
+        tags = request.POST['tags']
+        if product_status == 1:
+            product_status = True
+        else:
+            product_status = False
+        # print(f"product_status: {product_status}", type(product_status))
+        try:
+            price = float(request.POST["price"])
+        except (ValueError, TypeError):
+            messages.warning(
+                request, '-Please Enter A Valid Pricing number')
+            return redirect("/supplier-add-product")
+
+        try:
+            discount = float(request.POST["discount"])
+        except (ValueError, TypeError):
+            discount = 0
+
+        try:
+            main_image = request.FILES["main_image"]
+        except:
+            main_image = None
+        if main_image:
+            try:
+                Image.open(main_image)
+
+            except:
+                messages.warning(request, 'sorry, your image is invalid')
+                return redirect("/supplier-add-product")
+
+        try:
+            name_image_1 = request.FILES["name_image_1"]
+        except:
+            name_image_1 = None
+        if name_image_1:
+            try:
+                Image.open(name_image_1)
+
+            except:
+                messages.warning(request, 'sorry, your image is invalid')
+                return redirect("/supplier-add-product")
+
+        try:
+            name_image_2 = request.FILES["name_image_2"]
+        except:
+            name_image_2 = None
+        if name_image_2:
+            try:
+                Image.open(name_image_2)
+
+            except:
+                messages.warning(request, 'sorry, your image is invalid')
+                return redirect("/supplier-add-product")
+
+        try:
+            name_image_3 = request.FILES["name_image_3"]
+        except:
+            name_image_3 = None
+        if name_image_3:
+            try:
+                Image.open(name_image_3)
+
+            except:
+                messages.warning(request, 'sorry, your image is invalid')
+                return redirect("/supplier-add-product")
+
+        try:
+            name_image_4 = request.FILES["name_image_4"]
+        except:
+            name_image_4 = None
+        if name_image_4:
+            try:
+                Image.open(name_image_4)
+
+            except:
+                messages.warning(request, 'sorry, your image is invalid')
+                return redirect("/supplier-add-product")
+
+        try:
+            digital_file = request.FILES["digital_file"]
+        except:
+            digital_file = None
+
+        super_category_obj = SuperCategory.objects.get(id=super_category_value)
+        main_category_obj = MainCategory.objects.get(id=main_category_value)
+        sub_category_obj = SubCategory.objects.get(id=sub_category_value)
+        mini_category_obj = MiniCategory.objects.get(id=mini_category_value)
+
+        product_vendor = Profile.objects.get(user__username=request.user)
+        new_product_obj = Product.objects.create(
+            product_name=product_name,
+            product_description=introduction,
+            content=content,
+            PRDPrice=price,
+            PRDDiscountPrice=discount,
+            product_image=main_image,
+            digital_file=digital_file,
+            additional_image_1=name_image_1,
+            additional_image_2=name_image_2,
+            additional_image_3=name_image_3,
+            additional_image_4=name_image_4,
+
+            # content=description,
+            product_vendor=product_vendor,
+            product_supercategory=super_category_obj,
+            product_maincategory=main_category_obj,
+            product_subcategory=sub_category_obj,
+            product_minicategor=mini_category_obj,
+            available=available,
+            pieces=pieces,
+            promotional=promotional,
+            PRDISactive=product_status,
+            width=width,
+            height=height,
+            PRDWeight=weight,
+            PRDSKU=product_SKU,
+            PRDtags=tags,
+        )
+        # print(new_product_obj)
+        image_list = [name_image_1, name_image_2, name_image_3, name_image_4]
+        for image in image_list:
+            if image:
+                ProductImage.objects.create(
+                    PRDIProduct=new_product_obj,
+                    PRDIImage=image
+                )
+        messages.success(
+            request, 'Your Products Has Been Saved !')
+        return redirect('/supplier-products-list')
+
+    super_category = SuperCategory.objects.all()
+    super_category_first = SuperCategory.objects.all().first()
+    main_category = MainCategory.objects.all().filter(
+        super_category=super_category_first)
+    main_category_first = MainCategory.objects.all().first()
+    sub_category = SubCategory.objects.all().filter(
+        main_category=main_category_first)
+    sub_category_first = SubCategory.objects.all().first()
+    mini_category = MiniCategory.objects.all().filter(
+        sub_category=sub_category_first
+    )
+    # print(sub_category)
+    context = {
+        "super_category": super_category,
+        "main_category": main_category,
+        "sub_category": sub_category,
+        "mini_category": mini_category,
+    }
+    return render(request, 'ecommerce/product-add.html', context)
+
+
+class CategoriesJsonListView(View):
+    def get(self, *args, **kwargs):
+        super_category = list(SuperCategory.objects.all().values())
+        super_category_ajax = self.request.GET.get('super_category_ajax')
+        main_category_ajax = self.request.GET.get('main_category_ajax')
+        sub_category_ajax = self.request.GET.get('sub_category_ajax')
+
+        main_category = list(MainCategory.objects.all().filter(
+            super_category__id=super_category_ajax).values())
+
+        sub_category = list(SubCategory.objects.all().filter(
+            main_category__id=main_category_ajax).values())
+        mini_category = list(MiniCategory.objects.all().filter(
+            sub_category__id=sub_category_ajax).values())
+
+        return JsonResponse({"super_category": super_category, "main_category": main_category, "sub_category": sub_category, "mini_category": mini_category, }, safe=False)
+###---------------------------------------------------
+
+def supplier_edit_product(request, id):
+    product = None
+    if not request.user.is_authenticated and request.user.is_anonymous:
+        return redirect('/login')
+
+    product_obj = Product.objects.get(id=id)
+    if product_obj.product_vendor.user.id == request.user.id:
+        if request.method == 'POST':
+            product_name = request.POST['product_name']
+            introduction = request.POST['introduction']
+            content = request.POST['content']
+            price = request.POST['price']
+            discount = request.POST['discount']
+            # description = request.POST['description']
+            super_category_value = request.POST['super_category_value']
+            main_category_value = request.POST['main_category_value']
+            sub_category_value = request.POST['sub_category_value']
+            mini_category_value = request.POST['mini_category_value']
+            # checkbox = request.POST['checkbox']
+            # if checkbox:
+            #     print("checkbox: ", checkbox)
+            available = request.POST['available']
+            pieces = request.POST['pieces']
+            promotional = request.POST['promotional']
+            product_status = int(request.POST['product_status'])
+            width = request.POST['width']
+            if not width:
+                width = None
+            height = request.POST['height']
+            if not height:
+                height = None
+            weight = request.POST['weight']
+            product_SKU = request.POST['SKU']
+            if not product_SKU:
+                product_SKU = None
+            tags = request.POST['tags']
+            if product_status == 1:
+                product_status = True
+            else:
+                product_status = False
+            # print(f"product_status: {product_status}", type(product_status))
+            try:
+                price = float(request.POST["price"])
+            except (ValueError, TypeError):
+                messages.warning(
+                    request, '-Please Enter A Valid Pricing number')
+                return redirect("/supplier-add-product")
+
+            try:
+                discount = float(request.POST["discount"])
+            except (ValueError, TypeError):
+                discount = 0
+
+            try:
+                main_image = request.FILES["main_image"]
+            except:
+                main_image = None
+            if main_image:
+                try:
+                    Image.open(main_image)
+
+                except:
+                    messages.warning(request, 'sorry, your image is invalid')
+                    return redirect("/supplier-add-product")
+
+            try:
+                name_image_1 = request.FILES["name_image_1"]
+            except:
+                name_image_1 = None
+            if name_image_1:
+                try:
+                    Image.open(name_image_1)
+
+                except:
+                    messages.warning(request, 'sorry, your image is invalid')
+                    return redirect("/supplier-add-product")
+
+            try:
+                name_image_2 = request.FILES["name_image_2"]
+            except:
+                name_image_2 = None
+            if name_image_2:
+                try:
+                    Image.open(name_image_2)
+
+                except:
+                    messages.warning(request, 'sorry, your image is invalid')
+                    return redirect("/supplier-add-product")
+
+            try:
+                name_image_3 = request.FILES["name_image_3"]
+            except:
+                name_image_3 = None
+            if name_image_3:
+                try:
+                    Image.open(name_image_3)
+
+                except:
+                    messages.warning(request, 'sorry, your image is invalid')
+                    return redirect("/supplier-add-product")
+
+            try:
+                name_image_4 = request.FILES["name_image_4"]
+            except:
+                name_image_4 = None
+            if name_image_4:
+                try:
+                    Image.open(name_image_4)
+
+                except:
+                    messages.warning(request, 'sorry, your image is invalid')
+                    return redirect("/supplier-add-product")
+
+            try:
+                digital_file = request.FILES["digital_file"]
+            except:
+                digital_file = None
+
+            super_category_obj = SuperCategory.objects.get(
+                id=super_category_value)
+            main_category_obj = MainCategory.objects.get(
+                id=main_category_value)
+            sub_category_obj = SubCategory.objects.get(id=sub_category_value)
+            mini_category_obj = MiniCategory.objects.get(
+                id=mini_category_value)
+
+            product_vendor = Profile.objects.get(user__username=request.user)
+
+            new_product_obj = Product.objects.get(id=id)
+            new_product_obj.product_name = product_name
+            new_product_obj.product_description = introduction
+            new_product_obj.content = content
+            new_product_obj.PRDPrice = price
+            new_product_obj.PRDDiscountPrice = discount
+            if main_image:
+                new_product_obj.product_image = main_image
+
+            if name_image_1:
+                new_product_obj.additional_image_1 = name_image_1
+
+            if name_image_2:
+                new_product_obj.additional_image_2 = name_image_2
+
+            if name_image_3:
+                new_product_obj.additional_image_3 = name_image_3
+
+            if name_image_4:
+                new_product_obj.additional_image_4 = name_image_4
+
+            if digital_file:
+                new_product_obj.digital_file = digital_file
+            # new_product_obj.content=description,
+            new_product_obj.product_vendor = product_vendor
+            new_product_obj.product_supercategory = super_category_obj
+            new_product_obj.product_maincategory = main_category_obj
+            new_product_obj.product_subcategory = sub_category_obj
+            new_product_obj.product_minicategor = mini_category_obj
+            new_product_obj.available = available
+            new_product_obj. pieces = pieces
+            new_product_obj.promotional = promotional
+            new_product_obj.PRDISactive = product_status
+            new_product_obj.width = width
+            new_product_obj.height = height
+            new_product_obj.PRDWeight = weight
+            new_product_obj.PRDSKU = product_SKU
+            new_product_obj.PRDtags = tags
+            try:
+                new_product_obj.save()
+            except Exception as e:
+                messages.warning(request, "You can't Edit This Product ")
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+            messages.success(
+                request, 'Your Products Has Been Updated !')
+            return redirect('/supplier-products-list')
+
+    # product_obj = Product.objects.get(id=id)
+    if product_obj.product_vendor.user.id == request.user.id:
+        product = Product.objects.all().filter(
+            product_vendor__user=request.user, id=id).exists()
+        if product:
+            product = Product.objects.get(
+                product_vendor__user=request.user, id=id)
+            product_images = ProductImage.objects.all().filter(PRDIProduct=product)
+    super_category = SuperCategory.objects.all()
+    super_category_first = SuperCategory.objects.get(
+        name=product.product_supercategory)
+    main_category = MainCategory.objects.all().filter(
+        super_category=super_category_first)
+    main_category_first = MainCategory.objects.get(
+        name=product.product_maincategory)
+    sub_category = SubCategory.objects.all().filter(
+        main_category=main_category_first)
+    sub_category_first = SubCategory.objects.get(
+        name=product.product_subcategory)
+    mini_category = MiniCategory.objects.all().filter(
+        sub_category=sub_category_first
+    )
+    # print(sub_category)
+    context = {
+        "product": product,
+        "product_images": product_images,
+        "super_category": super_category,
+        "main_category": main_category,
+        "sub_category": sub_category,
+        "mini_category": mini_category,
+    }
+    return render(request, 'ecommerce/product-edit.html', context)
+
+
+####---------------------------------------------------    
+
+def supplier_products_list(request):
+    return render(request, "ecommerce/product-list.html")
+
+
+class SupplierProductsJsonListView(View):
+    def get(self, *args, **kwargs):
+        user = Profile.objects.get(user=self.request.user)
+        upper = int(self.request.GET.get('num_products'))
+        order_by = self.request.GET.get('order_by')
+        order_by_status = self.request.GET.get('order_by_status')
+
+        lower = upper - 5
+        if order_by_status == "All":
+            products_list = list(Product.objects.all().filter(
+                product_vendor=user, PRDISDeleted=False).values().order_by(order_by)[lower:upper])
+
+            products_size = len(Product.objects.all().filter(
+                product_vendor=user, PRDISDeleted=False))
+
+            max_size = True if upper >= products_size else False
+        elif order_by_status == "Active":
+            products_list = list(Product.objects.all().filter(
+                product_vendor=user, PRDISactive=True, PRDISDeleted=False).values().order_by(order_by)[lower:upper])
+
+            products_size = len(Product.objects.all().filter(
+                product_vendor=user, PRDISactive=True, PRDISDeleted=False))
+
+            max_size = True if upper >= products_size else False
+        else:
+            products_list = list(Product.objects.all().filter(
+                product_vendor=user, PRDISactive=False, PRDISDeleted=False).values().order_by(order_by)[lower:upper])
+
+            products_size = len(Product.objects.all().filter(
+                product_vendor=user, PRDISactive=False, PRDISDeleted=False))
+
+            max_size = True if upper >= products_size else False
+
+        return JsonResponse({"data": products_list,  "max": max_size, "products_size": products_size, }, safe=False)
+
+
+def remove_product(request, id):
+    if request.user.is_authenticated and not request.user.is_anonymous and id:
+        product_obj = Product.objects.get(id=id)
+
+        if product_obj.product_vendor.user.id == request.user.id:
+            product = Product.objects.all().filter(
+                product_vendor__user=request.user, id=id).exists()
+            if product:
+                product = Product.objects.get(
+                    product_vendor__user=request.user, id=id)
+                product.PRDISDeleted = True
+                product.PRDISactive = False
+                try:
+                    product.save()
+                except Exception as e:
+                    messages.warning(request, "product You can't delete it !")
+                    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+                messages.warning(request, ' Your Product has been deleted ')
+                return redirect('/supplier-products-list')
+            else:
+                messages.warning(
+                    request, "product You can't delete it !")
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    messages.warning(request, "product You can't delete it !")
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

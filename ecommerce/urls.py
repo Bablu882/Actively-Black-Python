@@ -21,8 +21,8 @@ urlpatterns=[
     path('add_to_cart/', views.add_to_cart, name='add-to-cart'),
     path('cart/', views.cart, name='cart'),
     path('cart/<str:country>/', views.StatesJsonListView.as_view(), name="get-states"),
-    path('order/remeve-product/<int:productdeatails_id>',
-         views.remove_item, name="remove-item"),
+    path('remove-product/<int:productdeatails_id>',
+         views.remove_item, name="remove-product"),
     path('payment/', views.payment, name="payment"),
     path('payment_blance/', views.payment_blance, name="payment-blance"),
     path('payment_cash/', views.payment_cash, name="payment-cash"),
@@ -37,8 +37,22 @@ urlpatterns=[
     path('api/callbacks/', views.my_webhook_view_paymob,
          name="webhook-view-paymob"),
     path('set_currency/', views.set_currency , name='set-currency'),
+    path('supplier-products/remove-product/<int:id>/',
+         views.remove_product, name="remove-item"),
      
 
-    path('carted',cart_add,name='carted')     
+    path('carted',cart_add,name='carted'),
+    path('product-add',product_add,name='product-add'),
+    path('supplier-add-product/', views.supplier_add_product,
+         name="supplier-add-product"),
+    path('supplier-categories-ajax/', views.CategoriesJsonListView.as_view(),
+         name="get-categories"),
+    path('supplier-edit-product/<int:id>/', views.supplier_edit_product,
+         name="supplier-edit-product"), 
+    path('supplier-products-list/', views.supplier_products_list,
+         name="supplier-products-list"),
+
+    path('supplier-products-list-ajax/', views.SupplierProductsJsonListView.as_view(),
+         name="supplier-products-list-ajax"),           
 
 ]
