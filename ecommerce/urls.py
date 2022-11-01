@@ -53,6 +53,10 @@ urlpatterns=[
          name="supplier-products-list"),
 
     path('supplier-products-list-ajax/', views.SupplierProductsJsonListView.as_view(),
-         name="supplier-products-list-ajax"),           
+         name="supplier-products-list-ajax"),
+    path('supplier-dashboard',supplier_dashboard,name='supplier-dashboard'),
+    path('supplier-orders-list-ajax/', views.SupplierOrdersJsonListView.as_view(),
+         name="supplier-orders-list-ajax"),
+
 
 ]

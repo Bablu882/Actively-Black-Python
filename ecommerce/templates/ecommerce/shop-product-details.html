@@ -156,6 +156,65 @@ On click the images will be displayed at normal size to complete the effect
   bottom: -4px;
 }
 
+.progress + .progress {
+  margin-top: 1rem;
+}
+
+.progress span {
+  line-height: 16px;
+  background: #fff;
+  padding-right: 10px;
+  width: 45px;
+}
+
+.progress-bar {
+  background-color: #3BB77E;
+}
+
+.product-rate {
+  background-image: url("../static/management/images/rating-stars.png");
+  background-position: 0 -12px;
+  background-repeat: repeat-x;
+  height: 12px;
+  width: 60px;
+  transition: all 0.5s ease-out 0s;
+  -webkit-transition: all 0.5s ease-out 0s;
+}
+
+.product-rating {
+  height: 12px;
+  background-repeat: repeat-x;
+  background-image: url("../static/management/images/rating-stars.png");
+  background-position: 0 0;
+}
+ .progress{
+    height: 10px;
+ }
+ .rating-result {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.rating-result > span {
+  display: block;
+  overflow: hidden;
+  margin-left: 5px;
+}
+.rating-result::before {
+  font-family: "uicons-regular-straight"  !important;
+  font-size: 11px;
+  letter-spacing: 2px;
+  content: '\f225' '\f225' '\f225' '\f225' '\f225';
+  color: #ff9900;
+}
+.rating-result {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+ 
+ 
+
 </style>
 
 
@@ -461,7 +520,92 @@ On click the images will be displayed at normal size to complete the effect
                     desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                 </p>
             </div>
-            <div class="card border-0 mb-3 text-center p-3">     
+            <div class="card border-0 mb-3 text-center p-3"> 
+                
+                <div class="comments-area">
+                    <div class="row">
+                        {% if product_detail.feedbak_number%}
+                        <div class="col-lg-8">
+                            <h4 class="mb-30">Customer Reviews</h4>
+                            <div class="comment-list">
+
+                                {% for rating in product_feedback %}
+                                <div class="single-comment justify-content-between d-flex mb-30">
+                                    <div class="user justify-content-between d-flex">
+                                        <div class="thumb text-center">
+                                            {% if rating.client_name.image %}
+                                                <img src="{{rating.client_name.image.url}}" alt="{{rating.client_name.username}}" />
+                                            {%else%}    
+                                            <img src="{% static 'assets/imgs/blog/author-2.png'%}" alt="{{rating.client_name.username}}" />
+                                            {%endif%}
+                                            <span class="font-heading text-brand d-block">{{rating.client_name.username}}</span>
+                                        </div>
+                                        <div class="desc">
+                                            <div class="d-flex justify-content-between mb-10">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="font-xs text-muted">{{ rating.rating_date|date:"F j,Y"}} at {{ rating.rating_date|date:" g:i A" }} </span>
+                                                </div>
+                                                <div class="product-rate d-inline-block">
+                                                    {%if rating.rate == 1%}
+                                                    <div class="product-rating" style="width: 20%"></div>
+                                                    {%elif rating.rate == 2%}
+                                                    <div class="product-rating" style="width: 40%"></div>
+                                                    {%elif rating.rate == 3%}
+                                                    <div class="product-rating" style="width: 60%"></div>
+                                                    {%elif rating.rate == 4%}
+                                                    <div class="product-rating" style="width: 80%"></div>
+                                                    {%elif rating.rate == 5%}
+                                                    <div class="product-rating" style="width: 100%"></div>
+                                                    {%else%}
+                                                    <div class="product-rating" style="width: 0%"></div>
+                                                    {%endif%}
+                                                </div>
+                                            </div>
+                                            <p class="mb-10">{{rating.client_comment}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <h4 class="mb-30">Customer reviews</h4>
+                            <div class="d-flex mb-30">
+                                <div class="product-rate d-inline-block mr-15">
+                                    <div class="product-rating" style="width: {{product_detail.feedbak_average}}%"></div>
+                                </div>
+                                <h6>{{average_rating}} out of 5</h6>
+                            </div>
+                            <div class="progress">
+                                <span>5 star</span>
+                                <div class="progress-bar" role="progressbar" style="width: {{start_5}}%" aria-valuenow="{{start_5}}" aria-valuemin="0" aria-valuemax="100">{{start_5}}%</div>
+                            </div>
+                            <div class="progress">
+                                <span>4 star</span>
+                                <div class="progress-bar" role="progressbar" style="width: {{start_4}}%" aria-valuenow="{{start_4}}" aria-valuemin="0" aria-valuemax="100">{{start_4}}%</div>
+                            </div>
+                            <div class="progress">
+                                <span>3 star</span>
+                                <div class="progress-bar" role="progressbar" style="width: {{start_3}}%" aria-valuenow="{{start_3}}" aria-valuemin="0" aria-valuemax="100">{{start_3}}%</div>
+                            </div>
+                            <div class="progress">
+                                <span>2 star</span>
+                                <div class="progress-bar" role="progressbar" style="width: {{start_2}}%" aria-valuenow="{{start_2}}" aria-valuemin="0" aria-valuemax="100">{{start_2}}%</div>
+                            </div>
+                            <div class="progress mb-30">
+                                <span>1 star</span>
+                                <div class="progress-bar" role="progressbar" style="width: {{start_1}}%" aria-valuenow="{{start_1}}" aria-valuemin="0" aria-valuemax="100">{{start_1}}%</div>
+                            </div>
+                            <!-- <a href="#" class="font-xs text-muted">How are ratings calculated?</a> -->
+                        </div>
+                        {%  else %}
+                        <div class="col-lg-8">
+                            <p>No reviews!</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                
                 <div class="comment-form">
                     <h4 class="mb-15">Add a review</h4>
                     <div class="product-rate d-inline-block mb-30"></div>
@@ -501,7 +645,7 @@ On click the images will be displayed at normal size to complete the effect
             <div class="card border-0 mb-3 text-center p-3">     
                 <div class="comment-form">
                     <h4 class="mb-15">Related products</h4>
-                    <div class="product-rate d-inline-block mb-30"></div>
+                    <div class=" d-inline-block mb-30"></div>
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
                             {%for related_product in related_products%}
@@ -511,6 +655,9 @@ On click the images will be displayed at normal size to complete the effect
                                     <div class="media-body ml-3">
                                         <h4 class="text-left">{{related_product.product_name}}</h4>
                                         <h4 class="text-left">{{request.session.currency}}: {{related_product.PRDPrice}}</h4>
+                                    </div>
+                                    <div class="rating-result" title="{{related_product.feedbak_average}}%">
+                                        <span> </span>
                                     </div>
                                     {%else%}
                                     <img class="default-img" src="{% static 'management/images/product-16-3.jpg'%}" alt="" />

@@ -1,4 +1,5 @@
 from curses.textpad import rectangle
+from shutil import register_unpack_format
 from django.shortcuts import redirect, render,get_object_or_404
 from management.models import User,Profile
 from django.utils import timezone
@@ -1086,7 +1087,7 @@ def payment(request):
             try:
                 if soup.code.string == "ERR01" or soup.code.string == "ERR52" or soup.code.string == "ERR61" or soup.code.string == "ERR04":
                     messages.warning(request, f'{soup.message.string}')
-                    return redirect('orders:cart')
+                    return redirect('/cart')
             except:
                 pass
             shipping = float(soup.value.string)*1.41
@@ -1124,10 +1125,7 @@ def payment(request):
                 Email_Address=email_address,
                 phone=phone,
             )
-            # old_orde.is_finished = True
-            # old_orde.status = "جارى التنفيذ"
-            # old_orde.save()
-
+            
             if "coupon_id" in request.session.keys():
                 del request.session["coupon_id"]
 
@@ -1164,7 +1162,7 @@ def payment(request):
             }
             messages.success(
                 request, ' Your Billing Details information has been saved')
-            return render(request, "orders/shop-checkout.html", context)
+            return render(request, "ecommerce/shop-checkout.html", context)
 
     if request.user.is_authenticated and not request.user.is_anonymous:
         # if Order.objects.all().filter(user=request.user, is_finished=False):
@@ -1180,15 +1178,15 @@ def payment(request):
 
         #     }
         #     return render(request, "orders/payment.html", context)
-        return redirect('orders:cart')
+        return redirect('/cart')
 
     messages.success(request, ' There is no order for you to buy it ')
-    return redirect('orders:cart')
+    return redirect('/cart')
 
 
 def payment_blance(request):
     if not request.user.is_authenticated and request.user.is_anonymous:
-        return redirect('accounts:login')
+        return redirect('/login')
 
     order = Order.objects.all().filter(user=request.user, is_finished=False)
 
@@ -3440,3 +3438,86 @@ def remove_product(request, id):
                 return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     messages.warning(request, "product You can't delete it !")
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+def supplier_dashboard(request):
+    return render(request,'ecommerce/supplier-dashboard.html')
+
+
+# class SupplierOrderJsonListView(View):
+#     def get(self,*args,**kwargs):
+#         user=Profile.objects.get(user=self.request.user)    
+#         upper=int(self.request.GET.get("num_products"))
+#         order_by=self.request.GET.get('order_by')
+#         order_by_status=self.request.GET.get('oreder_by_status')
+#         lower=upper - 5
+#         if order_by_status == 'All':
+#             order_list=list(OrderSupplier.objects.all().filter(vendor=user,is_finished=True).values().order_by(order_by)[lower:upper])
+#             order_size=len(OrderSupplier.objects.all().filter(vendor=user,is_finished=True))
+#             max_size=True if upper >=order_size else False
+#         elif order_by_status == 'Underway':
+#             order_list=list(OrderSupplier.objects.all().filter(vendor=user,status='Underway',is_finished=True).values().order_by(order_by)[lower:upper])    
+#             order_size=len(OrderSupplier.objects.all().filter(vendor=user,status='Underway',is_finished=True))
+#             max_size=True if upper >=order_size else False
+#         elif order_by_status == 'COMPLETE':
+#             order_list=list(OrderSupplier.objects.all().filter(vendor=user,status='COMPLETE',is_finished=True).values().order_by(order_by)[lower:upper])    
+#             order_size=len(OrderSupplier.objects.all().filter(vendor=user,status='COMPLETE',is_finished=True))
+#             max_size=True if upper >=order_size else False
+#         else:
+#             order_list=list(OrderSupplier.objects.all().filter(vendor=user,status='Refunded',is_finished=True).values().order_by(order_by)[lower:upper])    
+#             order_size=len(OrderSupplier.objects.all().filter(vendor=user,status='Refunded',is_finished=True))
+#             max_size=True if upper >=order_size else False
+#         return JsonResponse({'data':order_list,'max_size':max_size,'orders_size':order_size},safe=False)    
+
+
+
+
+
+class SupplierOrdersJsonListView(View):
+    def get(self, *args, **kwargs):
+        user = Profile.objects.get(user=self.request.user)
+        upper = int(self.request.GET.get('num_products'))
+        order_by = self.request.GET.get('order_by')
+        order_by_status = self.request.GET.get('order_by_status')
+
+        lower = upper - 5
+        if order_by_status == "All":
+            orders_list = list(OrderSupplier.objects.all().filter(
+                vendor=user, is_finished=True).values().order_by(order_by)[lower:upper])
+
+            orders_size = len(OrderSupplier.objects.all().filter(
+                vendor=user, is_finished=True))
+
+            max_size = True if upper >= orders_size else False
+
+        elif order_by_status == "Underway":
+            orders_list = list(OrderSupplier.objects.all().filter(
+                vendor=user, status="Underway", is_finished=True).values().order_by(order_by)[lower:upper])
+
+            orders_size = len(OrderSupplier.objects.all().filter(
+                vendor=user, status="Underway", is_finished=True))
+
+            max_size = True if upper >= orders_size else False
+
+        elif order_by_status == "COMPLETE":
+            orders_list = list(OrderSupplier.objects.all().filter(
+                vendor=user, status="COMPLETE", is_finished=True).values().order_by(order_by)[lower:upper])
+
+            orders_size = len(OrderSupplier.objects.all().filter(
+                vendor=user, status="COMPLETE", is_finished=True))
+
+            max_size = True if upper >= orders_size else False
+
+        else:
+            orders_list = list(OrderSupplier.objects.all().filter(
+                vendor=user, status="Refunded", is_finished=True).values().order_by(order_by)[lower:upper])
+
+            orders_size = len(OrderSupplier.objects.all().filter(
+                vendor=user, status="Refunded", is_finished=True))
+
+            max_size = True if upper >= orders_size else False
+
+        return JsonResponse({"data": orders_list,  "max": max_size, "orders_size": orders_size, }, safe=False)
+
+
+

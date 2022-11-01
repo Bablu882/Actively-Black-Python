@@ -13355,3 +13355,1024 @@ Traceback (most recent call last):
 django.template.exceptions.TemplateSyntaxError: Invalid filter: 'currency'
 Using selector: EpollSelector
 Using selector: EpollSelector
+Watching for file changes with StatReloader
+Using selector: EpollSelector
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Using selector: EpollSelector
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /imgs/theme/rating-stars.png
+Not Found: /imgs/theme/rating-stars.png
+Not Found: /images/rating-stars.png
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Internal Server Error: /rating/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view ecommerce.views.product_rating didn't return an HttpResponse object. It returned None instead.
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Not Found: /product-details/bootstrap.min.css.map
+Internal Server Error: /cart/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 470, in parse
+    compile_func = self.tags[command]
+KeyError: 'endfor'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 813, in cart
+    return render(request, "ecommerce/shop-cart.html", context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/engine.py", line 143, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loaders/base.py", line 29, in get_template
+    return Template(
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 155, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 193, in compile_nodelist
+    return parser.parse()
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 270, in do_extends
+    nodelist = parser.parse()
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 213, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 814, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 979, in do_if
+    nodelist = parser.parse(('endif',))
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 472, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 522, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 174: 'endfor', expected 'endif'. Did you forget to register or load this tag?
+Not Found: /favicon.ico
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+/home/bablu/Desktop/python2/actively_black_python/user_management_module/settings.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/urls.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/urls.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /supplier-orders-list-ajax/
+Not Found: /supplier-orders-list-ajax/
+Not Found: /suppler-order-list
+Not Found: /supplier-orders-list-ajax/
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/urls.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/urls.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Internal Server Error: /supplier-orders-list-ajax/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 3481, in get
+    user = Profile.objects.get(user=self.request.user)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/db/models/query.py", line 418, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/db/models/query.py", line 942, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/db/models/query.py", line 962, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/db/models/query.py", line 969, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1358, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1377, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1292, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1121, in check_related_objects
+    for v in value:
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/utils/functional.py", line 241, in inner
+    return func(self._wrapped, *args)
+TypeError: 'AnonymousUser' object is not iterable
+Not Found: /favicon.ico
+Not Found: /order-details/10/
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /imgs/theme/icons/coupon.png
+Using selector: EpollSelector
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /cart/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 72, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'orders'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 814, in cart
+    return render(request, "ecommerce/shop-cart.html", context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 446, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 83, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'orders' is not a registered namespace
+Not Found: /favicon.ico
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /cart/AF/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 825, in get
+    if settings.ARAMEX_USERNAME != "":
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/conf/__init__.py", line 84, in __getattr__
+    val = getattr(self._wrapped, name)
+AttributeError: 'Settings' object has no attribute 'ARAMEX_USERNAME'
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /cart/AF/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 825, in get
+    if settings.ARAMEX_USERNAME != "":
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/conf/__init__.py", line 84, in __getattr__
+    val = getattr(self._wrapped, name)
+AttributeError: 'Settings' object has no attribute 'ARAMEX_USERNAME'
+Internal Server Error: /cart/AO/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 825, in get
+    if settings.ARAMEX_USERNAME != "":
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/conf/__init__.py", line 84, in __getattr__
+    val = getattr(self._wrapped, name)
+AttributeError: 'Settings' object has no attribute 'ARAMEX_USERNAME'
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /cart/AF/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 825, in get
+    if settings.ARAMEX_USERNAME != "":
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/conf/__init__.py", line 84, in __getattr__
+    val = getattr(self._wrapped, name)
+AttributeError: 'Settings' object has no attribute 'ARAMEX_USERNAME'
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /cart/AF/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 825, in get
+    if settings.ARAMEX_USERNAME != "":
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/conf/__init__.py", line 84, in __getattr__
+    val = getattr(self._wrapped, name)
+AttributeError: 'Settings' object has no attribute 'ARAMEX_USERNAME'
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /cart/AF/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 825, in get
+    if settings.ARAMEX_USERNAME != "":
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/conf/__init__.py", line 84, in __getattr__
+    val = getattr(self._wrapped, name)
+AttributeError: 'Settings' object has no attribute 'ARAMEX_USERNAME'
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /cart/AF/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 825, in get
+    if settings.ARAMEX_USERNAME != "":
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/conf/__init__.py", line 84, in __getattr__
+    val = getattr(self._wrapped, name)
+AttributeError: 'Settings' object has no attribute 'ARAMEX_USERNAME'
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /cart/AF/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 825, in get
+    if settings.ARAMEX_USERNAME != "":
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/conf/__init__.py", line 84, in __getattr__
+    val = getattr(self._wrapped, name)
+AttributeError: 'Settings' object has no attribute 'ARAMEX_USERNAME'
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /cart/AF/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 825, in get
+    if settings.ARAMEX_USERNAME != "":
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/conf/__init__.py", line 84, in __getattr__
+    val = getattr(self._wrapped, name)
+AttributeError: 'Settings' object has no attribute 'ARAMEX_USERNAME'
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /cart/AF/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 825, in get
+    if settings.ARAMEX_USERNAME != "":
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/conf/__init__.py", line 84, in __getattr__
+    val = getattr(self._wrapped, name)
+AttributeError: 'Settings' object has no attribute 'ARAMEX_USERNAME'
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /cart/AF/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 825, in get
+    if settings.ARAMEX_USERNAME != "":
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/conf/__init__.py", line 84, in __getattr__
+    val = getattr(self._wrapped, name)
+AttributeError: 'Settings' object has no attribute 'ARAMEX_USERNAME'
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /cart/AF/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 825, in get
+    if settings.ARAMEX_USERNAME != "":
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/conf/__init__.py", line 84, in __getattr__
+    val = getattr(self._wrapped, name)
+AttributeError: 'Settings' object has no attribute 'ARAMEX_USERNAME'
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /cart/AF/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 825, in get
+    if settings.ARAMEX_USERNAME != "":
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/conf/__init__.py", line 84, in __getattr__
+    val = getattr(self._wrapped, name)
+AttributeError: 'Settings' object has no attribute 'ARAMEX_USERNAME'
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /cart/AF/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 825, in get
+    if settings.ARAMEX_USERNAME != "":
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/conf/__init__.py", line 84, in __getattr__
+    val = getattr(self._wrapped, name)
+AttributeError: 'Settings' object has no attribute 'ARAMEX_USERNAME'
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /cart/AF/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 825, in get
+    if settings.ARAMEX_USERNAME != "":
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/conf/__init__.py", line 84, in __getattr__
+    val = getattr(self._wrapped, name)
+AttributeError: 'Settings' object has no attribute 'ARAMEX_USERNAME'
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /cart/AF/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 825, in get
+    if settings.ARAMEX_USERNAME != "":
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/conf/__init__.py", line 84, in __getattr__
+    val = getattr(self._wrapped, name)
+AttributeError: 'Settings' object has no attribute 'ARAMEX_USERNAME'
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /cart/AF/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 825, in get
+    if settings.ARAMEX_USERNAME != "":
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/conf/__init__.py", line 84, in __getattr__
+    val = getattr(self._wrapped, name)
+AttributeError: 'Settings' object has no attribute 'ARAMEX_USERNAME'
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /cart/AF/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 825, in get
+    if settings.ARAMEX_USERNAME != "":
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/conf/__init__.py", line 84, in __getattr__
+    val = getattr(self._wrapped, name)
+AttributeError: 'Settings' object has no attribute 'ARAMEX_USERNAME'
+/home/bablu/Desktop/python2/actively_black_python/user_management_module/settings.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/user_management_module/settings.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /payment/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 1168, in payment
+    return render(request, "orders/shop-checkout.html", context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: orders/shop-checkout.html
+Not Found: /favicon.ico
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /payment/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 1165, in payment
+    return render(request, "ecommerce/shop-checkout.html", context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/engine.py", line 143, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loaders/base.py", line 29, in get_template
+    return Template(
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 155, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 193, in compile_nodelist
+    return parser.parse()
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 270, in do_extends
+    nodelist = parser.parse()
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 213, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 814, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 1449, in widthratio
+    return WidthRatioNode(parser.compile_filter(this_value_expr),
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 563, in compile_filter
+    return FilterExpression(token, self)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 657, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 569, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'currency'
+Internal Server Error: /payment/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 72, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'orders'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 1181, in payment
+    return redirect('orders:cart')
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 41, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 131, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 83, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'orders' is not a registered namespace
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Internal Server Error: /payment/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 72, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'orders'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 1181, in payment
+    return redirect('orders:cart')
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 41, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 131, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 83, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'orders' is not a registered namespace
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /payment/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 1165, in payment
+    return render(request, "ecommerce/shop-checkout.html", context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/engine.py", line 143, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loaders/base.py", line 29, in get_template
+    return Template(
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 155, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 193, in compile_nodelist
+    return parser.parse()
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 270, in do_extends
+    nodelist = parser.parse()
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 213, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 814, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 1449, in widthratio
+    return WidthRatioNode(parser.compile_filter(this_value_expr),
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 563, in compile_filter
+    return FilterExpression(token, self)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 657, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 569, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'currency'
+Internal Server Error: /payment/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 1165, in payment
+    return render(request, "ecommerce/shop-checkout.html", context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/engine.py", line 143, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loaders/base.py", line 29, in get_template
+    return Template(
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 155, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 193, in compile_nodelist
+    return parser.parse()
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 270, in do_extends
+    nodelist = parser.parse()
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 213, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 449, in parse
+    raise self.error(token, e)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 447, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 563, in compile_filter
+    return FilterExpression(token, self)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 657, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 569, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'currency'
+Internal Server Error: /payment/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 1165, in payment
+    return render(request, "ecommerce/shop-checkout.html", context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 211, in render
+    nodelist.append(node.render_annotated(context))
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 446, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 87, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/resolvers.py", line 685, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for '/product-details' not found. '/product-details' is not a valid view function or pattern name.
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /payment_cash/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 72, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'orders'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 1681, in payment_cash
+    return redirect("orders:success")
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 41, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 131, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 83, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'orders' is not a registered namespace
+Internal Server Error: /payment/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 1032, in payment
+    order_weight = Order.objects.get(
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/db/models/query.py", line 429, in get
+    raise self.model.DoesNotExist(
+ecommerce.models.Order.DoesNotExist: Order matching query does not exist.
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /payment/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 72, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'orders'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 1165, in payment
+    return render(request, "ecommerce/shop-checkout.html", context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 446, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 83, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'orders' is not a registered namespace
+Not Found: /product-details/bootstrap.min.css.map
+Forbidden (CSRF token missing or incorrect.): /payment/
+Not Found: /favicon.ico
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /payment_cash/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 72, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'orders'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 1681, in payment_cash
+    return redirect("orders:success")
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 41, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 131, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 83, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'orders' is not a registered namespace
+Internal Server Error: /payment/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 1032, in payment
+    order_weight = Order.objects.get(
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/db/models/query.py", line 429, in get
+    raise self.model.DoesNotExist(
+ecommerce.models.Order.DoesNotExist: Order matching query does not exist.
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /payment_cash/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 72, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'orders'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 1681, in payment_cash
+    return redirect("orders:success")
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 41, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 131, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 83, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'orders' is not a registered namespace
+Internal Server Error: /payment/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 1032, in payment
+    order_weight = Order.objects.get(
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/db/models/query.py", line 429, in get
+    raise self.model.DoesNotExist(
+ecommerce.models.Order.DoesNotExist: Order matching query does not exist.
+Using selector: EpollSelector
+Using selector: EpollSelector

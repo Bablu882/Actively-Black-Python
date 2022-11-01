@@ -56,6 +56,7 @@ INSTALLED_APPS = [
 
 
 
+
     
 ]
 
@@ -274,8 +275,48 @@ CKEDITOR_CONFIGS = {
 }
 
 
-STRIPE_SECRET_KEY = ""
-STRIPE_PUBLIC_KEY = ""
+
 
 DEFAULT_CURRENCY ='INR'
 
+STRIPE_PUBLIC_KEY = ""
+STRIPE_SECRET_KEY = ""
+STRIPE_WEBHOOK_SECRET = ""
+#domain EX: example.com
+YOUR_DOMAIN = "nest.apexcode.info" 
+##very important
+#Set your Endpoint_URL in your stripe account WEBHOOK like this : https://YOUR_DOMAIN/orders/webhook/
+#DEBUG_EMAIL_STRIPE
+DEBUG_EMAIL = "info@mohamedselem.com"
+## End Stripe Settings ##
+
+# ClientInfo For Aramex
+ARAMEX_USERNAME = ""
+ARAMEX_PASSWORD = ""
+ARAMEX_VERSION = "v1.0"
+ARAMEX_ACCOUNTNUMBER = ""
+ARAMEX_ACCOUNTPIN = ""
+
+ARAMEX_ACCOUNTENTITY = ""
+ARAMEX_ACCOUNTCOUNTRYCODE = ""
+ARAMEX_SOURCE = "24"
+
+ARAMEX_PRODUCTGROUP = "EXP"
+ARAMEX_PRODUCTTYPE = "PPX"
+
+
+# #Smtp Email for recovery password
+EMAIL_BACKEND = ''
+SENDGRID_API_KEY = ''
+SENDGRID_SANDBOX_MODE_IN_DEBUG = False
+EMAIL_SENDGRID = ""
+
+
+# razorpay account ###
+RAZORPAY_KEY_ID = ''
+RAZORPAY_KEY_SECRET = ''
+
+## paymob account ##
+API_KEY = ""
+#INTEGRATIONS_ID is integer data
+PAYMENT_INTEGRATIONS_ID = None
