@@ -1,5 +1,3 @@
-from curses.textpad import rectangle
-from shutil import register_unpack_format
 from django.shortcuts import redirect, render,get_object_or_404
 from management.models import User,Profile
 from django.utils import timezone
@@ -1678,12 +1676,12 @@ def payment_cash(request):
             )
         except:
             pass
-        return redirect("orders:success")
+        return redirect("/order/success")
 
     # return redirect("orders:payment")
     messages.warning(request, ' There is no order for you to buy it ')
     # return redirect("products:homepage")
-    return redirect('home:index')
+    return redirect('/home')
 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -2891,50 +2889,76 @@ def verify_payment_razorpay(request):
         return JsonResponse({"success": False, "data": "None"}, safe=False)
 
 
+# def success(request):
+#     if not request.session.has_key('currency'):
+#         request.session['currency'] = settings.DEFAULT_CURRENCY
+
+#     try:
+#         try:
+#             order_id = request.session['cart_id']
+
+#         except:
+#             order_id = request.session.get("order_id")
+#     except:
+#         pass
+
+#     order = Order.objects.all().filter(id=order_id, is_finished=True)
+
+#     if order:
+#         order_success = Order.objects.get(
+#             id=order_id, is_finished=True)
+#         order_details_success = OrderDetails.objects.filter(
+#             order=order_success)
+#         payment_info = Payment.objects.get(order=order_success)
+
+#         context = {
+#             "order_success": order_success,
+#             "order_details_success": order_details_success,
+#             "payment_info": payment_info,
+#         }
+#         # send_mail(
+#         #     'Order No {}. has been successfully purchased'.format(
+#         #         order_id),
+#         #     ' we will work to complete your order from our side.',
+#         #     f'{settings.EMAIL_SENDGRID}',
+#         #     [f'{payment_info.Email_Address}', ],
+#         #     fail_silently=False,
+#         # )
+#         messages.success(
+#             request, ' Congratulations, you have made your order, This order will be delivered to you soon')
+#         return render(request, "ecommerce/success.html", context)
+#     else:
+
+#         messages.success(
+#             request, 'Congratulations, you have made your order, This order will be delivered to you soon')
+#         return render(request, "ecommerce/success-x.html")
+
 def success(request):
     if not request.session.has_key('currency'):
-        request.session['currency'] = settings.DEFAULT_CURRENCY
-
+        request.session['currency']=settings.DEFAULT_CURRENCY
     try:
         try:
-            order_id = request.session['cart_id']
-
+            order_id=request.session['cart_id']    
         except:
-            order_id = request.session.get("order_id")
+            order_id=request.session.get['order_id']    
     except:
         pass
-
-    order = Order.objects.all().filter(id=order_id, is_finished=True)
-
+    order=Order.objects.all().filter(id=order_id,is_finished=True)        
     if order:
-        order_success = Order.objects.get(
-            id=order_id, is_finished=True)
-        order_details_success = OrderDetails.objects.filter(
-            order=order_success)
-        payment_info = Payment.objects.get(order=order_success)
+        order_success=Order.objects.get(id=order_id,is_finished=True)
+        order_details_success=OrderDetails.objects.filter(order=order_success)
+        payment_info=Payment.objects.get(order=order_success)
 
-        context = {
-            "order_success": order_success,
-            "order_details_success": order_details_success,
-            "payment_info": payment_info,
+        context={
+            'order_success':order_success,
+            'order_details_success':order_details_success,
+            'payment_info':payment_info
         }
-        # send_mail(
-        #     'Order No {}. has been successfully purchased'.format(
-        #         order_id),
-        #     ' we will work to complete your order from our side.',
-        #     f'{settings.EMAIL_SENDGRID}',
-        #     [f'{payment_info.Email_Address}', ],
-        #     fail_silently=False,
-        # )
-        messages.success(
-            request, ' Congratulations, you have made your order, This order will be delivered to you soon')
-        return render(request, "orders/success.html", context)
-    else:
-
-        messages.success(
-            request, 'Congratulations, you have made your order, This order will be delivered to you soon')
-        return render(request, "orders/success-x.html")
-
+        messages.success(request,'Congratulations you have made your order it will delevered soon')
+        return render(request,'ecommerce/success.html',context)
+    else:    
+        messages.success(request,'Congratulations you have made your orders it will delevered soon')    
+        return render(request,'ecommerce/success-x.html')    
 
 class CancelView(TemplateView):
     template_name = "orders/cancel.html"

@@ -1,5 +1,5 @@
 {% extends 'management/base.html'%}
-{% block title %}Actively|profile{% endblock %}
+{% block title %}Actively|shop-checkout{% endblock %}
 {% block content %}
 {% load static %}
 
@@ -459,7 +459,7 @@
                     </div>
                     {% csrf_token %}
                     
-                    <a id="checkout-button" type="click" href="{% url "payment-cash"  %}" class="btn btn-success btn-block mt-30">Place an Order<i class="fi-rs-sign-out ml-15"></i></a>
+                    <a id="checkout-button" type="click" href="{% url 'payment-cash'  %}" class="btn btn-success btn-block mt-30">Place an Order<i class="fi-rs-sign-out ml-15"></i></a>
                 </div>
             </form>
             </div>

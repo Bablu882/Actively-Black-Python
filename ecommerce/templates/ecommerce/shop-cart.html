@@ -1,5 +1,5 @@
 {% extends 'management/base.html'%}
-{% block title %}Actively|profile{% endblock %}
+{% block title %}Actively|cart{% endblock %}
 {% block content %}
 {% load static %}
 {% load currency %}
@@ -61,6 +61,9 @@
   background: white;
   border-color: #BCE3C9;
 } 
+.custom_select{
+    background-color:rgb(5, 61, 124) ;
+}
 </style>
 <div class="dashboard dark-theme">
     <aside class="drawer">
@@ -244,10 +247,7 @@
             </div>
 
         </div>
-        {% else %}
-        <h3>Your cart is empty</h3>
-        <img src="{% static 'management/images/theme/empty-cart.webp' %}" alt="Cart is empty">
-        {% endif %}
+        
         <div class="row">
          <div class="col-md-8">
             <form method="post" class="apply-coupon">
@@ -285,7 +285,7 @@
                         <div class="row shipping_calculator">
                             <div class="form-group col-lg-6">
                                 <div class="custom_select">
-                                    <select id="country" name="country" class="form-control select-active country">
+                                    <select id="country" name="country" style="border-color: white;" class="form-control select-active country">
                                         
                                         {% for country in countries%}
                                         <option data-code="{{country.code}}" value="{{country.code}}">{{country.name}} </option>
@@ -332,6 +332,11 @@
             </div>
 
         </div>
+
+        {% else %}
+        <h3>Your cart is empty</h3>
+        <img src="{% static 'management/images/theme/empty-cart.webp' %}" alt="Cart is empty">
+        {% endif %}
 
         </section>
         <footer class="footer py-3 px-3">
