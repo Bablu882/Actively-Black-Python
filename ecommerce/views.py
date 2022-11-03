@@ -8,7 +8,7 @@ from django.contrib import messages
 from .models import OrderDetailsSupplier, SubCategory,MainCategory,MiniCategory,SuperCategory
 # from django.views.generic import View
 from django.http import JsonResponse,HttpResponse,HttpResponseRedirect
-from .models import Product,ProductRating,Order,OrderDetails,Coupon,Payment,Country,OrderSupplier
+from .models import Product,ProductRating,Order,OrderDetails,Coupon,Payment,Country,OrderSupplier,BankAccount
 OrderDetailsSupplier
 from django.db.models import Sum
 from django.conf import settings
@@ -1424,13 +1424,13 @@ def payment_blance(request):
             # messages.success(
             #     request, ' Great, you have completed your purchase, we will work to complete your order from our side')
 
-            return redirect("orders:success")
+            return redirect("/order/success")
         else:
             messages.warning(
                 request, 'You do not have enough credit to purchase this product')
-            return redirect("orders:payment")
+            return redirect("/payment")
     messages.warning(request, ' There is no order for you to buy it')
-    return redirect("home:index")
+    return redirect("/home")
 
 
 def payment_cash(request):
@@ -3545,3 +3545,67 @@ class SupplierOrdersJsonListView(View):
 
 
 
+def supplier_order_details(request,id):
+    user=Profile.objects.get(user=request.user)
+    order_supplier=get_object_or_404(OrderSupplier,id=id,is_finished=True,vendor=user)
+    payment_info=Payment.objects.get(order=order_supplier.order)
+    order_details_supplier=OrderDetailsSupplier.objects.all().filter(order_supplier=order_supplier,supplier=request.user)
+    context={
+        'order_supplier':order_supplier,
+        'payment_info':payment_info,
+        'order_details_supplier':order_details_supplier
+    }
+    return render(request,'ecommerce/supplier-order-detail.html',context)
+
+
+def supplier_bank_info(request):
+    context=None
+    if request.user.is_authenticated and not request.user.is_anonymous:
+        if request.method == 'POST':
+            bank_name=request.POST["bank_name"]
+            account_number=request.POST["account_number"]
+            account_name=request.POST["account_name"]
+            ifsc=request.POST["ifsc"]
+            swift_code=request.POST["swift_code"]
+            country=request.POST["country"]
+            paypal_email=request.POST["paypal_email"]
+            description=request.POST['description']
+            profile=Profile.objects.get(user=request.user)
+            if BankAccount.objects.all().filter(vendor_profile=profile,).exists():
+                old_bank_info=BankAccount.objects.get(vendor_profile=profile,)
+                old_bank_info.bank_name=bank_name
+                old_bank_info.account_number=account_number
+                old_bank_info.account_name=account_name
+                old_bank_info.ifsc=ifsc
+                old_bank_info.swift_code=swift_code
+                old_bank_info.country=country
+                old_bank_info.paypal_email=paypal_email
+                old_bank_info.description=description
+                old_bank_info.save()
+                messages.success(request,'your bank info has been saved !')
+            else:
+                new_bank_info=BankAccount.objects.create(
+                    vendor_profile=profile,
+                    bank_name=bank_name,
+                    account_name=account_name,
+                    account_number=account_number,
+                    ifsc=ifsc,
+                    swift_code=swift_code,
+                    country=country,
+                    paypal_email=paypal_email,
+                    description=description
+                )   
+                messages.success(request,'your bank details has been saved !') 
+                # return render(request,'ecommerce/vendor-bank-info.html')
+        if BankAccount.objects.all().filter(vendor_profile__user=request.user,).exists():
+            bank_info_object=BankAccount.objects.get(vendor_profile__user=request.user,)
+            context={
+                "bank_info_obj":bank_info_object
+            }
+        return render(request,'ecommerce/vendor-bank-info.html',context)
+    else:
+        messages.warning(request,'please login first !') 
+        return redirect('/login')  
+
+
+       

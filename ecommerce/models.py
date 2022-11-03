@@ -711,3 +711,18 @@ class OrderDetailsSupplier(models.Model):
     #     obj_order_supplier.save()
     #     super().save(*args, **kwargs)
 
+###----------------------------Bank account-------------------------------------------###
+
+class BankAccount(models.Model):
+    vendor_profile = models.OneToOneField(
+        Profile, on_delete=models.SET_NULL,related_name='vender_profile',blank=True, null=True)
+    bank_name = models.CharField(max_length=200, blank=True, null=True, )
+    account_number = models.CharField(max_length=200, blank=True, null=True, )
+    swift_code = models.CharField(max_length=200, blank=True, null=True, )
+    ifsc=models.CharField(max_length=50,blank=True,null=True)
+    account_name = models.CharField(max_length=200, blank=True, null=True, )
+    country = models.CharField(max_length=200, blank=True, null=True, )
+    paypal_email = models.CharField(max_length=200, blank=True, null=True, )
+    description = models.TextField(blank=True, null=True)
+    date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    date_update = models.DateTimeField(auto_now=True, blank=True, null=True)

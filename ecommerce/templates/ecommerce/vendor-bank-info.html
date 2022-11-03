@@ -160,7 +160,7 @@
         {% endif %}
         <section class="centered-content">
             <div class="title mb-4">
-                <h1>Shop</h1>
+                <h1>Bank Info...</h1>
             </div>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb pl-0 bg-transparent">
@@ -169,40 +169,72 @@
                     <li class="breadcrumb-item active" aria-current="page">Profile</li>
                 </ol>
             </nav>
-               
-            <div class="row">
-                {% for product in products %}
-                {% if product.PRDISactive == True %}
-                <div class="col-lg-5 col-xl-4">
-                    <div class="card border-0 mb-3">
-                        <div class="p-3">
-                            <h5>{{product.product_name}}</h5>
-                            <div class="card text-center border-0" style="width: 18rem;">
-                                <div class="profile-imgs mx-auto mb-3 mt-3 thumbnail-img-box">
-                                    <img class="card-img-top rounde-circle" src="{{product.product_image.url}}"
-                                        alt="Card image cap">
+             <div class="row">
+                <div class="col-md-6 ml-auto"> 
+                    <form action="{% url 'bank-info' %}" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="row gx-3">
+                                    <div class="col-12 mb-3">
+                                        <label class="form-label">Bank Name</label>
+                                        <input class="form-control" name="bank_name" {% if bank_info_obj %} value="{{bank_info_obj.bank_name}}" {%endif%} type="text" placeholder="Bank Name" required/>
+                                    </div>
+                                    <!-- col .// -->
+                                    <div class="col-12 mb-3">
+                                        <label class="form-label">Account Number</label>
+                                        <input class="form-control" type="text" name="account_number" {% if bank_info_obj %} value="{{bank_info_obj.account_number}}" {%endif%} placeholder="Account Number" required/>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label class="form-label">IFSC Code</label>
+                                        <input class="form-control" type="text" name="ifsc" {% if bank_info_obj %} value="{{bank_info_obj.ifsc}}" {%endif%} placeholder="IFSC" required/>
+                                    </div>
+                                    <!-- col .// -->
+                                    <div class="col-lg-12 mb-3">
+                                        <label class="form-label">Swift Code</label>
+                                        <input class="form-control" type="text" {% if bank_info_obj %} value="{{bank_info_obj.swift_code}}" {%endif%} name="swift_code" placeholder="Swift Code" required/>
+                                    </div>
+                                    <!-- col .// -->
+                                    <div class="col-lg-12 mb-3">
+                                        <label class="form-label">Account Holder Name</label>
+                                        <input class="form-control" type="text" name="account_name" {% if bank_info_obj %} value="{{bank_info_obj.account_name}}" {%endif%} placeholder="Account Name" required/>
+                                    </div>
+                                    <!-- col .// -->
+                                    <div class="col-lg-12 mb-3">
+                                        <label class="form-label">Country</label>
+                                        <input class="form-control" type="text" name="country" {% if bank_info_obj %} value="{{bank_info_obj.country}}" {%endif%} placeholder="Country" required/>
+                                    </div>
+                                    <!-- col .// -->
+                                    <div class="col-lg-12 mb-3">
+                                        <label class="form-label">PayPal Email</label>
+                                        <input class="form-control" type="email" name="paypal_email" {% if bank_info_obj %} value="{{bank_info_obj.paypal_email}}" {%endif%} placeholder="example@mail.com" required/>
+                                    </div>
+                                    <!-- col .// -->
+                                    <div class="col-lg-12 mb-3">
+                                        <label class="form-label">Description</label>
+                                        <textarea type="text" class="form-control" name="description"  placeholder="Description" name="bank_info[description]" rows="4">{% if bank_info_obj %} {{bank_info_obj.description}}{%endif%}</textarea>
+                                    </div>
+                                    <!-- col .// -->
                                 </div>
-
-                                <!-- <p class="mb-3 ">
-                                    <strong> By:{{product.product_vendor}}</strong>
-                                </p> -->
-                                <!-- <p>{{user.email}}</p> -->
-                                <div class="d-flex justify-content-center">
-                                    <button type="button" class="btn btn-info ">{{request.session.currency}}:{{product.PRDPrice}}</button>
-
-                                    <button type="button" class="btn btn-primary ml-2 "><a href="product-details/{{product.PRDSlug}}">View</a></button>
-
-                                    <!-- <a href="#" class="btn btn-primary">Follow</a>
-                                    <a href="#" class="btn btn-primary ml-2">Message</a> -->
-
-                                </div>
+                                <!-- row.// -->
                             </div>
+                            <!-- col.// -->
+                            <!-- <aside class="col-lg-4">
+                                <figure class="text-lg-center">
+                                    <img class="img-lg mb-3 img-avatar" src="{% static 'assets-supplier/imgs/people/avatar-1.png'%}" alt="User Photo" />
+                                    <figcaption>
+                                        <a class="btn btn-light rounded font-md" href="#"> <i class="icons material-icons md-backup font-md"></i> Upload </a>
+                                    </figcaption>
+                                </figure>
+                            </aside> -->
+                            <!-- col.// -->
                         </div>
-                    </div>
-                </div> 
-                {% endif %}
-                {% endfor %}
-            </div>
+                        <!-- row.// -->
+                        <br />
+                        <button class="btn btn-primary" type="submit">Save changes</button>
+                    </form>
+                </div>
+            </div> 
             
             
         </section>

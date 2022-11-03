@@ -61,6 +61,14 @@
                                 <a href="{% url 'home' %}" class="nav-link"><i class="fa fa-dashboard mr-2" aria-hidden="true"></i>
                                     Home</a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{% url 'supplier-dashboard' %}" class="nav-link"><i class="fa fa-dashboard mr-2" aria-hidden="true"></i>
+                                    Supplier dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'bank-info' %}" class="nav-link"><i class="fa fa-dashboard mr-2" aria-hidden="true"></i>
+                                    Bank-info</a>
+                            </li>
                                 {% if request.user.is_superuser %}
                             <li class="nav-item">
                                 <hr style="height:2px;border-width:0;color:rgb(250, 248, 248);background-color:rgb(255, 250, 250)">
