@@ -69,6 +69,14 @@
                                 <a href="{% url 'bank-info' %}" class="nav-link"><i class="fa fa-dashboard mr-2" aria-hidden="true"></i>
                                     Bank-info</a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{% url 'payments' %}" class="nav-link"><i class="fa fa-dashboard mr-2" aria-hidden="true"></i>
+                                    Payment</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'request-payment' %}" class="nav-link"><i class="fa fa-dashboard mr-2" aria-hidden="true"></i>
+                                    Request Payment</a>
+                            </li>
                                 {% if request.user.is_superuser %}
                             <li class="nav-item">
                                 <hr style="height:2px;border-width:0;color:rgb(250, 248, 248);background-color:rgb(255, 250, 250)">

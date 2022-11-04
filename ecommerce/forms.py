@@ -269,3 +269,103 @@ class  Product_forms(forms.ModelForm):
         'content','PRDPrice','PRDDiscountPrice','additional_image_1','additional_image_2',
         'additional_image_3','additional_image_4','width','height','PRDWeight','pieces','available',
         'promotional','PRDISactive','PRDSKU']
+
+from .models import Payment
+
+
+class PaymentForm(forms.ModelForm): 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)        
+        self.fields["first_name"].widget.attrs.update({
+            'name':'first_name',
+            'id':'first_name',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'first_name',
+            'maxlength':'50',
+            'minlength':'6'
+        })
+        self.fields["last_name"].widget.attrs.update({
+            'name':'last_name',
+            'id':'last_name',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'last_name',
+            'maxlength':'50',
+            'minlength':'6'
+        })
+        self.fields["state"].widget.attrs.update({
+            'name':'state',
+            'id':'state',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'state',
+            'maxlength':'50',
+            'minlength':'6'
+        })
+        self.fields["street_address"].widget.attrs.update({
+            'name':'street_address',
+            'id':'street_address',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'street_address',
+            'maxlength':'50',
+            'minlength':'6'
+        })
+        self.fields["post_code"].widget.attrs.update({
+            'name':'post_code',
+            'id':'post_code',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'post_code',
+            'maxlength':'50',
+            'minlength':'6'
+        })
+        self.fields["City"].widget.attrs.update({
+            'name':'City',
+            'id':'City',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'City',
+            'maxlength':'50',
+            'minlength':'6'
+        })
+        self.fields["Email_Address"].widget.attrs.update({
+            'name':'Email_Address',
+            'id':'Email_Address',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'Email_Address',
+            'maxlength':'50',
+            'minlength':'6'
+        })
+        self.fields["phone"].widget.attrs.update({
+            'name':'phone',
+            'id':'phone',
+            'style':'height:40px',
+            'size':'50px',
+            'type':'text',
+            'class':'form-control',
+            'placeholder':'phone',
+            'maxlength':'50',
+            'minlength':'6'
+        })
+    class Meta:
+        model=Payment
+        fields=[
+            'first_name','last_name','state','street_address','post_code','City','Email_Address','phone'
+        ]       

@@ -283,11 +283,11 @@ STRIPE_PUBLIC_KEY = ""
 STRIPE_SECRET_KEY = ""
 STRIPE_WEBHOOK_SECRET = ""
 #domain EX: example.com
-YOUR_DOMAIN = "nest.apexcode.info" 
+YOUR_DOMAIN = "webnyxa.com" 
 ##very important
 #Set your Endpoint_URL in your stripe account WEBHOOK like this : https://YOUR_DOMAIN/orders/webhook/
 #DEBUG_EMAIL_STRIPE
-DEBUG_EMAIL = "info@mohamedselem.com"
+DEBUG_EMAIL = "comwebnyxa@gmail.com"
 ## End Stripe Settings ##
 
 # ClientInfo For Aramex

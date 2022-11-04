@@ -15364,3 +15364,1054 @@ Using selector: EpollSelector
 Watching for file changes with StatReloader
 Using selector: EpollSelector
 Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/user_management_module/settings.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /imgs/theme/icons/coupon.png
+Starting new HTTPS connection (1): api.razorpay.com:443
+https://api.razorpay.com:443 "POST /v1/orders HTTP/1.1" 401 140
+Internal Server Error: /payment/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 1146, in payment
+    payment = client.order.create(data=data)['id']
+  File "/home/bablu/.local/lib/python3.8/site-packages/razorpay/resources/order.py", line 71, in create
+    return self.post_url(url, data, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/razorpay/resources/base.py", line 20, in post_url
+    return self.client.post(url, data, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/razorpay/client.py", line 156, in post
+    return self.request('post', path, data=data, **options)
+  File "/home/bablu/.local/lib/python3.8/site-packages/razorpay/client.py", line 137, in request
+    raise BadRequestError(msg)
+razorpay.errors.BadRequestError: The api key provided is invalid
+Not Found: /favicon.ico
+Starting new HTTPS connection (1): api.razorpay.com:443
+https://api.razorpay.com:443 "POST /v1/orders HTTP/1.1" 401 140
+Internal Server Error: /payment/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 1146, in payment
+    payment = client.order.create(data=data)['id']
+  File "/home/bablu/.local/lib/python3.8/site-packages/razorpay/resources/order.py", line 71, in create
+    return self.post_url(url, data, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/razorpay/resources/base.py", line 20, in post_url
+    return self.client.post(url, data, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/razorpay/client.py", line 156, in post
+    return self.request('post', path, data=data, **options)
+  File "/home/bablu/.local/lib/python3.8/site-packages/razorpay/client.py", line 137, in request
+    raise BadRequestError(msg)
+razorpay.errors.BadRequestError: The api key provided is invalid
+/home/bablu/Desktop/python2/actively_black_python/user_management_module/settings.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Starting new HTTPS connection (1): api.razorpay.com:443
+https://api.razorpay.com:443 "POST /v1/orders HTTP/1.1" 401 140
+Internal Server Error: /payment/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 1146, in payment
+    payment = client.order.create(data=data)['id']
+  File "/home/bablu/.local/lib/python3.8/site-packages/razorpay/resources/order.py", line 71, in create
+    return self.post_url(url, data, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/razorpay/resources/base.py", line 20, in post_url
+    return self.client.post(url, data, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/razorpay/client.py", line 156, in post
+    return self.request('post', path, data=data, **options)
+  File "/home/bablu/.local/lib/python3.8/site-packages/razorpay/client.py", line 137, in request
+    raise BadRequestError(msg)
+razorpay.errors.BadRequestError: The api key provided is invalid
+/home/bablu/Desktop/python2/actively_black_python/user_management_module/settings.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Starting new HTTPS connection (1): api.razorpay.com:443
+https://api.razorpay.com:443 "POST /v1/orders HTTP/1.1" 401 140
+Internal Server Error: /payment/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 1146, in payment
+    payment = client.order.create(data=data)['id']
+  File "/home/bablu/.local/lib/python3.8/site-packages/razorpay/resources/order.py", line 71, in create
+    return self.post_url(url, data, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/razorpay/resources/base.py", line 20, in post_url
+    return self.client.post(url, data, **kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/razorpay/client.py", line 156, in post
+    return self.request('post', path, data=data, **options)
+  File "/home/bablu/.local/lib/python3.8/site-packages/razorpay/client.py", line 137, in request
+    raise BadRequestError(msg)
+razorpay.errors.BadRequestError: The api key provided is invalid
+/home/bablu/Desktop/python2/actively_black_python/user_management_module/settings.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/user_management_module/settings.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/user_management_module/settings.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/urls.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /supplier-login/
+Not Found: /supplier-login/
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/urls.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/urls.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/models.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Using selector: EpollSelector
+Using selector: EpollSelector
+Using selector: EpollSelector
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /payments
+Internal Server Error: /payment
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 3613, in payments
+    if request.user.is_authenticate and not request.user.is_anonymous:
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/utils/functional.py", line 241, in inner
+    return func(self._wrapped, *args)
+AttributeError: 'User' object has no attribute 'is_authenticate'
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/urls.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Internal Server Error: /payments
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 3613, in payments
+    if request.user.is_authenticate and not request.user.is_anonymous:
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/utils/functional.py", line 241, in inner
+    return func(self._wrapped, *args)
+AttributeError: 'User' object has no attribute 'is_authenticate'
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Internal Server Error: /payments
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 72, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'supplier_dashboard'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 3632, in payments
+    return render(request,'ecommerce/payment-request.html',context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 446, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 83, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'supplier_dashboard' is not a registered namespace
+Not Found: /favicon.ico
+Internal Server Error: /payments
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 72, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'supplier_dashboard'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 3632, in payments
+    return render(request,'ecommerce/payment-request.html',context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 446, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 83, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'supplier_dashboard' is not a registered namespace
+Internal Server Error: /payments
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 72, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'supplier_dashboard'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 3632, in payments
+    return render(request,'ecommerce/payment-request.html',context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 446, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 83, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'supplier_dashboard' is not a registered namespace
+Internal Server Error: /payments
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 72, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'ecommerce'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 3632, in payments
+    return render(request,'ecommerce/payment-request.html',context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 446, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 83, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'ecommerce' is not a registered namespace
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/urls.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Internal Server Error: /payments
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 72, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'ecommerce'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 3632, in payments
+    return render(request,'ecommerce/payment-request.html',context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 446, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 83, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'ecommerce' is not a registered namespace
+Internal Server Error: /payments
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 72, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'ecommerce'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 3632, in payments
+    return render(request,'ecommerce/payment-request.html',context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 446, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 83, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'ecommerce' is not a registered namespace
+Not Found: /imgs/theme/icons/coupon.png
+Using selector: EpollSelector
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /model
+Not Found: /paymemts
+Internal Server Error: /request-payment
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 72, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'ecommerce'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 3665, in request_payment
+    return redirect('ecommerce:payments')
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 41, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 131, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/urls/base.py", line 83, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'ecommerce' is not a registered namespace
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/forms.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/forms.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Internal Server Error: /cart/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 813, in cart
+    return render(request, "ecommerce/shop-cart.html", context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 312, in render
+    return nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 988, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 698, in resolve
+    new_obj = func(obj, *arg_vals)
+  File "/home/bablu/.local/lib/python3.8/site-packages/crispy_forms/templatetags/crispy_forms_filters.py", line 102, in as_crispy_field
+    raise CrispyError("|as_crispy_field got passed an invalid or inexistent field")
+crispy_forms.exceptions.CrispyError: |as_crispy_field got passed an invalid or inexistent field
+Internal Server Error: /cart/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 813, in cart
+    return render(request, "ecommerce/shop-cart.html", context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 312, in render
+    return nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 988, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 698, in resolve
+    new_obj = func(obj, *arg_vals)
+  File "/home/bablu/.local/lib/python3.8/site-packages/crispy_forms/templatetags/crispy_forms_filters.py", line 102, in as_crispy_field
+    raise CrispyError("|as_crispy_field got passed an invalid or inexistent field")
+crispy_forms.exceptions.CrispyError: |as_crispy_field got passed an invalid or inexistent field
+Internal Server Error: /cart/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 813, in cart
+    return render(request, "ecommerce/shop-cart.html", context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 312, in render
+    return nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 988, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 698, in resolve
+    new_obj = func(obj, *arg_vals)
+  File "/home/bablu/.local/lib/python3.8/site-packages/crispy_forms/templatetags/crispy_forms_filters.py", line 102, in as_crispy_field
+    raise CrispyError("|as_crispy_field got passed an invalid or inexistent field")
+crispy_forms.exceptions.CrispyError: |as_crispy_field got passed an invalid or inexistent field
+Internal Server Error: /cart/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 813, in cart
+    return render(request, "ecommerce/shop-cart.html", context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 312, in render
+    return nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 988, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 698, in resolve
+    new_obj = func(obj, *arg_vals)
+  File "/home/bablu/.local/lib/python3.8/site-packages/crispy_forms/templatetags/crispy_forms_filters.py", line 102, in as_crispy_field
+    raise CrispyError("|as_crispy_field got passed an invalid or inexistent field")
+crispy_forms.exceptions.CrispyError: |as_crispy_field got passed an invalid or inexistent field
+Internal Server Error: /cart/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 813, in cart
+    return render(request, "ecommerce/shop-cart.html", context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 312, in render
+    return nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 988, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 698, in resolve
+    new_obj = func(obj, *arg_vals)
+  File "/home/bablu/.local/lib/python3.8/site-packages/crispy_forms/templatetags/crispy_forms_filters.py", line 102, in as_crispy_field
+    raise CrispyError("|as_crispy_field got passed an invalid or inexistent field")
+crispy_forms.exceptions.CrispyError: |as_crispy_field got passed an invalid or inexistent field
+Internal Server Error: /cart/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 813, in cart
+    return render(request, "ecommerce/shop-cart.html", context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 312, in render
+    return nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 988, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 698, in resolve
+    new_obj = func(obj, *arg_vals)
+  File "/home/bablu/.local/lib/python3.8/site-packages/crispy_forms/templatetags/crispy_forms_filters.py", line 102, in as_crispy_field
+    raise CrispyError("|as_crispy_field got passed an invalid or inexistent field")
+crispy_forms.exceptions.CrispyError: |as_crispy_field got passed an invalid or inexistent field
+Internal Server Error: /cart/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 813, in cart
+    return render(request, "ecommerce/shop-cart.html", context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 312, in render
+    return nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 988, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 698, in resolve
+    new_obj = func(obj, *arg_vals)
+  File "/home/bablu/.local/lib/python3.8/site-packages/crispy_forms/templatetags/crispy_forms_filters.py", line 102, in as_crispy_field
+    raise CrispyError("|as_crispy_field got passed an invalid or inexistent field")
+crispy_forms.exceptions.CrispyError: |as_crispy_field got passed an invalid or inexistent field
+Internal Server Error: /cart/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 813, in cart
+    return render(request, "ecommerce/shop-cart.html", context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 312, in render
+    return nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 988, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 698, in resolve
+    new_obj = func(obj, *arg_vals)
+  File "/home/bablu/.local/lib/python3.8/site-packages/crispy_forms/templatetags/crispy_forms_filters.py", line 102, in as_crispy_field
+    raise CrispyError("|as_crispy_field got passed an invalid or inexistent field")
+crispy_forms.exceptions.CrispyError: |as_crispy_field got passed an invalid or inexistent field
+Internal Server Error: /cart/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 813, in cart
+    return render(request, "ecommerce/shop-cart.html", context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 312, in render
+    return nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 988, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 698, in resolve
+    new_obj = func(obj, *arg_vals)
+  File "/home/bablu/.local/lib/python3.8/site-packages/crispy_forms/templatetags/crispy_forms_filters.py", line 102, in as_crispy_field
+    raise CrispyError("|as_crispy_field got passed an invalid or inexistent field")
+crispy_forms.exceptions.CrispyError: |as_crispy_field got passed an invalid or inexistent field
+Internal Server Error: /cart/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 813, in cart
+    return render(request, "ecommerce/shop-cart.html", context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/defaulttags.py", line 312, in render
+    return nodelist.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 988, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/base.py", line 698, in resolve
+    new_obj = func(obj, *arg_vals)
+  File "/home/bablu/.local/lib/python3.8/site-packages/crispy_forms/templatetags/crispy_forms_filters.py", line 102, in as_crispy_field
+    raise CrispyError("|as_crispy_field got passed an invalid or inexistent field")
+crispy_forms.exceptions.CrispyError: |as_crispy_field got passed an invalid or inexistent field
+Not Found: /imgs/theme/icons/coupon.png
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /imgs/theme/icons/coupon.png
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /imgs/theme/icons/coupon.png
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /imgs/theme/icons/coupon.png
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /payment/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py", line 967, in payment
+    return render(request,'namagement/shop-cart.html',{'form':form})
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: namagement/shop-cart.html
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /imgs/theme/icons/coupon.png
+Using selector: EpollSelector
+Using selector: EpollSelector

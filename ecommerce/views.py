@@ -5,11 +5,10 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
 from .forms import *
 from django.contrib import messages
-from .models import OrderDetailsSupplier, SubCategory,MainCategory,MiniCategory,SuperCategory
+from .models import OrderDetailsSupplier, SubCategory,MainCategory,MiniCategory,SuperCategory,VendorPayments
 # from django.views.generic import View
 from django.http import JsonResponse,HttpResponse,HttpResponseRedirect
 from .models import Product,ProductRating,Order,OrderDetails,Coupon,Payment,Country,OrderSupplier,BankAccount
-OrderDetailsSupplier
 from django.db.models import Sum
 from django.conf import settings
 from django.views import View
@@ -23,6 +22,8 @@ from .utils import code_generator
 import stripe
 from django.core.mail import send_mail
 from decimal import Context, Decimal
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+
 
 
 
@@ -3606,6 +3607,70 @@ def supplier_bank_info(request):
     else:
         messages.warning(request,'please login first !') 
         return redirect('/login')  
+
+
+def payments(request):
+    if request.user.is_authenticated and not request.user.is_anonymous:
+        vendor=Profile.objects.get(user=request.user)
+        payments=VendorPayments.objects.all().filter(vendor_profile__username=request.user)
+        bank_info_object=BankAccount.objects.all().filter(vendor_profile__user=request.user).first()
+        paginator=Paginator(payments,10)
+        page=request.GET.get('page')
+        try:
+            payments=paginator.page(page)
+        except PageNotAnInteger:
+            payments=paginator.page(1)    
+        except EmptyPage:
+            payments=paginator.page(paginator.num_page)    
+        context={
+            'vendor':vendor,
+            'payments':payments,
+            'bank_info_obj':bank_info_object,
+            'paginator':paginator,
+            'page':page
+        }  
+        return render(request,'ecommerce/payment-request.html',context)  
+    else:
+        messages.warning(request,'Please login first')    
+        return redirect('/login')
+
+
+def request_payment(request):
+    if request.user.is_authenticated and not request.user.is_anonymous:
+        if request.method == 'POST':
+            try:
+                request_amount=float(request.POST['request_amount'])
+                description=request.POST['description']
+                profile=Profile.objects.get(user=request.user)
+                method=request.POST['method']
+                if profile.blance >= request_amount:
+                    profile.requested=request_amount
+                    profile.blance=profile.blance - request_amount
+                    if method == 'Paypal' or method == 'Bank':
+                        VendorPayments.objects.create(
+                            vendor_profile=request.user,
+                            request_amount=request_amount,
+                            method=method,
+                            description=description,
+                        )
+                        print(profile)
+
+                        profile.save()
+                        messages.success(request,'Your request has been recived')
+                        return redirect('/payments')
+                else:
+                    messages.warning(request,'You have not enough balance')        
+                    return redirect('/payments')
+            except (ValueError,TypeError):
+                messages.warning(request,'please enter a valid number')        
+                return redirect('/payments')
+        return redirect('/payments')        
+    else:
+        messages.warning(request,'Please login first !')    
+        return redirect('/login')
+
+
+
 
 
        
