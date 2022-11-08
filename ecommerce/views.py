@@ -3466,7 +3466,17 @@ def remove_product(request, id):
 
 
 def supplier_dashboard(request):
-    return render(request,'ecommerce/supplier-dashboard.html')
+    vendor=Profile.objects.get(user=request.user)
+    order_supplier=OrderSupplier.objects.all().filter(vendor=vendor).exclude(status='PENDING')
+    products_supplier=Product.objects.all().filter(product_vendor=vendor,PRDISactive=True).order_by('-date')
+    orders_underway=OrderSupplier.objects.all().filter(vendor=vendor,status='Underway')
+    context={
+        'vendor':vendor,
+        'order_supplier':order_supplier,
+        'products_supplier':products_supplier,
+        'orders_underway':orders_underway
+    }
+    return render(request,'ecommerce/supplier-dashboard.html',context)
 
 
 # class SupplierOrderJsonListView(View):
@@ -3669,8 +3679,25 @@ def request_payment(request):
         messages.warning(request,'Please login first !')    
         return redirect('/login')
 
+from datetime import date
 
 
+class chartJsonListView(View):
+    def get(self, *args, **kwargs):
+        today = date.today()
+        if self.request.user.is_authenticated and not self.request.user.is_anonymous:
+            vendor = Profile.objects.get(user=self.request.user)
 
+            product_count_list = []
+            order_count_list = []
+            for i in range(1, 13):
+                product_count = Product.objects.filter(
+                    product_vendor=vendor,  date__year=today.year, date__month=i,).count()
+                product_count_list.append(product_count)
+                order_count = OrderSupplier.objects.all().filter(vendor=vendor, order_date__year=today.year,
+                                                                 order_date__month=i,).exclude(status="PENDING").count()
+                order_count_list.append(order_count)
+
+            return JsonResponse({"product_count_list": product_count_list, "order_count_list": order_count_list, }, safe=False)
 
        

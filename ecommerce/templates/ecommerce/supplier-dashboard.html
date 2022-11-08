@@ -12,6 +12,16 @@
         border-radius: 50%;
     }
 </style> -->
+<style>
+    i.fa-circles {
+  display: inline-block;
+  border-radius: 20px;
+  box-shadow: 0 0 5px rgb(231, 125, 3);
+  padding: 0.2em 0.2em;
+  background-color:  rgb(122, 120, 120);
+
+}
+</style>
 
     <div class="dashboard dark-theme">
         <aside class="drawer">
@@ -206,13 +216,28 @@
                         <div class="card border-0">
                             <div class="p-3">
                                 <div class="d-flex justify-content-between mb-3">
-                                    <h6 class="mb-0">Sales Today</h6>
-                                    <span class="badge badge-primary">Today</span>
+                                    <h6 class="mb-0"><i class="fa fa-money fa-2x m-2 fa-circles"></i> Total Earning</h6>
+                                    <!-- <span class="badge badge-primary">Annual</span> -->
                                 </div>
-                                <h3>2.532</h3>
+                                <h3>{{request.session.currency}}:{{vendor.blance}}</h3>
                                 <div class="d-flex align-items-center">
-                                    <span class="badge badge-success mr-3">+26%</span>
-                                    <p class="mb-0">Since last month</p>
+                                    <!-- <span class="badge badge-success mr-3">+26%</span> -->
+                                    <!-- <p class="mb-0">Since last month</p> -->
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="col-lg-3 mb-3">
+                        <div class="card border-0">
+                            <div class="p-3">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h6 class="mb-0"><i class="fa fa-th-large fa-2x m-2 fa-circles"></i> Products</h6>
+                                    <!-- <span class="badge badge-primary">Annual</span> -->
+                                </div>
+                                <h3 class="text-center">{{products_supplier.count}}</h3>
+                                <div class="d-flex align-items-center">
+                                    <!-- <span class="badge badge-danger mr-3">-14%</span> -->
+                                    <!-- <p class="mb-0">Since last month</p> -->
                                 </div>
                             </div>
                         </div>
@@ -221,13 +246,13 @@
                         <div class="card border-0">
                             <div class="p-3">
                                 <div class="d-flex justify-content-between mb-3">
-                                    <h6 class="mb-0">Visitors</h6>
-                                    <span class="badge badge-primary">Annual</span>
+                                    <h6 class="mb-0"><i class="fa fa-shopping-bag fa-2x m-2 fa-circles"></i> Orders</h6>
+                                    <!-- <span class="badge badge-primary">Monthly</span> -->
                                 </div>
-                                <h3>170.212</h3>
+                                <h3 class="text-center">{{order_supplier.count}}</h3>
                                 <div class="d-flex align-items-center">
-                                    <span class="badge badge-danger mr-3">-14%</span>
-                                    <p class="mb-0">Since last month</p>
+                                    <!-- <span class="badge badge-success mr-3">+18%</span> -->
+                                    <!-- <p class="mb-0">Since last month</p> -->
                                 </div>
                             </div>
                         </div>
@@ -236,27 +261,12 @@
                         <div class="card border-0">
                             <div class="p-3">
                                 <div class="d-flex justify-content-between mb-3">
-                                    <h6 class="mb-0">Total Earnings</h6>
-                                    <span class="badge badge-primary">Monthly</span>
+                                    <h6 class="mb-0"><i class="fa fa-truck fa-2x m-2 fa-circles"></i> Underway Orders</h6>
                                 </div>
-                                <h3>&dollar; 24.300</h3>
+                                <h3 class="text-center">{{orders_underway.count}}</h3>
                                 <div class="d-flex align-items-center">
-                                    <span class="badge badge-success mr-3">+18%</span>
-                                    <p class="mb-0">Since last month</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 mb-3">
-                        <div class="card border-0">
-                            <div class="p-3">
-                                <div class="d-flex justify-content-between mb-3">
-                                    <h6 class="mb-0">Pending Orders</h6>
-                                </div>
-                                <h3>45</h3>
-                                <div class="d-flex align-items-center">
-                                    <span class="badge badge-danger mr-3">-14%</span>
-                                    <p class="mb-0">Since last month</p>
+                                    <!-- <span class="badge badge-danger mr-3">-14%</span> -->
+                                    <!-- <p class="mb-0">Since last month</p> -->
                                 </div>
                             </div>
                         </div>
@@ -266,7 +276,7 @@
                     <div class="col-lg-8 mb-3">
                         <div class="card">
                             <div class="p-3">
-                                <h5>Sales / Revenue</h5>
+                                <h5>Products / Orders</h5>
                                 <div>
                                     <div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
                                         <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">

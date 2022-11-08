@@ -60,7 +60,9 @@ urlpatterns=[
     path('order-details/<int:id>/',views.supplier_order_details,name='order-details'),
     path('bank-info',views.supplier_bank_info,name='bank-info'), 
     path('payments',views.payments,name='payments'),
-    path('request-payment',views.request_payment,name='request-payment'),    
+    path('request-payment',views.request_payment,name='request-payment'),
+    path('chart-ajax/', views.chartJsonListView.as_view(), name="chart-ajax"),
+    
 
 
 ]

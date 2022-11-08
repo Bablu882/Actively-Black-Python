@@ -48,16 +48,16 @@ window.onload = function () {
 
                         if (order.status == "Underway") {
 
-                            alertStatus = 'alert-warning'
+                            alertStatus = 'alert-warning text-dark'
                         }
                         else if (order.status == "COMPLETE") {
-                            alertStatus = 'alert-success'
+                            alertStatus = 'alert-success text-dark'
 
                         }
 
                         else {
 
-                            alertStatus = 'alert-danger'
+                            alertStatus = 'alert-danger text-dark'
                         }
 
                         let d = new Date(order.order_date);

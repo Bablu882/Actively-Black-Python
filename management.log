@@ -16415,3 +16415,121 @@ Not Found: /imgs/theme/icons/coupon.png
 Not Found: /imgs/theme/icons/coupon.png
 Using selector: EpollSelector
 Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /imgs/theme/icons/coupon.png
+Not Found: /favicon.ico
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /imgs/theme/icons/coupon.png
+Using selector: EpollSelector
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/urls.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/urls.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+/home/bablu/Desktop/python2/actively_black_python/ecommerce/views.py changed, reloading.
+Using selector: EpollSelector
+Watching for file changes with StatReloader
+Not Found: /chart-ajax-admin/
+Not Found: /chart-ajax-admin/
+Not Found: /chart-ajax-admin/
+Not Found: /chart-ajax-admin/
+Not Found: /chart-ajax-admin/
+Internal Server Error: /chart-ajax/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view ecommerce.views.chartJsonListView didn't return an HttpResponse object. It returned None instead.
+Not Found: /imgs/theme/icons/coupon.png
+Internal Server Error: /chart-ajax/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view ecommerce.views.chartJsonListView didn't return an HttpResponse object. It returned None instead.
+Importing BlpImagePlugin
+Importing BmpImagePlugin
+Importing BufrStubImagePlugin
+Importing CurImagePlugin
+Importing DcxImagePlugin
+Importing DdsImagePlugin
+Importing EpsImagePlugin
+Importing FitsStubImagePlugin
+Importing FliImagePlugin
+Importing FpxImagePlugin
+Importing FtexImagePlugin
+Importing GbrImagePlugin
+Importing GifImagePlugin
+Importing GribStubImagePlugin
+Importing Hdf5StubImagePlugin
+Importing IcnsImagePlugin
+Importing IcoImagePlugin
+Importing ImImagePlugin
+Importing ImtImagePlugin
+Importing IptcImagePlugin
+Importing JpegImagePlugin
+Importing Jpeg2KImagePlugin
+Importing McIdasImagePlugin
+Importing MicImagePlugin
+Importing MpegImagePlugin
+Importing MpoImagePlugin
+Importing MspImagePlugin
+Importing PalmImagePlugin
+Importing PcdImagePlugin
+Importing PcxImagePlugin
+Importing PdfImagePlugin
+Importing PixarImagePlugin
+Importing PngImagePlugin
+Importing PpmImagePlugin
+Importing PsdImagePlugin
+Importing SgiImagePlugin
+Importing SpiderImagePlugin
+Importing SunImagePlugin
+Importing TgaImagePlugin
+Importing TiffImagePlugin
+Importing WebPImagePlugin
+Importing WmfImagePlugin
+Importing XbmImagePlugin
+Importing XpmImagePlugin
+Importing XVThumbImagePlugin
+Internal Server Error: /chart-ajax/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view ecommerce.views.chartJsonListView didn't return an HttpResponse object. It returned None instead.
+Internal Server Error: /chart-ajax/
+Traceback (most recent call last):
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 186, in _get_response
+    self.check_response(response, callback)
+  File "/home/bablu/.local/lib/python3.8/site-packages/django/core/handlers/base.py", line 307, in check_response
+    raise ValueError(
+ValueError: The view ecommerce.views.chartJsonListView didn't return an HttpResponse object. It returned None instead.
+Watching for file changes with StatReloader
+Using selector: EpollSelector
+Using selector: EpollSelector
