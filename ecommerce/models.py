@@ -1,7 +1,7 @@
 from django.db import models
 from management.models import User
 from management.models import Profile
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.utils.text import slugify
 from django.core.validators import FileExtensionValidator, MinValueValidator, MaxValueValidator
 from .utils import create_shortcode
