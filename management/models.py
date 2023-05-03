@@ -2,6 +2,7 @@ from django.db.models.signals import pre_save,post_save
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.utils import timezone
+from .utils import create_shortcode
 from django.utils.translation import gettext_lazy as _
 from django.utils.text import slugify
 from django_countries.fields import CountryField
@@ -72,23 +73,15 @@ class Profile(models.Model):
     admission=models.BooleanField(default=False,verbose_name=_("admission"),blank=True,null=True)
     referrals=models.IntegerField(default=0,blank=True,null=True)
     code=models.CharField(max_length=200,blank=True,null=True)
-    recomended_by=models.ForeignKey(User,on_delete=models.CASCADE,related_name="recomended_by",blank=True,null=True)
+    recommended_by=models.ForeignKey(User,on_delete=models.CASCADE,related_name="recommended_by",blank=True,null=True)
     blance=models.FloatField(default=0.00,blank=True,null=True)
     requested=models.FloatField(default=0.00,blank=True,null=True)
     date=models.DateTimeField(auto_now_add=True,blank=True,null=True)
     date_update=models.DateTimeField(auto_now=True,blank=True,null=True)
-    slug=models.SlugField(blank=True,null=True,unique=True)
+    slug=models.SlugField(blank=True,null=True,unique=True,verbose_name=_("Slugfiy"),allow_unicode=True)
     facebook=models.URLField(blank=True,null=True)
     teitter=models.URLField(blank=True,null=True)
     instagram=models.URLField(blank=True,null=True)
-    # css=models.BooleanField(default=False)
-    # html=models.BooleanField(default=False)
-    # jquery=models.BooleanField(default=False)
-    # javascripts=models.BooleanField(default=False)
-    # bootstrap=models.BooleanField(default=False)
-    # react=models.BooleanField(default=False)
-    # java=models.BooleanField(default=False)
-    # python=models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return self.user.username
@@ -101,9 +94,16 @@ class Profile(models.Model):
                 my_records.append(profile)
         return my_records        
 
-    def save(self,*args,**kwargs):
-        self.slug=slugify(self.user.username)
-        super().save(*args,**kwargs)
+    def save(self, *args, **kwargs):
+        if not self.slug or self.slug is None or self.slug == "":
+            self.slug = slugify(self.user.username, allow_unicode=True)
+            qs_exists = Profile.objects.filter(
+                slug=self.slug).exists()
+            if qs_exists:
+                self.slug = create_shortcode(self)
+        if self.code is None or self.code == "":
+            self.code = f'{self.user}'
+        super().save(*args, **kwargs)
 
     def create_profile(sender, **kwargs):
         if kwargs['created']:
@@ -141,3 +141,15 @@ class Skill(models.Model):
     post_save.connect(create_skill, sender=User)    
 
 
+class BankAccount(models.Model):
+    vendor_profile = models.OneToOneField(
+        Profile, on_delete=models.SET_NULL, blank=True, null=True)
+    bank_name = models.CharField(max_length=200, blank=True, null=True, )
+    account_number = models.CharField(max_length=200, blank=True, null=True, )
+    swift_code = models.CharField(max_length=200, blank=True, null=True, )
+    account_name = models.CharField(max_length=200, blank=True, null=True, )
+    country = models.CharField(max_length=200, blank=True, null=True, )
+    paypal_email = models.CharField(max_length=200, blank=True, null=True, )
+    description = models.TextField(blank=True, null=True)
+    date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    date_update = models.DateTimeField(auto_now=True, blank=True, null=True)

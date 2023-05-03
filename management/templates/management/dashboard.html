@@ -2,6 +2,8 @@
 {% load static %}
 {% block title %}Actively|dashboard{% endblock %}
 {% block content %}
+{% load currency %}
+{% currency_context %}
 
 <!-- <style>
     .nav-profile{
@@ -46,9 +48,30 @@
                             <li class="nav-item">
                                 <a href="{% url 'profile' %}" class="nav-link"><i class="fa fa-user mr-2" aria-hidden="true"></i> User
                                     Profile</a>
-                                </li>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'supplier-products-list' %}" class="nav-link"><i class="fa fa-dashboard mr-2" aria-hidden="true"></i>
+                                    Product-Listing</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'supplier-add-product' %}" class="nav-link"><i class="fa fa-dashboard mr-2" aria-hidden="true"></i>
+                                    Add Product</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'home' %}" class="nav-link"><i class="fa fa-dashboard mr-2" aria-hidden="true"></i>
+                                    Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'supplier-dashboard' %}" class="nav-link"><i class="fa fa-dashboard mr-2" aria-hidden="true"></i>
+                                    Supplier-dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'bank-info' %}" class="nav-link"><i class="fa fa-dashboard mr-2" aria-hidden="true"></i>
+                                    Bank Info</a>
+                            </li>
+
                                 {% if request.user.is_superuser %}
-                                <li class="nav-item">
+                            <li class="nav-item">
                                 <hr style="height:2px;border-width:0;color:rgb(250, 248, 248);background-color:rgb(255, 250, 250)">
                                 <a href="{% url 'listing' %}" class="nav-link"><i class="fa fa-list mr-2" aria-hidden="true"></i>
                                     Listing</a>
@@ -127,6 +150,32 @@
                                 <img class="card-img-top nav-profile" src="{{request.user.profile.avatar.url}}"
                                 alt="Card image cap">
                             </li>
+                            <li class="align-self-center">
+                            <a class="mini-cart-icon ml-2" href="{% url 'cart' %}">
+                                <img alt="Nest" style="filter: invert(1);" src="{% static 'management/images/cart-icon.svg' %}" />
+                                {% if cart_count%}
+								<span class="pro-count white">{{cart_count}}</span>
+								{%else%}
+								<span class="pro-count white">0</span>
+								{%endif%}
+                            </a>
+                            </li>
+                            <li class="align-self-center ml-3">
+                                <form action="{% url 'set-currency' %}" method="post" style="margin-right: 10px;">
+                                    {% csrf_token %}
+                                    
+                                    <select name="currency"  onchange="submit()" class="border-0 bg-transparent text-white">
+                                        {% for curr in CURRENCIES %}
+                                        <option value="{{ curr.code }}" {% if curr.code == request.session.currency %}selected="selected"{% endif %}>
+                                            {{ curr.symbol }} 
+                                            {{ curr.name }} 
+                                          </option>
+                                        {% endfor %} 
+                                    </select>
+                                
+                                </form>
+                            </li>
+                            <!-- <a href=""><span class="lable">Cart</span></a> -->
                         </ul>
                     </div>
                 </nav>
